@@ -1,0 +1,26 @@
+﻿@{
+  
+}  ViewBag.Title = "About Us";
+
+<h2>About</h2>
+<p>
+<canvas id="TestCanvas" width="200" height="200" style="border:10px solid #0000FF;">
+Canvas is not working
+</canvas>
+</p>
+
+<script type="text/javascript">
+    var c = document.getElementById("TestCanvas");
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = "#EE4000";
+    ctx.fillRect(0, 0, 50, 75);
+
+    ctx.fillStyle = "#000000";
+    ctx.beginPath();
+    ctx.arc(70, 18, 15, 0, Math.PI * 2, true);
+    ctx.closePath();
+    ctx.fill();
+</script>
+
+
+
