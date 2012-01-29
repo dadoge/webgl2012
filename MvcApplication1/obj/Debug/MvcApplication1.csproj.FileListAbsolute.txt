@@ -5,3 +5,10 @@ c:\users\ghost\documents\visual studio 2010\Projects\MvcApplication1\MvcApplicat
 c:\users\ghost\documents\visual studio 2010\Projects\MvcApplication1\MvcApplication1\obj\Debug\ResolveAssemblyReference.cache
 c:\users\ghost\documents\visual studio 2010\Projects\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.dll
 c:\users\ghost\documents\visual studio 2010\Projects\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.pdb
+C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\bin\MvcApplication1.dll
+C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\bin\MvcApplication1.pdb
+C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\bin\EntityFramework.dll
+C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\bin\EntityFramework.xml
+C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\obj\Debug\ResolveAssemblyReference.cache
+C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.dll
+C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.pdb
