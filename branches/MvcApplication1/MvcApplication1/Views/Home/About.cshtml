@@ -12,14 +12,27 @@ Canvas is not working
 <script type="text/javascript">
     var c = document.getElementById("TestCanvas");
     var ctx = c.getContext("2d");
-    ctx.fillStyle = "#EE4000";
-    ctx.fillRect(0, 0, 50, 75);
 
-    ctx.fillStyle = "#000000";
-    ctx.beginPath();
-    ctx.arc(70, 18, 15, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
+    var FPS = 30;
+    setInterval(function () {
+        update();
+        draw();
+    }, 1000 / FPS);
+
+    var textX = 50;
+    var textY = 50;
+
+    function update() {
+        textX += .2;
+        textY += .2;
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, 200, 200);
+        ctx.fillStyle = "#000";
+        ctx.font = "20pt Calibri";
+        ctx.fillText("Sup Bra!", textX, textY);
+    }
 </script>
 
 
