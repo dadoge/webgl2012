@@ -17,8 +17,8 @@ Canvas is not working
     
     //forward direction
     var direction = true ;
-    var textX = 50;
-    var textY = 50;
+    var BallX = 0;
+    var BallY = 0;
 
     setInterval(function () {
         update();
@@ -29,17 +29,17 @@ Canvas is not working
 
         if (direction) 
         {
-            textX += .6;
-            textY += .6;
-            if (textX > 75) {
+            BallX += 2;
+            BallY += 2;
+            if (BallX > 200) {
                 direction = false;
             }
         }
         else
         {
-            textX -= .6;
-            textY -= .6;
-            if (textX < 25) {
+            BallX -= 2;
+            BallY -= 2;
+            if (BallX < 0) {
                 direction = true;
             }
         }
@@ -48,9 +48,11 @@ Canvas is not working
 
     function draw() {
         ctx.clearRect(0, 0, 200, 200);
-        ctx.fillStyle = "#000";
-        ctx.font = "20pt Calibri";
-        ctx.fillText("Sup Bra!", textX, textY);
+        ctx.fillStyle = "#FF0000";
+        ctx.beginPath();
+        ctx.arc(BallX, BallY, 10, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fill();
     }
 </script>
 
