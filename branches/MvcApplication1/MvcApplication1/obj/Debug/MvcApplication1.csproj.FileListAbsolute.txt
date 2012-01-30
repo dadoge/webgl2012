@@ -12,3 +12,10 @@ C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\bin\EntityFramework.xml
 C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\obj\Debug\ResolveAssemblyReference.cache
 C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.dll
 C:\DEVELOPMENT\WebGL\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.pdb
+C:\DEVELOPMENT\STAGING\html5\webgl2012\MvcApplication1\MvcApplication1\bin\MvcApplication1.dll
+C:\DEVELOPMENT\STAGING\html5\webgl2012\MvcApplication1\MvcApplication1\bin\MvcApplication1.pdb
+C:\DEVELOPMENT\STAGING\html5\webgl2012\MvcApplication1\MvcApplication1\bin\EntityFramework.dll
+C:\DEVELOPMENT\STAGING\html5\webgl2012\MvcApplication1\MvcApplication1\bin\EntityFramework.xml
+C:\DEVELOPMENT\STAGING\html5\webgl2012\MvcApplication1\MvcApplication1\obj\Debug\ResolveAssemblyReference.cache
+C:\DEVELOPMENT\STAGING\html5\webgl2012\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.dll
+C:\DEVELOPMENT\STAGING\html5\webgl2012\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.pdb
