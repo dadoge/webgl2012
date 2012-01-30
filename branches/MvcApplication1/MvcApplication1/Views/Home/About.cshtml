@@ -15,8 +15,9 @@ Canvas is not working
 
     var FPS = 30;
     
-    //forward direction
-    var direction = true ;
+    //direction of ball
+    var IsUp = false;
+    var IsLeft = false;
     var BallX = 0;
     var BallY = 0;
 
@@ -27,20 +28,32 @@ Canvas is not working
 
     function update() {
 
-        if (direction) 
+        if (!IsUp) 
         {
-            BallX += 2;
-            BallY += 2;
-            if (BallX > 200) {
-                direction = false;
+            //Positive Y = down on screen
+            BallY += 3;
+            if (BallY > 204) {
+                IsUp = true ;
             }
         }
         else
         {
-            BallX -= 2;
             BallY -= 2;
+            if (BallY < 0) {
+                IsUp = false;
+            }
+        }
+        if(!IsLeft) {
+            //Positive Y = down on screen
+            BallX += 4;
+            if (BallX > 204) {
+                IsLeft = true;
+            }
+        }
+        else {
+            BallX -= 3;
             if (BallX < 0) {
-                direction = true;
+                IsLeft = false;
             }
         }
        
