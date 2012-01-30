@@ -1,6 +1,6 @@
 ﻿@{
-  
-}  ViewBag.Title = "About Us";
+    ViewBag.Title = "About Us";
+}  
 
 <h2>About</h2>
 <p>
@@ -14,17 +14,30 @@ Canvas is not working
     var ctx = c.getContext("2d");
 
     var FPS = 30;
+    var textX = 50;
+    var textY = 50;
+
     setInterval(function () {
         update();
         draw();
     }, 1000 / FPS);
 
-    var textX = 50;
-    var textY = 50;
-
     function update() {
-        textX += .2;
-        textY += .2;
+
+        if (textX <= 60) 
+        {
+            textX += .2;
+        }
+        else if(textX > 60)
+        {
+            textX -= .2;
+        }
+        if (textY <= 60) {
+            textY += .2;
+        }
+        else {
+            textY -= .2;
+        }
     }
 
     function draw() {
