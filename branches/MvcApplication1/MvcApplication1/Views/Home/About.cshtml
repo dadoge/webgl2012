@@ -18,6 +18,8 @@ Canvas is not working
     //direction of ball
     var IsUp = false;
     var IsLeft = false;
+
+    //Ball coordinates
     var BallX = 0;
     var BallY = 0;
 
@@ -30,7 +32,7 @@ Canvas is not working
 
         if (!IsUp) 
         {
-            //Positive Y = down on screen
+            //Positive Y = ball goes down
             BallY += 3;
             if (BallY > 204) {
                 IsUp = true ;
@@ -44,7 +46,7 @@ Canvas is not working
             }
         }
         if(!IsLeft) {
-            //Positive Y = down on screen
+            //Positive X = Ball goes right
             BallX += 4;
             if (BallX > 204) {
                 IsLeft = true;
@@ -60,12 +62,19 @@ Canvas is not working
     }
 
     function draw() {
+
+        //Clear Screen
         ctx.clearRect(0, 0, 200, 200);
+
+        //Item Color
         ctx.fillStyle = "#FF0000";
+
+        //Draw ball
         ctx.beginPath();
         ctx.arc(BallX, BallY, 10, 0, Math.PI * 2, true);
         ctx.closePath();
         ctx.fill();
+        //End ball
     }
 </script>
 
