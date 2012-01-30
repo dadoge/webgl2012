@@ -14,6 +14,9 @@ Canvas is not working
     var ctx = c.getContext("2d");
 
     var FPS = 30;
+    
+    //forward direction
+    var direction = true ;
     var textX = 50;
     var textY = 50;
 
@@ -24,20 +27,23 @@ Canvas is not working
 
     function update() {
 
-        if (textX <= 60) 
+        if (direction) 
         {
-            textX += .2;
+            textX += .6;
+            textY += .6;
+            if (textX > 75) {
+                direction = false;
+            }
         }
-        else if(textX > 60)
+        else
         {
-            textX -= .2;
+            textX -= .6;
+            textY -= .6;
+            if (textX < 25) {
+                direction = true;
+            }
         }
-        if (textY <= 60) {
-            textY += .2;
-        }
-        else {
-            textY -= .2;
-        }
+       
     }
 
     function draw() {
