@@ -15,8 +15,8 @@ Canvas is not working
     var FPS = 30;
 
     //Ball coordinates
-    var BallX = 0;
-    var BallY = 0;
+    var BallX = 110;
+    var BallY = 42;
 
     //Ball Velocity
     var SpeedX = 3;
@@ -29,20 +29,14 @@ Canvas is not working
 
     function update() {
 
-
             //Positive Y = ball goes down
             BallX += SpeedX;
             BallY += SpeedY;
-            if (BallY > 200) {
+
+            if (BallY > 200 || BallY < 0) {
                 SpeedY = SpeedY * -1;
             }
-            if(BallX > 200) {
-                SpeedX = SpeedX * -1;
-            }
-            if (BallY < 0) {
-                SpeedY = SpeedY * -1;
-            }
-            if (BallX < 0) {
+            if(BallX > 200 || BallX < 0) {
                 SpeedX = SpeedX * -1;
             }
         }
