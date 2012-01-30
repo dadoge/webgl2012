@@ -1,27 +1,26 @@
 ﻿@{
     ViewBag.Title = "About Us";
-}  
-
-<h2>About</h2>
+}
+<h2>
+    About</h2>
 <p>
-<canvas id="TestCanvas" width="200" height="200" style="border:10px solid #0000FF;">
+    <canvas id="TestCanvas" width="200" height="200" style="border: 10px solid #0000FF;">
 Canvas is not working
 </canvas>
 </p>
-
 <script type="text/javascript">
     var c = document.getElementById("TestCanvas");
     var ctx = c.getContext("2d");
 
     var FPS = 30;
-    
-    //direction of ball
-    var IsUp = false;
-    var IsLeft = false;
 
     //Ball coordinates
     var BallX = 0;
     var BallY = 0;
+
+    //Ball Velocity
+    var SpeedX = 3;
+    var SpeedY = 3;
 
     setInterval(function () {
         update();
@@ -30,36 +29,24 @@ Canvas is not working
 
     function update() {
 
-        if (!IsUp) 
-        {
+
             //Positive Y = ball goes down
-            BallY += 3;
-            if (BallY > 204) {
-                IsUp = true ;
+            BallX += SpeedX;
+            BallY += SpeedY;
+            if (BallY > 200) {
+                SpeedY = SpeedY * -1;
             }
-        }
-        else
-        {
-            BallY -= 2;
+            if(BallX > 200) {
+                SpeedX = SpeedX * -1;
+            }
             if (BallY < 0) {
-                IsUp = false;
+                SpeedY = SpeedY * -1;
             }
-        }
-        if(!IsLeft) {
-            //Positive X = Ball goes right
-            BallX += 4;
-            if (BallX > 204) {
-                IsLeft = true;
-            }
-        }
-        else {
-            BallX -= 3;
             if (BallX < 0) {
-                IsLeft = false;
+                SpeedX = SpeedX * -1;
             }
         }
-       
-    }
+
 
     function draw() {
 
@@ -77,6 +64,3 @@ Canvas is not working
         //End ball
     }
 </script>
-
-
-
