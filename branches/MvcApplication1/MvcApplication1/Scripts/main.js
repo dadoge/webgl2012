@@ -51,6 +51,7 @@ function update() {
     BallX += SpeedX;
     BallY += SpeedY;
 
+    //inverse ball direction when hitting boundries, need real colision function.
     if (BallY > CanvasHeight || BallY < 0) {
         SpeedY = SpeedY * -1;
     }
