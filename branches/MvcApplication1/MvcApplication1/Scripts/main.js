@@ -58,6 +58,12 @@ function update() {
     if (BallX > CanvasWidth || BallX < 0) {
         SpeedX = SpeedX * -1;
     }
+
+    if (BallY <= PaddleY) {
+        if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
+            SpeedY = SpeedY * -1;
+        }
+    }
 }
 
 
