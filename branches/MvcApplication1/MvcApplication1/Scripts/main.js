@@ -29,6 +29,22 @@ setInterval(function () {
     draw();
 }, 1000 / FPS);
 
+//Key Listener
+window.addEventListener('keydown', doKeyDown, true);
+function doKeyDown(evt) {
+    switch (evt.keyCode) {
+
+        //Should be left arrow key 
+        case 37:
+            PaddleX -= 8;
+            break;
+        //right 
+        case 39:
+            PaddleX += 8;
+            break;
+    }
+}
+
 function update() {
 
     //Positive Y = ball goes down
