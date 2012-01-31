@@ -7,9 +7,13 @@ var FPS = 30;
 var BallX = 110;
 var BallY = 42;
 
+//Canvas size, still needs changed when you update canvas tag, would be nice to possibly pull in values here.
+var CanvasWidth = 400;
+var CanvasHeight = 400;
+
 //Ball Velocity
-var SpeedX = 3;
-var SpeedY = 3;
+var SpeedX = 15;
+var SpeedY = 15;
 
 setInterval(function () {
     update();
@@ -22,10 +26,10 @@ function update() {
     BallX += SpeedX;
     BallY += SpeedY;
 
-    if (BallY > 200 || BallY < 0) {
+    if (BallY > CanvasHeight || BallY < 0) {
         SpeedY = SpeedY * -1;
     }
-    if (BallX > 200 || BallX < 0) {
+    if (BallX > CanvasWidth || BallX < 0) {
         SpeedX = SpeedX * -1;
     }
 }
@@ -34,7 +38,7 @@ function update() {
 function draw() {
 
     //Clear Screen
-    ctx.clearRect(0, 0, 200, 200);
+    ctx.clearRect(0, 0, CanvasWidth, CanvasHeight);
 
     //Item Color
     ctx.fillStyle = "#FF0000";
