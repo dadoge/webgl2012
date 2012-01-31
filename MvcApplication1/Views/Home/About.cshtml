@@ -1,14 +1,15 @@
 ﻿@{
     ViewBag.Title = "About Us";
 }
-<h2>
-    About</h2>
+<h2>About</h2>
 
 
 <p>
-    <canvas id="TestCanvas" width="400" height="400" style="border: 10px solid #0000FF;">
+<canvas id="TestCanvas" width="400" height="400" style="border: 10px solid #0000FF;">
 Canvas is not working
 </canvas>
 </p>
+
+
 @*Script must go below canvas or it cannot instantialize its context(ctx)*@
 <script src="@Url.Content("~/Scripts/main.js") "type="text/javascript"> </script>
