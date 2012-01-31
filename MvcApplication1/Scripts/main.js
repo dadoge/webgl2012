@@ -20,6 +20,7 @@ var BallY = 42;
 var PaddleX = 200;
 var PaddleY = 390;
 var PaddleWidth = 85;
+var PaddleSpeed = 12;
 
 //Canvas size, still needs changed when you update canvas tag, would be nice to possibly pull in values here.
 var CanvasWidth = 400;
@@ -50,11 +51,11 @@ function doKeyDown(evt) {
 
         //Should be left arrow key 
         case 37:
-            PaddleX -= 8;
+            PaddleX -= PaddleSpeed;
             break;
         //right 
         case 39:
-            PaddleX += 8;
+            PaddleX += PaddleSpeed;
             break;
     }
 }
