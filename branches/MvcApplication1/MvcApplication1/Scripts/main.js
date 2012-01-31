@@ -108,9 +108,11 @@ function draw() {
     ctx.strokeStyle = "#888888";
     ctx.lineCap = "round";
     ctx.lineWidth = 6;
+    ctx.beginPath();
     ctx.moveTo(PaddleX-(PaddleWidth/2), PaddleY);
-    ctx.lineTo(PaddleX+(PaddleWidth/2), PaddleY);
+    ctx.lineTo(PaddleX + (PaddleWidth / 2), PaddleY);
     ctx.stroke();
+    ctx.closePath();
     //End Paddle
 }
 
