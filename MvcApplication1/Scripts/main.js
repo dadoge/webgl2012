@@ -33,6 +33,9 @@ var CanvasHeight = 400;
 var SpeedX = 11;
 var SpeedY = 13;
 
+// Score counter
+var GameScore = 0;
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 //                    Methods that are invoked upon initialization
@@ -92,6 +95,13 @@ function update() {
             playsound();
         }
     }
+
+    //Ball collision with paddle, add to score
+    if (BallY == PaddleY - 10) {
+        if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
+            setScore();
+        }
+    }
 }
 
 
@@ -121,5 +131,16 @@ function draw() {
     ctx.stroke();
     ctx.closePath();
     //End Paddle
+
+    //Draw Score
+    ctx.font = "14pt Arial";
+    ctx.textBaseline = "top";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText("Score: " + GameScore, 300, 10);
 }
 
+
+// Handling the score
+function setScore() {
+    GameScore += 1;
+}
