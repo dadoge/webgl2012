@@ -14,7 +14,7 @@ var BallY = 42;
 //Paddle coordinates
 var PaddleX = 200;
 var PaddleY = 390;
-var PaddleWidth = 75;
+var PaddleWidth = 85;
 
 //Canvas size, still needs changed when you update canvas tag, would be nice to possibly pull in values here.
 var CanvasWidth = 400;
@@ -52,10 +52,8 @@ function draw() {
     //Draw background img
     ctx.drawImage(img, 0, 0);
 
-    //Item Color
-    ctx.fillStyle = "#FF0000";
-
     //Draw ball
+    ctx.fillStyle = "#FF0000";
     ctx.beginPath();
     ctx.arc(BallX, BallY, 8, 0, Math.PI * 2, true);
     ctx.closePath();
@@ -63,6 +61,9 @@ function draw() {
     //End ball
 
     //Draw Paddle
+    ctx.strokeStyle = "#888888";
+    ctx.lineCap = "round";
+    ctx.lineWidth = 6;
     ctx.beginPath();
     ctx.moveTo(PaddleX-(PaddleWidth/2), PaddleY);
     ctx.lineTo(PaddleX+(PaddleWidth/2), PaddleY);
