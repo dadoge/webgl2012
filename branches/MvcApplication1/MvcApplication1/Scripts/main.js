@@ -21,8 +21,8 @@ var CanvasWidth = 400;
 var CanvasHeight = 400;
 
 //Ball Velocity
-var SpeedX = 10;
-var SpeedY = 10;
+var SpeedX = 11;
+var SpeedY = 13;
 
 setInterval(function () {
     update();
@@ -59,7 +59,9 @@ function update() {
         SpeedX = SpeedX * -1;
     }
 
-    if (BallY <= PaddleY) {
+
+    //Notice Minus...goddamn backwards coords.
+    if (BallY >= PaddleY - 10) {
         if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
             SpeedY = SpeedY * -1;
         }
