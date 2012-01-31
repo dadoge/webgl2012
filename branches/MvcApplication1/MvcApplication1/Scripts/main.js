@@ -12,6 +12,9 @@ var FPS = 30;
 var img = new Image();
 img.src = "../Content/funnypictures_91.jpg";
 
+//Sounds
+
+
 //Ball coordinates
 var BallX = 110;
 var BallY = 42;
@@ -49,13 +52,14 @@ window.addEventListener('keydown', doKeyDown, true);
 function doKeyDown(evt) {
     switch (evt.keyCode) {
 
-        //Should be left arrow key 
+        //Should be left arrow key
         case 37:
             PaddleX -= PaddleSpeed;
             break;
-        //right 
+        //right
         case 39:
             PaddleX += PaddleSpeed;
+            Sound.play();
             break;
     }
 }
@@ -73,9 +77,11 @@ function update() {
     //inverse ball direction when hitting boundries, need real colision function.
     if (BallY > CanvasHeight || BallY < 0) {
         SpeedY = SpeedY * -1;
+        playsound();
     }
     if (BallX > CanvasWidth || BallX < 0) {
         SpeedX = SpeedX * -1;
+        playsound();
     }
 
 
@@ -83,6 +89,7 @@ function update() {
     if (BallY >= PaddleY - 10) {
         if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
             SpeedY = SpeedY * -1;
+            playsound();
         }
     }
 }
