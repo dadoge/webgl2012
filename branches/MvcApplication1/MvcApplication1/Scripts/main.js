@@ -6,7 +6,11 @@
 var c = document.getElementById("TestCanvas");
 var ctx = c.getContext("2d");
 
+var intervalID;
 var FPS = 30;
+var isGameActive = false;
+var timer;
+var startMessage;
 
 //Background Image
 var img = new Image();
@@ -37,17 +41,50 @@ var SpeedY = 13;
 // Score counter
 var GameScore = 0;
 
+//Key Listener
+window.addEventListener('keydown', doKeyDown, true);
+window.addEventListener('keyup', doKeyUp, true);
+
+///////////////////////////////////////////////////////////////////////////////////
+//                    Start Up Game
+///////////////////////////////////////////////////////////////////////////////////
+function startGame() {
+    intervalID = setInterval(gameLoop, 1000 / FPS);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////
+//                    Pre-load Game
+///////////////////////////////////////////////////////////////////////////////////
+function preloadGame() {
+    isGameActive = false;
+    GameScore = 0;
+
+    LeftDown = false;
+    RightDown = false;
+
+    BallX = 110;
+    BallY = 42;
+
+    PaddleX = 200;
+    PaddleY = 365;
+    PaddleWidth = 85;
+    PaddleSpeed = 12;
+
+    SpeedX = 10;
+    SpeedY = 12;
+    draw();
+}
 
 //////////////////////////////////////////////////////////////////////////////////////
 //                    Methods that are invoked upon initialization
 /////////////////////////////////////////////////////////////////////////////////////
-setInterval(function () {
+function gameLoop() {
     update();
     draw();
-}, 1000 / FPS);
-//Key Listener
-window.addEventListener('keydown', doKeyDown, true);
-window.addEventListener('keyup', doKeyUp, true);
+
+}
+
 
 ////////////////////////////////////////////////////////////////////////////
 //                        Callbacks
@@ -64,6 +101,13 @@ function doKeyDown(evt) {
         //right
         case 39:
             RightDown = true;
+            break;
+        //space bar
+        case 32:
+            if (isGameActive == false) {
+                isGameActive = true;
+                startGame();
+            }
             break;
     }
 }
@@ -90,10 +134,10 @@ function update() {
 
 
     //Move Paddle if keys are pressed
-    if (LeftDown && !RightDown) {
+    if (LeftDown && !RightDown && PaddleX > 0) {
         PaddleX -= PaddleSpeed;
     }
-    else if (RightDown && !LeftDown) {
+    else if (RightDown && !LeftDown && PaddleX < CanvasWidth) {
         PaddleX += PaddleSpeed;
     }
 
@@ -101,8 +145,16 @@ function update() {
     BallX += SpeedX;
     BallY += SpeedY;
 
+
+    // check if you missed the ball, end game
+    if (BallY > CanvasHeight) {
+        isGameActive = false;
+        clearInterval(intervalID);
+        preloadGame();
+    }
+
     //inverse ball direction when hitting boundries, need real colision function.
-    if (BallY > CanvasHeight || BallY < 0) {
+    if (BallY < 0) {
         SpeedY = SpeedY * -1;
         playsound();
     }
