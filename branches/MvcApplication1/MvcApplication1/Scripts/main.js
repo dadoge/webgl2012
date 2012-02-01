@@ -12,8 +12,9 @@ var FPS = 30;
 var img = new Image();
 img.src = "../Content/incomingbaby.jpg";
 
-//Sounds
-
+//Key States
+var LeftDown = false;
+var RightDown = false;
 
 //Ball coordinates
 var BallX = 110;
@@ -23,7 +24,7 @@ var BallY = 42;
 var PaddleX = 200;
 var PaddleY = 365;
 var PaddleWidth = 85;
-var PaddleSpeed = 18;
+var PaddleSpeed = 12;
 
 //Canvas size, still needs changed when you update canvas tag, would be nice to possibly pull in values here.
 var CanvasWidth = 400;
@@ -46,6 +47,7 @@ setInterval(function () {
 }, 1000 / FPS);
 //Key Listener
 window.addEventListener('keydown', doKeyDown, true);
+window.addEventListener('keyup', doKeyUp, true);
 
 ////////////////////////////////////////////////////////////////////////////
 //                        Callbacks
@@ -57,12 +59,25 @@ function doKeyDown(evt) {
 
         //Should be left arrow key
         case 37:
-            PaddleX -= PaddleSpeed;
+            LeftDown = true;
             break;
         //right
         case 39:
-            PaddleX += PaddleSpeed;
-            Sound.play();
+            RightDown = true;
+            break;
+    }
+}
+
+function doKeyUp(evt) {
+    switch (evt.keyCode) {
+
+        //Should be left arrow key
+        case 37:
+            LeftDown = false;
+            break;
+        //right
+        case 39:
+            RightDown = false;
             break;
     }
 }
@@ -72,6 +87,15 @@ function doKeyDown(evt) {
 //                                Update and draw methods
 ///////////////////////////////////////////////////////////////////////////////////////
 function update() {
+
+
+    //Move Paddle if keys are pressed
+    if (LeftDown && !RightDown) {
+        PaddleX -= PaddleSpeed;
+    }
+    else if (RightDown && !LeftDown) {
+        PaddleX += PaddleSpeed;
+    }
 
     //Positive Y = ball goes down
     BallX += SpeedX;
