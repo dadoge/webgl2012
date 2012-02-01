@@ -10,7 +10,7 @@ var FPS = 30;
 
 //Background Image
 var img = new Image();
-img.src = "../Content/funnypictures_91.jpg";
+img.src = "../Content/incomingbaby.jpg";
 
 //Sounds
 
