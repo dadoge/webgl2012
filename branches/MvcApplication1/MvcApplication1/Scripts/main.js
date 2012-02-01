@@ -116,16 +116,17 @@ function update() {
     if (BallY >= PaddleY - 10) {
         if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
             SpeedY = SpeedY * -1;
+            setScore();
             playsound();
         }
     }
 
-    //Ball collision with paddle, add to score
-    if (BallY == PaddleY - 10) {
-        if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
-            setScore();
-        }
-    }
+//    //This was done already above, so I put set score above.
+//    if (BallY >= PaddleY - 10) {
+//        if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
+
+//        }
+//    }
 }
 
 
