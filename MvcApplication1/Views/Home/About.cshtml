@@ -18,10 +18,18 @@ Canvas is not working
     }
 </script>
 
-<p id="demo">Click the button to get your coordinates:</p>
+
+
+
+
+
+
+
+@*GEOLOCATION STUFF*@
+<div id="GeoLocation">Click the button to get your coordinates:</p>
 <button onclick="getLocation()">I caught a fish!!!</button>
 <script>
-    var x = document.getElementById("demo");
+    var x = document.getElementById("GeoLocation");
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
