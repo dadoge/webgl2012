@@ -24,6 +24,11 @@ Canvas is not working
 
 
 
+@*include hokeys in before main so they can be used in main, believe this is needed*@
+<script src="@Url.Content("~/Scripts/jquery.hotkeys.js") "type="text/javascript"> </script>
+@*Script must go below canvas or it cannot instantialize its context(ctx)*@
+<script src="@Url.Content("~/Scripts/main.js") "type="text/javascript"> </script>
+
 
 
 @*GEOLOCATION STUFF*@
@@ -43,5 +48,3 @@ Canvas is not working
     }
 </script>
 
-@*Script must go below canvas or it cannot instantialize its context(ctx)*@
-<script src="@Url.Content("~/Scripts/main.js") "type="text/javascript"> </script>
