@@ -21,9 +21,9 @@ var BallY = 42;
 
 //Paddle coordinates
 var PaddleX = 200;
-var PaddleY = 390;
+var PaddleY = 365;
 var PaddleWidth = 85;
-var PaddleSpeed = 12;
+var PaddleSpeed = 18;
 
 //Canvas size, still needs changed when you update canvas tag, would be nice to possibly pull in values here.
 var CanvasWidth = 400;
@@ -137,6 +137,10 @@ function draw() {
     ctx.textBaseline = "top";
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText("Score: " + GameScore, 300, 10);
+
+    //Draw bottom pit
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 370, 400, 30);
 }
 
 
