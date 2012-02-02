@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "About Us";
+}
+<h2>About</h2>
+
+
+<p align="center">
+<canvas id="TestCanvas" width="400" height="400" style="border: 10px solid #0000FF;">
+Canvas is not working
+</canvas>
+<audio id="Sound" src="../Content/flute.wav" preload="auto"></audio>
+</p>
+
+<script type="text/javascript">
+    function playsound() {
+
+    //    document.getElementById("Sound").load();
+    //    document.getElementById("Sound").play();
+    }
+</script>
+
+@*Script must go below canvas or it cannot instantialize its context(ctx)*@
+<script src="@Url.Content("~/Scripts/main.js") "type="text/javascript"> </script>
+
+
+
+@*GEOLOCATION STUFF*@
+<div id="GeoLocation">Click the button to get your coordinates:</div>
+<button onclick="getLocation()">I caught a fish!!!</button>
+<script>
+    var x = document.getElementById("GeoLocation");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        else { x.innerHTML = "Geolocation is not supported by this browser."; }
+    }
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br />Longitude: " + position.coords.longitude;
+    }
+</script>
+
