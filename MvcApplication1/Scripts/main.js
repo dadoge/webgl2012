@@ -45,6 +45,12 @@ var GameScore = 0;
 window.addEventListener('keydown', doKeyDown, true);
 window.addEventListener('keyup', doKeyUp, true);
 
+//KEYS
+var KEYS = new Object();
+KEYS.SPACE = 32,
+KEYS.LEFT = 37,
+KEYS.RIGHT = 39;
+
 ///////////////////////////////////////////////////////////////////////////////////
 //                    Start Up Game
 ///////////////////////////////////////////////////////////////////////////////////
@@ -94,16 +100,16 @@ function gameLoop() {
 function doKeyDown(evt) {
     switch (evt.keyCode) {
 
-        //Should be left arrow key
-        case 37:
+        //Should be left arrow key 
+        case KEYS.LEFT:
             LeftDown = true;
             break;
-        //right
-        case 39:
+        //right 
+        case KEYS.RIGHT:
             RightDown = true;
             break;
-        //space bar
-        case 32:
+        //space bar 
+        case KEYS.SPACE:
             if (isGameActive == false) {
                 isGameActive = true;
                 startGame();
@@ -115,12 +121,12 @@ function doKeyDown(evt) {
 function doKeyUp(evt) {
     switch (evt.keyCode) {
 
-        //Should be left arrow key
-        case 37:
+        //Should be left arrow key 
+        case KEYS.LEFT:
             LeftDown = false;
             break;
-        //right
-        case 39:
+        //right 
+        case KEYS.RIGHT:
             RightDown = false;
             break;
     }
