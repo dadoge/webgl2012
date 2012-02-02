@@ -11,6 +11,8 @@ var FPS = 30;
 var isGameActive = false;
 var timer;
 var startMessage;
+// Score counter
+var GameScore = 0;
 
 //Background Image
 var img = new Image();
@@ -21,35 +23,40 @@ var LeftDown = false;
 var RightDown = false;
 
 //Ball coordinates
-var BallX = 110;
-var BallY = 42;
+var Ball = {
+    X: 110,
+    Y: 42,
+    Radius: 8,
+    SpeedX: -10,
+    SpeedY: -12
+};
 
 //Paddle coordinates
-var PaddleX = 200;
-var PaddleY = 365;
-var PaddleWidth = 85;
-var PaddleSpeed = 12;
+var Paddle = {
+    X: 200,
+    Y: 365,
+    Width: 85,
+    Speed: 12
+};
 
 //Canvas size, still needs changed when you update canvas tag, would be nice to possibly pull in values here.
-var CanvasWidth = 400;
-var CanvasHeight = 400;
+var Canvas = {
+    Height: 400,
+    Width: 400
+};
 
-//Ball Velocity
-var SpeedX = 11;
-var SpeedY = 13;
-
-// Score counter
-var GameScore = 0;
+//KEYS
+var KEYS = {
+    SPACE: 32,
+    LEFT: 37,
+    RIGHT: 39
+};
 
 //Key Listener
 window.addEventListener('keydown', doKeyDown, true);
 window.addEventListener('keyup', doKeyUp, true);
 
-//KEYS
-var KEYS = new Object();
-KEYS.SPACE = 32,
-KEYS.LEFT = 37,
-KEYS.RIGHT = 39;
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 //                    Start Up Game
@@ -69,16 +76,16 @@ function preloadGame() {
     LeftDown = false;
     RightDown = false;
 
-    BallX = 110;
-    BallY = 42;
+    Ball.X = 200;
+    Ball.Y = 365 - Ball.Radius - 6;
 
-    PaddleX = 200;
-    PaddleY = 365;
-    PaddleWidth = 85;
-    PaddleSpeed = 12;
+    Paddle.X = 200;
+    Paddle.Y = 365;
+    Paddle.Width = 85;
+    Paddle.Speed = 12;
 
-    SpeedX = 10;
-    SpeedY = 12;
+    Ball.SpeedX = -10;
+    Ball.SpeedY = -12;
     draw();
 }
 
@@ -140,48 +147,48 @@ function update() {
 
 
     //Move Paddle if keys are pressed
-    if (LeftDown && !RightDown && PaddleX > 0) {
-        PaddleX -= PaddleSpeed;
+    if (LeftDown && !RightDown && Paddle.X > 0) {
+        Paddle.X -= Paddle.Speed;
     }
-    else if (RightDown && !LeftDown && PaddleX < CanvasWidth) {
-        PaddleX += PaddleSpeed;
+    else if (RightDown && !LeftDown && Paddle.X < Canvas.Width) {
+        Paddle.X += Paddle.Speed;
     }
 
     //Positive Y = ball goes down
-    BallX += SpeedX;
-    BallY += SpeedY;
+    Ball.X += Ball.SpeedX;
+    Ball.Y += Ball.SpeedY;
 
 
     // check if you missed the ball, end game
-    if (BallY > CanvasHeight) {
+    if (Ball.Y > Canvas.Height) {
         isGameActive = false;
         clearInterval(intervalID);
         preloadGame();
     }
 
     //inverse ball direction when hitting boundries, need real colision function.
-    if (BallY < 0) {
-        SpeedY = SpeedY * -1;
+    if (Ball.Y < 0) {
+        Ball.SpeedY = Ball.SpeedY * -1;
         playsound();
     }
-    if (BallX > CanvasWidth || BallX < 0) {
-        SpeedX = SpeedX * -1;
+    if (Ball.X > Canvas.Width || Ball.X < 0) {
+        Ball.SpeedX = Ball.SpeedX * -1;
         playsound();
     }
 
 
     //Notice Minus...goddamn backwards coords.
-    if (BallY >= PaddleY - 10) {
-        if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
-            SpeedY = SpeedY * -1;
+    if (Ball.Y >= Paddle.Y - 10) {
+        if (Ball.X >= (Paddle.X - Paddle.Width / 2) && Ball.X <= (Paddle.X + Paddle.Width / 2)) {
+            Ball.SpeedY = Ball.SpeedY * -1;
             setScore();
             playsound();
         }
     }
 
 //    //This was done already above, so I put set score above.
-//    if (BallY >= PaddleY - 10) {
-//        if (BallX >= (PaddleX - PaddleWidth / 2) && BallX <= (PaddleX + PaddleWidth / 2)) {
+//    if (Ball.Y >= Paddle.Y - 10) {
+//        if (Ball.X >= (Paddle.X - Paddle.Width / 2) && Ball.X <= (Paddle.X + Paddle.Width / 2)) {
 
 //        }
 //    }
@@ -191,7 +198,7 @@ function update() {
 function draw() {
 
     //Clear Screen
-    ctx.clearRect(0, 0, CanvasWidth, CanvasHeight);
+    ctx.clearRect(0, 0, Canvas.Width, Canvas.Height);
 
     //Draw background img
     ctx.drawImage(img, 0, 0);
@@ -199,7 +206,7 @@ function draw() {
     //Draw ball
     ctx.fillStyle = "#FF0000";
     ctx.beginPath();
-    ctx.arc(BallX, BallY, 8, 0, Math.PI * 2, true);
+    ctx.arc(Ball.X, Ball.Y, Ball.Radius, 0, Math.PI * 2, true);
     ctx.closePath();
     ctx.fill();
     //End ball
@@ -209,8 +216,8 @@ function draw() {
     ctx.lineCap = "round";
     ctx.lineWidth = 6;
     ctx.beginPath();
-    ctx.moveTo(PaddleX-(PaddleWidth/2), PaddleY);
-    ctx.lineTo(PaddleX + (PaddleWidth / 2), PaddleY);
+    ctx.moveTo(Paddle.X-(Paddle.Width/2), Paddle.Y);
+    ctx.lineTo(Paddle.X + (Paddle.Width / 2), Paddle.Y);
     ctx.stroke();
     ctx.closePath();
     //End Paddle
