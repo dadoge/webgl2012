@@ -24,8 +24,8 @@ var RightDown = false;
 
 //Ball coordinates
 var Ball = {
-    X: 110,
-    Y: 42,
+    X: 200,
+    Y: 351,
     Radius: 8,
     SpeedX: -10,
     SpeedY: -12
