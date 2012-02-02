@@ -5,6 +5,8 @@
 
 var c = document.getElementById("TestCanvas");
 var ctx = c.getContext("2d");
+var cwidth = c.width;
+var cheight = c.height;
 
 var intervalID;
 var FPS = 30;
@@ -41,8 +43,8 @@ var Paddle = {
 
 //Canvas size, still needs changed when you update canvas tag, would be nice to possibly pull in values here.
 var Canvas = {
-    Height: 400,
-    Width: 400
+    Height: cheight,
+    Width: cwidth
 };
 
 //KEYS
@@ -55,6 +57,18 @@ var KEYS = {
 //Key Listener
 window.addEventListener('keydown', doKeyDown, true);
 window.addEventListener('keyup', doKeyUp, true);
+
+var blocksPerRow = 8;
+var blockHeight = 20;
+var blockWidth = Canvas.Width / blocksPerRow;
+
+var level = [
+    [1, 1, 1, 1, 3, 1, 1, 2],
+    [1, 2, 1, 2, 1, 1, 3, 2],
+    [2, 1, 3, 1, 2, 3, 1, 2],
+    [1, 2, 1, 3, 1, 2, 1, 2]
+];
+
 
 
 
@@ -86,6 +100,14 @@ function preloadGame() {
 
     Ball.SpeedX = -10;
     Ball.SpeedY = -12;
+
+    level = [
+        [1, 1, 1, 1, 3, 1, 1, 2],
+        [1, 2, 1, 2, 1, 1, 3, 2],
+        [2, 1, 3, 1, 2, 3, 1, 2],
+        [1, 2, 1, 3, 1, 2, 1, 2]
+    ];
+
     draw();
 }
 
@@ -115,9 +137,10 @@ function doKeyDown(evt) {
         case KEYS.RIGHT:
             RightDown = true;
             break;
-        //space bar 
+        //space bar
         case KEYS.SPACE:
             if (isGameActive == false) {
+                preloadGame();
                 isGameActive = true;
                 startGame();
             }
@@ -136,6 +159,116 @@ function doKeyUp(evt) {
         case KEYS.RIGHT:
             RightDown = false;
             break;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+//                                  Level creation
+//////////////////////////////////////////////////////////////////////////////////////
+function createLevel() {
+    for (var i = 0; i < level.length; i++) {
+        for (var j = 0; j < level[i].length; j++) {
+            drawBlock(j, i, level[i][j]);
+        }
+    }
+}
+
+// draw a single block
+function drawBlock(x, y, type) {
+    switch (type) { 
+        case 1:
+            ctx.fillStyle = 'orange';
+            break;
+        case 2:
+            ctx.fillStyle = 'rgb(100,200,100)';
+            break;
+        case 3:
+            ctx.fillStyle = 'rgba(50,100,50,.5)';
+            break;
+        default:
+            ctx.clearRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
+            break;
+
+    }
+    if (type) {
+        //Draw rectangle with fillStyle color selected earlier
+        ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
+        // Also draw blackish border around the brick
+        ctx.strokeRect(x * blockWidth + 1, y * blockHeight + 1, blockWidth - 2, blockHeight - 2);
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+//                                  Brick collision
+//////////////////////////////////////////////////////////////////////////////////////
+function collisionXWithBlocks() {
+    var bumpedX = false;
+    for (var i = 0; i < level.length; i++) {
+        for (var j = 0; j < level[i].length; j++) {
+            if (level[i][j]) { // if brick is still visible
+                var blockX = j * blockWidth;
+                var blockY = i * blockHeight;
+                if (
+                // barely touching from left
+                    ((Ball.X + Ball.SpeedX + Ball.Radius >= blockX) &&
+                    (Ball.X + Ball.Radius <= blockX))
+                    ||
+                // barely touching from right
+                    ((Ball.X + Ball.SpeedX - Ball.Radius <= blockX + blockWidth) &&
+                    (Ball.X - Ball.Radius >= blockX + blockWidth))
+                    ) {
+                    if ((Ball.Y + Ball.SpeedY - Ball.Radius <= blockY + blockHeight) &&
+                        (Ball.Y + Ball.SpeedY + Ball.Radius >= blockY)) {
+                        // weaken block and increase score
+                        explodeBlock(i, j);
+
+                        bumpedX = true;
+                    }
+                }
+            }
+        }
+    }
+    return bumpedX;
+}
+
+function collisionYWithBlocks() {
+    var bumpedY = false;
+    for (var i = 0; i < level.length; i++) {
+        for (var j = 0; j < level[i].length; j++) {
+            if (level[i][j]) { // if brick is still visible
+                var blockX = j * blockWidth;
+                var blockY = i * blockHeight;
+                if (
+                // barely touching from below
+                    ((Ball.Y + Ball.SpeedY - Ball.Radius <= blockY + blockHeight) &&
+                    (Ball.Y - Ball.Radius >= blockY + blockHeight))
+                    ||
+                // barely touching from above
+                    ((Ball.Y + Ball.SpeedY + Ball.Radius >= blockY) &&
+                    (Ball.Y + Ball.Radius <= blockY))) {
+                    if (Ball.X + Ball.SpeedX + Ball.Radius >= blockX &&
+                        Ball.X + Ball.SpeedX - Ball.Radius <= blockX + blockWidth) {
+                        // weaken block and increase score
+                        explodeBlock(i, j);
+                        bumpedY = true;
+                    }
+                }
+            }
+        }
+    }
+    return bumpedY;
+}
+
+function explodeBlock(i, j) {
+    // First weaken the block (0 means block is gone)
+    level[i][j]--;
+
+    if (level[i][j] > 0) {
+        // The block is weakened but still around. Give a single point.
+        GameScore++;
+    } else {
+        // give player an extra point when the block disappears
+        GameScore += 2;
     }
 }
 
@@ -167,11 +300,11 @@ function update() {
     }
 
     //inverse ball direction when hitting boundries, need real colision function.
-    if (Ball.Y < 0) {
+    if (Ball.Y < 0 || collisionYWithBlocks()) {
         Ball.SpeedY = Ball.SpeedY * -1;
         playsound();
     }
-    if (Ball.X > Canvas.Width || Ball.X < 0) {
+    if (Ball.X > Canvas.Width || Ball.X < 0 || collisionXWithBlocks()) {
         Ball.SpeedX = Ball.SpeedX * -1;
         playsound();
     }
@@ -202,6 +335,9 @@ function draw() {
 
     //Draw background img
     ctx.drawImage(img, 0, 0);
+
+    //create level
+    createLevel();
 
     //Draw ball
     ctx.fillStyle = "#FF0000";
