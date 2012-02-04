@@ -14,6 +14,7 @@ var isGameActive = false;
 var timer;
 var startMessage;
 // Score counter
+var lives = 3;
 var GameScore = 0;
 
 //Background Image
@@ -28,9 +29,9 @@ var RightDown = false;
 var Ball = {
     X: 200,
     Y: 351,
-    Radius: 8,
-    SpeedX: -10,
-    SpeedY: -12
+    Radius: 6,
+    SpeedX: -7,
+    SpeedY: -8
 };
 
 //Paddle coordinates
@@ -85,7 +86,6 @@ function startGame() {
 ///////////////////////////////////////////////////////////////////////////////////
 function preloadGame() {
     isGameActive = false;
-    GameScore = 0;
 
     LeftDown = false;
     RightDown = false;
@@ -98,15 +98,19 @@ function preloadGame() {
     Paddle.Width = 85;
     Paddle.Speed = 12;
 
-    Ball.SpeedX = -10;
-    Ball.SpeedY = -12;
+    Ball.SpeedX = -7;
+    Ball.SpeedY = -8;
 
-    level = [
-        [1, 1, 1, 1, 3, 1, 1, 2],
-        [1, 2, 1, 2, 1, 1, 3, 2],
-        [2, 1, 3, 1, 2, 3, 1, 2],
-        [1, 2, 1, 3, 1, 2, 1, 2]
-    ];
+    if (lives == 0) {
+        GameScore = 0;
+        lives = 3;
+        level = [
+            [1, 1, 1, 1, 3, 1, 1, 2],
+            [1, 2, 1, 2, 1, 1, 3, 2],
+            [2, 1, 3, 1, 2, 3, 1, 2],
+            [1, 2, 1, 3, 1, 2, 1, 2]
+        ];
+    }
 
     draw();
 }
@@ -129,15 +133,15 @@ function gameLoop() {
 function doKeyDown(evt) {
     switch (evt.keyCode) {
 
-        //Should be left arrow key 
+        //Should be left arrow key    
         case KEYS.LEFT:
             LeftDown = true;
             break;
-        //right 
+        //right    
         case KEYS.RIGHT:
             RightDown = true;
             break;
-        //space bar
+        //space bar   
         case KEYS.SPACE:
             if (isGameActive == false) {
                 preloadGame();
@@ -151,11 +155,11 @@ function doKeyDown(evt) {
 function doKeyUp(evt) {
     switch (evt.keyCode) {
 
-        //Should be left arrow key 
+        //Should be left arrow key    
         case KEYS.LEFT:
             LeftDown = false;
             break;
-        //right 
+        //right    
         case KEYS.RIGHT:
             RightDown = false;
             break;
@@ -175,7 +179,7 @@ function createLevel() {
 
 // draw a single block
 function drawBlock(x, y, type) {
-    switch (type) { 
+    switch (type) {
         case 1:
             ctx.fillStyle = 'orange';
             break;
@@ -297,6 +301,7 @@ function update() {
 
     // check if you missed the ball, end game
     if (Ball.Y > Canvas.Height) {
+        lives--;
         isGameActive = false;
         clearInterval(intervalID);
         preloadGame();
@@ -321,16 +326,7 @@ function update() {
             playsound();
         }
     }
-
-//    //This was done already above, so I put set score above.
-//    if (Ball.Y >= Paddle.Y - 10) {
-//        if (Ball.X >= (Paddle.X - Paddle.Width / 2) && Ball.X <= (Paddle.X + Paddle.Width / 2)) {
-
-//        }
-//    }
 }
-
-
 function draw() {
 
     //Clear Screen
@@ -355,17 +351,18 @@ function draw() {
     ctx.lineCap = "round";
     ctx.lineWidth = 6;
     ctx.beginPath();
-    ctx.moveTo(Paddle.X-(Paddle.Width/2), Paddle.Y);
+    ctx.moveTo(Paddle.X - (Paddle.Width / 2), Paddle.Y);
     ctx.lineTo(Paddle.X + (Paddle.Width / 2), Paddle.Y);
     ctx.stroke();
     ctx.closePath();
     //End Paddle
 
-    //Draw Score
+    //Draw Score and lives
     ctx.font = "14pt Arial";
     ctx.textBaseline = "top";
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText("Score: " + GameScore, 300, 10);
+    ctx.fillText("Lives: " + lives, 300, 30);
 
     //Draw bottom pit
     ctx.fillStyle = "#000000";
