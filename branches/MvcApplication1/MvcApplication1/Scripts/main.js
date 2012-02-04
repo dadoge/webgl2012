@@ -194,6 +194,9 @@ function drawBlock(x, y, type) {
         //Draw rectangle with fillStyle color selected earlier
         ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
         // Also draw blackish border around the brick
+        ctx.strokeStyle = "#111111";
+        ctx.lineCap = "round";
+        ctx.lineWidth = 1;
         ctx.strokeRect(x * blockWidth + 1, y * blockHeight + 1, blockWidth - 2, blockHeight - 2);
     }
 }
