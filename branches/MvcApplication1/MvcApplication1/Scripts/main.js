@@ -14,8 +14,9 @@ var isGameActive = false;
 var timer;
 var startMessage;
 // Score counter
-var lives = 3;
+var lives = 5;
 var GameScore = 0;
+var gamewon = false;
 
 //Background Image
 var img = new Image();
@@ -103,7 +104,7 @@ function preloadGame() {
 
     if (lives == 0) {
         GameScore = 0;
-        lives = 3;
+        lives = 5;
         level = [
             [1, 1, 1, 1, 3, 1, 1, 2],
             [1, 2, 1, 2, 1, 1, 3, 2],
@@ -141,12 +142,13 @@ function doKeyDown(evt) {
         case KEYS.RIGHT:
             RightDown = true;
             break;
-        //space bar   
+        //space bar
         case KEYS.SPACE:
             if (isGameActive == false) {
                 preloadGame();
                 isGameActive = true;
                 startGame();
+                gamewon = false;
             }
             break;
     }
@@ -300,7 +302,7 @@ function update() {
 
 
     // check if you missed the ball, end game
-    if (Ball.Y > Canvas.Height) {
+    if (Ball.Y > Paddle.Y + (Ball.SpeedY + Ball.Radius)) {
         lives--;
         isGameActive = false;
         clearInterval(intervalID);
@@ -326,6 +328,16 @@ function update() {
             playsound();
         }
     }
+
+    if (!(level[0].every(isNonZero) || level[1].every(isNonZero) || level[2].every(isNonZero) || level[3].every(isNonZero))) {
+        isGameActive = false;
+        clearInterval(intervalID);
+        gamewon = true;
+    }
+
+}
+var isNonZero = function(x) {
+   return !x==0;
 }
 function draw() {
 
@@ -367,6 +379,14 @@ function draw() {
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText("Score: " + GameScore, 10, 370);
     ctx.fillText("Lives: " + lives, 300, 370);
+
+    if (gamewon) {
+
+        ctx.font = "36pt Arial";
+        ctx.textBaseline = "top";
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillText("You won you lucky basturd!!" + GameScore, 10, 200);
+    }
 }
 
 
