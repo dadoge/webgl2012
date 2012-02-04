@@ -357,16 +357,16 @@ function draw() {
     ctx.closePath();
     //End Paddle
 
+    //Draw bottom pit
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 370, 400, 30);
+
     //Draw Score and lives
     ctx.font = "14pt Arial";
     ctx.textBaseline = "top";
     ctx.fillStyle = "#FFFFFF";
-    ctx.fillText("Score: " + GameScore, 300, 10);
-    ctx.fillText("Lives: " + lives, 300, 30);
-
-    //Draw bottom pit
-    ctx.fillStyle = "#000000";
-    ctx.fillRect(0, 370, 400, 30);
+    ctx.fillText("Score: " + GameScore, 10, 370);
+    ctx.fillText("Lives: " + lives, 300, 370);
 }
 
 
