@@ -14,7 +14,7 @@ var isGameActive = false;
 var timer;
 var startMessage;
 // Score counter
-var lives = 5;
+var lives = 8;
 var GameScore = 0;
 var gamewon = false;
 
@@ -104,7 +104,7 @@ function preloadGame() {
 
     if (lives == 0) {
         GameScore = 0;
-        lives = 5;
+        lives = 8;
         level = [
             [1, 1, 1, 1, 3, 1, 1, 2],
             [1, 2, 1, 2, 1, 1, 3, 2],
@@ -329,7 +329,7 @@ function update() {
         }
     }
 
-    if (!(level[0].every(isNonZero) || level[1].every(isNonZero) || level[2].every(isNonZero) || level[3].every(isNonZero))) {
+    if (!(level[0].filter(isNonZero).length > 0 || level[1].filter(isNonZero).length > 0 || level[2].filter(isNonZero).length > 0 || level[3].filter(isNonZero).length > 0)) {
         isGameActive = false;
         clearInterval(intervalID);
         gamewon = true;
