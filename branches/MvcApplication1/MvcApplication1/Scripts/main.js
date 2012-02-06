@@ -382,7 +382,7 @@ function draw() {
 
     if (gamewon) {
 
-        ctx.font = "36pt Arial";
+        ctx.font = "20pt Arial";
         ctx.textBaseline = "top";
         ctx.fillStyle = "#FFFFFF";
         ctx.fillText("You won you lucky basturd!!" + GameScore, 10, 200);
