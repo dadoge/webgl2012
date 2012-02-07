@@ -17,6 +17,7 @@ var startMessage;
 var lives = 8;
 var GameScore = 0;
 var gamewon = false;
+var numBlocks = 0;
 
 //Background Image
 var img = new Image();
@@ -56,6 +57,22 @@ var KEYS = {
     RIGHT: 39
 };
 
+//Block
+var Block = {
+    a: {
+        id: "purple",
+        health: 1,
+        color: "#512555",
+        broken: false
+    },
+    z: {
+        id: "empty",
+        health: 0,
+        color: null,
+        broken: true
+    }
+};
+
 //Key Listener
 window.addEventListener('keydown', doKeyDown, true);
 window.addEventListener('keyup', doKeyUp, true);
@@ -65,12 +82,32 @@ var blockHeight = 20;
 var blockWidth = Canvas.Width / blocksPerRow;
 
 var level = [
-    [1, 1, 1, 1, 3, 1, 1, 2],
-    [1, 2, 1, 2, 1, 1, 3, 2],
-    [2, 1, 3, 1, 2, 3, 1, 2],
-    [1, 2, 1, 3, 1, 2, 1, 2]
+    ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"],
+    ["empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty"],
+    ["empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty"],
+    ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"]
 ];
 
+//var level = [
+//    [9, 9, 9, 9, 9, 9, 9, 9],
+//    [9, 9, 9, 9, 9, 9, 9, 9],
+//    [9, 9, 9, 9, 9, 9, 9, 9],
+//    [1, 1, 1, 1, 3, 1, 1, 2],
+//    [1, 2, 1, 2, 1, 1, 3, 2],
+//    [2, 1, 3, 1, 2, 3, 1, 2],
+//    [9, 2, 1, 3, 1, 2, 1, 9]
+//];
+
+function createBlock(extX, extY, extHealth, extColor, extBroken) {
+    var block;
+    block = { health: extHealth, x: extX, y: extY, color: extColor, broken: extBroken };
+    //var health = extHealth;
+    //var x = extX;
+    //var y = extY;
+    //var color = extColor;
+    //var broken = extBroken;
+    return block;
+}
 
 
 
@@ -104,16 +141,35 @@ function preloadGame() {
 
     if (lives == 0) {
         GameScore = 0;
+        numBlocks = 0;
         lives = 8;
         level = [
-            [1, 1, 1, 1, 3, 1, 1, 2],
-            [1, 2, 1, 2, 1, 1, 3, 2],
-            [2, 1, 3, 1, 2, 3, 1, 2],
-            [1, 2, 1, 3, 1, 2, 1, 2]
+            ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"],
+            ["empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty"],
+            ["empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty"],
+            ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"]
         ];
     }
 
     draw();
+}
+
+function setupLevel() {
+    for (var i = 0; i < level.length; i++) {
+        for (var j = 0; j < level[i].length; j++) {
+            if (level[i][j] == "purple") {
+                level[i][j] = createBlock(j, i, 1, "#660099", false);
+                numBlocks++;
+            }
+            else if (level[i][j] == "orange") {
+                level[i][j] = createBlock(j, i, 1, "#FF9900", false);
+                numBlocks++;
+            }
+            else if (level[i][j] == "empty") {
+                level[i][j] = null;
+            }
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -145,6 +201,7 @@ function doKeyDown(evt) {
         //space bar
         case KEYS.SPACE:
             if (isGameActive == false) {
+                setupLevel();
                 preloadGame();
                 isGameActive = true;
                 startGame();
@@ -174,16 +231,31 @@ function doKeyUp(evt) {
 function createLevel() {
     for (var i = 0; i < level.length; i++) {
         for (var j = 0; j < level[i].length; j++) {
-            drawBlock(j, i, level[i][j]);
+            //drawBlock(j, i, level[i][j].id, level[i][j].color);
+            var currBlock = level[i][j];
+            if (currBlock != null) {
+                if (!currBlock.broken) {
+                    ctx.fillStyle = currBlock.color;
+
+                    //Draw rectangle with fillStyle color selected earlier
+                    ctx.fillRect(currBlock.x * blockWidth, currBlock.y * blockHeight, blockWidth, blockHeight);
+                    // Also draw blackish border around the brick
+                    ctx.strokeStyle = "#111111";
+                    ctx.lineCap = "round";
+                    ctx.lineWidth = 1;
+                    ctx.strokeRect(currBlock.x * blockWidth + 1, currBlock.y * blockHeight + 1, blockWidth - 2, blockHeight - 2);
+                }
+                
+            }
         }
     }
 }
 
 // draw a single block
-function drawBlock(x, y, type) {
+function drawBlock(x, y, type, color) {
     switch (type) {
-        case 1:
-            ctx.fillStyle = 'orange';
+        case "purple":
+            ctx.fillStyle = color;
             break;
         case 2:
             ctx.fillStyle = 'rgb(100,200,100)';
@@ -192,11 +264,11 @@ function drawBlock(x, y, type) {
             ctx.fillStyle = 'rgba(50,100,50,.5)';
             break;
         default:
-            ctx.clearRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
+            //ctx.clearRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
             break;
 
     }
-    if (type) {
+    if (type != "empty") {
         //Draw rectangle with fillStyle color selected earlier
         ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
         // Also draw blackish border around the brick
@@ -212,29 +284,36 @@ function drawBlock(x, y, type) {
 //////////////////////////////////////////////////////////////////////////////////////
 function collisionXWithBlocks() {
     var bumpedX = false;
+    var currBlock;
     for (var i = 0; i < level.length; i++) {
         for (var j = 0; j < level[i].length; j++) {
-            if (level[i][j]) { // if brick is still visible
-                var blockX = j * blockWidth;
-                var blockY = i * blockHeight;
-                if (
-                // barely touching from left
+            currBlock = level[i][j];
+            
+            if (currBlock != null) {
+                if (currBlock.health > 0) { // if brick is still visible
+                    var blockX = j * blockWidth;
+                    var blockY = i * blockHeight;
+                    if (
+                    // barely touching from left
                     ((Ball.X + Ball.SpeedX + Ball.Radius >= blockX) &&
                     (Ball.X + Ball.Radius <= blockX))
                     ||
-                // barely touching from right
+                    // barely touching from right
                     ((Ball.X + Ball.SpeedX - Ball.Radius <= blockX + blockWidth) &&
                     (Ball.X - Ball.Radius >= blockX + blockWidth))
                     ) {
-                    if ((Ball.Y + Ball.SpeedY - Ball.Radius <= blockY + blockHeight) &&
+                        if ((Ball.Y + Ball.SpeedY - Ball.Radius <= blockY + blockHeight) &&
                         (Ball.Y + Ball.SpeedY + Ball.Radius >= blockY)) {
-                        // weaken block and increase score
-                        explodeBlock(i, j);
+                            // weaken block and increase score
+                            explodeBlock(i, j);
+                            //breakBlock(currBlock);
 
-                        bumpedX = true;
+                            bumpedX = true;
+                        }
                     }
                 }
             }
+            
         }
     }
     return bumpedX;
@@ -242,42 +321,66 @@ function collisionXWithBlocks() {
 
 function collisionYWithBlocks() {
     var bumpedY = false;
+    var currBlock;
     for (var i = 0; i < level.length; i++) {
         for (var j = 0; j < level[i].length; j++) {
-            if (level[i][j]) { // if brick is still visible
-                var blockX = j * blockWidth;
-                var blockY = i * blockHeight;
-                if (
-                // barely touching from below
+            currBlock = level[i][j];
+            if (currBlock != null) {
+                if (currBlock.health > 0) { // if brick is still visible
+                    var blockX = j * blockWidth;
+                    var blockY = i * blockHeight;
+                    if (
+                    // barely touching from below
                     ((Ball.Y + Ball.SpeedY - Ball.Radius <= blockY + blockHeight) &&
                     (Ball.Y - Ball.Radius >= blockY + blockHeight))
                     ||
-                // barely touching from above
+                    // barely touching from above
                     ((Ball.Y + Ball.SpeedY + Ball.Radius >= blockY) &&
                     (Ball.Y + Ball.Radius <= blockY))) {
-                    if (Ball.X + Ball.SpeedX + Ball.Radius >= blockX &&
+                        if (Ball.X + Ball.SpeedX + Ball.Radius >= blockX &&
                         Ball.X + Ball.SpeedX - Ball.Radius <= blockX + blockWidth) {
-                        // weaken block and increase score
-                        explodeBlock(i, j);
-                        bumpedY = true;
+                            // weaken block and increase score
+                            explodeBlock(i, j);
+                            //breakBlock(currBlock);
+
+                            bumpedY = true;
+                        }
                     }
                 }
             }
+            
         }
     }
     return bumpedY;
 }
 
+function breakBlock(block) {
+    var currBlock = block;
+    currBlock.health--;
+
+    if (currBlock.health > 0) {
+        GameScore++;
+    }
+    else {
+        GameScore += 2;
+        currBlock.broken = true;
+    }
+}
+
 function explodeBlock(i, j) {
     // First weaken the block (0 means block is gone)
-    level[i][j]--;
+    var currBlock;
+    currBlock = level[i][j];
+    currBlock.health--;
 
-    if (level[i][j] > 0) {
+    if (currBlock.health > 0) {
         // The block is weakened but still around. Give a single point.
         GameScore++;
     } else {
         // give player an extra point when the block disappears
         GameScore += 2;
+        currBlock.broken = true;
+        numBlocks--;
     }
 }
 
@@ -329,7 +432,7 @@ function update() {
         }
     }
 
-    if (!(level[0].filter(isNonZero).length > 0 || level[1].filter(isNonZero).length > 0 || level[2].filter(isNonZero).length > 0 || level[3].filter(isNonZero).length > 0)) {
+    if (numBlocks == 0) {
         isGameActive = false;
         clearInterval(intervalID);
         gamewon = true;
