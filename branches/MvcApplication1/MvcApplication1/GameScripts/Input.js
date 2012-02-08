@@ -56,3 +56,22 @@ function doKeyUp(evt) {
             break;
     }
 }
+
+/////////////////////////////////////////////////////////////////////
+//                      Process Input
+////////////////////////////////////////////////////////////////////
+
+function processInput() {
+
+    //Move Paddle if keys are pressed
+    if (LeftDown && !RightDown && Paddle.X > 0) {
+        Paddle.X -= Paddle.Speed;
+    }
+    else if (RightDown && !LeftDown && Paddle.X < Canvas.Width) {
+        Paddle.X += Paddle.Speed;
+    }
+
+    //Positive Y = ball goes down
+    Ball.X += Ball.SpeedX;
+    Ball.Y += Ball.SpeedY;
+}

@@ -123,7 +123,7 @@ function createLevel() {
                     ctx.lineWidth = 1;
                     ctx.strokeRect(currBlock.x * blockWidth + 1, currBlock.y * blockHeight + 1, blockWidth - 2, blockHeight - 2);
                 }
-                
+
             }
         }
     }
@@ -161,22 +161,7 @@ function createLevel() {
 ///////////////////////////////////////////////////////////////////////////////////////
 //                                Update and draw methods
 ///////////////////////////////////////////////////////////////////////////////////////
-function update() {
-
-
-    //Move Paddle if keys are pressed
-    if (LeftDown && !RightDown && Paddle.X > 0) {
-        Paddle.X -= Paddle.Speed;
-    }
-    else if (RightDown && !LeftDown && Paddle.X < Canvas.Width) {
-        Paddle.X += Paddle.Speed;
-    }
-
-    //Positive Y = ball goes down
-    Ball.X += Ball.SpeedX;
-    Ball.Y += Ball.SpeedY;
-
-
+function processCollisions() {
     // check if you missed the ball, end game
     if (Ball.Y > Paddle.Y + (Ball.SpeedY + Ball.Radius)) {
         lives--;
@@ -204,6 +189,12 @@ function update() {
             playsound();
         }
     }
+}
+
+function update() {
+
+    processInput();
+    processCollisions();
 
     if (numBlocks == 0) {
         isGameActive = false;
@@ -212,8 +203,8 @@ function update() {
     }
 
 }
-var isNonZero = function(x) {
-   return !x==0;
+var isNonZero = function (x) {
+    return !x == 0;
 }
 function draw() {
 
