@@ -22,15 +22,15 @@ window.addEventListener('keyup', doKeyUp, true);
 function doKeyDown(evt) {
     switch (evt.keyCode) {
 
-        //Should be left arrow key     
+        //Should be left arrow key      
         case KEYS.LEFT:
             LeftDown = true;
             break;
-        //right     
+        //right      
         case KEYS.RIGHT:
             RightDown = true;
             break;
-        //space bar 
+        //space bar  
         case KEYS.SPACE:
             if (isGameActive == false) {
                 setupLevel();
@@ -46,11 +46,11 @@ function doKeyDown(evt) {
 function doKeyUp(evt) {
     switch (evt.keyCode) {
 
-        //Should be left arrow key     
+        //Should be left arrow key      
         case KEYS.LEFT:
             LeftDown = false;
             break;
-        //right     
+        //right      
         case KEYS.RIGHT:
             RightDown = false;
             break;
