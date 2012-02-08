@@ -77,7 +77,7 @@ function preloadGame() {
     Paddle.Speed = 12;
 
     Ball.SpeedX = Math.min(-3 - 7 * Math.random(), -5);
-    Ball.SpeedY = Math.min(-3 - 7 * Math.random(), -5);
+    Ball.SpeedY = Math.min(-3 - 7 * Math.random(), -7);
 
     if (lives == 0) {
         GameScore = 0;
@@ -189,7 +189,7 @@ function processCollisions() {
             playsound();
 
             //Bounce ball based upon where you hit on the paddle
-            Ball.SpeedX = Ball.SpeedX + .25 * (Ball.X - Paddle.X);
+            Ball.SpeedX = Ball.SpeedX + .2 * (Ball.X - Paddle.X);
         }
     }
 }
