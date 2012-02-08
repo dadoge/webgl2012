@@ -76,8 +76,8 @@ function preloadGame() {
     Paddle.Width = 85;
     Paddle.Speed = 12;
 
-    Ball.SpeedX = -7;
-    Ball.SpeedY = -8;
+    Ball.SpeedX = -3 - 7 * Math.random();
+    Ball.SpeedY = -3 - 7 * Math.random();
 
     if (lives == 0) {
         GameScore = 0;
