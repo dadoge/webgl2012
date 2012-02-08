@@ -185,7 +185,7 @@ function processCollisions() {
     if (Ball.Y >= Paddle.Y - 10) {
         if (Ball.X >= (Paddle.X - Paddle.Width / 2) && Ball.X <= (Paddle.X + Paddle.Width / 2)) {
             Ball.SpeedY = Ball.SpeedY * -1;
-            setScore();
+
             playsound();
             
             //Bounce ball based upon where you hit on the paddle
@@ -206,9 +206,10 @@ function update() {
     }
 
 }
-var isNonZero = function (x) {
-    return !x == 0;
-}
+//unused
+//var isNonZero = function (x) {
+//    return !x == 0;
+//}
 function draw() {
 
     //Clear Screen
@@ -259,8 +260,8 @@ function draw() {
     }
 }
 
-
-// Handling the score
-function setScore() {
-    GameScore += 1;
-}
+//unused
+//// Handling the score
+//function setScore() {
+//    GameScore += 1;
+//}
