@@ -18,12 +18,14 @@ var lives = 8;
 var GameScore = 0;
 var gamewon = false;
 var numBlocks = 0;
+var currentLevel = 0;
+var finalLevel = 2;
 
 //Background Image
 var img = new Image();
 img.src = "../Content/incomingbaby.jpg";
 
-//Canvas size, still needs changed when you update canvas tag, would be nice to possibly pull in values here.
+//Canvas size
 var Canvas = {
     Height: cheight,
     Width: cwidth
@@ -33,22 +35,7 @@ var blocksPerRow = 8;
 var blockHeight = 20;
 var blockWidth = Canvas.Width / blocksPerRow;
 
-var level = [
-    ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"],
-    ["empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty"],
-    ["empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty"],
-    ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"]
-];
-
-//var level = [
-//    [9, 9, 9, 9, 9, 9, 9, 9],
-//    [9, 9, 9, 9, 9, 9, 9, 9],
-//    [9, 9, 9, 9, 9, 9, 9, 9],
-//    [1, 1, 1, 1, 3, 1, 1, 2],
-//    [1, 2, 1, 2, 1, 1, 3, 2],
-//    [2, 1, 3, 1, 2, 3, 1, 2],
-//    [9, 2, 1, 3, 1, 2, 1, 9]
-//];
+var level = setLevel(currentLevel);
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -83,15 +70,17 @@ function preloadGame() {
         GameScore = 0;
         numBlocks = 0;
         lives = 8;
-        level = [
-            ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"],
-            ["empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty"],
-            ["empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty"],
-            ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"]
-        ];
+        level = setLevel(0);
     }
 
-    draw();
+    //draw();
+}
+
+function setLevel(levelNum) {
+
+    level = testlevel[levelNum];
+    
+    return level;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -129,34 +118,6 @@ function createLevel() {
     }
 }
 
-// draw a single block
-//Unused
-//function drawBlock(x, y, type, color) {
-//    switch (type) {
-//        case "purple":
-//            ctx.fillStyle = color;
-//            break;
-//        case 2:
-//            ctx.fillStyle = 'rgb(100,200,100)';
-//            break;
-//        case 3:
-//            ctx.fillStyle = 'rgba(50,100,50,.5)';
-//            break;
-//        default:
-//            //ctx.clearRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
-//            break;
-
-//    }
-//    if (type != "empty") {
-//        //Draw rectangle with fillStyle color selected earlier
-//        ctx.fillRect(x * blockWidth, y * blockHeight, blockWidth, blockHeight);
-//        // Also draw blackish border around the brick
-//        ctx.strokeStyle = "#111111";
-//        ctx.lineCap = "round";
-//        ctx.lineWidth = 1;
-//        ctx.strokeRect(x * blockWidth + 1, y * blockHeight + 1, blockWidth - 2, blockHeight - 2);
-//    }
-//}
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //                                Update and draw methods
@@ -202,14 +163,24 @@ function update() {
     if (numBlocks == 0) {
         isGameActive = false;
         clearInterval(intervalID);
-        gamewon = true;
+        if (currentLevel == finalLevel) {
+            gamewon = true;
+        }
+        else {
+            currentLevel++;
+            resetLevel();
+        }
     }
 
 }
-//unused
-//var isNonZero = function (x) {
-//    return !x == 0;
-//}
+
+function resetLevel() {
+    setLevel(currentLevel);
+    setupLevel();
+    preloadGame();
+    startGame();
+}
+
 function draw() {
 
     //Clear Screen
