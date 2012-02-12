@@ -19,7 +19,7 @@ var GameScore = 0;
 var gamewon = false;
 var numBlocks = 0;
 var currentLevel = 0;
-var finalLevel = 2;
+var finalLevel = 3;
 
 //Background Image
 var img = new Image();
@@ -66,9 +66,10 @@ function preloadGame() {
     Ball.SpeedX = Math.min(-3 - 7 * Math.random(), -5);
     Ball.SpeedY = Math.min(-3 - 7 * Math.random(), -7);
 
-    if (lives == 0) {
+    if (lives == 0 || gamewon == true) {
         GameScore = 0;
         numBlocks = 0;
+        gamewon = false;
         lives = 8;
         level = setLevel(0);
     }
@@ -79,8 +80,14 @@ function preloadGame() {
 function setLevel(levelNum) {
 
     level = gameLevels[levelNum];
-    
+    blocksPerRow = level[0].length;
+    setBlockWidth();
+
     return level;
+}
+
+function setBlockWidth() {
+    blockWidth = Canvas.Width / blocksPerRow;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -98,7 +105,6 @@ function gameLoop() {
 function createLevel() {
     for (var i = 0; i < level.length; i++) {
         for (var j = 0; j < level[i].length; j++) {
-            //drawBlock(j, i, level[i][j].id, level[i][j].color);
             var currBlock = level[i][j];
             if (currBlock != null) {
                 if (!currBlock.broken) {
@@ -165,6 +171,8 @@ function update() {
         clearInterval(intervalID);
         if (currentLevel == finalLevel) {
             gamewon = true;
+            isGameActive = false;
+            currentLevel = 0;
         }
         else {
             currentLevel++;
@@ -178,7 +186,7 @@ function resetLevel() {
     setLevel(currentLevel);
     setupLevel();
     preloadGame();
-    startGame();
+    //startGame();
 }
 
 function draw() {

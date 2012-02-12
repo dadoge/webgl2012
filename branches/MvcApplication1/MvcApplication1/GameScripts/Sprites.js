@@ -52,6 +52,10 @@ function setupLevel() {
                 level[i][j] = createBlock(j, i, 1, "#FF9900", false);
                 numBlocks++;
             }
+            else if (level[i][j] == "red") {
+                level[i][j] = createBlock(j, i, 2, "#FF0000", false);
+                numBlocks++;
+            }
             else if (level[i][j] == "empty") {
                 level[i][j] = null;
             }
