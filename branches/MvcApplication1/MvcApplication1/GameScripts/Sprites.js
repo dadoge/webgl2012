@@ -38,11 +38,6 @@ var Block = {
 function createBlock(extX, extY, extHealth, extColor, extBroken) {
     var block;
     block = { health: extHealth, x: extX, y: extY, color: extColor, broken: extBroken };
-    //var health = extHealth;
-    //var x = extX;
-    //var y = extY;
-    //var color = extColor;
-    //var broken = extBroken;
     return block;
 }
 
@@ -137,19 +132,6 @@ function collisionYWithBlocks() {
         }
     }
     return bumpedY;
-}
-
-function breakBlock(block) {
-    var currBlock = block;
-    currBlock.health--;
-
-    if (currBlock.health > 0) {
-        GameScore++;
-    }
-    else {
-        GameScore += 2;
-        currBlock.broken = true;
-    }
 }
 
 function explodeBlock(i, j) {
