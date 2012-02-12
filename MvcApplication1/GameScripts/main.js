@@ -78,7 +78,7 @@ function preloadGame() {
 
 function setLevel(levelNum) {
 
-    level = testlevel[levelNum];
+    level = gameLevels[levelNum];
     
     return level;
 }

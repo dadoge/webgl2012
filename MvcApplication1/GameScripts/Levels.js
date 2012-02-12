@@ -2,7 +2,7 @@
 //                  Level declaration
 ////////////////////////////////////////////////////////////////
 
-var testlevel = [
+var gameLevels = [
 [
     ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
     ["empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty"],
