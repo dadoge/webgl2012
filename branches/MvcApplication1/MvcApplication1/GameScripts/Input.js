@@ -36,8 +36,8 @@ function doKeyDown(evt) {
                 setupLevel();
                 preloadGame();
                 isGameActive = true;
-                startGame();
                 gamewon = false;
+                startGame();
             }
             break;
     }
