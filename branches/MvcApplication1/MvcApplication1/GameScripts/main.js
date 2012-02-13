@@ -156,7 +156,14 @@ function processCollisions() {
             playsound();
 
             //Bounce ball based upon where you hit on the paddle
-            Ball.SpeedX = Ball.SpeedX + .2 * (Ball.X - Paddle.X);
+            Ball.SpeedX = Ball.SpeedX + .25 * (Ball.X - Paddle.X);
+
+            if (Ball.SpeedX > 13) {
+                Ball.SpeedX = 13;
+            }
+            if (Ball.SpeedX < -13) {
+                Ball.SpeedX = -13
+            }
         }
     }
 }
