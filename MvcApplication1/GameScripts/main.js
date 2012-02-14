@@ -5,52 +5,54 @@
 
 var c = document.getElementById("TestCanvas");
 var ctx = c.getContext("2d");
-var cwidth = c.width;
-var cheight = c.height;
 
-preinit();
+//Canvas size
+var Canvas = {
+    Height: c.width,
+    Width: c.height
+};
 
-function preinit() {
-
-    //Draw bottom pit
-    ctx.fillStyle = "#000000";
-    ctx.fillRect(0, 0, 400, 400);
-
-    //Draw Score and lives
-    ctx.font = "20pt Arial";
-    ctx.textBaseline = "top";
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillText("Oh herro!  Press space to pray!", 10, 190);
-}
-
+//Game Variables
 var intervalID;
 var FPS = 30;
 var isGameActive = false;
-var timer;
-var startMessage;
-// Score counter
 var lives = 8;
 var GameScore = 0;
 var gamewon = false;
 var numBlocks = 0;
-var currentLevel = 0;
+var currentLevel = 0;   
 var finalLevel = 3;
 
 //Background Image
 var img = new Image();
 img.src = "../Content/incomingbaby.jpg";
 
-//Canvas size
-var Canvas = {
-    Height: cheight,
-    Width: cwidth
-};
-
 var blocksPerRow = 8;
 var blockHeight = 20;
 var blockWidth = Canvas.Width / blocksPerRow;
 
 var level = setLevel(currentLevel);
+
+
+//////////////////////////////////////////////////////////////////////////////////
+//                           Pre-Init
+/////////////////////////////////////////////////////////////////////////////////
+
+//INVOKE PREINIT AS FIRST METHOD
+preinit();
+
+function preinit() {
+
+    //Draw bottom pit
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 0, Canvas.Height, Canvas.Width);
+
+    //Draw Score and lives
+    ctx.font = "20pt Arial";
+    ctx.textBaseline = "top";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText("Oh herro!  Press space to pray!", 10, (Canvas.Height / 2 - 10));
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////
