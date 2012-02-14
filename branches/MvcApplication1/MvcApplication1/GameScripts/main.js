@@ -8,6 +8,21 @@ var ctx = c.getContext("2d");
 var cwidth = c.width;
 var cheight = c.height;
 
+preinit();
+
+function preinit() {
+
+    //Draw bottom pit
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 0, 400, 400);
+
+    //Draw Score and lives
+    ctx.font = "20pt Arial";
+    ctx.textBaseline = "top";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText("Oh herro!  Press space to pray!", 10, 190);
+}
+
 var intervalID;
 var FPS = 30;
 var isGameActive = false;
