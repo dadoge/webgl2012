@@ -15,22 +15,6 @@ var Paddle = {
     Speed: 12
 };
 
-//Block
-var Block = {
-    a: {
-        id: "purple",
-        health: 1,
-        color: "#512555",
-        broken: false
-    },
-    z: {
-        id: "empty",
-        health: 0,
-        color: null,
-        broken: true
-    }
-};
-
 /////////////////////////////////////////////////////////////////////
 //                        Block Creation
 /////////////////////////////////////////////////////////////////////
