@@ -6,7 +6,8 @@ var RightDown = false;
 var KEYS = {
     SPACE: 32,
     LEFT: 37,
-    RIGHT: 39
+    RIGHT: 39,
+    P: 80
 };
 
 //Key Listeners
@@ -38,6 +39,15 @@ function doKeyDown(evt) {
                 isGameActive = true;
                 gamewon = false;
                 startGame();
+            }
+            break;
+        case KEYS.P:
+            if (isPaused == true) {
+                isPaused = false;
+                startGame();
+            }
+            else {
+                isPaused = true;
             }
             break;
     }
