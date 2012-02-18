@@ -20,8 +20,9 @@ var lives = 8;
 var GameScore = 0;
 var gamewon = false;
 var numBlocks = 0;
-var currentLevel = 0;   
+var currentLevel = 0;
 var finalLevel = 3;
+var isPaused = false;
 
 //Background Image
 var img = new Image();
@@ -253,6 +254,12 @@ function draw() {
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText("Score: " + GameScore, 10, 370);
     ctx.fillText("Lives: " + lives, 300, 370);
+    ctx.fillText("Level: " + (currentLevel + 1), 150, 370);
+
+    if (isPaused) {
+        ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
+        clearInterval(intervalID);
+    }
 
     if (gamewon) {
 
