@@ -21,7 +21,7 @@ var GameScore = 0;
 var gamewon = false;
 var numBlocks = 0;
 var currentLevel = 0;
-var finalLevel = 3;
+var finalLevel = 4;
 var isPaused = false;
 
 //Background Image
