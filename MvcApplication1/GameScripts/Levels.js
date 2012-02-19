@@ -5,6 +5,7 @@
 var gameLevels = [
 [
     ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+    ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
     ["empty", "empty", "purple", "purple", "purple", "purple", "purple", "purple", "empty", "empty"],
     ["empty", "empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty", "empty"],
     ["empty", "empty", "orange", "orange", "orange", "orange", "orange", "orange", "empty", "empty"],
@@ -34,6 +35,17 @@ var gameLevels = [
     ["empty", "empty", "red", "orange", "orange", "red", "empty", "empty"],
     ["empty", "empty", "red", "red", "red", "red", "empty", "empty"],
     ["empty", "empty", "orange", "orange", "orange", "orange", "empty", "empty"]
+],
+[
+    ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+    ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+    ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
+    ["empty", "empty", "blue", "blue", "blue", "blue", "blue", "blue", "empty", "empty"],
+    ["empty", "empty", "blue", "empty", "empty", "empty", "empty", "blue", "empty", "empty"],
+    ["empty", "empty", "blue", "empty", "orange", "orange", "empty", "blue", "empty", "empty"],
+    ["empty", "empty", "blue", "empty", "orange", "orange", "empty", "blue", "empty", "empty"],
+    ["empty", "empty", "blue", "empty", "empty", "empty", "empty", "blue", "empty", "empty"],
+    ["empty", "empty", "blue", "blue", "blue", "blue", "blue", "blue", "empty", "empty"]
 ]
 ]
 
