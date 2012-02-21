@@ -16,6 +16,47 @@ var Paddle = {
 };
 
 /////////////////////////////////////////////////////////////////////
+//                        Power-up Creation
+/////////////////////////////////////////////////////////////////////
+
+function createPowerup(i, j, imagename) {
+    var powerup;
+    var image = new Image();
+    var currBlock = level[i][j];
+    image.src = "../Content/" + imagename;
+    powerup = { x: Ball.X, y: Ball.Y, img: image, speedY: 5 };
+    return powerup;
+}
+
+// If powerup granted, draw it
+function drawPowerup() {
+    if (isPowerupEnabled) {
+        processPowerup();
+        ctx.drawImage(currentPowerup.img, currentPowerup.x, currentPowerup.y);
+
+        if (currentPowerup.y >= Paddle.Y - 10) {
+            if (currentPowerup.x >= (Paddle.X - Paddle.Width / 2) && currentPowerup.x <= (Paddle.X + Paddle.Width / 2)) {
+                //you got the powerup!
+                lives++;
+                isPowerupEnabled = false;
+            }
+        }
+    }
+}
+
+function determineGrantPowerup(i, j) {
+    var num = Math.floor(Math.random() * 10 + 1);
+    if (num >= 6) {
+        isPowerupEnabled = true;
+        currentPowerup = createPowerup(i, j, "th_heart_pic_tiny.gif");
+    }
+}
+
+function processPowerup() {
+    currentPowerup.y += currentPowerup.speedY;
+}
+
+/////////////////////////////////////////////////////////////////////
 //                        Block Creation
 /////////////////////////////////////////////////////////////////////
 
@@ -140,5 +181,6 @@ function explodeBlock(i, j) {
         GameScore += 2;
         currBlock.broken = true;
         numBlocks--;
+        determineGrantPowerup(i, j);
     }
 }
