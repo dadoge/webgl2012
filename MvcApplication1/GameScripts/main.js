@@ -23,10 +23,12 @@ var numBlocks = 0;
 var currentLevel = 0;
 var finalLevel = 4;
 var isPaused = false;
+var isPowerupEnabled = false;
+var currentPowerup;
 
 //Background Image
-var img = new Image();
-img.src = "../Content/incomingbaby.jpg";
+var backgroundImg = new Image();
+backgroundImg.src = "../Content/incomingbaby.jpg";
 
 var blocksPerRow = 8;
 var blockHeight = 20;
@@ -211,7 +213,6 @@ function resetLevel() {
     setLevel(currentLevel);
     setupLevel();
     preloadGame();
-    //startGame();
 }
 
 function draw() {
@@ -220,7 +221,7 @@ function draw() {
     ctx.clearRect(0, 0, Canvas.Width, Canvas.Height);
 
     //Draw background img
-    ctx.drawImage(img, 0, 0);
+    ctx.drawImage(backgroundImg, 0, 0);
 
     //create level
     createLevel();
@@ -256,6 +257,8 @@ function draw() {
     ctx.fillText("Lives: " + lives, 300, 370);
     ctx.fillText("Level: " + (currentLevel + 1), 150, 370);
 
+    drawPowerup();
+
     if (isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
         clearInterval(intervalID);
@@ -270,8 +273,3 @@ function draw() {
     }
 }
 
-//unused
-//// Handling the score
-//function setScore() {
-//    GameScore += 1;
-//}

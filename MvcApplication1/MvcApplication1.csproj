@@ -101,6 +101,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\th_heart_pic_tiny.gif" />
     <Content Include="GameScripts\Input.js" />
     <Content Include="GameScripts\Levels.js" />
     <Content Include="Global.asax" />
