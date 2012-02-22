@@ -24,7 +24,10 @@ var currentLevel = 0;
 var finalLevel = 4;
 var isPaused = false;
 var isPowerupEnabled = false;
+var lifePowerup;
+var sizePowerup;
 var currentPowerup;
+var isPowerupAllowed = true;
 
 //Background Image
 var backgroundImg = new Image();

@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\2times.png" />
     <Content Include="Content\flute.wav" />
     <Content Include="Content\funnypictures_91.jpg" />
     <Content Include="Content\incomingbaby.jpg" />

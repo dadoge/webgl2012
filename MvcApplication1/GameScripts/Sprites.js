@@ -19,12 +19,12 @@ var Paddle = {
 //                        Power-up Creation
 /////////////////////////////////////////////////////////////////////
 
-function createPowerup(i, j, imagename) {
+function createPowerup(i, j, imagename, t) {
     var powerup;
     var image = new Image();
     var currBlock = level[i][j];
     image.src = "../Content/" + imagename;
-    powerup = { x: Ball.X, y: Ball.Y, img: image, speedY: 5 };
+    powerup = { x: Ball.X, y: Ball.Y, img: image, speedY: 5, type: t };
     return powerup;
 }
 
@@ -34,11 +34,26 @@ function drawPowerup() {
         processPowerup();
         ctx.drawImage(currentPowerup.img, currentPowerup.x, currentPowerup.y);
 
-        if (currentPowerup.y >= Paddle.Y - 10) {
+        if (currentPowerup.y > Paddle.Y + currentPowerup.speedY) {
+            isPowerupEnabled = false;
+            isPowerupAllowed = false;
+            setTimeout(function () { isPowerupAllowed = true; }, 10000);
+        }
+        else if (currentPowerup.y >= Paddle.Y - 20) {
             if (currentPowerup.x >= (Paddle.X - Paddle.Width / 2) && currentPowerup.x <= (Paddle.X + Paddle.Width / 2)) {
                 //you got the powerup!
-                lives++;
-                isPowerupEnabled = false;
+                if (currentPowerup.type == "life") {
+                    lives++;
+                    isPowerupEnabled = false;
+                    isPowerupAllowed = false;
+                    setTimeout(function () { isPowerupAllowed = true; }, 10000);
+                }
+                else if (currentPowerup.type == "size") {
+                    Paddle.Width = Paddle.Width * 2;
+                    isPowerupEnabled = false;
+                    isPowerupAllowed = false;
+                    setTimeout(function () { Paddle.Width = 85; isPowerupAllowed = true; }, 10000);
+                }
             }
         }
     }
@@ -48,7 +63,15 @@ function determineGrantPowerup(i, j) {
     var num = Math.floor(Math.random() * 10 + 1);
     if (num >= 6) {
         isPowerupEnabled = true;
-        currentPowerup = createPowerup(i, j, "th_heart_pic_tiny.gif");
+        num = Math.floor(Math.random() * 10 + 1);
+        if (num >= 6) {
+            lifePowerup = createPowerup(i, j, "th_heart_pic_tiny.gif", "life");
+            currentPowerup = lifePowerup;
+        }
+        else {
+            sizePowerup = createPowerup(i, j, "2times.png", "size");
+            currentPowerup = sizePowerup;
+        }
     }
 }
 
@@ -181,6 +204,8 @@ function explodeBlock(i, j) {
         GameScore += 2;
         currBlock.broken = true;
         numBlocks--;
-        determineGrantPowerup(i, j);
+        if (!isPowerupEnabled && isPowerupAllowed) {
+            determineGrantPowerup(i, j);
+        }
     }
 }
