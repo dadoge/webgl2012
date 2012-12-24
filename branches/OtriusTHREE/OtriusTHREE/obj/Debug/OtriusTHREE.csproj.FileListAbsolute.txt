@@ -3,3 +3,8 @@ C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\bin\OtriusTHREE.pdb
 C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.dll
 C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.pdb
 C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.csprojResolveAssemblyReference.cache
+C:\DEVELOPMENT\webgl\OtriusTHREE\OtriusTHREE\bin\OtriusTHREE.dll
+C:\DEVELOPMENT\webgl\OtriusTHREE\OtriusTHREE\bin\OtriusTHREE.pdb
+C:\DEVELOPMENT\webgl\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.csprojResolveAssemblyReference.cache
+C:\DEVELOPMENT\webgl\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.dll
+C:\DEVELOPMENT\webgl\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.pdb
