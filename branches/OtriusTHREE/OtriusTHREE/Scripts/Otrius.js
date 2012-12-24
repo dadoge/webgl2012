@@ -72,7 +72,7 @@ loader.load('/Scripts/monster.js', function (collada) {
     dae = collada.scene;
     skin = collada.skins[0];
 
-    dae.scale.x = dae.scale.y = dae.scale.z = 0.0010;
+    dae.scale.x = dae.scale.y = dae.scale.z = 0.00030;
     dae.rotation.y = 3.14;
     dae.rotation.x = 1.57;
 
