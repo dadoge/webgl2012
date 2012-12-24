@@ -1,5 +1,0 @@
-C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\bin\OtriusTHREE.dll
-C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\bin\OtriusTHREE.pdb
-C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.dll
-C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.pdb
-C:\DEVELOPMENT\OtriusTHREE\OtriusTHREE\obj\Debug\OtriusTHREE.csprojResolveAssemblyReference.cache
