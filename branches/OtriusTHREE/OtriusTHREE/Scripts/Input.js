@@ -76,16 +76,18 @@ function processInput() {
 
     //Move Paddle if keys are pressed
     if (LeftDown && !RightDown) {
-        cube.position.x -= 10;
+        dae.position.x -= .01;
+        dae.rotation.y += .05;
     }
     else if (RightDown && !LeftDown) {
-        cube.position.x += 10;
+        dae.position.x += .01;
+        dae.rotation.y -= .05;
     }
     if (UpDown && !DownDown) {
-        cube.position.y += 10;
+        dae.position.y += .01;
     }
     else if (DownDown && !UpDown) {
-        cube.position.y -= 10;
+        dae.position.y -= .01;
     }
 
 }

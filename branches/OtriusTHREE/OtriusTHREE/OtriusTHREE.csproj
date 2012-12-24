@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="Default.html" />
     <Content Include="Scripts\Input.js" />
+    <Content Include="Scripts\monster.jpg" />
     <Content Include="Scripts\Otrius.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -66,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\monster.dae" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
