@@ -33,16 +33,25 @@ function doKeyDown(evt) {
 
         //Should be left arrow key      
         case KEYS.LEFT:
+            if (!LeftDown) {
+                dae.rotation.y += 1.57;
+            }
             LeftDown = true;
             break;
             //right      
         case KEYS.RIGHT:
+            if (!RightDown) {
+                dae.rotation.y -= 1.57;
+            }
             RightDown = true;
             break;
         case KEYS.UP:
             UpDown = true;
             break;
         case KEYS.DOWN:
+            if (!DownDown) {
+                dae.rotation.y += 3.14;
+            }
             DownDown = true;
             break;
     }
@@ -54,16 +63,19 @@ function doKeyUp(evt) {
         //Should be left arrow key      
         case KEYS.LEFT:
             LeftDown = false;
+            dae.rotation.y -= 1.57;
             break;
             //right      
         case KEYS.RIGHT:
             RightDown = false;
+            dae.rotation.y += 1.57
             break;
         case KEYS.UP:
             UpDown = false;
             break;
         case KEYS.DOWN:
             DownDown = false;
+            dae.rotation.y -= 3.14;
             break;
     }
 }
@@ -77,11 +89,9 @@ function processInput() {
     //Move Paddle if keys are pressed
     if (LeftDown && !RightDown) {
         dae.position.x -= .01;
-        dae.rotation.y += .05;
     }
     else if (RightDown && !LeftDown) {
         dae.position.x += .01;
-        dae.rotation.y -= .05;
     }
     if (UpDown && !DownDown) {
         dae.position.y += .01;

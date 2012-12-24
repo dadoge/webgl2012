@@ -37,7 +37,7 @@ var camera = new THREE.PerspectiveCamera(VIEW_ANGLE,
                                 ASPECT,
                                 NEAR,
                                 FAR);
-camera.position.set(2, 2, 3);
+camera.position.set(0,0, 4);
 
 //And a Scene
 var scene = new THREE.Scene();
@@ -73,6 +73,9 @@ loader.load('/Scripts/monster.js', function (collada) {
     skin = collada.skins[0];
 
     dae.scale.x = dae.scale.y = dae.scale.z = 0.0010;
+    dae.rotation.y = 3.14;
+    dae.rotation.x = 1.57;
+
     dae.updateMatrix();
     scene.add(dae);
 
@@ -119,7 +122,7 @@ function render()
 {
 
     processInput();
-    camera.lookAt(scene.position);
+    //camera.lookAt(scene.position);
     renderer.render(scene, camera);
     requestAnimFrame(function () {
         render();
