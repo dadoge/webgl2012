@@ -37,7 +37,7 @@ var camera = new THREE.PerspectiveCamera(VIEW_ANGLE,
                                 ASPECT,
                                 NEAR,
                                 FAR);
-camera.position.set(0,0, 4);
+camera.position.set(0, 0, 4);
 
 //And a Scene
 var scene = new THREE.Scene();
@@ -104,7 +104,7 @@ loader.load('/Scripts/monster.js', function (collada) {
 //Set up lights and add to scene
 /////////////////////////////////////////////////////////////////////
 
-var pointLight = new THREE.PointLight( 0xFFFFFF );
+var pointLight = new THREE.PointLight(0xFFFFFF);
 
 // set its position
 pointLight.position.x = 10;
@@ -120,8 +120,7 @@ scene.add(pointLight);
 
 var t = 0;
 var clock = new THREE.Clock();
-function render()
-{
+function render() {
 
     processInput();
     //camera.lookAt(scene.position);
@@ -129,28 +128,29 @@ function render()
     requestAnimFrame(function () {
         render();
 
+        if (LeftDown || RightDown || UpDown || DownDown) {
+            if (t > 1) t = 0;
 
-        if (t > 1) t = 0;
+            if (skin) {
 
-        if (skin) {
+                // guess this can be done smarter...
 
-            // guess this can be done smarter...
+                // (Indeed, there are way more frames than needed and interpolation is not used at all
+                //  could be something like - one morph per each skinning pose keyframe, or even less,
+                //  animation could be resampled, morphing interpolation handles sparse keyframes quite well.
+                //  Simple animation cycles like this look ok with 10-15 frames instead of 100 ;)
 
-            // (Indeed, there are way more frames than needed and interpolation is not used at all
-            //  could be something like - one morph per each skinning pose keyframe, or even less,
-            //  animation could be resampled, morphing interpolation handles sparse keyframes quite well.
-            //  Simple animation cycles like this look ok with 10-15 frames instead of 100 ;)
+                for (var i = 0; i < skin.morphTargetInfluences.length; i++) {
 
-            for (var i = 0; i < skin.morphTargetInfluences.length; i++) {
+                    skin.morphTargetInfluences[i] = 0;
 
-                skin.morphTargetInfluences[i] = 0;
+                }
+
+                skin.morphTargetInfluences[Math.floor(t * 30)] = .9;
+
+                t += delta;
 
             }
-
-            skin.morphTargetInfluences[Math.floor(t * 30)] = .9;
-
-            t += delta;
-
         }
         renderer.render(scene, camera);
     });
