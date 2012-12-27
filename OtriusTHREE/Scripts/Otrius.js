@@ -72,8 +72,8 @@ loader.load('/Scripts/monster.js', function (collada) {
     dae = collada.scene;
     skin = collada.skins[0];
 
-    dae.scale.x = dae.scale.y = dae.scale.z = 0.00030;
-    dae.rotation.y = 3.14;
+    dae.scale.x = dae.scale.y = dae.scale.z = 0.0003;
+    dae.rotation.y = 1.5;
     dae.rotation.x = 1.57;
 
     dae.updateMatrix();
@@ -118,17 +118,49 @@ scene.add(pointLight);
 //Render Pipeline
 //////////////////////////////////////////////////////////////////
 
+var t = 0;
+var clock = new THREE.Clock();
 function render()
 {
 
     processInput();
     //camera.lookAt(scene.position);
-    renderer.render(scene, camera);
+    var delta = clock.getDelta();
     requestAnimFrame(function () {
         render();
+
+
+        if (t > 1) t = 0;
+
+        if (skin) {
+
+            // guess this can be done smarter...
+
+            // (Indeed, there are way more frames than needed and interpolation is not used at all
+            //  could be something like - one morph per each skinning pose keyframe, or even less,
+            //  animation could be resampled, morphing interpolation handles sparse keyframes quite well.
+            //  Simple animation cycles like this look ok with 10-15 frames instead of 100 ;)
+
+            for (var i = 0; i < skin.morphTargetInfluences.length; i++) {
+
+                skin.morphTargetInfluences[i] = 0;
+
+            }
+
+            skin.morphTargetInfluences[Math.floor(t * 30)] = .9;
+
+            t += delta;
+
+        }
+        renderer.render(scene, camera);
     });
 }
 /////////////////////////////////////////////////////////////////
 //Get 'er started, nothing should happen after this line
 ////////////////////////////////////////////////////////////////
+
+
+
+
+
 render();
