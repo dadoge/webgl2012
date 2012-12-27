@@ -83,12 +83,13 @@ function doKeyUp(evt) {
 /////////////////////////////////////////////////////////////////////
 //                      Process Input
 ////////////////////////////////////////////////////////////////////
-
 function processInput() {
+
 
     //Move Paddle if keys are pressed
     if (LeftDown && !RightDown) {
         dae.position.x -= .01;
+
     }
     else if (RightDown && !LeftDown) {
         dae.position.x += .01;
