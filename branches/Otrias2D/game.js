@@ -8,7 +8,7 @@ var CanvasWidth = Canvas.width;
 var CanvasHeight = Canvas.height;
 
 var heroImage = new Image();
-heroImage.src = 'Ot_FrontSprite_0.png';
+heroImage.src = 'spriterght2.jpg';
 
     var hero = {
         Image: heroImage,
