@@ -1,0 +1,61 @@
+<html>
+
+<canvas id="canvas1" width="500" height="500"/>
+
+
+
+<script type='text/javascript'>
+
+var Mode = {
+CIRCLE: 0,
+SQUARE: 1
+};
+
+var CurrentMode = Mode.CIRCLE;
+
+
+var Canvas = document.getElementById("canvas1");
+var CanvasContext = Canvas.getContext("2d");
+document.addEventListener('click', DoClick, false);
+document.addEventListener('keydown',ProcessKey,false);
+
+CanvasContext.fillStyle="#333333";
+CanvasContext.fillRect(0,0,500,500);
+
+CanvasContext.fillStyle="#FFFFFF";
+CanvasContext.fillText("Press corresponding key to change shape, click to draw",50,450);
+CanvasContext.fillText("Circle=C; Square=S,",50,470);
+
+function DoClick(click)
+{
+	switch(CurrentMode)
+	{
+	case Mode.CIRCLE: 
+		CanvasContext.beginPath();
+		CanvasContext.arc(click.x,click.y,40,0,2*Math.PI);
+		CanvasContext.fill();
+		break;
+	case Mode.SQUARE:
+		CanvasContext.fillStyle="#FFFF00";
+		CanvasContext.fillRect(click.x,click.y,50,50);
+		break;
+	}
+}
+
+function ProcessKey(key)
+{
+	switch(key.keyCode)
+	{
+	case 67: CurrentMode = Mode.CIRCLE;
+	break;
+	case 83: CurrentMode = Mode.SQUARE;
+	break;
+	}
+	
+}
+
+</script>
+
+
+</html>
+
