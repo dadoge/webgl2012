@@ -1,0 +1,90 @@
+<html>
+
+<canvas id="canvas1" width="500" height="600">
+
+<canvas>
+
+<script type='text/javascript'>
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//Init
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+var c = document.getElementById("canvas1");
+var CanvasContext = c.getContext("2d");
+window.addEventListener('mousedown', DoClick, false);
+window.addEventListener('keydown',ProcessKey,false);
+
+var Canvas = {
+	Width : c.width,
+	Height : c.height
+};
+
+//next lesson pull color from the DOM!!
+CanvasContext.fillStyle="#333333";
+CanvasContext.fillRect(0,0,Canvas.Width,Canvas.Height);
+
+CanvasContext.fillStyle="#FFFFFF";
+CanvasContext.fillText("Press corresponding key to change shape, click to draw",50,(Canvas.Height-50));
+CanvasContext.fillText("Circle=C; Square=S,",50,(Canvas.Height - 30));
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//INPUT AND MODES
+/////////////////////////////////////////////////////////////////////////
+
+var KEYS = {
+
+SQUARE: 83,  //S
+CIRCLE: 67   //C
+};
+
+var Mode = {
+CIRCLE: 0,
+SQUARE: 1
+};
+var CurrentMode = Mode.CIRCLE;
+
+
+function DoClick(click)
+{
+	switch(CurrentMode)
+	{
+	case Mode.CIRCLE: 
+		CanvasContext.fillStyle="#FFFFFF";
+		CanvasContext.beginPath();
+		CanvasContext.arc(click.clientX,click.clientY,40,0,2*Math.PI);
+		CanvasContext.fill();
+		break;
+	case Mode.SQUARE:
+		CanvasContext.fillStyle="#FFFF00";
+		CanvasContext.fillRect((click.clientX - 25),(click.clientY - 25),50,50);
+		break;
+	}
+}
+
+function ProcessKey(key)
+{
+	switch(key.keyCode)
+	{
+	case KEYS.CIRCLE: CurrentMode = Mode.CIRCLE;
+	break;
+	case KEYS.SQUARE: CurrentMode = Mode.SQUARE;
+	break;
+	}
+	
+}
+
+
+
+
+
+</script>
+
+
+</html>
+
+
