@@ -30,45 +30,6 @@ function gameLoop(){
     processInput();
     hero.draw();
     
-    
-    //Things that have to do with processing input or conditionals based upon input parameters need to be in processinput() or a function it calls
-//    if(DownDown && !UpDown)
-//    {
-//        //if you never change step whats the point?
-//        var step=3;
-//        
-//        //step * 1 means nothings
-//        if (count<step*1){
-//            //Please only update the hero object, not the hero image
-//            heroImage.src = 'Ot_FrontSprite_1.png';
-//            
-//            //replace your N hero.draws() with a single hero.draw()
-//            hero.draw();
-//        }
-//        else if(count>=step*1 && count<step*2){
-//            //Also lets put all images into string varables
-//            heroImage.src = 'Ot_FrontSprite_2.png';
-//            hero.draw();
-//        }
-//        else if(count>=step*2 && count<step*3){
-//            heroImage.src = 'Ot_FrontSprite_3.png';
-//            hero.draw();
-//        }
-//        else if(count>=step*3 && count<step*4){
-//            heroImage.src = 'Ot_FrontSprite_4.png';
-//            hero.draw();
-//        }
-//        else if(count>=step*4){
-//            heroImage.src = 'Ot_FrontSprite_1.png';
-//            hero.draw();
-//            count=0;
-//        }
-//        count=count+1;
-//    }
-//    else{
-//        heroImage.src = 'Ot_FrontSprite_1.png';
-//        hero.draw();
-//    }
 }
 function InitFloor()
 {
