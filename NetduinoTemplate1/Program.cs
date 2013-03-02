@@ -32,7 +32,7 @@ namespace InfraredDetector
         public static DateTime d;
         public static DateTime c;
         public static int count;
-        public static int playerHeath;
+        public static int playerHeath = 3;
 
 
         public static void Main()
