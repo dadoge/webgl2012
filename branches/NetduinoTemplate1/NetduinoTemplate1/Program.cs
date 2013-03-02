@@ -46,7 +46,6 @@ namespace InfraredDetector
 
             while (true)
             {
-
                 switch (state)
                 {
                     case TokenState.LISTEN:
@@ -90,11 +89,13 @@ namespace InfraredDetector
                 {
                     Debug.Print(count.ToString() + "interupt" + "Pussy Gun");
                     SendMessage(infraredOut, message);
+                    playerGun = Gun.MAN;
                 }
                 else
                 {
                     Debug.Print(count.ToString() + "interupt" + "Man Gun");
                     SendMessage(infraredOut, message2);
+                    playerGun = Gun.PUSSY;
                 }
             }
         }
@@ -105,13 +106,13 @@ namespace InfraredDetector
                 //Found our first one...now wait for a 0
                 if (!digitalIn.Read())
                 {
-                    while (!digitalIn.Read())
+                    while (digitalIn.Read())
                     {
                         //noop
                     }
                 }
                 state = TokenState.STARTBYTE;
-                Thread.Sleep(199);
+                Thread.Sleep(sleep);
                 break;
             }
         }
