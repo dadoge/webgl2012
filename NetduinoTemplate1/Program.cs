@@ -86,13 +86,14 @@ namespace InfraredDetector
             {
                 d = DateTime.Now;
                 count++;
-                Debug.Print(count.ToString() + "interupttzz");
                 if (playerGun == Gun.PUSSY)
                 {
+                    Debug.Print(count.ToString() + "interupt" + "Pussy Gun");
                     SendMessage(infraredOut, message);
                 }
                 else
                 {
+                    Debug.Print(count.ToString() + "interupt" + "Man Gun");
                     SendMessage(infraredOut, message2);
                 }
             }
