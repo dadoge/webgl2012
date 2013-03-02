@@ -273,9 +273,5 @@ namespace InfraredDetector
                 startTime = DateTime.Now;
             }
         }
-
-
-
-
     }
 }
