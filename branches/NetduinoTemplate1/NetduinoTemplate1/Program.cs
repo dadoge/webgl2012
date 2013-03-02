@@ -23,7 +23,7 @@ namespace InfraredDetector
             MAN = 1
         }
         public static TokenState state;
-        public static int sleep = 200;
+        public static int sleep = 20;
         public static string message = "10110100";
         public static string message2 = "10111000";
         public static Gun playerGun = Gun.PUSSY;
