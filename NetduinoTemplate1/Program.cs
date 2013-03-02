@@ -84,9 +84,9 @@ namespace InfraredDetector
             while (true)
             {
                 //Found our first one...now wait for a 0
-                if (digitalIn.Read())
+                if (!digitalIn.Read())
                 {
-                    while (digitalIn.Read())
+                    while (!digitalIn.Read())
                     {
                         //noop
                     }
@@ -99,11 +99,11 @@ namespace InfraredDetector
         public static void GetStartByte(InputPort digitalIn)
         {
             //Better be a 1
-            if (digitalIn.Read())
+            if (!digitalIn.Read())
             {
                 Thread.Sleep(sleep);
                 //And still a 1
-                if (digitalIn.Read())
+                if (!digitalIn.Read())
                 {
                     Thread.Sleep(sleep);
                     state = TokenState.MESSAGE;
@@ -118,7 +118,7 @@ namespace InfraredDetector
             var message = "";
             DateTime startTime;
 
-            if (digitalIn.Read())
+            if (!digitalIn.Read())
             {
                 message += "1";
             }
@@ -129,7 +129,7 @@ namespace InfraredDetector
 
             Thread.Sleep(sleep);
 
-            if (digitalIn.Read())
+            if (!digitalIn.Read())
             {
                 message += "1";
             }
@@ -151,11 +151,11 @@ namespace InfraredDetector
         public static void GetEndByte(InputPort digitalIn)
         {
             //Better be a 0
-            if (!digitalIn.Read())
+            if (digitalIn.Read())
             {
                 Thread.Sleep(sleep);
                 //And still a 0
-                if (!digitalIn.Read())
+                if (digitalIn.Read())
                 {
                     Thread.Sleep(sleep);
                     state = TokenState.READ;
