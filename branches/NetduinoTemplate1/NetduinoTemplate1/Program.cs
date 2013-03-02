@@ -32,6 +32,9 @@ namespace InfraredDetector
         public static DateTime d;
         public static DateTime c;
         public static int count;
+        public static int playerHeath;
+
+
         public static void Main()
         {
             count = 0;
@@ -40,6 +43,8 @@ namespace InfraredDetector
 
             InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
             OutputPort powerUpPort = new OutputPort(Pins.GPIO_PIN_D0, false);
+            OutputPort healthOut = new OutputPort(Pins.GPIO_PIN_D8, false);
+            OutputPort healthOut2 = new OutputPort(Pins.GPIO_PIN_D9, false);
 
             infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true);
             InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D10, false, Port.ResistorMode.PullUp, Port.InterruptMode.InterruptEdgeLow);
@@ -50,7 +55,8 @@ namespace InfraredDetector
 
             while (true)
             {
-                getPowerUp();
+                GetPowerUp();
+                DisplayHeath(healthOut, healthOut2);
                 powerUpPort.Write(powerUp);
                 switch (state)
                 {
@@ -68,15 +74,50 @@ namespace InfraredDetector
                         break;
                     case TokenState.READ:
                         Debug.Print(String.Concat(message, "\n"));
+                        UpdatePlayer(message);
                         state = TokenState.LISTEN;
                         message = "";
                         break;
                 }
             }
         }
-        public static void getPowerUp()
+        public static void DisplayHeath(OutputPort healthOut, OutputPort healthOut2)
         {
-            if (c.AddMilliseconds(500) < DateTime.Now)
+            if (playerHeath == 3)
+            {
+                healthOut.Write(true);
+                healthOut2.Write(true);
+            }
+            else if (playerHeath == 2)
+            {
+                healthOut.Write(true);
+                healthOut2.Write(false);
+            }
+            else if (playerHeath == 1)
+            {
+                healthOut.Write(false);
+                healthOut2.Write(true);
+            }
+            else
+            {
+                healthOut.Write(false);
+                healthOut2.Write(false);
+            }
+        }
+        public static void UpdatePlayer(string message)
+        {
+            if (message == "01")
+            {
+                playerHeath--;
+            }
+            else
+            {
+                playerHeath -= 2;
+            }
+        }
+        public static void GetPowerUp()
+        {
+            if (c.AddMilliseconds(5000) < DateTime.Now)
             {
                 c = DateTime.Now;
                 Random r = new Random();
@@ -232,6 +273,8 @@ namespace InfraredDetector
                 startTime = DateTime.Now;
             }
         }
+
+
 
 
     }
