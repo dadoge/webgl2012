@@ -28,24 +28,30 @@ namespace InfraredDetector
         public static string message2 = "10111000";
         public static Gun playerGun = Gun.PUSSY;
         public static Microsoft.SPOT.Hardware.PWM infraredOut;
+        public static bool powerUp = false;
         public static DateTime d;
+        public static DateTime c;
         public static int count;
         public static void Main()
         {
             count = 0;
             d = DateTime.Now;
-            InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
-            OutputPort ShieldPort = new OutputPort(Pins.GPIO_PIN_D0, false);
-            OutputPort ManGunPort = new OutputPort(Pins.GPIO_PIN_D1, false);
-            infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true);
+            c = DateTime.Now;
 
+            InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
+            OutputPort powerUpPort = new OutputPort(Pins.GPIO_PIN_D0, false);
+
+            infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true);
             InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D10, false, Port.ResistorMode.PullUp, Port.InterruptMode.InterruptEdgeLow);
             sender.OnInterrupt += sender_OnInterrupt;
             state = TokenState.LISTEN;
             string message = "";
 
+
             while (true)
             {
+                getPowerUp();
+                powerUpPort.Write(powerUp);
                 switch (state)
                 {
                     case TokenState.LISTEN:
@@ -61,16 +67,6 @@ namespace InfraredDetector
                         GetEndByte(digitalIn);
                         break;
                     case TokenState.READ:
-                        if (message == "01")
-                        {
-                            ShieldPort.Write(true);
-                            ManGunPort.Write(false);
-                        }
-                        else if (message == "10")
-                        {
-                            ShieldPort.Write(false);
-                            ManGunPort.Write(true);
-                        }
                         Debug.Print(String.Concat(message, "\n"));
                         state = TokenState.LISTEN;
                         message = "";
@@ -78,7 +74,20 @@ namespace InfraredDetector
                 }
             }
         }
-
+        public static void getPowerUp()
+        {
+            if (c.AddMilliseconds(500) < DateTime.Now)
+            {
+                c = DateTime.Now;
+                Random r = new Random();
+                var random = r.Next();
+                if (random > .5)
+                {
+                    powerUp = true;
+                    playerGun = Gun.MAN;
+                }
+            }
+        }
         static void sender_OnInterrupt(uint data1, uint data2, DateTime time)
         {
             if (d.AddMilliseconds(250) < DateTime.Now)
