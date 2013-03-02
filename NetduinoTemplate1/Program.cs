@@ -86,6 +86,11 @@ namespace InfraredDetector
                     powerUp = true;
                     playerGun = Gun.MAN;
                 }
+                else
+                {
+                    powerUp = false;
+                    playerGun = Gun.PUSSY;
+                }
             }
         }
         static void sender_OnInterrupt(uint data1, uint data2, DateTime time)
