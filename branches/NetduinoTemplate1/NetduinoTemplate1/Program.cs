@@ -80,8 +80,8 @@ namespace InfraredDetector
             {
                 c = DateTime.Now;
                 Random r = new Random();
-                var random = r.Next();
-                if (random > .5)
+                var random = r.Next() % 10;
+                if (random > 5)
                 {
                     powerUp = true;
                     playerGun = Gun.MAN;
@@ -98,13 +98,11 @@ namespace InfraredDetector
                 {
                     Debug.Print(count.ToString() + "interupt" + "Pussy Gun");
                     SendMessage(infraredOut, message);
-                    playerGun = Gun.MAN;
                 }
                 else
                 {
                     Debug.Print(count.ToString() + "interupt" + "Man Gun");
                     SendMessage(infraredOut, message2);
-                    playerGun = Gun.PUSSY;
                 }
             }
         }
@@ -115,7 +113,8 @@ namespace InfraredDetector
                 //Found our first one...now wait for a 0
                 if (!digitalIn.Read())
                 {
-                    while (digitalIn.Read())
+                    var d = DateTime.Now;
+                    while (digitalIn.Read() && d.AddMilliseconds(500) < DateTime.Now )
                     {
                         //noop
                     }
