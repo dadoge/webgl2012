@@ -32,7 +32,8 @@ namespace InfraredDetector
         {
 
             InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
-            OutputPort led = new OutputPort(Pins.ONBOARD_LED, false);
+            OutputPort ShieldPort = new OutputPort(Pins.GPIO_PIN_D0, false);
+            OutputPort ManGunPort = new OutputPort(Pins.GPIO_PIN_D1, false);
 
             InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D13, false, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeLow);
             sender.OnInterrupt += sender_OnInterrupt;
@@ -57,6 +58,16 @@ namespace InfraredDetector
                         GetEndByte(digitalIn);
                         break;
                     case TokenState.READ:
+                        if (message == "01")
+                        {
+                            ShieldPort.Write(true);
+                            ManGunPort.Write(false);
+                        }
+                        else if (message == "10")
+                        {
+                            ShieldPort.Write(false);
+                            ManGunPort.Write(true);
+                        }
                         Debug.Print(String.Concat(message, "\n"));
                         state = TokenState.LISTEN;
                         message = "";
