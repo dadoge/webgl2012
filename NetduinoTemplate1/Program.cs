@@ -27,17 +27,19 @@ namespace InfraredDetector
         public static string message = "10110100";
         public static string message2 = "10111000";
         public static Gun playerGun = Gun.PUSSY;
-        public static OutputPort led;
-
+        public static Microsoft.SPOT.Hardware.PWM infraredOut;
+        public static DateTime d;
+        public static int count;
         public static void Main()
         {
-
+            count = 0;
+            d = DateTime.Now;
             InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
             OutputPort ShieldPort = new OutputPort(Pins.GPIO_PIN_D0, false);
             OutputPort ManGunPort = new OutputPort(Pins.GPIO_PIN_D1, false);
-            led = new OutputPort(Pins.ONBOARD_LED, false);
+            infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true);
 
-            InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D13, false, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeLow);
+            InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D10, false, Port.ResistorMode.PullUp, Port.InterruptMode.InterruptEdgeLow);
             sender.OnInterrupt += sender_OnInterrupt;
             state = TokenState.LISTEN;
             string message = "";
@@ -80,15 +82,19 @@ namespace InfraredDetector
 
         static void sender_OnInterrupt(uint data1, uint data2, DateTime time)
         {
-            var infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true); //50% brightness
-            Debug.Print("interupttzz");
-            if (playerGun == Gun.PUSSY)
+            if (d.AddMilliseconds(250) < DateTime.Now)
             {
-                SendMessage(infraredOut, led, message);
-            }
-            else
-            {
-                SendMessage(infraredOut, led, message2);
+                d = DateTime.Now;
+                count++;
+                Debug.Print(count.ToString() + "interupttzz");
+                if (playerGun == Gun.PUSSY)
+                {
+                    SendMessage(infraredOut, message);
+                }
+                else
+                {
+                    SendMessage(infraredOut, message2);
+                }
             }
         }
         public static void GetListenByte(InputPort digitalIn)
@@ -178,17 +184,17 @@ namespace InfraredDetector
             state = TokenState.LISTEN;
         }
 
-        public static void SendMessage(PWM infraredOut, OutputPort led, string message)
+        public static void SendMessage(PWM infraredOut, string message)
         {
             foreach (char c in message)
             {
-                SendBit(infraredOut, led, c);
+                SendBit(infraredOut, c);
 
             }
         }
 
 
-        public static void SendBit(PWM infraredOut, OutputPort led, char c)
+        public static void SendBit(PWM infraredOut, char c)
         {
 
             if (c == '1')
@@ -197,8 +203,7 @@ namespace InfraredDetector
                 infraredOut.Start();
                 while (startTime.AddMilliseconds(sleep) > DateTime.Now)
                 {
-                    led.Write(true);
-                    //noop
+
                 }
                 infraredOut.Stop();
             }
@@ -207,8 +212,7 @@ namespace InfraredDetector
                 var startTime = DateTime.Now;
                 while (startTime.AddMilliseconds(sleep) > DateTime.Now)
                 {
-                    led.Write(false);
-                    //noop
+
                 }
                 startTime = DateTime.Now;
             }
