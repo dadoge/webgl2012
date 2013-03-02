@@ -17,8 +17,16 @@ namespace InfraredDetector
             READ = 4
 
         }
+        public enum Gun
+        {
+            PUSSY = 0,
+            MAN = 1
+        }
         public static TokenState state;
-        public static int sleep = 10;
+        public static int sleep = 200;
+        public static string message = "10110100";
+        public static string message2 = "10111000";
+        public static Gun playerGun = Gun.PUSSY;
 
         public static void Main()
         {
@@ -26,9 +34,10 @@ namespace InfraredDetector
             InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
             OutputPort led = new OutputPort(Pins.ONBOARD_LED, false);
 
+            InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D13, false, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeHigh);
+            sender.OnInterrupt += sender_OnInterrupt;
             state = TokenState.LISTEN;
             string message = "";
-            int count = 0;
 
             while (true)
             {
@@ -46,22 +55,27 @@ namespace InfraredDetector
                         break;
                     case TokenState.ENDBYTE:
                         GetEndByte(digitalIn);
-                        //Debug.Print(String.Concat(message, "\n"));
                         break;
                     case TokenState.READ:
-                        if (message == "01")
-                        {
-                            Debug.Print(count.ToString() + ": Received " + message + ". You now have a Shield!");
-                        }
-                        else if (message == "10")
-                        {
-                            Debug.Print(count.ToString() + ": Received " + message + ". You now have a more Powerful Gun!");
-                        }
-                        count++;
+                        Debug.Print(String.Concat(message, "\n"));
                         state = TokenState.LISTEN;
                         message = "";
                         break;
                 }
+            }
+        }
+
+        static void sender_OnInterrupt(uint data1, uint data2, DateTime time)
+        {
+            var infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true); //50% brightness
+            var led = new OutputPort(Pins.ONBOARD_LED, false);
+            if (playerGun == Gun.PUSSY)
+            {
+                SendMessage(infraredOut, led, message);
+            }
+            else
+            {
+                SendMessage(infraredOut, led, message2);
             }
         }
         public static void GetListenByte(InputPort digitalIn)
@@ -69,26 +83,26 @@ namespace InfraredDetector
             while (true)
             {
                 //Found our first one...now wait for a 0
-                if (!digitalIn.Read())
+                if (digitalIn.Read())
                 {
-                    while (!digitalIn.Read())
+                    while (digitalIn.Read())
                     {
                         //noop
                     }
                 }
                 state = TokenState.STARTBYTE;
-                Thread.Sleep(sleep);
+                Thread.Sleep(199);
                 break;
             }
         }
         public static void GetStartByte(InputPort digitalIn)
         {
             //Better be a 1
-            if (!digitalIn.Read())
+            if (digitalIn.Read())
             {
                 Thread.Sleep(sleep);
                 //And still a 1
-                if (!digitalIn.Read())
+                if (digitalIn.Read())
                 {
                     Thread.Sleep(sleep);
                     state = TokenState.MESSAGE;
@@ -101,9 +115,9 @@ namespace InfraredDetector
         public static string GetMessage(InputPort digitalIn)
         {
             var message = "";
-            //DateTime startTime;
+            DateTime startTime;
 
-            if (!digitalIn.Read())
+            if (digitalIn.Read())
             {
                 message += "1";
             }
@@ -114,7 +128,7 @@ namespace InfraredDetector
 
             Thread.Sleep(sleep);
 
-            if (!digitalIn.Read())
+            if (digitalIn.Read())
             {
                 message += "1";
             }
@@ -122,12 +136,9 @@ namespace InfraredDetector
             {
                 message += "0";
             }
-
-            Thread.Sleep(sleep);
 
             if (message == "11" || message == "00")
             {
-                Debug.Print("I got a " + message);
                 state = TokenState.LISTEN;
                 message = "";
                 return "";
@@ -139,11 +150,11 @@ namespace InfraredDetector
         public static void GetEndByte(InputPort digitalIn)
         {
             //Better be a 0
-            if (digitalIn.Read())
+            if (!digitalIn.Read())
             {
                 Thread.Sleep(sleep);
                 //And still a 0
-                if (digitalIn.Read())
+                if (!digitalIn.Read())
                 {
                     Thread.Sleep(sleep);
                     state = TokenState.READ;
@@ -153,5 +164,43 @@ namespace InfraredDetector
             }
             state = TokenState.LISTEN;
         }
+
+        public static void SendMessage(PWM infraredOut, OutputPort led, string message)
+        {
+            foreach (char c in message)
+            {
+                SendBit(infraredOut, led, c);
+
+            }
+        }
+
+
+        public static void SendBit(PWM infraredOut, OutputPort led, char c)
+        {
+
+            if (c == '1')
+            {
+                var startTime = DateTime.Now;
+                infraredOut.Start();
+                while (startTime.AddMilliseconds(sleep) > DateTime.Now)
+                {
+                    led.Write(true);
+                    //noop
+                }
+                infraredOut.Stop();
+            }
+            else
+            {
+                var startTime = DateTime.Now;
+                while (startTime.AddMilliseconds(sleep) > DateTime.Now)
+                {
+                    led.Write(false);
+                    //noop
+                }
+                startTime = DateTime.Now;
+            }
+        }
+
+
     }
 }
