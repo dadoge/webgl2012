@@ -34,7 +34,7 @@ namespace InfraredDetector
             InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
             OutputPort led = new OutputPort(Pins.ONBOARD_LED, false);
 
-            InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D13, false, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeHigh);
+            InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D13, false, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeLow);
             sender.OnInterrupt += sender_OnInterrupt;
             state = TokenState.LISTEN;
             string message = "";
@@ -69,6 +69,7 @@ namespace InfraredDetector
         {
             var infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true); //50% brightness
             var led = new OutputPort(Pins.ONBOARD_LED, false);
+            Debug.Print("interupttzz");
             if (playerGun == Gun.PUSSY)
             {
                 SendMessage(infraredOut, led, message);
