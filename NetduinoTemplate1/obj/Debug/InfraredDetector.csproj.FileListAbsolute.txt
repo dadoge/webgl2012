@@ -32,3 +32,37 @@ c:\users\amorgan\documents\visual studio 2012\Projects\NetduinoTemplate1\Netduin
 c:\users\amorgan\documents\visual studio 2012\Projects\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\le\NetduinoTemplate1.pdbx
 c:\users\amorgan\documents\visual studio 2012\Projects\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\NetduinoTemplate1.exe
 c:\users\amorgan\documents\visual studio 2012\Projects\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\NetduinoTemplate1.pdb
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\le\NetduinoTemplate1.exe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\be\NetduinoTemplate1.exe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\le\NetduinoTemplate1.pdb
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\be\NetduinoTemplate1.pdb
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\NetduinoTemplate1.exe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\NetduinoTemplate1.pdb
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\le\NetduinoTemplate1.pe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\le\NetduinoTemplate1.pdbx
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\be\NetduinoTemplate1.pe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\be\NetduinoTemplate1.pdbx
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\LE\SecretLabs.NETMF.Hardware.pe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\LE\SecretLabs.NETMF.Hardware.Netduino.pe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\BE\SecretLabs.NETMF.Hardware.pe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\BE\SecretLabs.NETMF.Hardware.Netduino.pe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\LE\SecretLabs.NETMF.Hardware.pdbx
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\LE\SecretLabs.NETMF.Hardware.Netduino.pdbx
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\BE\SecretLabs.NETMF.Hardware.pdbx
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\BE\SecretLabs.NETMF.Hardware.Netduino.pdbx
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\SecretLabs.NETMF.Hardware.dll
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\SecretLabs.NETMF.Hardware.Netduino.dll
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\SecretLabs.NETMF.Hardware.pdb
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\bin\Debug\SecretLabs.NETMF.Hardware.Netduino.pdb
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\InfraredDetector.csprojResolveAssemblyReference.cache
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\TinyCLR_DebugReferences.cache
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\NetduinoTemplate1.Resources.resources
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\InfraredDetector.csproj.GenerateResource.Cache
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\NetduinoTemplate1.Resources.tinyresources
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\TinyResGen.cache
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\be\NetduinoTemplate1.pe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\be\NetduinoTemplate1.pdbx
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\le\NetduinoTemplate1.pe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\le\NetduinoTemplate1.pdbx
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\NetduinoTemplate1.exe
+C:\DEVELOPMENT\webgl\NetduinoTemplate1\NetduinoTemplate1\obj\Debug\NetduinoTemplate1.pdb

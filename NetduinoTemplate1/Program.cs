@@ -27,6 +27,7 @@ namespace InfraredDetector
         public static string message = "10110100";
         public static string message2 = "10111000";
         public static Gun playerGun = Gun.PUSSY;
+        public static OutputPort led;
 
         public static void Main()
         {
@@ -34,6 +35,7 @@ namespace InfraredDetector
             InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
             OutputPort ShieldPort = new OutputPort(Pins.GPIO_PIN_D0, false);
             OutputPort ManGunPort = new OutputPort(Pins.GPIO_PIN_D1, false);
+            led = new OutputPort(Pins.ONBOARD_LED, false);
 
             InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D13, false, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeLow);
             sender.OnInterrupt += sender_OnInterrupt;
@@ -79,7 +81,6 @@ namespace InfraredDetector
         static void sender_OnInterrupt(uint data1, uint data2, DateTime time)
         {
             var infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true); //50% brightness
-            var led = new OutputPort(Pins.ONBOARD_LED, false);
             Debug.Print("interupttzz");
             if (playerGun == Gun.PUSSY)
             {
@@ -148,7 +149,7 @@ namespace InfraredDetector
             {
                 message += "0";
             }
-
+            Thread.Sleep(sleep);
             if (message == "11" || message == "00")
             {
                 state = TokenState.LISTEN;
