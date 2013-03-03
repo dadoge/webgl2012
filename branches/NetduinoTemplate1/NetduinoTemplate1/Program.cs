@@ -19,14 +19,14 @@ namespace InfraredDetector
         }
         public enum Gun
         {
-            PUSSY = 0,
+            Regular = 0,
             MAN = 1
         }
         public static TokenState state;
         public static int sleep = 20;
         public static string message = "10110100";
         public static string message2 = "10111000";
-        public static Gun playerGun = Gun.PUSSY;
+        public static Gun playerGun = Gun.Regular;
         public static Microsoft.SPOT.Hardware.PWM infraredOut;
         public static bool powerUp = false;
         public static DateTime d;
@@ -130,7 +130,7 @@ namespace InfraredDetector
                 else
                 {
                     powerUp = false;
-                    playerGun = Gun.PUSSY;
+                    playerGun = Gun.Regular;
                 }
             }
         }
@@ -140,14 +140,14 @@ namespace InfraredDetector
             {
                 d = DateTime.Now;
                 count++;
-                if (playerGun == Gun.PUSSY)
+                if (playerGun == Gun.Regular)
                 {
-                    Debug.Print(count.ToString() + "interupt" + "Pussy Gun");
+                    Debug.Print(count.ToString() + ": Regular Gun");
                     SendMessage(infraredOut, message);
                 }
                 else
                 {
-                    Debug.Print(count.ToString() + "interupt" + "Man Gun");
+                    Debug.Print(count.ToString() + ": Man Gun");
                     SendMessage(infraredOut, message2);
                 }
             }
