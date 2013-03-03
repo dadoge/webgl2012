@@ -32,7 +32,7 @@ namespace InfraredDetector
         public static DateTime d;
         public static DateTime c;
         public static int count;
-        public static int playerHeath = 3;
+        public static int playerHeath = 15;
 
 
         public static void Main()
@@ -83,22 +83,22 @@ namespace InfraredDetector
         }
         public static void DisplayHeath(OutputPort healthOut, OutputPort healthOut2)
         {
-            if (playerHeath == 3)
+            if (playerHeath == 15)
             {
                 healthOut.Write(true);
                 healthOut2.Write(true);
             }
-            else if (playerHeath == 2)
+            else if (playerHeath >= 10)
             {
                 healthOut.Write(true);
                 healthOut2.Write(false);
             }
-            else if (playerHeath == 1)
+            else if (playerHeath >= 5)
             {
                 healthOut.Write(false);
                 healthOut2.Write(true);
             }
-            else
+            else if (playerHeath == 0)
             {
                 healthOut.Write(false);
                 healthOut2.Write(false);
