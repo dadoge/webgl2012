@@ -73,7 +73,7 @@ namespace InfraredDetector
                         GetEndByte(digitalIn);
                         break;
                     case TokenState.READ:
-                        Debug.Print(String.Concat(message, "\n"));
+                        Debug.Print(String.Concat(message + " " + "PlayerHealth" + ": " + playerHeath , "\n"));
                         UpdatePlayer(message);
                         state = TokenState.LISTEN;
                         message = "";
