@@ -98,7 +98,7 @@ namespace InfraredDetector
                 healthOut.Write(false);
                 healthOut2.Write(true);
             }
-            else if (playerHeath == 0)
+            else if (playerHeath <= 0)
             {
                 healthOut.Write(true);
                 healthOut2.Write(true);
