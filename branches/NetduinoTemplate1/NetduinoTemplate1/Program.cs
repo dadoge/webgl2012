@@ -85,8 +85,8 @@ namespace InfraredDetector
         {
             if (playerHeath == 15)
             {
-                healthOut.Write(true);
-                healthOut2.Write(true);
+                healthOut.Write(false);
+                healthOut2.Write(false);
             }
             else if (playerHeath >= 10)
             {
@@ -100,8 +100,8 @@ namespace InfraredDetector
             }
             else if (playerHeath == 0)
             {
-                healthOut.Write(false);
-                healthOut2.Write(false);
+                healthOut.Write(true);
+                healthOut2.Write(true);
             }
         }
         public static void UpdatePlayer(string message)
