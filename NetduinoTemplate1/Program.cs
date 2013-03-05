@@ -83,7 +83,7 @@ namespace InfraredDetector
         }
         public static void DisplayHeath(OutputPort healthOut, OutputPort healthOut2)
         {
-            if (playerHeath == 15)
+            if (playerHeath >= 15)
             {
                 healthOut.Write(false);
                 healthOut2.Write(false);
@@ -131,12 +131,13 @@ namespace InfraredDetector
                 {
                     powerUp = false;
                     playerGun = Gun.Regular;
+                    playerHeath += 5;
                 }
             }
         }
         static void sender_OnInterrupt(uint data1, uint data2, DateTime time)
         {
-            if (d.AddMilliseconds(250) < DateTime.Now)
+            if (d.AddMilliseconds(350) < DateTime.Now)
             {
                 d = DateTime.Now;
                 count++;
