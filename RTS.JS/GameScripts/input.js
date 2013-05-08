@@ -38,9 +38,18 @@ function doKeyDown(evt) {
             DownDown = true;
             break;
         case KEYS.SPACE:
-            startGame();
+            if (isGameActive == false) {
+                startGame();
+            }
             break;
         case KEYS.P:
+            if (isPaused == true) {
+                isPaused = false;
+                startGame();
+            }
+            else {
+                isPaused = true;
+            }
             break;
     }
 }
