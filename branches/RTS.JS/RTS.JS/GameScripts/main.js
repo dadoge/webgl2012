@@ -43,7 +43,6 @@ function preinit() {
     ctx.textBaseline = "top";
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(newUnit.health, 0, 0);
-    newUnit.animate(ctx);
 }
 
 
@@ -55,7 +54,7 @@ function startGame() {
 }
 
 function gameLoop() {
-    draw();
+    preinit();
 
 }
 

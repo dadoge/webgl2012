@@ -6,11 +6,6 @@ function Unit(type) {
     this.y = 100;
     this.height = 5;
     this.width = 5;
-    this.animate = function (ctx) {
-    }
-
-
-    };
     this.takeDamage = function (damage) {
         this.heath = this.health - damage;
     };
