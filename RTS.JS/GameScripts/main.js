@@ -21,6 +21,9 @@ var groundHeight = 50;
 var robotSprite = new Image();
 robotSprite.src = 'robot.png';
 
+var bro = new Image();
+bro.src = 'bro.png';
+
 //////////////////////////////////////////////////////////////////////////////////
 //                           Pre-Init
 /////////////////////////////////////////////////////////////////////////////////
@@ -47,6 +50,8 @@ function preinit() {
     ctx.fillText(newUnit.health, 0, 0);
 
     newUnit.draw(ctx);
+	
+	ctx.drawImage(bro, 0, 200);
 }
 
 
@@ -68,7 +73,7 @@ function dra2w() {
     ctx.clearRect(0, 0, Canvas.Width, Canvas.Height);
 
     //Draw background img
-    ctx.drawImage(backgroundImg, 0, 0);
+    //ctx.drawImage(backgroundImg, 0, 0);
 
     //create level
     createLevel();
