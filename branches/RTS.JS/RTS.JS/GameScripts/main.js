@@ -18,19 +18,13 @@ var FPS = 30;
 var isGameActive = false;
 var isPaused = false;
 var groundHeight = 50;
-var robotSprite = new Image();
-robotSprite.src = 'robot.png';
-var robotSprite2 = new Image();
-robotSprite2.src = 'robot2.png';
 
-var bro = new Image();
-bro.src = 'bro.png';
 
 //////////////////////////////////////////////////////////////////////////////////
 //                           Pre-Init
 /////////////////////////////////////////////////////////////////////////////////
 
-//INVOKE PREINIT AS FIRST METHOD
+//CREATE SPRITES AND INVOKE PREINIT AS FIRST METHOD
 var rightType = {
     speed:  5,
     direction: -1,
@@ -45,6 +39,15 @@ var leftType = {
     damage: 5
 
 };
+
+var robotSprite = new Image();
+robotSprite.src = 'robot.png';
+var robotSprite2 = new Image();
+robotSprite2.src = 'robot2.png';
+
+var bro = new Image();
+bro.src = 'bro.png';
+
 var newUnit = new Unit(leftType, robotSprite, 64, 68, 4, 100,400);
 var newUnit2 = new Unit(rightType, robotSprite2, 64, 68, 4, 100,400);
 preinit();
@@ -74,7 +77,8 @@ function preinit() {
 //                    Start Up Game
 ///////////////////////////////////////////////////////////////////////////////////
 function startGame() {
-    intervalID = setInterval(gameLoop, 1000 / FPS);
+    isGameActive = true;
+        intervalID = setInterval(gameLoop, 1000 / FPS);
 }
 
 function gameLoop() {
