@@ -12,8 +12,12 @@ function Unit(type, sprite) {
         this.heath = this.health - damage;
     };
     this.draw = function (ctx) {
-        ctx.drawImage(this.image, 0 + this.state, 0, 50, 50, this.x, this.y, 50, 50);
+        ctx.drawImage(this.image, 0 + this.state, 0, 60, 60, this.x, this.y, 60, 60);
         this.state += 50;
+        this.x += 10;
+        if (this.x > 500) {
+            this.x = 0;
+        }
         if (this.state > 200) {
             this.state = 0
         }
