@@ -3,7 +3,7 @@ function Unit(type, sprite) {
     this.damage = 5;
     this.health = 20;
     this.x = 100;
-    this.y = 100;
+    this.y = 400;
     this.height = 5;
     this.width = 5;
     this.image = sprite;
