@@ -26,11 +26,12 @@ robotSprite.src = 'robot.png';
 /////////////////////////////////////////////////////////////////////////////////
 
 //INVOKE PREINIT AS FIRST METHOD
+var newUnit = new Unit("x", robotSprite);
 preinit();
 
 function preinit() {
 
-    var newUnit = new Unit("x", robotSprite);
+
 
     //Draw bottom pit
     ctx.fillStyle = "#000000";
