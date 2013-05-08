@@ -30,7 +30,7 @@ preinit();
 function preinit() {
 
     var newUnit = new Unit("x");
-    newUnit.animate(ctx);
+
     //Draw bottom pit
     ctx.fillStyle = "#000000";
     ctx.fillRect(0, 0, Canvas.Width, Canvas.Height);
@@ -42,7 +42,8 @@ function preinit() {
     ctx.font = "20pt Arial";
     ctx.textBaseline = "top";
     ctx.fillStyle = "#FFFFFF";
-    ctx.fillText(newUnit.health,0,0);
+    ctx.fillText(newUnit.health, 0, 0);
+    newUnit.animate(ctx);
 }
 
 
