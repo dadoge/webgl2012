@@ -22,22 +22,10 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y) {
         if (this.x > 500) {
             this.x = 0;
         }
-        if (this.state > spriteW * (spriteFrames-1)) {
-            this.state = 0
-        }
-    }
-	this.draw2 = function (ctx) {
-        ctx.drawImage(this.image, 0 + this.state, 0, 64, 68, this.x, this.y, 64, 68);
-        this.x -= 5;
-
-        if(this.x % 20 == 0)
-        {
-            this.state += 64;
-        }
         if (this.x < 0) {
             this.x = 500;
         }
-        if (this.state > 192) {
+        if (this.state > spriteW * (spriteFrames-1)) {
             this.state = 0
         }
     }
