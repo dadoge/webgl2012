@@ -38,6 +38,7 @@ function doKeyDown(evt) {
             DownDown = true;
             break;
         case KEYS.SPACE:
+            startGame();
             break;
         case KEYS.P:
             break;
