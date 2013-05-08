@@ -30,7 +30,7 @@ preinit();
 function preinit() {
 
     var newUnit = new Unit("x");
-
+    newUnit.animate(ctx);
     //Draw bottom pit
     ctx.fillStyle = "#000000";
     ctx.fillRect(0, 0, Canvas.Width, Canvas.Height);
