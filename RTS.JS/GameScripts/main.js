@@ -20,6 +20,8 @@ var isPaused = false;
 var groundHeight = 50;
 var robotSprite = new Image();
 robotSprite.src = 'robot.png';
+var robotSprite2 = new Image();
+robotSprite2.src = 'robot2.png';
 
 var bro = new Image();
 bro.src = 'bro.png';
@@ -30,6 +32,7 @@ bro.src = 'bro.png';
 
 //INVOKE PREINIT AS FIRST METHOD
 var newUnit = new Unit("x", robotSprite);
+var newUnit2 = new Unit("y", robotSprite2);
 preinit();
 
 function preinit() {
@@ -50,6 +53,7 @@ function preinit() {
     ctx.fillText(newUnit.health, 0, 0);
 
     newUnit.draw(ctx);
+	newUnit2.draw2(ctx);
 	
 	ctx.drawImage(bro, 0, 200);
 }
