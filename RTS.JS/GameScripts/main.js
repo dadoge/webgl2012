@@ -31,8 +31,8 @@ bro.src = 'bro.png';
 /////////////////////////////////////////////////////////////////////////////////
 
 //INVOKE PREINIT AS FIRST METHOD
-var newUnit = new Unit("x", robotSprite);
-var newUnit2 = new Unit("y", robotSprite2);
+var newUnit = new Unit("x", robotSprite, 64, 68, 4, 100,400);
+var newUnit2 = new Unit("y", robotSprite2, 64, 68, 4, 100,400);
 preinit();
 
 function preinit() {
