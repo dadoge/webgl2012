@@ -31,8 +31,22 @@ bro.src = 'bro.png';
 /////////////////////////////////////////////////////////////////////////////////
 
 //INVOKE PREINIT AS FIRST METHOD
-var newUnit = new Unit("x", robotSprite, 64, 68, 4, 100,400);
-var newUnit2 = new Unit("y", robotSprite2, 64, 68, 4, 100,400);
+var rightType = {
+    speed:  5,
+    direction: -1,
+    heath: 10,
+    damage: 5
+
+};
+var leftType = {
+    speed:  5,
+    direction: 1,
+    heath: 10,
+    damage: 5
+
+};
+var newUnit = new Unit(leftType, robotSprite, 64, 68, 4, 100,400);
+var newUnit2 = new Unit(rightType, robotSprite2, 64, 68, 4, 100,400);
 preinit();
 
 function preinit() {
@@ -53,7 +67,7 @@ function preinit() {
     ctx.fillText(newUnit.health, 0, 0);
 
     newUnit.draw(ctx);
-	newUnit2.draw2(ctx);
+	newUnit2.draw(ctx);
 	
 	ctx.drawImage(bro, 0, 200);
 }
