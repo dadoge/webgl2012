@@ -1,7 +1,7 @@
 function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y) {
     this.type = type;
-    this.damage = 5;
-    this.health = 20;
+    this.damage = type.damage;
+    this.health = type.health;
     this.x = x;
     this.y = y;
     this.height = 5;
@@ -13,7 +13,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y) {
     };
     this.draw = function (ctx) {
         ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
-        this.x += 5;
+        this.x += this.type.speed * this.type.direction;
 
         if(this.x % 20 == 0)
         {
