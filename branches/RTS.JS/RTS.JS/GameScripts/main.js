@@ -18,7 +18,8 @@ var FPS = 30;
 var isGameActive = false;
 var isPaused = false;
 var groundHeight = 50;
-
+var robotSprite = new Image();
+robotSprite.src = 'robot.png';
 
 //////////////////////////////////////////////////////////////////////////////////
 //                           Pre-Init
@@ -29,7 +30,7 @@ preinit();
 
 function preinit() {
 
-    var newUnit = new Unit("x");
+    var newUnit = new Unit("x", robotSprite);
 
     //Draw bottom pit
     ctx.fillStyle = "#000000";
@@ -43,6 +44,8 @@ function preinit() {
     ctx.textBaseline = "top";
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(newUnit.health, 0, 0);
+
+    newUnit.draw(ctx);
 }
 
 
@@ -58,7 +61,7 @@ function gameLoop() {
 
 }
 
-function draw() {
+function dra2w() {
 
     //Clear Screen
     ctx.clearRect(0, 0, Canvas.Width, Canvas.Height);
