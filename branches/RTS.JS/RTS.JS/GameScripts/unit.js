@@ -13,7 +13,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
         this.heath = this.health - damage;
     };
     this.draw = function (ctx) {
-        ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
+        ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.x, spriteW, spriteH);
         var everyone = leftTeamUnits.concat(rightTeamUnits);
         var everyoneElse = _.reject(everyone, function(unitA) { return unitA.id == this.id; }, this);
         var closestUnit = _.min(everyoneElse, function (unitA) { return Math.abs(unitA.x - this.x) }, this);
@@ -31,7 +31,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
                 this.x = Canvas.Width;
             }
             if (this.state > spriteW * (spriteFrames - 1)) {
-                this.state = 0
+                this.state = 0;
             }
         }
     }
