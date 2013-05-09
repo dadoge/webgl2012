@@ -101,9 +101,9 @@ function draw2() {
     ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
 	
 	//Place left base on screen
-	ctx.drawImage(leftBase, 0, 260);
+	ctx.drawImage(leftBase, -100, 260);
 	//Place right base on screen
-	ctx.drawImage(rightBase, 630, 260);
+	ctx.drawImage(rightBase, 730, 260);
 	
 
     for(i = 0;  i < leftTeamUnits.length; i++)
