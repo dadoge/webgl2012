@@ -17,10 +17,24 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
         var everyone = leftTeamUnits.concat(rightTeamUnits);
         var everyoneElse = _.reject(everyone, function(unitA) { return unitA.id == this.id; }, this);
         var closestUnit = _.min(everyoneElse, function (unitA) { return Math.abs(unitA.x - this.x) }, this);
+        
+        if(closestUnit && this.type.direction == 1 && closestUnit.x - this.x + this.type.speed > this.type.speed*2) {
+            this.x += this.type.speed * this.type.direction;
 
-
-
-        if (Math.abs(closestUnit.x - this.x) > 30) {
+            if (this.x % 20 == 0) {
+                this.state += spriteW;
+            }
+            if (this.x > Canvas.Width) {
+                this.x = 0;
+            }
+            if (this.x < 0) {
+                this.x = Canvas.Width;
+            }
+            if (this.state > spriteW * (spriteFrames - 1)) {
+                this.state = 0;
+            }
+        }
+        if (closestUnit && this.type.direction == -1 && (this.x - this.type.speed) - closestUnit.x  > this.type.speed*2) {
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
