@@ -106,11 +106,12 @@ function draw2() {
     }
 
     var max = _.max(leftTeamUnits, function (ltu) { return ltu.x; });
+    var min = _.min(rightTeamUnits, function (rtu) { return rtu.x; });
     //Draw Score and lives
     ctx.font = "20pt Arial";
     ctx.textBaseline = "top";
     ctx.fillStyle = "#FFFFFF";
-    ctx.fillText(max.x, 0, 0);
+    ctx.fillText(max.x + "," + min.x, 0, 0);
     if (isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
         clearInterval(intervalID);
