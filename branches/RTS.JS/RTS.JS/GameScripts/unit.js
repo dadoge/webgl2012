@@ -34,7 +34,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
                 this.state = 0;
             }
         }
-        if (closestUnit && this.type.direction == -1 && (this.x - this.type.speed) - closestUnit.x  > this.type.speed*2) {
+        if (closestUnit && this.type.direction == -1 && (this.x - this.type.speed) - closestUnit.x  > this.type.speed * 2) {
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
