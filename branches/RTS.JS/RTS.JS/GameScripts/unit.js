@@ -10,13 +10,15 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
     this.state = 0;
     this.id = id;
     this.takeDamage = function (damage) {
-        this.health = this.health - damage;
+        this.heath = this.health - damage;
     };
     this.draw = function (ctx) {
-        ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.x, spriteW, spriteH);
+        ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
         var everyone = leftTeamUnits.concat(rightTeamUnits);
         var everyoneElse = _.reject(everyone, function(unitA) { return unitA.id == this.id; }, this);
         var closestUnit = _.min(everyoneElse, function (unitA) { return Math.abs(unitA.x - this.x) }, this);
+
+
 
         if (Math.abs(closestUnit.x - this.x) > 30) {
             this.x += this.type.speed * this.type.direction;
