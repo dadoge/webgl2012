@@ -18,7 +18,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
         var everyoneElse = _.reject(everyone, function(unitA) { return unitA.id == this.id; }, this);
         var closestUnit = _.min(everyoneElse, function (unitA) { return Math.abs(unitA.x - this.x) }, this);
 
-        if (Math.abs(closestUnit.x - this.x) > 20) {
+        if (Math.abs(closestUnit.x - this.x) > 30) {
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
