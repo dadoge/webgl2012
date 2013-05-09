@@ -66,12 +66,6 @@ function preinit() {
 
     ctx.fillStyle = "#00FF00";
     ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
-
-    //Draw Score and lives
-    ctx.font = "20pt Arial";
-    ctx.textBaseline = "top";
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillText(newUnit.health, 0, 0);
 	
 	ctx.drawImage(bro, 0, 200);
 }
@@ -86,11 +80,11 @@ function startGame() {
 }
 
 function gameLoop() {
-    draw();
+    draw2();
 
 }
 
-function draw() {
+function draw2() {
 
     //Clear Screen
     ctx.clearRect(0, 0, Canvas.Width, Canvas.Height);
@@ -102,17 +96,21 @@ function draw() {
     ctx.fillStyle = "#00FF00";
     ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
 
-    //newUnit.draw(ctx);
-    //newUnit2.draw(ctx);
-
     for(i = 0;  i < leftTeamUnits.length; i++)
     {
         leftTeamUnits[i].draw(ctx);
     }
+    
     for (i = 0; i < rightTeamUnits.length; i++) {
         rightTeamUnits[i].draw(ctx);
     }
 
+    var max = _.max(leftTeamUnits, function (ltu) { return ltu.x; });
+    //Draw Score and lives
+    ctx.font = "20pt Arial";
+    ctx.textBaseline = "top";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText(max.x, 0, 0);
     if (isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
         clearInterval(intervalID);
