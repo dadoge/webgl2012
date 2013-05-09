@@ -44,6 +44,10 @@ var robotSprite = new Image();
 robotSprite.src = 'robot.png';
 var robotSprite2 = new Image();
 robotSprite2.src = 'robot2.png';
+var leftBase = new Image();
+leftBase.src = 'base-left.png'
+var rightBase = new Image();
+rightBase.src = 'base-right.png'
 
 var bro = new Image();
 bro.src = 'bro.png';
@@ -95,6 +99,12 @@ function draw2() {
 
     ctx.fillStyle = "#00FF00";
     ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
+	
+	//Place left base on screen
+	ctx.drawImage(leftBase, 0, 260);
+	//Place right base on screen
+	ctx.drawImage(rightBase, 630, 260);
+	
 
     for(i = 0;  i < leftTeamUnits.length; i++)
     {
