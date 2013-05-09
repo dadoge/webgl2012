@@ -28,14 +28,14 @@ var groundHeight = 50;
 var rightType = {
     speed:  5,
     direction: -1,
-    heath: 10,
+    health: 10,
     damage: 5
 
 };
 var leftType = {
     speed:  5,
     direction: 1,
-    heath: 10,
+    health: 10,
     damage: 5
 
 };

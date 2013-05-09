@@ -10,7 +10,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
     this.state = 0;
     this.id = id;
     this.takeDamage = function (damage) {
-        this.heath = this.health - damage;
+        this.health = this.health - damage;
     };
     this.draw = function (ctx) {
         ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.x, spriteW, spriteH);
