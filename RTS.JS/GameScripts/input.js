@@ -22,7 +22,7 @@ window.addEventListener('keyup', doKeyUp, true);
 function doKeyDown(evt) {
     switch (evt.keyCode) {     
         case KEYS.LEFT:
-
+            leftTeamUnits.push(new Unit(leftType, robotSprite, 64, 68, 4, 100, 400));
             LeftDown = true;
             break;    
         case KEYS.RIGHT:

@@ -49,7 +49,11 @@ var bro = new Image();
 bro.src = 'bro.png';
 
 var newUnit = new Unit(leftType, robotSprite, 64, 68, 4, 100,400);
-var newUnit2 = new Unit(rightType, robotSprite2, 64, 68, 4, 100,400);
+var newUnit2 = new Unit(rightType, robotSprite2, 64, 68, 4, 100, 400);
+
+var leftTeamUnits = [newUnit];
+var rightTeamUnits = [newUnit2];
+
 preinit();
 
 function preinit() {
@@ -98,8 +102,13 @@ function draw() {
     ctx.fillStyle = "#00FF00";
     ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
 
-    newUnit.draw(ctx);
-    newUnit2.draw(ctx);
+    //newUnit.draw(ctx);
+    //newUnit2.draw(ctx);
+
+    for(i = 0;  i < leftTeamUnits.length; i++)
+    {
+        leftTeamUnits[i].draw(ctx);
+    }
 
     if (isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
