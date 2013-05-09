@@ -48,8 +48,8 @@ robotSprite2.src = 'robot2.png';
 var bro = new Image();
 bro.src = 'bro.png';
 
-var newUnit = new Unit(leftType, robotSprite, 64, 68, 4, 100,400);
-var newUnit2 = new Unit(rightType, robotSprite2, 64, 68, 4, 100, 400);
+var newUnit = new Unit(leftType, robotSprite, 64, 68, 4, 0,400);
+var newUnit2 = new Unit(rightType, robotSprite2, 64, 68, 4, Canvas.Width, 400);
 
 var leftTeamUnits = [newUnit];
 var rightTeamUnits = [newUnit2];
