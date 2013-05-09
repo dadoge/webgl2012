@@ -19,11 +19,11 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y) {
         {
             this.state += spriteW;
         }
-        if (this.x > 500) {
+        if (this.x > Canvas.Width) {
             this.x = 0;
         }
         if (this.x < 0) {
-            this.x = 500;
+            this.x = Canvas.Width;
         }
         if (this.state > spriteW * (spriteFrames-1)) {
             this.state = 0
