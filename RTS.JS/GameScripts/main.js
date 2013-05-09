@@ -51,9 +51,9 @@ rightBase.src = 'base-right.png'
 
 var bro = new Image();
 bro.src = 'bro.png';
-
-var newUnit = new Unit(leftType, robotSprite, 64, 68, 4, 0,400);
-var newUnit2 = new Unit(rightType, robotSprite2, 64, 68, 4, Canvas.Width, 400);
+var unitcount = 0;
+var newUnit = new Unit(leftType, robotSprite, 64, 68, 4, 0,400,++unitcount);
+var newUnit2 = new Unit(rightType, robotSprite2, 64, 68, 4, Canvas.Width, 400,++unitcount);
 
 var leftTeamUnits = [newUnit];
 var rightTeamUnits = [newUnit2];

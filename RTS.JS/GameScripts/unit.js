@@ -1,4 +1,4 @@
-function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y) {
+function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
     this.type = type;
     this.damage = type.damage;
     this.health = type.health;
@@ -8,11 +8,15 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y) {
     this.width = 5;
     this.image = sprite;
     this.state = 0;
+    this.id = id;
     this.takeDamage = function (damage) {
         this.heath = this.health - damage;
     };
     this.draw = function (ctx) {
         ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
+        var everyone = leftTeamUnits.concat(rightTeamUnits);
+        var everyoneElse = _.reject(everyone, function(unitA) { return unitA.id == this.id; }, this);
+
         this.x += this.type.speed * this.type.direction;
 
         if(this.x % 20 == 0)
