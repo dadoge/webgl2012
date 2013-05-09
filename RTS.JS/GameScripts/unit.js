@@ -16,7 +16,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
         ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
         var everyone = leftTeamUnits.concat(rightTeamUnits);
         var everyoneElse = _.reject(everyone, function(unitA) { return unitA.id == this.id; }, this);
-
+        var closestUnit = _.min(everyoneElse, function (unitA) { return Math.abs(unitA.x - this.x) }, this);
         this.x += this.type.speed * this.type.direction;
 
         if(this.x % 20 == 0)
