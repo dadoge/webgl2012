@@ -26,7 +26,7 @@ function doKeyDown(evt) {
             LeftDown = true;
             break;    
         case KEYS.RIGHT:
-
+            rightTeamUnits.push(new Unit(rightType, robotSprite2, 64, 68, 4, 100, 400));
             RightDown = true;
             break;
         case KEYS.UP:

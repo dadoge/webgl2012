@@ -109,6 +109,9 @@ function draw() {
     {
         leftTeamUnits[i].draw(ctx);
     }
+    for (i = 0; i < rightTeamUnits.length; i++) {
+        rightTeamUnits[i].draw(ctx);
+    }
 
     if (isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
