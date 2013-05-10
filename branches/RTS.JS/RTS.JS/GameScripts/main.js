@@ -29,14 +29,16 @@ var rightType = {
     speed:  5,
     direction: -1,
     health: 10,
-    damage: 5
+    damage: 5,
+    team: 'right'
 
 };
 var leftType = {
     speed:  5,
     direction: 1,
     health: 10,
-    damage: 5
+    damage: 5,
+    team: 'left'
 
 };
 
@@ -83,7 +85,7 @@ function startGame() {
 
 function gameLoop() {
     draw2();
-
+    handleBaseCollision();
 }
 
 function draw2() {
@@ -126,3 +128,16 @@ function draw2() {
     }
 }
 
+function handleBaseCollision() {
+    for (i = 0; i < rightTeamUnits.length; i++) {
+        if (rightTeamUnits[i].x + rightTeamUnits[i].type.speed < 60) {
+            rightTeamUnits[i].type.speed = 0;
+            rightTeamUnits[i].x = 60
+        }
+    }
+    for (i = 0; i < leftTeamUnits.length; i++) {
+        if (leftTeamUnits[i].x + leftTeamUnits[i].type.speed >= 690) {
+            leftTeamUnits[i].type.speed = 0;
+        }
+    }
+}
