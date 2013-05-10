@@ -23,6 +23,8 @@ var leftTeamMoney = 50;
 var rightTeamMoney = 50;
 var leftTeamExp = 0;
 var rightTeamExp = 0;
+var leftBaseHealth = 300;
+var rightBaseHealth = 300;
 
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -142,9 +144,21 @@ function draw2() {
 	ctx.fillStyle = "#FFFFFF";
 	ctx.fillText("Experience: " + rightTeamExp, 620, 60);
 	
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillText("Health: " + leftBaseHealth, 0, 90);
+	
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillText("Health: " + rightBaseHealth, 660, 90);
+	
 	
     if (isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
+        clearInterval(intervalID);
+    }
+	
+	if (rightBaseHealth <= 0 || leftBaseHealth <= 0) {
+        isGameActive = false;
+		ctx.fillText("Game Over. Press 'Space' to start over.", 50, 200);
         clearInterval(intervalID);
     }
 }
@@ -157,11 +171,13 @@ function handleBaseCollision() {
 	if (leftTeamMax.x > 690) {
 	// Player is attacking base
 	leftTeamMax.type.speed = 0;
+	rightBaseHealth -= leftTeamMax.type.damage;
 	}
 	
 	if (rightTeamMin.x < 60) {
 	// Player is attacking base
 	rightTeamMin.type.speed = 0;
+	leftBaseHealth -= rightTeamMin.type.damage;
 	}
 	
 }
