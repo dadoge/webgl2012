@@ -13,14 +13,17 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
     this.id = id;
     this.takeDamage = function (damage) {
         this.health = this.health - damage;
-		if(this.type.team == "left")
+		if(this.health <= 0)
 		{
-			leftTeamUnits = _.reject(leftTeamUnits, function (unitA) { return unitA.id == this.id;}, this);
-			
-		}
-		else
-		{
-			leftTeamUnits = _.reject(leftTeamUnits, function (unitA) { return unitA.id == this.id;}, this);
+			if(this.type.team == "left")
+			{
+				leftTeamUnits = _.reject(leftTeamUnits, function (unitA) { return unitA.id == this.id;}, this);
+				
+			}
+			else
+			{
+				rightTeamUnits = _.reject(rightTeamUnits, function (unitA) { return unitA.id == this.id;}, this);
+			}
 		}
     };
     this.draw = function (ctx) {
