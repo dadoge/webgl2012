@@ -24,7 +24,15 @@ function doKeyDown(evt) {
         case KEYS.LEFT:
 			if(leftTeamMoney > leftType.cost)
 			{
-				leftTeamUnits.push(new Unit(leftType, robotSprite, 64, 68, 4, 0, 400, ++unitCount));
+				var newLeftType = {
+					speed:  5,
+					direction: 1,
+					health: 10,
+					damage: 3,
+					cost: 10,
+					team: 'left'
+				};
+				leftTeamUnits.push(new Unit(newLeftType, robotSprite, 64, 68, 4, 200, 400, ++unitCount));
 				leftTeamMoney -= leftType.cost;
 			}
             LeftDown = true;
@@ -32,7 +40,15 @@ function doKeyDown(evt) {
         case KEYS.RIGHT:
 			if(rightTeamMoney > rightType.cost)
 			{
-				rightTeamUnits.push(new Unit(rightType, robotSprite2, 64, 68, 4, Canvas.Width, 400, ++unitCount));
+				var newRightType = {
+				speed:  5,
+				direction: -1,
+				health: 10,
+				damage: 3,
+				cost: 10,
+				team: 'right'
+			};
+				rightTeamUnits.push(new Unit(newRightType, robotSprite2, 64, 68, 4, Canvas.Width - 200, 400, ++unitCount));
 				rightTeamMoney -= rightType.cost;
 			}
             RightDown = true;
