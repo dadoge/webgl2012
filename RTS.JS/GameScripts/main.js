@@ -92,7 +92,7 @@ function startGame() {
 
 function gameLoop() {
     draw2();
-    
+    handleBaseCollision();
 }
 
 function draw2() {
@@ -149,3 +149,19 @@ function draw2() {
     }
 }
 
+function handleBaseCollision() {
+	
+	var leftTeamMax = _.max(leftTeamUnits, function (ltu) { return ltu.x; });
+    var rightTeamMin = _.min(rightTeamUnits, function (rtu) { return rtu.x; });
+	
+	if (leftTeamMax.x > 690) {
+	// Player is attacking base
+	leftTeamMax.type.speed = 0;
+	}
+	
+	if (rightTeamMin.x < 60) {
+	// Player is attacking base
+	rightTeamMin.type.speed = 0;
+	}
+	
+}
