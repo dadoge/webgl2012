@@ -22,11 +22,19 @@ window.addEventListener('keyup', doKeyUp, true);
 function doKeyDown(evt) {
     switch (evt.keyCode) {     
         case KEYS.LEFT:
-            leftTeamUnits.push(new Unit(leftType, robotSprite, 64, 68, 4, 0, 400, ++unitCount));
+			if(leftTeamMoney > leftType.cost)
+			{
+				leftTeamUnits.push(new Unit(leftType, robotSprite, 64, 68, 4, 0, 400, ++unitCount));
+				leftTeamMoney -= leftType.cost;
+			}
             LeftDown = true;
             break;    
         case KEYS.RIGHT:
-            rightTeamUnits.push(new Unit(rightType, robotSprite2, 64, 68, 4, Canvas.Width, 400, ++unitCount));
+			if(rightTeamMoney > rightType.cost)
+			{
+				rightTeamUnits.push(new Unit(rightType, robotSprite2, 64, 68, 4, Canvas.Width, 400, ++unitCount));
+				rightTeamMoney -= rightType.cost;
+			}
             RightDown = true;
             break;
         case KEYS.UP:

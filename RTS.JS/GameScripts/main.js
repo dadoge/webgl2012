@@ -35,6 +35,7 @@ var rightType = {
     direction: -1,
     health: 10,
     damage: 5,
+	cost: 10,
     team: 'right'
 
 };
@@ -43,6 +44,7 @@ var leftType = {
     direction: 1,
     health: 10,
     damage: 5,
+	cost: 10,
     team: 'left'
 
 };

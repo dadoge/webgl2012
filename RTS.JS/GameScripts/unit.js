@@ -13,6 +13,15 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
     this.id = id;
     this.takeDamage = function (damage) {
         this.health = this.health - damage;
+		if(this.type.team == "left")
+		{
+			leftTeamUnits = _.reject(leftTeamUnits, function (unitA) { return unitA.id == this.id;}, this);
+			
+		}
+		else
+		{
+			leftTeamUnits = _.reject(leftTeamUnits, function (unitA) { return unitA.id == this.id;}, this);
+		}
     };
     this.draw = function (ctx) {
         var everyone = leftTeamUnits.concat(rightTeamUnits);
@@ -25,7 +34,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
         else {
             var everyoneElse = _.reject(everyone, function (unitA) { return unitA.id == this.id || unitA.x >= this.x; }, this);
             closestUnit = _.min(everyoneElse, function (unitA) { return this.x - unitA.x }, this);        }
-        if(closestUnit && this.type.direction == 1 && closestUnit.x - this.x + this.type.speed > 35) {
+			if(closestUnit && this.type.direction == 1 && closestUnit.x - this.x + this.type.speed > 35) {
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
@@ -82,6 +91,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
             if (this.counter == 5) {
                 this.fightState += 64;
                 this.counter = 0;
+				closestUnit.takeDamage(this.damage);
             }
             if (this.fightState > 64) {
                 this.fightState = 0;
