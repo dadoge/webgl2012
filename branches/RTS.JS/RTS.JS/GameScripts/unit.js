@@ -76,7 +76,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
             }
             ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
         }
-        else{
+        else if(this.type.team != closestUnit.type.team){
             ctx.drawImage(this.image, 128 + this.fightState, 136, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
 
             if (this.counter == 5) {
@@ -88,6 +88,11 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
             }
             this.counter++;
         }
+		else
+		{
+			ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
+		}
+		
     }
 }
 
