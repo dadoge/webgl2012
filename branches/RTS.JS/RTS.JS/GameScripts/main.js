@@ -19,6 +19,11 @@ var isGameActive = false;
 var isPaused = false;
 var groundHeight = 50;
 
+var leftTeamMoney = 50;
+var rightTeamMoney = 50;
+var leftTeamExp = 0;
+var rightTeamExp = 0;
+
 
 //////////////////////////////////////////////////////////////////////////////////
 //                           Pre-Init
@@ -85,7 +90,7 @@ function startGame() {
 
 function gameLoop() {
     draw2();
-    handleBaseCollision();
+    
 }
 
 function draw2() {
@@ -122,22 +127,23 @@ function draw2() {
     ctx.textBaseline = "top";
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(max.x + "," + min.x, 0, 0);
+	
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillText("Money: " + leftTeamMoney, 0, 30);
+	
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillText("Money: " + rightTeamMoney, 660, 30);
+	
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillText("Experience: " + leftTeamExp, 0, 60);
+	
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillText("Experience: " + rightTeamExp, 620, 60);
+	
+	
     if (isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
         clearInterval(intervalID);
     }
 }
 
-function handleBaseCollision() {
-    for (i = 0; i < rightTeamUnits.length; i++) {
-        if (rightTeamUnits[i].x + rightTeamUnits[i].type.speed < 60) {
-            rightTeamUnits[i].type.speed = 0;
-            rightTeamUnits[i].x = 60
-        }
-    }
-    for (i = 0; i < leftTeamUnits.length; i++) {
-        if (leftTeamUnits[i].x + leftTeamUnits[i].type.speed >= 690) {
-            leftTeamUnits[i].type.speed = 0;
-        }
-    }
-}
