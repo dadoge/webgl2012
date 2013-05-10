@@ -15,9 +15,15 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
     this.draw = function (ctx) {
         ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
         var everyone = leftTeamUnits.concat(rightTeamUnits);
-        var everyoneElse = _.reject(everyone, function(unitA) { return unitA.id == this.id; }, this);
-        var closestUnit = _.min(everyoneElse, function (unitA) { return Math.abs(unitA.x - this.x) }, this);
-        
+        var closestUnit;
+
+        if (this.type.direction == 1) {
+            var everyoneElse = _.reject(everyone, function (unitA) { return unitA.id == this.id && unitA.x <= this.x + 30; }, this);
+            closestUnit = _.min(everyoneElse, function (unitA) { return unitA.x - this.x }, this);
+        }
+        else {
+            var everyoneElse = _.reject(everyone, function (unitA) { return unitA.id == this.id && unitA.x >= this.x - 30; }, this);
+            closestUnit = _.min(everyoneElse, function (unitA) { return this.x - unitA.x }, this);        }
         if(closestUnit && this.type.direction == 1 && closestUnit.x - this.x + this.type.speed > 30) {
             this.x += this.type.speed * this.type.direction;
 
@@ -34,7 +40,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
                 this.state = 0;
             }
         }
-        if (closestUnit && this.type.direction == -1 && (this.x - this.type.speed) - closestUnit.x  > 30) {
+        else if (closestUnit && this.type.direction == -1 && (this.x - this.type.speed) - closestUnit.x  > 30) {
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
@@ -50,24 +56,23 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
                 this.state = 0;
             }
         }
-        if (closestUnit == Infinity) {
-            {
-                this.x += this.type.speed * this.type.direction;
+        else if (closestUnit == Infinity) {
+            this.x += this.type.speed * this.type.direction;
 
-                if (this.x % 20 == 0) {
-                    this.state += spriteW;
-                }
-                if (this.x > Canvas.Width) {
-                    this.x = 0;
-                }
-                if (this.x < 0) {
-                    this.x = Canvas.Width;
-                }
-                if (this.state > spriteW * (spriteFrames - 1)) {
-                    this.state = 0;
-                }
+            if (this.x % 20 == 0) {
+                this.state += spriteW;
+            }
+            if (this.x > Canvas.Width) {
+                this.x = 0;
+            }
+            if (this.x < 0) {
+                this.x = Canvas.Width;
+            }
+            if (this.state > spriteW * (spriteFrames - 1)) {
+                this.state = 0;
             }
         }
     }
 }
+
 
