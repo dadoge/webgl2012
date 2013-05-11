@@ -13,11 +13,31 @@ var KEYS = {
 window.addEventListener('keydown', doKeyDown, true);
 window.addEventListener('keyup', doKeyUp, true);
 
-
+$('#btnStart').on("click", doStart);
+$('#btnStart').on("touchstart", doStart);
 ////////////////////////////////////////////////////////////////////////////
 //                        Callbacks
 ///////////////////////////////////////////////////////////////////////////
 
+function doStart() {
+    if (isGameActive == false) {
+        isGameActive = true;
+        startGame();
+    }
+
+    if (leftTeamMoney > leftType.cost) {
+        var newLeftType = {
+            speed: 5,
+            direction: 1,
+            health: 10,
+            damage: 3,
+            cost: 10,
+            team: 'left'
+        };
+        leftTeamUnits.push(new Unit(newLeftType, robotSprite, 64, 68, 4, 0, 400, ++unitCount));
+        leftTeamMoney -= leftType.cost;
+    }
+}
 
 function doKeyDown(evt) {
     switch (evt.keyCode) {     
