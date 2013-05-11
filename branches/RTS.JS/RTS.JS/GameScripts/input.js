@@ -52,7 +52,7 @@ function doStart2() {
             health: 10,
             damage: 3,
             cost: 10,
-            team: 'left'
+            team: 'right'
         };
         rightTeamUnits.push(new Unit(newRightType, robotSprite2, 64, 68, 4, Canvas.Width, 400, ++unitCount));
         rightTeamMoney -= rightType.cost;
