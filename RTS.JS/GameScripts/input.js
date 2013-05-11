@@ -14,7 +14,8 @@ window.addEventListener('keydown', doKeyDown, true);
 window.addEventListener('keyup', doKeyUp, true);
 
 $('#btnStart').on("click", doStart);
-$('#btnStart').on("touchstart", doStart);
+$('#btnStart2').on("click", doStart2);
+//$('#btnStart').on("touchstart", doStart);
 ////////////////////////////////////////////////////////////////////////////
 //                        Callbacks
 ///////////////////////////////////////////////////////////////////////////
@@ -38,7 +39,25 @@ function doStart() {
         leftTeamMoney -= leftType.cost;
     }
 }
+function doStart2() {
+    if (isGameActive == false) {
+        isGameActive = true;
+        startGame();
+    }
 
+    if (rightTeamMoney > rightType.cost) {
+        var newRightType = {
+            speed: 5,
+            direction: -1,
+            health: 10,
+            damage: 3,
+            cost: 10,
+            team: 'left'
+        };
+        rightTeamUnits.push(new Unit(newRightType, robotSprite2, 64, 68, 4, Canvas.Width, 400, ++unitCount));
+        rightTeamMoney -= rightType.cost;
+    }
+}
 function doKeyDown(evt) {
     switch (evt.keyCode) {     
         case KEYS.LEFT:
