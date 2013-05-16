@@ -11,7 +11,6 @@ var KEYS = {
 
 //Key Listeners
 window.addEventListener('keydown', doKeyDown, true);
-window.addEventListener('keyup', doKeyUp, true);
 
 $('#btnStart').on("click", doStart);
 $('#btnStart2').on("click", doStart2);
@@ -45,7 +44,7 @@ function doStart2() {
         startGame();
     }
 
-    if (rightTeamMoney > rightType.cost) {
+    if (rightTeamMoney >= rightType.cost) {
         var newRightType = {
             speed: 5,
             direction: -1,
@@ -61,7 +60,7 @@ function doStart2() {
 function doKeyDown(evt) {
     switch (evt.keyCode) {     
         case KEYS.LEFT:
-			if(leftTeamMoney > leftType.cost)
+			if(leftTeamMoney >= leftType.cost)
 			{
 				var newLeftType = {
 					speed:  5,
@@ -119,22 +118,6 @@ function doKeyDown(evt) {
     }
 }
 
-function doKeyUp(evt) {
-    switch (evt.keyCode) {    
-        case KEYS.LEFT:
-            LeftDown = false;
-            break;     
-        case KEYS.RIGHT:
-            RightDown = false;
-            break;    
-        case KEYS.UP:
-            UpDown = false;
-            break;   
-        case KEYS.DOWN:
-            DownDown = false;
-            break;
-    }
-}
 
 /////////////////////////////////////////////////////////////////////
 //                      Process Input
