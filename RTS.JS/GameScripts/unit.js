@@ -1,4 +1,4 @@
-function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
+function Unit(type,sprite, x, y, id) {
     this.type = type;
     this.damage = type.damage;
     this.health = type.health;
@@ -6,7 +6,10 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
     this.y = y;
     this.height = 5;
     this.width = 5;
-    this.image = sprite;
+    this.image = sprite.image;
+    this.spriteW = sprite.frameWidth;
+    this.spriteH = sprite.frameHeight;
+    this.spriteFrames = sprite.xFrames;
     this.state = 0;
     this.fightState = 0;
     this.counter = 0;
@@ -45,7 +48,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
-                this.state += spriteW;
+                this.state += this.spriteW;
             }
             if (this.x > Canvas.Width) {
                 this.x = 0;
@@ -53,16 +56,16 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
             if (this.x < 0) {
                 this.x = Canvas.Width;
             }
-            if (this.state > spriteW * (spriteFrames - 1)) {
+            if (this.state > this.spriteW * (this.spriteFrames - 1)) {
                 this.state = 0;
             }
-            ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
+            ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
         }
         else if (closestUnit && this.type.direction == -1 && (this.x - this.type.speed) - closestUnit.x  > 35) {
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
-                this.state += spriteW;
+                this.state += this.spriteW;
             }
             if (this.x > Canvas.Width) {
                 this.x = 0;
@@ -70,16 +73,16 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
             if (this.x < 0) {
                 this.x = Canvas.Width;
             }
-            if (this.state > spriteW * (spriteFrames - 1)) {
+            if (this.state > this.spriteW * (this.spriteFrames - 1)) {
                 this.state = 0;
             }
-            ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
+            ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
         }
         else if (closestUnit == Infinity) {
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
-                this.state += spriteW;
+                this.state += this.spriteW;
             }
             if (this.x > Canvas.Width) {
                 this.x = 0;
@@ -87,13 +90,13 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
             if (this.x < 0) {
                 this.x = Canvas.Width;
             }
-            if (this.state > spriteW * (spriteFrames - 1)) {
+            if (this.state > this.spriteW * (this.spriteFrames - 1)) {
                 this.state = 0;
             }
-            ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
+            ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
         }
         else if(this.type.team != closestUnit.type.team){
-            ctx.drawImage(this.image, 128 + this.fightState, 136, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
+            ctx.drawImage(this.image, 128 + this.fightState, 136, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
 
             if (this.counter == 5) {
                 this.fightState += 64;
@@ -115,7 +118,7 @@ function Unit(type,sprite, spriteW, spriteH, spriteFrames, x, y, id) {
         }
 		else
 		{
-			ctx.drawImage(this.image, 0 + this.state, 0, spriteW, spriteH, this.x, this.y, spriteW, spriteH);
+			ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
 		}
 		
     }
