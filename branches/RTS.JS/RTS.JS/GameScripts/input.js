@@ -62,14 +62,7 @@ function doKeyDown(evt) {
         case KEYS.LEFT:
 			if(leftTeamMoney >= leftType.cost)
 			{
-				var newLeftType = {
-					speed:  5,
-					direction: 1,
-					health: 10,
-					damage: 3,
-					cost: 10,
-					team: 'left'
-				};
+			    var newLeftType = new UnitType(5,1,10,3,10,'left');
 				leftTeamUnits.push(new Unit(newLeftType, blueRobotSprite, 0, 400, ++unitCount));
 				leftTeamMoney -= leftType.cost;
 			}
@@ -78,14 +71,7 @@ function doKeyDown(evt) {
         case KEYS.RIGHT:
 			if(rightTeamMoney > rightType.cost)
 			{
-				var newRightType = {
-				speed:  5,
-				direction: -1,
-				health: 10,
-				damage: 3,
-				cost: 10,
-				team: 'right'
-			};
+			    var newRightType = new UnitType(5,-1,10,3,10,'right');
 				rightTeamUnits.push(new Unit(newRightType, pinkRobotSprite, Canvas.Width, 400, ++unitCount));
 				rightTeamMoney -= rightType.cost;
 			}
