@@ -65,14 +65,13 @@ var rightBase = new Image();
 rightBase.src = 'base-right.png'
 
 var unitCount = 0;
+
 var leftTeamUnits = [];
 var rightTeamUnits = [];
 
 preinit();
 
 function preinit() {
-
-
 
     //Draw bottom pit
     ctx.fillStyle = "#000000";
