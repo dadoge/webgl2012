@@ -51,19 +51,20 @@ var leftType = {
 
 };
 
-var robotSprite = new Image();
-robotSprite.src = 'robot.png';
-var robotSprite2 = new Image();
-robotSprite2.src = 'robot2.png';
+var robotImage = new Image();
+robotImage.src = 'robot.png';
+var blueRobotSprite = new Sprite(robotImage, 64, 68, 4, 4);
+
+var robotImage2 = new Image();
+robotImage2.src = 'robot2.png';
+var pinkRobotSprite = new Sprite(robotImage2, 64, 68, 4, 4);
+
 var leftBase = new Image();
 leftBase.src = 'base-left.png'
 var rightBase = new Image();
 rightBase.src = 'base-right.png'
 
-var bro = new Image();
-bro.src = 'bro.png';
 var unitCount = 0;
-
 var leftTeamUnits = [];
 var rightTeamUnits = [];
 
@@ -80,7 +81,6 @@ function preinit() {
     ctx.fillStyle = "#00FF00";
     ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
 	
-	ctx.drawImage(bro, 0, 200);
 }
 
 

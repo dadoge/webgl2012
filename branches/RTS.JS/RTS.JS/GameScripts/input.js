@@ -71,7 +71,7 @@ function doKeyDown(evt) {
 					cost: 10,
 					team: 'left'
 				};
-				leftTeamUnits.push(new Unit(newLeftType, robotSprite, 64, 68, 4, 0, 400, ++unitCount));
+				leftTeamUnits.push(new Unit(newLeftType, blueRobotSprite, 0, 400, ++unitCount));
 				leftTeamMoney -= leftType.cost;
 			}
             LeftDown = true;
@@ -87,7 +87,7 @@ function doKeyDown(evt) {
 				cost: 10,
 				team: 'right'
 			};
-				rightTeamUnits.push(new Unit(newRightType, robotSprite2, 64, 68, 4, Canvas.Width, 400, ++unitCount));
+				rightTeamUnits.push(new Unit(newRightType, pinkRobotSprite, Canvas.Width, 400, ++unitCount));
 				rightTeamMoney -= rightType.cost;
 			}
             RightDown = true;
