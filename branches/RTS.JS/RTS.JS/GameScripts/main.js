@@ -63,6 +63,11 @@ var archerImage = new Image();
 archerImage.src = 'archer.png';
 var archerSprite = new Sprite(archerImage, 32, 48, 5, 5);
 
+var archer2Image = new Image();
+archer2Image.src = 'archer2.png';
+var archer2Sprite = new Sprite(archer2Image, 32, 48, 5, 5);
+
+
 var leftBase = new Image();
 leftBase.src = 'base-left.png'
 var rightBase = new Image();
