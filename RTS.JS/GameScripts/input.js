@@ -52,7 +52,7 @@ function doKeyDown(evt) {
 function sendLeftUnit()
 {
     if (leftTeamMoney > leftType.cost) {
-		var newLeftType = new UnitType(5,1,10,3,10,'left');
+		var newLeftType = new UnitType(5,1,10,3,35,10,'left');
 		leftTeamUnits.push(new Unit(newLeftType, blueRobotSprite, 0, 400, ++unitCount));
 		leftTeamMoney -= leftType.cost;
 	}
@@ -60,7 +60,7 @@ function sendLeftUnit()
 function sendRightUnit()
 {
     if (rightTeamMoney >= rightType.cost) {
-		var newRightType = new UnitType(5,-1,10,3,10,'right');
+		var newRightType = new UnitType(5,-1,10,3,35,10,'right');
 		rightTeamUnits.push(new Unit(newRightType, pinkRobotSprite, Canvas.Width, 400, ++unitCount));
 		rightTeamMoney -= rightType.cost;
     }
@@ -68,7 +68,7 @@ function sendRightUnit()
 function sendLeftArcher()
 {
     if(leftTeamMoney > 20){
-        var leftArcherType = new UnitType(5,1,10,3,10,'left');
+        var leftArcherType = new UnitType(5,1,10,3,100,10,'left');
         leftTeamUnits.push(new Unit(leftArcherType, archerSprite, 0, 400, ++unitCount));
         leftTeamMoney -= 20;
     }
