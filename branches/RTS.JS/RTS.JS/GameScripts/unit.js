@@ -14,6 +14,7 @@ function Unit(type, sprite, x, y, id) {
     this.fightState = 0;
     this.counter = 0;
     this.id = id;
+    this.range = type.range;
     this.takeDamage = function (damage) {
         this.health = this.health - damage;
         if (this.health <= 0) {
@@ -35,6 +36,10 @@ function Unit(type, sprite, x, y, id) {
     this.draw = function (ctx) {
         var everyone = leftTeamUnits.concat(rightTeamUnits);
         var closestUnit;
+        var closestEnemy = _.reject(everyone, function (unitA) {
+            return unitA.type.team == this.type.team ||
+                unitA.x - this.x > this.range;
+        }, this);
 
         if (this.type.direction == 1) {
             var everyoneElse = _.reject(everyone, function (unitA) {
@@ -53,6 +58,7 @@ function Unit(type, sprite, x, y, id) {
             }, this);
         }
         if (this.canMove(closestUnit)) {
+
             this.x += this.type.speed * this.type.direction;
 
             if (this.x % 20 == 0) {
@@ -70,7 +76,11 @@ function Unit(type, sprite, x, y, id) {
             ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
         }
         else if (this.type.team != closestUnit.type.team) {
-            this.attack(ctx,closestUnit);
+            this.attack(ctx, closestUnit);
+        }
+        else if(closestEnemy.length > 0 && this.type.team == 'left')
+        {
+            this.attack(ctx,closestEnemy[0]);
         }
         else {
             ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
@@ -79,10 +89,10 @@ function Unit(type, sprite, x, y, id) {
     this.canMove = function (closestUnit) {
         return (closestUnit && this.type.direction == 1 && closestUnit.x - (this.x + this.type.speed) > 35) ||
             (closestUnit && this.type.direction == -1 && (this.x - this.type.speed) - closestUnit.x > 35) ||
-            (closestUnit == Infinity) ;
+            (closestUnit == Infinity);
     }
 
-    this.attack = function (ctx,closestUnit) {
+    this.attack = function (ctx, closestUnit) {
         ctx.drawImage(this.image, 128 + this.fightState, 136, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
 
         if (this.counter == 5) {
