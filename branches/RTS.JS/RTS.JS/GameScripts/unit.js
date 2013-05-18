@@ -93,10 +93,10 @@ function Unit(type, sprite, x, y, id) {
     }
 
     this.attack = function (ctx, closestUnit) {
-        ctx.drawImage(this.image, 128 + this.fightState, 136, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
+        ctx.drawImage(this.image, 2*this.spriteW + this.fightState, 2*this.spriteH, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
 
         if (this.counter == 5) {
-            this.fightState += 64;
+            this.fightState += this.spriteW;
             this.counter = 0;
             var killed = closestUnit.takeDamage(this.damage);
             if (this.type.team == "left") {
