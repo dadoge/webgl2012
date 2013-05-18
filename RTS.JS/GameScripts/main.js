@@ -59,6 +59,10 @@ var robotImage2 = new Image();
 robotImage2.src = 'robot2.png';
 var pinkRobotSprite = new Sprite(robotImage2, 64, 68, 4, 4);
 
+var archerImage = new Image();
+archerImage.src = 'archer.png';
+var archerSprite = new Sprite(archerImage, 32, 48, 5, 5);
+
 var leftBase = new Image();
 leftBase.src = 'base-left.png'
 var rightBase = new Image();
