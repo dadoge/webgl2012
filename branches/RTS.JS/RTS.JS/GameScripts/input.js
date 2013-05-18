@@ -31,6 +31,9 @@ function doKeyDown(evt) {
         case KEYS.SPACE:
 			startGame();
             break;
+        case KEYS.UP:
+            sendLeftArcher();
+            break;
         case KEYS.P:
             if (isPaused == true) {
                 isPaused = false;
@@ -61,6 +64,15 @@ function sendRightUnit()
 		rightTeamUnits.push(new Unit(newRightType, pinkRobotSprite, Canvas.Width, 400, ++unitCount));
 		rightTeamMoney -= rightType.cost;
     }
+}
+function sendLeftArcher()
+{
+    if(leftTeamMoney > 20){
+        var leftArcherType = new UnitType(5,1,10,3,10,'left');
+        leftTeamUnits.push(new Unit(leftArcherType, archerSprite, 0, 400, ++unitCount));
+        leftTeamMoney -= 20;
+    }
+
 }
 function start(){
     if (isGameActive == false) {
