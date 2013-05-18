@@ -15,6 +15,7 @@ window.addEventListener('keydown', doKeyDown, true);
 $('#btn_leftA').on("click", sendLeftUnit);
 $('#btn_leftB').on("click", sendLeftArcher);
 $('#btn_rightA').on("click", sendRightUnit);
+$('#btn_rightB').on("click", sendRightArcher);
 
 $('#btn_start').on("click", start);
 ////////////////////////////////////////////////////////////////////////////
@@ -34,6 +35,9 @@ function doKeyDown(evt) {
             break;
         case KEYS.UP:
             sendLeftArcher();
+            break;
+        case KEYS.DOWN:
+            sendRightArcher();
             break;
         case KEYS.P:
             if (isPaused == true) {
@@ -73,7 +77,14 @@ function sendLeftArcher()
         leftTeamUnits.push(new Unit(leftArcherType, archerSprite, 0, 400, ++unitCount));
         leftTeamMoney -= 20;
     }
-
+}
+function sendRightArcher()
+{
+    if(rightTeamMoney > 20){
+        var rightArcherType = new UnitType(5,-1,10,3,100,10,'right');
+        rightTeamUnits.push(new Unit(rightArcherType, archer2Sprite, Canvas.Width, 400, ++unitCount));
+        rightTeamMoney -= 20;
+    }
 }
 function start(){
     if (isGameActive == false) {

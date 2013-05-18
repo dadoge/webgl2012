@@ -36,10 +36,7 @@ function Unit(type, sprite, x, y, id) {
     this.draw = function (ctx) {
         var everyone = leftTeamUnits.concat(rightTeamUnits);
         var closestUnit;
-        var closestEnemy = _.reject(everyone, function (unitA) {
-            return unitA.type.team == this.type.team ||
-                unitA.x - this.x > this.range;
-        }, this);
+        var closestEnemy;
 
         if (this.type.direction == 1) {
             var everyoneElse = _.reject(everyone, function (unitA) {
@@ -48,6 +45,10 @@ function Unit(type, sprite, x, y, id) {
             closestUnit = _.min(everyoneElse, function (unitA) {
                 return unitA.x - this.x
             }, this);
+            closestEnemy = _.reject(everyone, function (unitA) {
+                return unitA.type.team == this.type.team ||
+                    unitA.x - this.x > this.range;
+            }, this);
         }
         else {
             var everyoneElse = _.reject(everyone, function (unitA) {
@@ -55,6 +56,10 @@ function Unit(type, sprite, x, y, id) {
             }, this);
             closestUnit = _.min(everyoneElse, function (unitA) {
                 return this.x - unitA.x
+            }, this);
+            closestEnemy = _.reject(everyone, function (unitA) {
+                return unitA.type.team == this.type.team ||
+                   this.x - unitA.x > this.range;
             }, this);
         }
         if (this.canMove(closestUnit)) {
@@ -78,7 +83,7 @@ function Unit(type, sprite, x, y, id) {
         else if (this.type.team != closestUnit.type.team) {
             this.attack(ctx, closestUnit);
         }
-        else if(closestEnemy.length > 0 && this.type.team == 'left')
+        else if(closestEnemy.length > 0)
         {
             this.attack(ctx,closestEnemy[0]);
         }
