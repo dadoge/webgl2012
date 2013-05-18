@@ -19,8 +19,8 @@ var isGameActive = false;
 var isPaused = false;
 var groundHeight = 50;
 
-var leftTeamMoney = 50;
-var rightTeamMoney = 50;
+var leftTeamMoney = 100;
+var rightTeamMoney = 100;
 var leftTeamExp = 0;
 var rightTeamExp = 0;
 var leftBaseHealth = 300;
