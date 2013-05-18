@@ -13,6 +13,7 @@ var KEYS = {
 window.addEventListener('keydown', doKeyDown, true);
 
 $('#btn_leftA').on("click", sendLeftUnit);
+$('#btn_leftB').on("click", sendLeftArcher);
 $('#btn_rightA').on("click", sendRightUnit);
 
 $('#btn_start').on("click", start);
