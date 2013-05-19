@@ -56,7 +56,7 @@ function doKeyDown(evt) {
 //this should really be sendunit(type), but we'll get there.
 function sendLeftUnit()
 {
-    if (leftTeamMoney > leftType.cost) {
+    if (leftTeamMoney >= leftType.cost) {
 		var newLeftType = new UnitType(5,1,10,3,35,10,'left');
 		leftTeamUnits.push(new Unit(newLeftType, blueRobotSprite, 0, 400, ++unitCount));
 		leftTeamMoney -= leftType.cost;
@@ -72,7 +72,7 @@ function sendRightUnit()
 }
 function sendLeftArcher()
 {
-    if(leftTeamMoney > 20){
+    if(leftTeamMoney >= 20){
         var leftArcherType = new UnitType(5,1,10,3,100,10,'left');
         leftTeamUnits.push(new Unit(leftArcherType, archerSprite, 0, 400, ++unitCount));
         leftTeamMoney -= 20;
@@ -80,7 +80,7 @@ function sendLeftArcher()
 }
 function sendRightArcher()
 {
-    if(rightTeamMoney > 20){
+    if(rightTeamMoney >= 20){
         var rightArcherType = new UnitType(5,-1,10,3,100,10,'right');
         rightTeamUnits.push(new Unit(rightArcherType, archer2Sprite, Canvas.Width, 400, ++unitCount));
         rightTeamMoney -= 20;
