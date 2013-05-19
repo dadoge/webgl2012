@@ -88,7 +88,17 @@ function preinit() {
 
     ctx.fillStyle = "#00FF00";
     ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
-	
+    leftTeamMoney = 100;
+    rightTeamMoney = 100;
+    leftTeamExp = 0;
+    rightTeamExp = 0;
+    leftBaseHealth = 300;
+    rightBaseHealth = 300;
+
+   unitCount = 0;
+
+   leftTeamUnits = [];
+   rightTeamUnits = [];
 }
 
 
