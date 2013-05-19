@@ -35,33 +35,9 @@ function Unit(type, sprite, x, y, id) {
     };
     this.draw = function (ctx) {
         var everyone = leftTeamUnits.concat(rightTeamUnits);
-        var closestUnit;
-        var closestEnemy;
+        var closestUnit = this.getClosestUnit(everyone);
+        var closestEnemy = this.getClosestEnemy(everyone);
 
-        if (this.type.direction == 1) {
-            var everyoneElse = _.reject(everyone, function (unitA) {
-                return unitA.id == this.id || unitA.x <= this.x;
-            }, this);
-            closestUnit = _.min(everyoneElse, function (unitA) {
-                return unitA.x - this.x
-            }, this);
-            closestEnemy = _.reject(everyone, function (unitA) {
-                return unitA.type.team == this.type.team ||
-                    unitA.x - this.x > this.range;
-            }, this);
-        }
-        else {
-            var everyoneElse = _.reject(everyone, function (unitA) {
-                return unitA.id == this.id || unitA.x >= this.x;
-            }, this);
-            closestUnit = _.min(everyoneElse, function (unitA) {
-                return this.x - unitA.x
-            }, this);
-            closestEnemy = _.reject(everyone, function (unitA) {
-                return unitA.type.team == this.type.team ||
-                   this.x - unitA.x > this.range;
-            }, this);
-        }
         if (this.canMove(closestUnit)) {
 
             this.x += this.type.speed * this.type.direction;
@@ -90,6 +66,40 @@ function Unit(type, sprite, x, y, id) {
         else {
             ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
         }
+    }
+    this.getClosestUnit = function (everyone) {
+        if (this.type.direction == 1) {
+            var everyoneElse = _.reject(everyone, function (unitA) {
+                return unitA.id == this.id || unitA.x <= this.x;
+            }, this);
+            var closestUnit = _.min(everyoneElse, function (unitA) {
+                return unitA.x - this.x
+            }, this);
+        }
+        else {
+            var everyoneElse = _.reject(everyone, function (unitA) {
+                return unitA.id == this.id || unitA.x >= this.x;
+            }, this);
+            var closestUnit = _.min(everyoneElse, function (unitA) {
+                return this.x - unitA.x
+            }, this);
+        }
+        return closestUnit
+    };
+    this.getClosestEnemy = function(everyone){
+        if (this.type.direction == 1) {
+            var closestEnemy = _.reject(everyone, function (unitA) {
+                return unitA.type.team == this.type.team ||
+                    unitA.x - this.x > this.range;
+            }, this);
+        }
+        else {
+            var closestEnemy = _.reject(everyone, function (unitA) {
+                return unitA.type.team == this.type.team ||
+                    this.x - unitA.x > this.range;
+            }, this);
+        }
+        return closestEnemy;
     }
     this.canMove = function (closestUnit) {
         return (closestUnit && this.type.direction == 1 && closestUnit.x - (this.x + this.type.speed) > 35) ||
