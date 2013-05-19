@@ -31,15 +31,7 @@ function doKeyDown(evt) {
 			sendRightUnit();
 			break;
         case KEYS.SPACE:
-            if(isGameActive)
-            {
-			    startGame();
-            }
-            else
-            {
-				preinit();
-				startGame();
-            }
+            start();
             break;
         case KEYS.UP:
             sendLeftArcher();
@@ -95,9 +87,11 @@ function sendRightArcher()
     }
 }
 function start(){
-    if (isGameActive == false) {
+    if(!isGameActive)
+    {
+        preinit();
+        startGame();
         isGameActive = true;
-		startGame();
     }
 }
 
