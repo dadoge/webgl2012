@@ -1,3 +1,3 @@
-function Player(money){
+function Player(){
 
 }
