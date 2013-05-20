@@ -25,23 +25,19 @@ window.addEventListener('keydown', doKeyDown, true);
 function doKeyDown(evt) {
     switch (evt.keyCode) {     
         case KEYS.LEFT:
-            var newLeftType = new UnitType(5,1,10,3,35,10,'left');
-			sendUnit(leftPlayer,newLeftType,blueRobotSprite)
+			sendUnit(leftPlayer,leftPlayer.types['robotType'],blueRobotSprite)
             break;    
         case KEYS.RIGHT:
-            var newRightType = new UnitType(5,-1,10,3,35,10,'right');
-			sendUnit(rightPlayer,newRightType,pinkRobotSprite);
+			sendUnit(rightPlayer,rightPlayer.types['robotType'],pinkRobotSprite);
 			break;
         case KEYS.SPACE:
             start();
             break;
         case KEYS.UP:
-            var leftArcherType = new UnitType(5,1,10,3,100,10,'left');
-            sendUnit(leftPlayer,leftArcherType,archerSprite);
+            sendUnit(leftPlayer,leftPlayer.types['archerType'],archerSprite);
             break;
         case KEYS.DOWN:
-            var rightArcherType = new UnitType(5,-1,10,3,100,10,'right');
-            sendUnit(rightPlayer, rightArcherType, archer2Sprite);
+            sendUnit(rightPlayer, rightPlayer.types['archerType'], archer2Sprite);
             break;
         case KEYS.P:
             if (game.isPaused == true) {
@@ -62,8 +58,8 @@ function sendUnit(player,type,sprite){
     if(player.money >= type.cost)
     {
         player.units.push(new Unit(type,sprite,player.baseX,player.baseY, ++unitCount))
+        player.money -= type.cost;
     }
-    player.money -= type.cost;
 }
 function start(){
     if(!game.isGameActive)
