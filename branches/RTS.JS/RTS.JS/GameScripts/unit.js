@@ -1,7 +1,10 @@
 function Unit(type, sprite, x, y, id) {
-    this.type = type;
+    this.speed = type.speed;
     this.damage = type.damage;
     this.health = type.health;
+    this.team = type.team;
+    this.range = type.range;
+    this.direction = type.direction;
     this.x = x;
     this.y = y;
     this.height = 5;
@@ -14,11 +17,11 @@ function Unit(type, sprite, x, y, id) {
     this.fightState = 0;
     this.counter = 0;
     this.id = id;
-    this.range = type.range;
+
     this.takeDamage = function (damage) {
         this.health = this.health - damage;
         if (this.health <= 0) {
-            if (this.type.team == "left") {
+            if (this.team == "left") {
                 leftPlayer.units = _.reject(leftPlayer.units, function (unitA) {
                     return unitA.id == this.id;
                 }, this);
@@ -40,7 +43,7 @@ function Unit(type, sprite, x, y, id) {
 
         if (this.canMove(closestUnit)) {
 
-            this.x += this.type.speed * this.type.direction;
+            this.x += this.speed * this.direction;
 
             if (this.x % 20 == 0) {
                 this.state += this.spriteW;
@@ -56,7 +59,7 @@ function Unit(type, sprite, x, y, id) {
             }
             ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
         }
-        else if (this.type.team != closestUnit.type.team) {
+        else if (this.team != closestUnit.team) {
             this.attack(ctx, closestUnit);
         }
         else if(closestEnemy.length > 0)
@@ -68,7 +71,7 @@ function Unit(type, sprite, x, y, id) {
         }
     }
     this.getClosestUnit = function (everyone) {
-        if (this.type.direction == 1) {
+        if (this.direction == 1) {
             var everyoneElse = _.reject(everyone, function (unitA) {
                 return unitA.id == this.id || unitA.x <= this.x;
             }, this);
@@ -87,23 +90,23 @@ function Unit(type, sprite, x, y, id) {
         return closestUnit
     };
     this.getClosestEnemy = function(everyone){
-        if (this.type.direction == 1) {
+        if (this.direction == 1) {
             var closestEnemy = _.reject(everyone, function (unitA) {
-                return unitA.type.team == this.type.team ||
+                return unitA.team == this.team ||
                     unitA.x - this.x > this.range;
             }, this);
         }
         else {
             var closestEnemy = _.reject(everyone, function (unitA) {
-                return unitA.type.team == this.type.team ||
+                return unitA.team == this.team ||
                     this.x - unitA.x > this.range;
             }, this);
         }
         return closestEnemy;
     }
     this.canMove = function (closestUnit) {
-        return (closestUnit && this.type.direction == 1 && closestUnit.x - (this.x + this.type.speed) > 35) ||
-            (closestUnit && this.type.direction == -1 && (this.x - this.type.speed) - closestUnit.x > 35) ||
+        return (closestUnit && this.direction == 1 && closestUnit.x - (this.x + this.speed) > 35) ||
+            (closestUnit && this.direction == -1 && (this.x - this.speed) - closestUnit.x > 35) ||
             (closestUnit == Infinity);
     }
 
@@ -114,7 +117,7 @@ function Unit(type, sprite, x, y, id) {
             this.fightState += this.spriteW;
             this.counter = 0;
             var killed = closestUnit.takeDamage(this.damage);
-            if (this.type.team == "left") {
+            if (this.team == "left") {
                 leftPlayer.money += killed * 8;
             }
             else {

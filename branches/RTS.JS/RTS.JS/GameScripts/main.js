@@ -10,10 +10,17 @@ var Canvas = {
     Height: c.height,
     Width: c.width
 };
-
+var baseLeftTypes = {
+    robotType : new UnitType(5,1,10,3,35,10,'left'),
+    archerType : new UnitType(5,1,10,3,100,10,'left')
+}
+var baseRightTypes = {
+    robotType : new UnitType(5,-1,10,3,35,10,'right'),
+    archerType : new UnitType(5,-1,10,3,100,10,'right')
+}
 var game = new Game();
-var leftPlayer = new Player(100,0, [],0,400);
-var rightPlayer = new Player(100,0,[],Canvas.Width,400);
+var leftPlayer = new Player(100,0, [],0,400, baseLeftTypes);
+var rightPlayer = new Player(100,0,[],Canvas.Width,400, baseRightTypes);
 
 var leftBaseHealth = 300;
 var rightBaseHealth = 300;
@@ -178,14 +185,14 @@ function handleBaseCollision() {
 	
 	if (leftTeamMax.x > 690) {
 	// Player is attacking base
-	leftTeamMax.type.speed = 0;
-	rightBaseHealth -= leftTeamMax.type.damage;
+	leftTeamMax.speed = 0;
+	rightBaseHealth -= leftTeamMax.damage;
 	}
 	
 	if (rightTeamMin.x < 60) {
 	// Player is attacking base
-	rightTeamMin.type.speed = 0;
-	leftBaseHealth -= rightTeamMin.type.damage;
+	rightTeamMin.speed = 0;
+	leftBaseHealth -= rightTeamMin.damage;
 	}
 	
 }
