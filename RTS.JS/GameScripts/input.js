@@ -12,12 +12,12 @@ var KEYS = {
 //Key Listeners
 window.addEventListener('keydown', doKeyDown, true);
 
-//$('#btn_leftA').on("click", sendLeftUnit);
-//$('#btn_leftB').on("click", sendLeftArcher);
-//$('#btn_rightA').on("click", sendRightUnit);
-//$('#btn_rightB').on("click", sendRightArcher);
+$('#btn_leftA').on("click", function(){sendUnit(leftPlayer,leftPlayer.types['robotType'],blueRobotSprite)});
+$('#btn_rightA').on("click", function(){sendUnit(rightPlayer,rightPlayer.types['robotType'],pinkRobotSprite)});
+$('#btn_leftB').on("click", function(){sendUnit(leftPlayer,leftPlayer.types['archerType'],archerSprite)});
+$('#btn_rightB').on("click", function(){sendUnit(rightPlayer, rightPlayer.types['archerType'], archer2Sprite)});
 
-//$('#btn_start').on("click", start);
+$('#btn_start').on("click", start);
 ////////////////////////////////////////////////////////////////////////////
 //                        Callbacks
 ///////////////////////////////////////////////////////////////////////////
@@ -25,7 +25,7 @@ window.addEventListener('keydown', doKeyDown, true);
 function doKeyDown(evt) {
     switch (evt.keyCode) {     
         case KEYS.LEFT:
-			sendUnit(leftPlayer,leftPlayer.types['robotType'],blueRobotSprite)
+			sendUnit(leftPlayer,leftPlayer.types['robotType'],blueRobotSprite);
             break;    
         case KEYS.RIGHT:
 			sendUnit(rightPlayer,rightPlayer.types['robotType'],pinkRobotSprite);
