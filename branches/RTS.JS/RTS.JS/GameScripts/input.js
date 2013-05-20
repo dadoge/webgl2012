@@ -40,12 +40,12 @@ function doKeyDown(evt) {
             sendRightArcher();
             break;
         case KEYS.P:
-            if (isPaused == true) {
-                isPaused = false;
+            if (globals.isPaused == true) {
+                globals.isPaused = false;
                 startGame();
             }
             else {
-                isPaused = true;
+                globals.isPaused = true;
             }
             break;
     }
@@ -87,11 +87,11 @@ function sendRightArcher()
     }
 }
 function start(){
-    if(!isGameActive)
+    if(!globals.isGameActive)
     {
         preinit();
         startGame();
-        isGameActive = true;
+        globals.isGameActive = true;
     }
 }
 
