@@ -1,7 +1,7 @@
 ﻿///////////////////////////////////////////////////////////////////////////////////////
 //                           Variables
 //////////////////////////////////////////////////////////////////////////////////////
-
+var globals = new Global();
 
 var c = document.getElementById("RTS_BG");
 var ctx = c.getContext("2d");
@@ -12,8 +12,6 @@ var Canvas = {
     Width: c.width
 };
 
-//Game Variables
-var intervalID;
 var FPS = 30;
 var isGameActive = false;
 var isPaused = false;
@@ -107,7 +105,7 @@ function preinit() {
 ///////////////////////////////////////////////////////////////////////////////////
 function startGame() {
     isGameActive = true;
-        intervalID = setInterval(gameLoop, 1000 / FPS);
+        globals.intervalID = setInterval(gameLoop, 1000 / FPS);
 }
 
 function gameLoop() {
@@ -171,13 +169,13 @@ function draw2() {
 	
     if (isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
-        clearInterval(intervalID);
+        clearInterval(globals.intervalID);
     }
 	
 	if (rightBaseHealth <= 0 || leftBaseHealth <= 0) {
         isGameActive = false;
 		ctx.fillText("Game Over. Press 'Space' to start over.", 50, 200);
-        clearInterval(intervalID);
+        clearInterval(globals.intervalID);
     }
 }
 
