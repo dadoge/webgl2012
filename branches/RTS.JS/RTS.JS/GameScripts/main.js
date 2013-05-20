@@ -1,7 +1,6 @@
 ﻿///////////////////////////////////////////////////////////////////////////////////////
 //                           Variables
 //////////////////////////////////////////////////////////////////////////////////////
-var globals = new Global();
 
 var c = document.getElementById("RTS_BG");
 var ctx = c.getContext("2d");
@@ -12,10 +11,10 @@ var Canvas = {
     Width: c.width
 };
 
-var leftTeamMoney = 100;
-var rightTeamMoney = 100;
-var leftTeamExp = 0;
-var rightTeamExp = 0;
+var game = new Game();
+var leftPlayer = new Player(100,0, [],0,400);
+var rightPlayer = new Player(100,0,[],Canvas.Width,400);
+
 var leftBaseHealth = 300;
 var rightBaseHealth = 300;
 
@@ -68,9 +67,6 @@ rightBase.src = 'base-right.png'
 
 var unitCount = 0;
 
-var leftTeamUnits = [];
-var rightTeamUnits = [];
-
 preinit();
 
 function preinit() {
@@ -80,18 +76,19 @@ function preinit() {
     ctx.fillRect(0, 0, Canvas.Width, Canvas.Height);
 
     ctx.fillStyle = "#00FF00";
-    ctx.fillRect(0, Canvas.Height - globals.groundHeight, Canvas.Width, Canvas.Height);
-    leftTeamMoney = 100;
-    rightTeamMoney = 100;
-    leftTeamExp = 0;
-    rightTeamExp = 0;
+    ctx.fillRect(0, Canvas.Height - game.groundHeight, Canvas.Width, Canvas.Height);
+
+    leftPlayer.money = 100;
+    rightPlayer.money = 100;
+    leftPlayer.experience = 0;
+    rightPlayer.experience = 0;
+    leftPlayer.units = [];
+    rightPlayer.units = [];
+
     leftBaseHealth = 300;
     rightBaseHealth = 300;
 
-   unitCount = 0;
-
-   leftTeamUnits = [];
-   rightTeamUnits = [];
+    unitCount = 0;
 }
 
 
@@ -99,8 +96,8 @@ function preinit() {
 //                    Start Up Game
 ///////////////////////////////////////////////////////////////////////////////////
 function startGame() {
-    globals.isGameActive = true;
-        globals.intervalID = setInterval(gameLoop, 1000 / globals.FPS);
+    game.isGameActive = true;
+        game.intervalID = setInterval(gameLoop, 1000 / game.FPS);
 }
 
 function gameLoop() {
@@ -118,7 +115,7 @@ function draw2() {
     ctx.fillRect(0, 0, Canvas.Width, Canvas.Height);
 
     ctx.fillStyle = "#00FF00";
-    ctx.fillRect(0, Canvas.Height - globals.groundHeight, Canvas.Width, Canvas.Height);
+    ctx.fillRect(0, Canvas.Height - game.groundHeight, Canvas.Width, Canvas.Height);
 	
 	//Place left base on screen
 	ctx.drawImage(leftBase, -100, 260);
@@ -126,17 +123,17 @@ function draw2() {
 	ctx.drawImage(rightBase, 730, 260);
 	
 
-    for(i = 0;  i < leftTeamUnits.length; i++)
+    for(i = 0;  i < leftPlayer.units.length; i++)
     {
-        leftTeamUnits[i].draw(ctx);
+        leftPlayer.units[i].draw(ctx);
     }
     
-    for (i = 0; i < rightTeamUnits.length; i++) {
-        rightTeamUnits[i].draw(ctx);
+    for (i = 0; i < rightPlayer.units.length; i++) {
+        rightPlayer.units[i].draw(ctx);
     }
 
-    var max = _.max(leftTeamUnits, function (ltu) { return ltu.x; });
-    var min = _.min(rightTeamUnits, function (rtu) { return rtu.x; });
+    var max = _.max(leftPlayer.units, function (ltu) { return ltu.x; });
+    var min = _.min(rightPlayer.units, function (rtu) { return rtu.x; });
     //Draw Score and lives
     ctx.font = "20pt Arial";
     ctx.textBaseline = "top";
@@ -144,16 +141,16 @@ function draw2() {
     ctx.fillText(max.x + "," + min.x, 0, 0);
 	
 	ctx.fillStyle = "#FFFFFF";
-	ctx.fillText("Money: " + leftTeamMoney, 0, 30);
+	ctx.fillText("Money: " + leftPlayer.money, 0, 30);
 	
 	ctx.fillStyle = "#FFFFFF";
-	ctx.fillText("Money: " + rightTeamMoney, 660, 30);
+	ctx.fillText("Money: " + rightPlayer.money, 660, 30);
 	
 	ctx.fillStyle = "#FFFFFF";
-	ctx.fillText("Experience: " + leftTeamExp, 0, 60);
+	ctx.fillText("Experience: " + leftPlayer.experience, 0, 60);
 	
 	ctx.fillStyle = "#FFFFFF";
-	ctx.fillText("Experience: " + rightTeamExp, 620, 60);
+	ctx.fillText("Experience: " + rightPlayer.experience, 620, 60);
 	
 	ctx.fillStyle = "#FFFFFF";
 	ctx.fillText("Health: " + leftBaseHealth, 0, 90);
@@ -162,22 +159,22 @@ function draw2() {
 	ctx.fillText("Health: " + rightBaseHealth, 660, 90);
 	
 	
-    if (globals.isPaused) {
+    if (game.isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
-        clearInterval(globals.intervalID);
+        clearInterval(game.intervalID);
     }
 	
 	if (rightBaseHealth <= 0 || leftBaseHealth <= 0) {
-        globals.isGameActive = false;
+        game.isGameActive = false;
 		ctx.fillText("Game Over. Press 'Space' to start over.", 50, 200);
-        clearInterval(globals.intervalID);
+        clearInterval(game.intervalID);
     }
 }
 
 function handleBaseCollision() {
 	
-	var leftTeamMax = _.max(leftTeamUnits, function (ltu) { return ltu.x; });
-    var rightTeamMin = _.min(rightTeamUnits, function (rtu) { return rtu.x; });
+	var leftTeamMax = _.max(leftPlayer.units, function (ltu) { return ltu.x; });
+    var rightTeamMin = _.min(rightPlayer.units, function (rtu) { return rtu.x; });
 	
 	if (leftTeamMax.x > 690) {
 	// Player is attacking base
