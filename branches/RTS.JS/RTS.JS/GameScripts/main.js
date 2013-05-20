@@ -12,11 +12,6 @@ var Canvas = {
     Width: c.width
 };
 
-var FPS = 30;
-var isGameActive = false;
-var isPaused = false;
-var groundHeight = 50;
-
 var leftTeamMoney = 100;
 var rightTeamMoney = 100;
 var leftTeamExp = 0;
@@ -85,7 +80,7 @@ function preinit() {
     ctx.fillRect(0, 0, Canvas.Width, Canvas.Height);
 
     ctx.fillStyle = "#00FF00";
-    ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
+    ctx.fillRect(0, Canvas.Height - globals.groundHeight, Canvas.Width, Canvas.Height);
     leftTeamMoney = 100;
     rightTeamMoney = 100;
     leftTeamExp = 0;
@@ -104,8 +99,8 @@ function preinit() {
 //                    Start Up Game
 ///////////////////////////////////////////////////////////////////////////////////
 function startGame() {
-    isGameActive = true;
-        globals.intervalID = setInterval(gameLoop, 1000 / FPS);
+    globals.isGameActive = true;
+        globals.intervalID = setInterval(gameLoop, 1000 / globals.FPS);
 }
 
 function gameLoop() {
@@ -123,7 +118,7 @@ function draw2() {
     ctx.fillRect(0, 0, Canvas.Width, Canvas.Height);
 
     ctx.fillStyle = "#00FF00";
-    ctx.fillRect(0, Canvas.Height - groundHeight, Canvas.Width, Canvas.Height);
+    ctx.fillRect(0, Canvas.Height - globals.groundHeight, Canvas.Width, Canvas.Height);
 	
 	//Place left base on screen
 	ctx.drawImage(leftBase, -100, 260);
@@ -167,13 +162,13 @@ function draw2() {
 	ctx.fillText("Health: " + rightBaseHealth, 660, 90);
 	
 	
-    if (isPaused) {
+    if (globals.isPaused) {
         ctx.fillText("Game Paused. Press 'p' to resume.", 50, 200);
         clearInterval(globals.intervalID);
     }
 	
 	if (rightBaseHealth <= 0 || leftBaseHealth <= 0) {
-        isGameActive = false;
+        globals.isGameActive = false;
 		ctx.fillText("Game Over. Press 'Space' to start over.", 50, 200);
         clearInterval(globals.intervalID);
     }
