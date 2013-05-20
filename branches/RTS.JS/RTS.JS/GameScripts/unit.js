@@ -19,13 +19,13 @@ function Unit(type, sprite, x, y, id) {
         this.health = this.health - damage;
         if (this.health <= 0) {
             if (this.type.team == "left") {
-                leftTeamUnits = _.reject(leftTeamUnits, function (unitA) {
+                leftPlayer.units = _.reject(leftPlayer.units, function (unitA) {
                     return unitA.id == this.id;
                 }, this);
 
             }
             else {
-                rightTeamUnits = _.reject(rightTeamUnits, function (unitA) {
+                rightPlayer.units = _.reject(rightPlayer.units, function (unitA) {
                     return unitA.id == this.id;
                 }, this);
             }
@@ -34,7 +34,7 @@ function Unit(type, sprite, x, y, id) {
         return 0;
     };
     this.draw = function (ctx) {
-        var everyone = leftTeamUnits.concat(rightTeamUnits);
+        var everyone = leftPlayer.units.concat(rightPlayer.units);
         var closestUnit = this.getClosestUnit(everyone);
         var closestEnemy = this.getClosestEnemy(everyone);
 
@@ -115,10 +115,10 @@ function Unit(type, sprite, x, y, id) {
             this.counter = 0;
             var killed = closestUnit.takeDamage(this.damage);
             if (this.type.team == "left") {
-                leftTeamMoney += killed * 8;
+                leftPlayer.money += killed * 8;
             }
             else {
-                rightTeamMoney += killed * 8;
+                rightPlayer.money += killed * 8;
             }
         }
         if (this.fightState > 64) {
