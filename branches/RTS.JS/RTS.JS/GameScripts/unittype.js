@@ -6,5 +6,11 @@ function UnitType(speed, direction, health, damage, range, cost, team) {
     this.range = range;
     this.cost = cost;
     this.team = team;
+    this.getBehavior = function(){
+        var self = this;
+        if(self.canMove(self.getClosestUnit(leftPlayer.units.concat(rightPlayer.units)))){
+            return self.walkBehavior;
+        }
+    }
 }
    
