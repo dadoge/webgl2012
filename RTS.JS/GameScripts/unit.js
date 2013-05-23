@@ -1,4 +1,4 @@
-function Unit(type, sprite, x, y, id) {
+function Unit(type, sprite, x, y, id, walkBehavior) {
     this.speed = type.speed;
     this.damage = type.damage;
     this.health = type.health;
@@ -17,7 +17,7 @@ function Unit(type, sprite, x, y, id) {
     this.fightState = 0;
     this.counter = 0;
     this.id = id;
-
+    this.walkBehavior = walkBehavior;
     this.takeDamage = function (damage) {
         this.health = this.health - damage;
         if (this.health <= 0) {
@@ -42,22 +42,29 @@ function Unit(type, sprite, x, y, id) {
         var closestEnemy = this.getClosestEnemy(everyone);
 
         if (this.canMove(closestUnit)) {
-
-            this.x += this.speed * this.direction;
-
-            if (this.x % 20 == 0) {
-                this.state += this.spriteW;
-            }
-            if (this.x > Canvas.Width) {
-                this.x = 0;
-            }
-            if (this.x < 0) {
-                this.x = Canvas.Width;
-            }
-            if (this.state > this.spriteW * (this.spriteFrames - 1)) {
-                this.state = 0;
-            }
-            ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
+      //
+      //      this.x += this.speed * this.direction;
+      //
+      //      if (this.x % 20 == 0) {
+      //          this.state += this.spriteW;
+      //      }
+      //      if (this.x > Canvas.Width) {
+      //          this.x = 0;
+      //      }
+      //      if (this.x < 0) {
+      //          this.x = Canvas.Width;
+      //      }
+      //      if (this.state > this.spriteW * (this.spriteFrames - 1)) {
+      //          this.state = 0;
+      //      }
+            this.walkBehavior.update(this);
+            ctx.drawImage(this.image,
+                walkBehavior.frames[Math.floor(walkBehavior.state/5)].x * this.spriteW,
+                walkBehavior.frames[Math.floor(walkBehavior.state/5)].y * this.spriteH,
+                this.spriteW,
+                this.spriteH,
+                this.x, this.y, this.spriteW, this.spriteH);
+            //ctx.drawImage(this.image, 0 + this.state, 0, this.spriteW, this.spriteH, this.x, this.y, this.spriteW, this.spriteH);
         }
         else if (this.team != closestUnit.team) {
             this.attack(ctx, closestUnit);
