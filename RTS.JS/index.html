@@ -13,6 +13,48 @@
 		<img id="btn_rightA" src="Images/A_pink.png" style="float:right" />
 
 	</div>
+<div>
+      <p>Todo:</p>
+    <ul>
+    <li>Organize all game level functions and variables into game class
+        <ul>
+            <li>-In main.js instantiate a new game, and call methods</li>
+            <li>-update all input methods etc, to change game.* objects</li>
+        </ul>
+    </li>
+    <li>
+        Implement behavior class
+        <ul>
+            <li>Add an array of behaviors to unit type</li>
+            <li>Improve UnitType::getBehavior to be able to return all existing types</li>
+            <li>Implement a different attack behavior for rangers than warriors</li>
+        </ul>
+    </li>
+    <li>
+       Organize all player level functions and variables into player class
+            <ul>
+                <li>This includes base definitions for all behaviors and unit types per player</li>
+                <li>Players should then been added to game object and a game object method should be delegating to players</li>
+            </ul>
+    </li>
+        <li>
+            Implement projectile class
+            <ul>
+                <li>New up units with an projectile creating function if they need one</li>
+                <li>Make damage done from projectiles hurt enemys, not the attack itself for rangers</li>
+            </ul>
+        </li>
+
+        <li>
+            Implement pause on unit creation, such as a slider bar
+            <ul>
+                <li>Make this programmable on a per unit basis</li>
+            </ul>
+        </li>
+        <li>Implement Population</li>
+    </ul>
+
+</div>
 </body>
 </html>
 <script src="Scripts/jquery.js"></script>
