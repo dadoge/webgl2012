@@ -8,3 +8,10 @@
 //   },
 //   state: 0
 //
+
+function Behavior(frames, updateFunc)
+{
+    this.frames = frames;
+    this.update = updateFunc;
+    this.state = 0;
+}

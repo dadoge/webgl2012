@@ -1,4 +1,4 @@
-function Unit(type, sprite, x, y, id, walkBehavior) {
+function Unit(type, sprite, x, y, id) {
     this.speed = type.speed;
     this.damage = type.damage;
     this.health = type.health;
@@ -17,8 +17,8 @@ function Unit(type, sprite, x, y, id, walkBehavior) {
     this.fightState = 0;
     this.counter = 0;
     this.id = id;
-    this.walkBehavior = walkBehavior;
     this.getBehavior = type.getBehavior;
+    this.behaviors = type.behaviors;
     this.takeDamage = function (damage) {
         this.health = this.health - damage;
         if (this.health <= 0) {
@@ -60,11 +60,11 @@ function Unit(type, sprite, x, y, id, walkBehavior) {
 //     //      }
         //    this.walkBehavior.update(this);
 
-            this.walkBehavior = this.getBehavior();
-            this.walkBehavior.update(this);
+            var walkBehavior = this.getBehavior();
+            walkBehavior.update(this);
             ctx.drawImage(this.image,
-                this.walkBehavior.frames[Math.floor(this.walkBehavior.state/5)].x * this.spriteW,
-                this.walkBehavior.frames[Math.floor(this.walkBehavior.state/5)].y * this.spriteH,
+                walkBehavior.frames[Math.floor(walkBehavior.state/5)].x * this.spriteW,
+                walkBehavior.frames[Math.floor(walkBehavior.state/5)].y * this.spriteH,
                 this.spriteW,
                 this.spriteH,
                 this.x, this.y, this.spriteW, this.spriteH);
