@@ -25,19 +25,19 @@ $('#btn_start').on("click", start);
 function doKeyDown(evt) {
     switch (evt.keyCode) {     
         case KEYS.LEFT:
-			sendUnit(leftPlayer,leftPlayer.types['robotType'],blueRobotSprite);
+			sendUnit(leftPlayer, $.extend(true, {},leftPlayer.types['robotType']),blueRobotSprite);
             break;    
         case KEYS.RIGHT:
-			sendUnit(rightPlayer,rightPlayer.types['robotType'],pinkRobotSprite);
+			sendUnit(rightPlayer, $.extend(true,{}, rightPlayer.types['robotType']),pinkRobotSprite);
 			break;
         case KEYS.SPACE:
             start();
             break;
         case KEYS.UP:
-            sendUnit(leftPlayer,leftPlayer.types['archerType'],archerSprite);
+            sendUnit(leftPlayer, $.extend(true,{},leftPlayer.types['archerType']),archerSprite);
             break;
         case KEYS.DOWN:
-            sendUnit(rightPlayer, rightPlayer.types['archerType'], archer2Sprite);
+            sendUnit(rightPlayer, $.extend(true,{}, rightPlayer.types['archerType']), archer2Sprite);
             break;
         case KEYS.P:
             if (game.isPaused == true) {
@@ -57,17 +57,7 @@ function doKeyDown(evt) {
 function sendUnit(player,type,sprite){
     if(player.money >= type.cost)
     {
-        var walkBehavior = {
-            frames: [{x: 0, y:0},{x:1, y:0},{x:2, y:0},{x:3, y:0}],
-            update: function(unit){
-                unit.x+= unit.speed * unit.direction;
-                if(this.state < 19)
-                    this.state++;
-                else this.state = 0;
-            },
-            state: 0
-        }
-        player.units.push(new Unit(type,sprite,player.baseX,player.baseY, ++unitCount, walkBehavior))
+        player.units.push(new Unit(type,sprite,player.baseX,player.baseY, ++unitCount))
         player.money -= type.cost;
     }
 }
