@@ -1,4 +1,4 @@
-function UnitType(speed, direction, health, damage, range, cost, team) {
+function UnitType(speed, direction, health, damage, range, cost, team, behaviorFunc, behaviors) {
     this.speed = speed;
     this.direction = direction;
     this.health = health;
@@ -6,11 +6,7 @@ function UnitType(speed, direction, health, damage, range, cost, team) {
     this.range = range;
     this.cost = cost;
     this.team = team;
-    this.getBehavior = function(){
-        var self = this;
-        if(self.canMove(self.getClosestUnit(leftPlayer.units.concat(rightPlayer.units)))){
-            return self.walkBehavior;
-        }
-    }
+    this.getBehavior = behaviorFunc;
+    this.behaviors = behaviors;
 }
    

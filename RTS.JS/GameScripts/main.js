@@ -10,13 +10,31 @@ var Canvas = {
     Height: c.height,
     Width: c.width
 };
+var walkBehavior = {
+    frames: [{x: 0, y:0},{x:1, y:0},{x:2, y:0},{x:3, y:0}],
+    update: function(unit){
+        unit.x+= unit.speed * unit.direction;
+        if(this.state < 19)
+            this.state++;
+        else this.state = 0;
+    },
+    state: 0
+}
+var baseBehaviorFunc = function(){
+    var self = this;
+    if(self.canMove(self.getClosestUnit(leftPlayer.units.concat(rightPlayer.units)))){
+        return self.behaviors[0];
+    }
+}
+
+var baseBehaviors = [walkBehavior];
 var baseLeftTypes = {
-    robotType : new UnitType(5,1,10,3,35,10,'left'),
-    archerType : new UnitType(5,1,10,3,100,10,'left')
+    robotType : new UnitType(5,1,10,3,35,10,'left', baseBehaviorFunc, baseBehaviors),
+    archerType : new UnitType(5,1,10,3,100,10,'left', baseBehaviorFunc, baseBehaviors)
 }
 var baseRightTypes = {
-    robotType : new UnitType(5,-1,10,3,35,10,'right'),
-    archerType : new UnitType(5,-1,10,3,100,10,'right')
+    robotType : new UnitType(5,-1,10,3,35,10,'right', baseBehaviorFunc, baseBehaviors),
+    archerType : new UnitType(5,-1,10,3,100,10,'right', baseBehaviorFunc, baseBehaviors)
 }
 var game = new Game();
 var leftPlayer = new Player(100,0, [],0,400, baseLeftTypes);
