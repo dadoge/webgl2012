@@ -12,10 +12,10 @@ var KEYS = {
 //Key Listeners
 window.addEventListener('keydown', doKeyDown, true);
 
-$('#btn_leftA').on("click", function(){sendUnit(leftPlayer,leftPlayer.types['robotType'],blueRobotSprite)});
-$('#btn_rightA').on("click", function(){sendUnit(rightPlayer,rightPlayer.types['robotType'],pinkRobotSprite)});
-$('#btn_leftB').on("click", function(){sendUnit(leftPlayer,leftPlayer.types['archerType'],archerSprite)});
-$('#btn_rightB').on("click", function(){sendUnit(rightPlayer, rightPlayer.types['archerType'], archer2Sprite)});
+$('#btn_leftA').on("click", function(){sendUnit(leftPlayer, $.extend(true, {},leftPlayer.types['robotType']),blueRobotSprite);});
+$('#btn_rightA').on("click", function(){sendUnit(rightPlayer, $.extend(true,{}, rightPlayer.types['robotType']),pinkRobotSprite);});
+$('#btn_leftB').on("click", function(){sendUnit(leftPlayer, $.extend(true,{},leftPlayer.types['archerType']),archerSprite);});
+$('#btn_rightB').on("click", function(){sendUnit(rightPlayer, $.extend(true,{}, rightPlayer.types['archerType']), archer2Sprite);});
 
 $('#btn_start').on("click", start);
 ////////////////////////////////////////////////////////////////////////////
