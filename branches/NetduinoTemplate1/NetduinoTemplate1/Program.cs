@@ -289,7 +289,15 @@ namespace InfraredDetector
                     Debug.Print(count.ToString() + ": Man Gun");
                     SendMessage(infraredOut, message2);
                 }
-                playerAmmo--;
+                if (playerAmmo >= 0)
+                {
+                    playerAmmo--;
+                }
+                else
+                {
+                    playerAmmo = 8;
+                }
+
             }
         }
         public static void GetListenByte(InputPort digitalIn)
