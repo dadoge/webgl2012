@@ -32,8 +32,8 @@ namespace InfraredDetector
         public static DateTime d;
         public static DateTime c;
         public static int count;
-        public static int playerHeath = 15;
-
+        public static int playerHeath = 7;
+        public static int playerAmmo = 7;
 
         public static void Main()
         {
@@ -43,9 +43,15 @@ namespace InfraredDetector
 
             InputPort digitalIn = new InputPort(Pins.GPIO_PIN_D3, false, Port.ResistorMode.Disabled);
             OutputPort powerUpPort = new OutputPort(Pins.GPIO_PIN_D0, false);
-            OutputPort healthOut = new OutputPort(Pins.GPIO_PIN_D8, false);
-            OutputPort healthOut2 = new OutputPort(Pins.GPIO_PIN_D9, false);
+            OutputPort healthOut0 = new OutputPort(Pins.GPIO_PIN_D1, false);
+            OutputPort healthOut1 = new OutputPort(Pins.GPIO_PIN_D2, false);
+            OutputPort healthOut2 = new OutputPort(Pins.GPIO_PIN_D4, false);
+            OutputPort healthOut3 = new OutputPort(Pins.GPIO_PIN_D5, false);
+            OutputPort healthOut4 = new OutputPort(Pins.GPIO_PIN_D7, false);
+            OutputPort healthOut5 = new OutputPort(Pins.GPIO_PIN_D8, false);
+            OutputPort healthOut6 = new OutputPort(Pins.GPIO_PIN_D9, false);
 
+            OutputPort sanityPort = new OutputPort(Pins.GPIO_PIN_D13, true);
             infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true);
             InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D10, false, Port.ResistorMode.PullUp, Port.InterruptMode.InterruptEdgeLow);
             sender.OnInterrupt += sender_OnInterrupt;
@@ -55,8 +61,9 @@ namespace InfraredDetector
 
             while (true)
             {
+                sanityPort.Write(true);
                 GetPowerUp();
-                DisplayHeath(healthOut, healthOut2);
+                DisplayHeath(healthOut0, healthOut1, healthOut2, healthOut3, healthOut4, healthOut5, healthOut6);
                 powerUpPort.Write(powerUp);
                 switch (state)
                 {
@@ -81,28 +88,159 @@ namespace InfraredDetector
                 }
             }
         }
-        public static void DisplayHeath(OutputPort healthOut, OutputPort healthOut2)
+        public static void DisplayHeath(OutputPort healthOut0, OutputPort healthOut1, OutputPort healthOut2, OutputPort healthOut3, OutputPort healthOut4, OutputPort healthOut5, OutputPort healthOut6)
         {
-            if (playerHeath >= 15)
+            switch (playerAmmo)
             {
-                healthOut.Write(false);
-                healthOut2.Write(false);
+                case 0:
+                    healthOut0.Write(false);
+                    healthOut1.Write(false);
+                    healthOut2.Write(false);
+                    healthOut3.Write(false);
+                    healthOut4.Write(false);
+                    healthOut5.Write(false);
+                    healthOut6.Write(true);
+                    break;
+                case 1:
+                    healthOut0.Write(true);
+                    healthOut1.Write(false);
+                    healthOut2.Write(false);
+                    healthOut3.Write(true);
+                    healthOut4.Write(true);
+                    healthOut5.Write(true);
+                    healthOut6.Write(true);
+                    break;
+                case 2:
+                    healthOut0.Write(false);
+                    healthOut1.Write(false);
+                    healthOut2.Write(true);
+                    healthOut3.Write(false);
+                    healthOut4.Write(false);
+                    healthOut5.Write(true);
+                    healthOut6.Write(false);
+                    break;
+                case 3:
+                    healthOut0.Write(false);
+                    healthOut1.Write(false);
+                    healthOut2.Write(false);
+                    healthOut3.Write(false);
+                    healthOut4.Write(true);
+                    healthOut5.Write(true);
+                    healthOut6.Write(false);
+                    break;
+                case 4:
+                    healthOut0.Write(true);
+                    healthOut1.Write(false);
+                    healthOut2.Write(false);
+                    healthOut3.Write(true);
+                    healthOut4.Write(true);
+                    healthOut5.Write(false);
+                    healthOut6.Write(false);
+                    break;
+                case 5:
+                    healthOut0.Write(false);
+                    healthOut1.Write(true);
+                    healthOut2.Write(false);
+                    healthOut3.Write(false);
+                    healthOut4.Write(true);
+                    healthOut5.Write(false);
+                    healthOut6.Write(false);
+                    break;
+                case 6:
+                    healthOut0.Write(false);
+                    healthOut1.Write(true);
+                    healthOut2.Write(false);
+                    healthOut3.Write(false);
+                    healthOut4.Write(false);
+                    healthOut5.Write(false);
+                    healthOut6.Write(false);
+                    break;
+                case 7:
+                    healthOut0.Write(false);
+                    healthOut1.Write(false);
+                    healthOut2.Write(false);
+                    healthOut3.Write(true);
+                    healthOut4.Write(true);
+                    healthOut5.Write(true);
+                    healthOut6.Write(true);
+                    break;
+                case 8:
+                    healthOut0.Write(false);
+                    healthOut1.Write(false);
+                    healthOut2.Write(false);
+                    healthOut3.Write(false);
+                    healthOut4.Write(false);
+                    healthOut5.Write(false);
+                    healthOut6.Write(false);
+                    break;
             }
-            else if (playerHeath >= 10)
-            {
-                healthOut.Write(true);
-                healthOut2.Write(false);
-            }
-            else if (playerHeath >= 5)
-            {
-                healthOut.Write(false);
-                healthOut2.Write(true);
-            }
-            else if (playerHeath <= 0)
-            {
-                healthOut.Write(true);
-                healthOut2.Write(true);
-            }
+
+
+            //switch (playerHeath)
+            //{
+            //    case 0:
+            //        healthOut.Write(false);
+            //        healthOut2.Write(false);
+            //        healthOut3.Write(false);
+            //        break;
+            //    case 1:
+            //        healthOut.Write(false);
+            //        healthOut2.Write(false);
+            //        healthOut3.Write(true);
+            //        break;
+            //    case 2:
+            //        healthOut.Write(false);
+            //        healthOut2.Write(true);
+            //        healthOut3.Write(false);
+            //        break;
+            //    case 3:
+            //        healthOut.Write(false);
+            //        healthOut2.Write(true);
+            //        healthOut3.Write(true);
+            //        break;
+            //    case 4:
+            //        healthOut.Write(true);
+            //        healthOut2.Write(false);
+            //        healthOut3.Write(false);
+            //        break;
+            //    case 5:
+            //        healthOut.Write(true);
+            //        healthOut2.Write(false);
+            //        healthOut3.Write(true);
+            //        break;
+            //    case 6:
+            //        healthOut.Write(true);
+            //        healthOut2.Write(true);
+            //        healthOut3.Write(false);
+            //        break;
+            //    case 7:
+            //        healthOut.Write(true);
+            //        healthOut2.Write(true);
+            //        healthOut3.Write(true);
+            //        break;
+            //}
+
+
+            //if (playerHeath >= 15)
+            //{
+            //    healthOut.Write(false);
+            //    healthOut2.Write(false);
+            //}
+            //else if (playerHeath >= 10)
+            //{
+            //    healthOut.Write(true);
+            //    healthOut2.Write(false);
+            //}
+            //else if (playerHeath >= 5)
+            //{
+            //    healthOut.Write(false);
+            //    healthOut2.Write(true);
+            //}
+            //else if (playerHeath <= 0)
+            //{
+            //    healthOut.Write(true);
+            //    healthOut2.Write(true);
+            //}
         }
         public static void UpdatePlayer(string message)
         {
@@ -131,7 +269,7 @@ namespace InfraredDetector
                 {
                     powerUp = false;
                     playerGun = Gun.Regular;
-                    playerHeath += 5;
+                    playerHeath++;
                 }
             }
         }
@@ -151,6 +289,7 @@ namespace InfraredDetector
                     Debug.Print(count.ToString() + ": Man Gun");
                     SendMessage(infraredOut, message2);
                 }
+                playerAmmo--;
             }
         }
         public static void GetListenByte(InputPort digitalIn)
