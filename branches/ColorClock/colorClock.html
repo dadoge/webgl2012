@@ -1,0 +1,43 @@
+<html>
+<body>
+<canvas id="colorClock" width="500" height="500"/>
+
+<script type='text/javascript'>
+
+var Canvas = document.getElementById("colorClock");
+var CanvasContext = Canvas.getContext("2d");
+startClock();
+
+function startClock() {
+        var intervalID = setInterval(clockLoop, 1000 / 60);
+}
+
+function clockLoop() {
+
+
+	var d = new Date();
+	var hours = d.getHours();
+	var minutes = d.getMinutes();
+	var seconds = d.getSeconds();
+	var red = hours/23 * 255;
+	var blue = minutes/59 * 255;
+	var green = seconds/59 * 255;
+	
+	var hexRed = Math.floor(red);
+	var hexBlue = Math.floor(blue);
+	var hexGreen = Math.floor(green);
+	
+	var myFillStyle = '#' + hexRed.toString(16) + hexBlue.toString(16) + hexGreen.toString(16);
+	
+	CanvasContext.fillStyle= myFillStyle;
+	CanvasContext.fillRect(0,0,500,500);
+	
+	CanvasContext.fillStyle = '#000000';
+	CanvasContext.fillText(hours + ':' + minutes + ':' + seconds ,220,238);
+	
+}
+</script>
+
+</body>
+</html>
+
