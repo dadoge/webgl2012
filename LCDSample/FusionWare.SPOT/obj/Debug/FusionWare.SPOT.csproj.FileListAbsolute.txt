@@ -1,0 +1,17 @@
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\le\FusionWare.SPOT.dll
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\be\FusionWare.SPOT.dll
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\le\FusionWare.SPOT.pdb
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\be\FusionWare.SPOT.pdb
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\FusionWare.SPOT.dll
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\FusionWare.SPOT.pdb
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\le\FusionWare.SPOT.pe
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\le\FusionWare.SPOT.pdbx
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\be\FusionWare.SPOT.pe
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\bin\Debug\be\FusionWare.SPOT.pdbx
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\obj\Debug\TinyCLR_DebugReferences.cache
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\obj\Debug\be\FusionWare.SPOT.pe
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\obj\Debug\be\FusionWare.SPOT.pdbx
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\obj\Debug\le\FusionWare.SPOT.pe
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\obj\Debug\le\FusionWare.SPOT.pdbx
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\obj\Debug\FusionWare.SPOT.dll
+C:\webgl\LCDSample\LCDSample\FusionWare.SPOT\obj\Debug\FusionWare.SPOT.pdb
