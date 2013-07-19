@@ -21,19 +21,49 @@ namespace LT_Gun
         public static int playerAmmo = 7;
         public static int count;
         public static DateTime d;
+        public static DateTime c;
 
         public static void Main()
         {
             infraredOut = new Microsoft.SPOT.Hardware.PWM(PWMChannels.PWM_PIN_D6, 38000, .5, true);
             InterruptPort sender = new InterruptPort(Pins.GPIO_PIN_D10, false, Port.ResistorMode.PullUp, Port.InterruptMode.InterruptEdgeLow);
+
+            OutputPort ammoOut0 = new OutputPort(Pins.GPIO_PIN_D1, false);
+            OutputPort ammoOut1 = new OutputPort(Pins.GPIO_PIN_D2, false);
+            OutputPort ammoOut2 = new OutputPort(Pins.GPIO_PIN_D4, false);
+            OutputPort ammoOut3 = new OutputPort(Pins.GPIO_PIN_D5, false);
+            OutputPort ammoOut4 = new OutputPort(Pins.GPIO_PIN_D7, false);
+            OutputPort ammoOut5 = new OutputPort(Pins.GPIO_PIN_D8, false);
+            OutputPort ammoOut6 = new OutputPort(Pins.GPIO_PIN_D9, false);
+            
             sender.OnInterrupt += sender_OnInterrupt;
 
             while (true)
             {
-                
+                GetPowerUp();
+                DisplayAmmo(ammoOut0, ammoOut1, ammoOut2, ammoOut3, ammoOut4, ammoOut5, ammoOut6);   
             }
 
 
+        }
+        public static void GetPowerUp()
+        {
+            if (c.AddMilliseconds(5000) < DateTime.Now)
+            {
+                c = DateTime.Now;
+                Random r = new Random();
+                var random = r.Next() % 10;
+                if (random > 5)
+                {
+                    powerUp = true;
+                    playerGun = Gun.MAN;
+                }
+                else
+                {
+                    powerUp = false;
+                    playerGun = Gun.Regular;
+                }
+            }
         }
         static void sender_OnInterrupt(uint data1, uint data2, DateTime time)
         {
@@ -95,90 +125,90 @@ namespace LT_Gun
                 startTime = DateTime.Now;
             }
         }
-        public static void DisplayHeath(OutputPort healthOut0, OutputPort healthOut1, OutputPort healthOut2, OutputPort healthOut3, OutputPort healthOut4, OutputPort healthOut5, OutputPort healthOut6)
+        public static void DisplayAmmo(OutputPort ammoOut0, OutputPort ammoOut1, OutputPort ammoOut2, OutputPort ammoOut3, OutputPort ammoOut4, OutputPort ammoOut5, OutputPort ammoOut6)
         {
             switch (playerAmmo)
             {
                 case 0:
-                    healthOut0.Write(false);
-                    healthOut1.Write(false);
-                    healthOut2.Write(false);
-                    healthOut3.Write(false);
-                    healthOut4.Write(false);
-                    healthOut5.Write(false);
-                    healthOut6.Write(true);
+                    ammoOut0.Write(false);
+                    ammoOut1.Write(false);
+                    ammoOut2.Write(false);
+                    ammoOut3.Write(false);
+                    ammoOut4.Write(false);
+                    ammoOut5.Write(false);
+                    ammoOut6.Write(true);
                     break;
                 case 1:
-                    healthOut0.Write(true);
-                    healthOut1.Write(false);
-                    healthOut2.Write(false);
-                    healthOut3.Write(true);
-                    healthOut4.Write(true);
-                    healthOut5.Write(true);
-                    healthOut6.Write(true);
+                    ammoOut0.Write(true);
+                    ammoOut1.Write(false);
+                    ammoOut2.Write(false);
+                    ammoOut3.Write(true);
+                    ammoOut4.Write(true);
+                    ammoOut5.Write(true);
+                    ammoOut6.Write(true);
                     break;
                 case 2:
-                    healthOut0.Write(false);
-                    healthOut1.Write(false);
-                    healthOut2.Write(true);
-                    healthOut3.Write(false);
-                    healthOut4.Write(false);
-                    healthOut5.Write(true);
-                    healthOut6.Write(false);
+                    ammoOut0.Write(false);
+                    ammoOut1.Write(false);
+                    ammoOut2.Write(true);
+                    ammoOut3.Write(false);
+                    ammoOut4.Write(false);
+                    ammoOut5.Write(true);
+                    ammoOut6.Write(false);
                     break;
                 case 3:
-                    healthOut0.Write(false);
-                    healthOut1.Write(false);
-                    healthOut2.Write(false);
-                    healthOut3.Write(false);
-                    healthOut4.Write(true);
-                    healthOut5.Write(true);
-                    healthOut6.Write(false);
+                    ammoOut0.Write(false);
+                    ammoOut1.Write(false);
+                    ammoOut2.Write(false);
+                    ammoOut3.Write(false);
+                    ammoOut4.Write(true);
+                    ammoOut5.Write(true);
+                    ammoOut6.Write(false);
                     break;
                 case 4:
-                    healthOut0.Write(true);
-                    healthOut1.Write(false);
-                    healthOut2.Write(false);
-                    healthOut3.Write(true);
-                    healthOut4.Write(true);
-                    healthOut5.Write(false);
-                    healthOut6.Write(false);
+                    ammoOut0.Write(true);
+                    ammoOut1.Write(false);
+                    ammoOut2.Write(false);
+                    ammoOut3.Write(true);
+                    ammoOut4.Write(true);
+                    ammoOut5.Write(false);
+                    ammoOut6.Write(false);
                     break;
                 case 5:
-                    healthOut0.Write(false);
-                    healthOut1.Write(true);
-                    healthOut2.Write(false);
-                    healthOut3.Write(false);
-                    healthOut4.Write(true);
-                    healthOut5.Write(false);
-                    healthOut6.Write(false);
+                    ammoOut0.Write(false);
+                    ammoOut1.Write(true);
+                    ammoOut2.Write(false);
+                    ammoOut3.Write(false);
+                    ammoOut4.Write(true);
+                    ammoOut5.Write(false);
+                    ammoOut6.Write(false);
                     break;
                 case 6:
-                    healthOut0.Write(false);
-                    healthOut1.Write(true);
-                    healthOut2.Write(false);
-                    healthOut3.Write(false);
-                    healthOut4.Write(false);
-                    healthOut5.Write(false);
-                    healthOut6.Write(false);
+                    ammoOut0.Write(false);
+                    ammoOut1.Write(true);
+                    ammoOut2.Write(false);
+                    ammoOut3.Write(false);
+                    ammoOut4.Write(false);
+                    ammoOut5.Write(false);
+                    ammoOut6.Write(false);
                     break;
                 case 7:
-                    healthOut0.Write(false);
-                    healthOut1.Write(false);
-                    healthOut2.Write(false);
-                    healthOut3.Write(true);
-                    healthOut4.Write(true);
-                    healthOut5.Write(true);
-                    healthOut6.Write(true);
+                    ammoOut0.Write(false);
+                    ammoOut1.Write(false);
+                    ammoOut2.Write(false);
+                    ammoOut3.Write(true);
+                    ammoOut4.Write(true);
+                    ammoOut5.Write(true);
+                    ammoOut6.Write(true);
                     break;
                 case 8:
-                    healthOut0.Write(false);
-                    healthOut1.Write(false);
-                    healthOut2.Write(false);
-                    healthOut3.Write(false);
-                    healthOut4.Write(false);
-                    healthOut5.Write(false);
-                    healthOut6.Write(false);
+                    ammoOut0.Write(false);
+                    ammoOut1.Write(false);
+                    ammoOut2.Write(false);
+                    ammoOut3.Write(false);
+                    ammoOut4.Write(false);
+                    ammoOut5.Write(false);
+                    ammoOut6.Write(false);
                     break;
             }
         }
