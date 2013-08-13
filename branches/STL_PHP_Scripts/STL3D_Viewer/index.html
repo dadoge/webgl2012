@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>STL 3D Viewer</title>
+    
+    <!-- 
+    CSS and Javascript library definitions.
+     -->
+    <link rel="stylesheet" href="css/jquery-ui-1.8.24.custom.css"></link>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+    <script type="text/javascript" src="js/jsc3d.js"></script>
+	 <script type="text/javascript" src="js/jsc3d.console.js"></script>
+
+</head>
+
+<body>
+
+<!-- Title and one-liner. -->
+<h1 class="ui-widget-header">STLView</h1>
+<h4 class="ui-widget-content">Visualise your object, before you print it!</h4>
+
+<!-- Main div -->
+<div id="div-1" class="ui-widget ui-helper-clearfix">
+ 
+	<!-- view3d - a div that contains the 3D Canvas Viewer and controls to change the rendering mode. -->
+	<div id="view3d" >
+	
+		<!-- HTML5 Canvas -->
+		<canvas id="cv" width="490" height="368" ></canvas>
+		
+		<!-- Rotate and Zoom Tip -->
+		<div class="tip"> 
+			Drag mouse to rotate <br> Drag mouse with shift pressed to zoom
+		</div>
+		
+		<!-- Render-mode selector -->
+		<div id="roptions">
+			<select id="render_mode_list">
+			<option>render as points</option>
+			<option>render as wireframe</option>
+			<option>render as flat</option>
+			<option>render as smooth</option>
+			</select>
+			<button id="change" class="ui-button" onclick="setRenderMode();">Change</button>
+		</div>
+		
+		<!-- JSC3D based code for 3D rendering -->
+		<script type="text/javascript" >
+		
+			var canvas = document.getElementById('cv');
+			var viewer = new JSC3D.Viewer(canvas);
+			var logoTimerID = 0;
+			viewer.setParameter('SceneUrl', 'models/trouser_clip.stl');
+		   viewer.setParameter('InitRotationX', 20);
+			viewer.setParameter('InitRotationY', 20);
+			viewer.setParameter('InitRotationZ', 0);
+			viewer.setParameter('ModelColor', '#CAA618');
+			viewer.setParameter('BackgroundColor1', '#FFFFFF');
+			viewer.setParameter('BackgroundColor2', '#383840');
+			viewer.setParameter('RenderMode', 'smooth');
+			viewer.init();
+			viewer.update();
+		
+			viewer.enableDefaultInputHandler(false);
+			logoTimerID = setInterval( function() { 
+				viewer.rotate(0, 10, 0);
+				viewer.update();
+			}, 100);
+			setTimeout( function() {
+				viewer.enableDefaultInputHandler(true); 
+				if(logoTimerID > 0)
+					loadModelByPath('trouser_clip.stl');
+			}, 3000);
+		
+			var ctx = canvas.getContext('2d');
+			ctx.font = '12px Courier New';
+			ctx.fillStyle = '#FF0000';
+			viewer.afterupdate = function() {
+				if(logoTimerID > 0)
+					return;
+		
+				var scene = viewer.getScene();
+				if(scene != null && scene.getChildren().length > 0) {
+					var objects = scene.getChildren();
+					var totalFaceCount = 0;
+					var totalVertexCount = 0
+					for(var i=0; i<objects.length; i++) {
+						totalFaceCount += objects[i].faceCount;
+						totalVertexCount += objects[i].vertexBuffer.length / 3;
+					}
+					ctx.fillText(totalVertexCount.toString() + ' vertices', 10, 20);
+					ctx.fillText(totalFaceCount.toString() + ' faces', 10, 35);
+				}
+			};
+			
+			function loadModelByPath($path) {
+				if(logoTimerID > 0) {
+					clearInterval(logoTimerID);
+					logoTimerID = 0;
+					viewer.enableDefaultInputHandler(true);
+				}
+				var models = document.getElementById('model_list');
+				viewer.replaceSceneFromUrl('models/' + $path);
+				viewer.update();
+			}
+		
+			function setRenderMode() {
+				if(logoTimerID > 0)
+					return;
+				var modes = document.getElementById('render_mode_list');
+				switch(modes.selectedIndex) {
+				case 0:
+					viewer.setRenderMode('point');
+					break;
+				case 1:
+					viewer.setRenderMode('wireframe');
+					break;
+				case 2:
+					viewer.setRenderMode('flat');
+					break;
+				case 3:
+					viewer.setRenderMode('smooth');
+					break;
+				case 4:
+					viewer.setRenderMode('texturesmooth');
+					var scene = viewer.getScene();
+					if(scene) {
+						var objects = scene.getChildren();
+						for(var i=0; i<objects.length; i++)
+							objects[i].isEnvironmentCast = true;
+					}
+					break;
+				default:
+					viewer.setRenderMode('flat');
+					break;
+				}
+				viewer.update();
+			}
+
+		</script>
+		<!-- END JSC3D based code for 3D rendering -->
+		
+		<!-- Droppable Area -->
+		<div id="drophere" class="ui-widget-content ui-state-default">
+		    <h4 class="ui-widget-header"><span id="status" class="ui-icon ui-icon-play">Play</span> Drop Here!</h4>
+		    <p id="stlname">[No Object]</p>
+		</div>
+		
+	</div>
+	<!-- END view3d -->
+
+	<!-- Gallery - a list that contains "My Collection" -->
+ 	<ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+	 	 <h4 style="float: right; padding: 2px;" class="ui-widget-header">My Collection</h4>
+	    <li class="ui-widget-content ui-corner-tr" stlpath="40mmcube.stl">
+	        <h5 class="ui-widget-header">40mm Cube</h5>
+	        <img src="css/images/40mmcube_100x100.png" alt="40mm Cube Model" width="96" height="72" />
+	        <a href="css/images/40mmcube_300x300.png" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+	        <a href="link/to/drophere/script/when/we/have/js/off" title="View this object" class="ui-icon ui-icon-play">View Object</a>
+	    </li>
+	    <li class="ui-widget-content ui-corner-tr" stlpath="trouser_clip.stl">
+	        <h5 class="ui-widget-header">Trouser Clip</h5>
+	        <img src="css/images/trouser_clip_100x100.png" alt="Trouser Clip Model" width="96" height="72" />
+	        <a href="css/images/trouser_clip_300x300.png" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+	        <a href="link/to/drophere/script/when/we/have/js/off" title="View this object" class="ui-icon ui-icon-play">View Object</a>
+	    </li>
+	    <li class="ui-widget-content ui-corner-tr" stlpath="nut-ascii.stl">
+	        <h5 class="ui-widget-header">Base</h5>
+	        <img src="css/images/nut-ascii_100x100.png" alt="Nut Model" width="96" height="72" />
+	        <a href="css/images/nut-ascii_300x300.png" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+	        <a href="link/to/drophere/script/when/we/have/js/off" title="View this object" class="ui-icon ui-icon-play">View Object</a>
+	    </li>
+	    <li class="ui-widget-content ui-corner-tr" stlpath="hard_milk.stl">
+	        <h5 class="ui-widget-header">Holy Cow</h5>
+	        <img src="css/images/holycow_100x100.png" alt="Cute Cow Model" width="96" height="72" />
+	        <a href="holycow_300x300.png" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>
+	        <a href="link/to/drophere/script/when/we/have/js/off" title="View this object" class="ui-icon ui-icon-play">View Object</a>
+	    </li>
+	</ul>
+	<!-- END Gallery -->
+
+	<!-- jQuery based code for the Drag-n-Drop and sliding Droppable Area effect. -->
+	<script type="text/javascript" >
+	
+        function runEffect() {
+            var selectedEffect = "slide";
+ 
+ 				var options = { direction: "up" };
+            $( "#drophere" ).show( selectedEffect, options, 500, callback );
+        };
+ 
+        //callback function to bring a hidden box back
+        function callback() {
+            setTimeout(function() {
+                $( "#effect:visible" ).removeAttr( "style" ).fadeOut();
+            }, 1000 );
+        };
+ 
+        $( "#drophere" ).hide();
+	
+	$(function() {
+	        // there's the gallery and the drophere
+	        var $gallery = $( "#gallery" ),
+	            $drophere = $( "#drophere" );
+	 
+	        // let the gallery items be draggable
+	        $( "li", $gallery ).draggable({
+	        
+	        		start: function() {
+                runEffect( );
+            	},
+	            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+	            revert: "invalid", // when not dropped, the item will revert back to its initial position
+	            containment: "document",
+	            helper: "clone",
+	            cursor: "move"
+	            
+	        });
+	 
+	        // let the drophere be droppable, accepting the gallery items
+	        $drophere.droppable({
+	            accept: "#gallery > li",
+	            activeClass: "ui-state-highlight",
+	            drop: function( event, ui ) {
+
+						deleteImage( ui.draggable );
+
+	            }
+	        });
+	 
+	        // image deletion function
+	        var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
+	        function deleteImage( $item ) {
+	        
+            	var newstlpath = $item.attr("stlpath");
+            	
+            	var newstlname = $item.find("h5").text();
+            	var exP, newP;
+					newP = document.createElement("p");
+					newP.id = "stlname"; newP.innerHTML = "["+newstlname+"]"; exP = document.getElementById('stlname');
+					exP.parentNode.replaceChild(newP,exP);
+					
+					var oldItem = $drophere.find("li");
+					recycleImage(oldItem);     
+	        
+	            $item.fadeOut(function() {
+	                var $list = $( "ul", $drophere ).length ?
+	                    $( "ul", $drophere ) :
+	                    $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $drophere );
+	 
+	 					
+	                $item.find( "a.ui-icon-play" ).remove();
+	                //$item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
+	                $item.appendTo( $list ).fadeIn(function() {
+	                    $item
+	                        .animate({ width: "48px" })
+	                        .find( "img" )
+	                            .animate({ height: "36px" });
+	                });
+	            });
+	            
+	            loadModelByPath(newstlpath);
+	        }
+	
+	        // image recycle function
+	        var drophere_icon = "<a href='link/to/drophere/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-play'>Delete image</a>";
+	        function recycleImage( $item ) {
+	            $item.fadeOut(function() {
+	                $item
+	                    .find( "a.ui-icon-refresh" )
+	                        .remove()
+	                    .end()
+	                    .css( "width", "96px")
+	                    .append( drophere_icon )
+	                    .find( "img" )
+	                        .css( "height", "72px" )
+	                    .end()
+	                    .appendTo( $gallery )
+	                    .fadeIn();
+	            });
+	        }
+	 
+	        // image preview function, demonstrating the ui.dialog used as a modal window
+	        function viewLargerImage( $link ) {
+	            var src = $link.attr( "href" ),
+	                title = $link.siblings( "img" ).attr( "alt" ),
+	                $modal = $( "img[src$='" + src + "']" );
+	 
+	            if ( $modal.length ) {
+	                $modal.dialog( "open" );
+	            } else {
+	                var img = $( "<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;' />" )
+	                    .attr( "src", src ).appendTo( "body" );
+	                setTimeout(function() {
+	                    img.dialog({
+	                        title: title,
+	                        width: 400,
+	                        modal: true
+	                    });
+	                }, 1 );
+	            }
+	        }
+	 
+	        // resolve the icons behavior with event delegation
+	        $( "ul.gallery > li" ).click(function( event ) {
+	            var $item = $( this ),
+	                $target = $( event.target );
+	 
+	            if ( $target.is( "a.ui-icon-play" ) ) {
+	                deleteImage( $item );
+	            } else if ( $target.is( "a.ui-icon-zoomin" ) ) {
+	                viewLargerImage( $target );
+	            } else if ( $target.is( "a.ui-icon-refresh" ) ) {
+	                recycleImage( $item );
+	            }
+	 
+	            return false;
+	        });
+	    });
+	</script>
+	<!-- END jQuery code -->
+
+</div>
+<!-- END Main div -->
+
+
+</body>
+</html>

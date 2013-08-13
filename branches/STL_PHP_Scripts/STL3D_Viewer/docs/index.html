@@ -1,0 +1,230 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	
+	<title>STL 3D Viewer - Visualize 3D objects before you print 'em !</title>
+	
+	<meta name="description" content="Browser-based 3D STL viewer that is lightweight.">
+	<meta name="author" content="Pushkar" >
+	<meta name="copyright" content="Pushkar Paranjpe">
+	<meta name="generator" content="Bluefish 2.2.2" >
+	<meta name="date" content="2012-10-15T18:57:01+0530" >
+	
+	<link rel="stylesheet" href="css/documenter_style.css" media="all">
+	
+	
+	<script src="js/jquery.1.6.4.js"></script>
+	
+	<script src="js/jquery.scrollTo-1.4.2-min.js"></script>
+	<script src="js/jquery.easing.js"></script>
+	
+	
+	<script>document.createElement('section');var duration=500,easing='swing';</script>
+	<script src="js/script.js"></script>
+	
+	<style>
+		html{background-color:#222222;color:#666666;}
+		::-moz-selection{background:#BBBBBB;color:#222222;}
+		::selection{background:#BBBBBB;color:#222222;}
+		#documenter_sidebar #documenter_logo{background-image:url();}
+		a{color:#BBBBBB;}
+		hr{border-top:1px solid #111111;border-bottom:1px solid #333333;}
+		#documenter_sidebar, #documenter_sidebar ol a{background-color:#111111;color:#222222;}
+		#documenter_sidebar ol a{-webkit-text-shadow:1px 1px 0px #222222;-moz-text-shadow:1px 1px 0px #222222;text-shadow:1px 1px 0px #222222;}
+		#documenter_sidebar ol{border-top:1px solid #000000;}
+		#documenter_sidebar ol a{border-top:1px solid #222222;border-bottom:1px solid #000000;color:#BBBBBB;}
+		#documenter_sidebar ol a:hover{background:#BBBBBB;color:#222222;border-top:1px solid #BBBBBB;}
+		#documenter_sidebar ol a.current{background:#BBBBBB;color:#222222;border-top:1px solid #BBBBBB;}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+	</style>
+	
+</head>
+<body>
+	<div id="documenter_sidebar">
+		<a href="#documenter_cover" id="documenter_logo"></a>
+		<ol id="documenter_nav">
+			<li><a class="current" href="#documenter_cover">Start</a></li>
+			<li><a href="#introduction">Introduction</a></li>
+			<li><a href="#installation">Installation</a></li>
+			<li><a href="#overview">Overview</a></li>
+			<li><a href="#d_canvas_viewer">3D Canvas Viewer</a></li>
+			<li><a href="#my_collection">My Collection</a></li>
+			<li><a href="#droppable_area">Droppable Area</a></li>
+			<li><a href="#references">References</a></li>
+
+		</ol>
+		<div id="documenter_copyright">Copyright Pushkar Paranjpe 2012<br>
+		made with the <a href="http://rxa.li/documenter">Documenter v1.6</a> 
+		</div>
+	</div>
+	<div id="documenter_content">
+	<section id="documenter_cover"><h1>STL 3D Viewer</h1><h2>Visualize 3D objects before you print 'em !</h2><hr><ul><li>latest Update: 10/15/2012</li><li>By: Pushkar Paranjpe</li></ul><p>Browser-based 3D STL viewer that is lightweight.</p></section><section id="introduction">
+	<h3>Introduction</h3><hr class="notop">
+<p>
+	STL format is popularly used for representing 3D object information for 3D printing applications. It is useful to visualize your object model before you actually print it. Both binary as well as ascii .STL files are supported.</p>
+<div>
+	This software uses JSC3D and JQUERY libraries and depends on HTML5/Javascript/ technologies at its very core. Thus the viewer runs inside a browser and is light on system resources.</div>
+<div>
+	&nbsp;</div>
+<div>
+	The code has been commented extensively. Sample STL object models have been included to effectively demonstrate the intended usage of this product.</div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp;</div>
+<p class="c_8">
+	Features:</p>
+<ul>
+	<li>
+		<p class="c_9">
+			Rotate 3D object</p>
+	</li>
+	<li>
+		<p class="c_9">
+			Zoom-in / out</p>
+	</li>
+	<li>
+		<p class="c_9">
+			Four instant rendering modes: Points, wireframe, flat and smooth!</p>
+	</li>
+	<li>
+		<p class="c_9">
+			Drag-n-Drop objects!</p>
+	</li>
+	<li>
+		<p class="c_9">
+			Thumbnail Preview for objects</p>
+	</li>
+	<li>
+		<p class="c_9">
+			Scrollable &quot;<em>My Collection&quot;</em> area to hold objects</p>
+	</li>
+	<li>
+		<p class="c_9">
+			HTML5 Canvas based 3D visualization technology</p>
+	</li>
+	<li>
+		<p class="c_9">
+			Lightweight Javascript based 3D engine</p>
+	</li>
+	<li>
+		<p class="c_9">
+			Supports binary and ascii .STL files</p>
+	</li>
+</ul>
+<p>
+	&nbsp;</p>
+</section>
+<section id="installation">
+	<h3>Installation</h3><hr class="notop">
+<p>
+	Extract the STL3DView.zip file. The folder created during this extraction should have the following structure:</p>
+<p class="c_9">
+	index.html</p>
+<p class="c_9">
+	js/</p>
+<p class="c_9">
+	css/</p>
+<p class="c_9">
+	css/images</p>
+<p class="c_9">
+	models/</p>
+<p>
+	&nbsp;</p>
+<p class="c_1">
+	Execution:</p>
+<p>
+	Launch the <em>index.html</em> file in a browser to see this product in operation. Javascript <em><strong>must</strong></em> be enabled for this product to function.</p>
+<p>
+	&nbsp;</p>
+<p class="c_1">
+	<em>Folder</em> <strong>models/</strong> :</p>
+<p>
+	This folder contains the .STL model files used for loading 3D object information in to the <strong>3D Canvas Viewer</strong>. When you add your .STL files, place them in this folder other wise the code would not be able to find them.</p>
+<p>
+	&nbsp;</p>
+<p class="c_1">
+	<em>Folders</em> <strong>js/</strong> and <strong>css/</strong> :</p>
+<p>
+	These folders contain the Javascript libraries and CSS files required for the core functionality of this product and controlling its appearance.</p>
+<p>
+	*NOTE*: If doing a local test using Google Chrome browser make sure you have allowed local file access to applications running inside Chrome. This note is for offline local tests only and loads normally when accessed from a web server.</p>
+</section>
+<section id="overview">
+	<h3>Overview</h3><hr class="notop">
+<p>	The user interface (UI) is shown in the following snapshot:</p>
+<p>	&nbsp;<a href="http://i.imgur.com/vCtHN.png"><img alt="" src="assets/images/image_1.png" style="width: 150px; height: 130px; "></a></p>
+<p>	&nbsp;There are three main sections to the UI:</p>
+<ol>
+	<li>		3D Canvas Viewer</li>
+	<li>		My Collection</li>
+	<li>		Droppable Area</li>
+</ol>
+<p>	These sections are detailed here.</p>
+</section>
+<section id="d_canvas_viewer">
+	<h3>3D Canvas Viewer</h3><hr class="notop">
+<p>
+	The 3D object model is displayed in this area. It allows mouse based interaction to the user.</p>
+<ul>
+	<li>
+		Left-press-dragging the mouse causes object rotation.</li>
+	<li>
+		Lef-press-dragging the mouse while SHIFT is pressed causes the object to zoom-in/out.</li>
+</ul>
+<p>
+	It also has a render-mode selector. It allows the object to be shown&nbsp;</p>
+<ul>
+	<li>
+		as points</li>
+	<li>
+		as wireframe</li>
+	<li>
+		as flat</li>
+	<li>
+		as smooth</li>
+</ul>
+<p>
+	Click the button called &quot;Change&quot; to apply the selected rendering mode.</p>
+<p>
+	&nbsp;</p>
+<p>
+	Meta-info Display:</p>
+<p>
+	The viewer displays <em>vertices count</em> and <em>faces count</em> in the top left area.</p>
+</section>
+<section id="my_collection">
+	<h3>My Collection</h3><hr class="notop">
+<p>	This scrollable area shows the list of user&#39;s 3D objects.</p>
+<p>	Each object has a small thumbnail image for ease of navigation. The object&#39;s thumbnail image can be viewed at a higher zoom if the user clicks the (+)zoom icon.</p>
+<p>	Clicking the &quot;play&quot; icon causes the object to be loaded in to the <strong>3D Canvas Viewer</strong>.</p>
+<p>	<em>Drag-n-Drop !&nbsp;</em>:&nbsp;The user can drag the object and drop it into the <strong>Droppable Area</strong> to visualize it in the <strong>3D Canvas Viewer</strong>.</p>
+</section>
+<section id="droppable_area">
+	<h3>Droppable Area</h3><hr class="notop">
+<p>	This is a tiny placeholder which <u>slides open</u> when the user drags an object from <strong>My Collection</strong>. It accepts the dropped object and commands the <strong>3D Canvas Viewer</strong> to load that model.</p>
+</section>
+<section id="references">
+	<h3>References</h3><hr class="notop">
+<p>
+	This product is powered by following libraries/technoloiges:</p>
+<p>
+	<strong>JSC3D</strong> Javascript Library</p>
+<p>
+	<strong>jQuery</strong> javascript Library</p>
+<p>
+	<strong>HTML5 </strong><em>Canvas</em></p>
+<p>
+	&nbsp;</p>
+<p>
+	Thank you for buying this product. Happy 3D Printing!&nbsp;<img alt="smiley" height="20" src="assets/images/image_2.gif" title="smiley" width="20"></p>
+</section>
+
+	</div>
+</body>
+</html>
