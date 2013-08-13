@@ -1,0 +1,238 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	
+	<title>STL Volume Weight Calculator (v1.1) - Vital stats for 3D printing objects.</title>
+	
+	<meta name="description" content="Quickly estimate the cost of printing of your 3D object!">
+	<meta name="author" content="Pushkar" >
+	<meta name="copyright" content="Pushkar Paranjpe">
+	<meta name="generator" content="Bluefish 2.2.2" >
+	<meta name="date" content="2013-01-04T22:41:16+0530" >
+	
+	<link rel="stylesheet" href="css/documenter_style.css" media="all">
+	
+	
+	<script src="js/jquery.1.6.4.js"></script>
+	
+	<script src="js/jquery.scrollTo-1.4.2-min.js"></script>
+	<script src="js/jquery.easing.js"></script>
+	
+	<link rel="stylesheet" href="css/shDocumenter.css" media="screen">
+	<script src="js/shCore.js"></script>
+	<script src="js/shBrushPhp.js"></script>
+	<script src="js/shBrushPlain.js"></script>
+	<script>SyntaxHighlighter.defaults['toolbar'] = false;SyntaxHighlighter.all();</script>
+
+	<script>document.createElement('section');var duration=500,easing='swing';</script>
+	<script src="js/script.js"></script>
+	
+	<style>
+		html{background-color:#E9E9E9;color:#383838;}
+		::-moz-selection{background:#FF9900;color:#424242;}
+		::selection{background:#FF9900;color:#424242;}
+		#documenter_sidebar #documenter_logo{background-image:url(assets/images/image_5.png);}
+		a{color:#FF9900;}
+		hr{border-top:1px solid #D4D4D4;border-bottom:1px solid #F7F7F7;}
+		#documenter_sidebar, #documenter_sidebar ol a{background-color:#BCBCBC;color:#222222;}
+		#documenter_sidebar ol a{-webkit-text-shadow:1px 1px 0px #DBDBDB;-moz-text-shadow:1px 1px 0px #DBDBDB;text-shadow:1px 1px 0px #DBDBDB;}
+		#documenter_sidebar ol{border-top:1px solid #A1A1A1;}
+		#documenter_sidebar ol a{border-top:1px solid #DBDBDB;border-bottom:1px solid #A1A1A1;color:#424242;}
+		#documenter_sidebar ol a:hover{background:#FF9900;color:#424242;border-top:1px solid #FF9900;}
+		#documenter_sidebar ol a.current{background:#FF9900;color:#424242;border-top:1px solid #FF9900;}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+	</style>
+	
+</head>
+<body>
+	<div id="documenter_sidebar">
+		<a href="#documenter_cover" id="documenter_logo"></a>
+		<ol id="documenter_nav">
+			<li><a class="current" href="#documenter_cover">Start</a></li>
+			<li><a href="#introduction">Introduction</a></li>
+			<li><a href="#install_notes">Install Notes</a></li>
+			<li><a href="#constructor">Constructor</a></li>
+			<li><a href="#public_functions">Public Functions</a></li>
+			<li><a href="#binary_read_functions">Binary Read Functions</a></li>
+			<li><a href="#math_functions">Math Functions</a></li>
+			<li><a href="#example_usage">Example Usage</a></li>
+			<li><a href="#refs">Refs</a></li>
+
+		</ol>
+		<div id="documenter_copyright">Copyright Pushkar Paranjpe 2013<br>
+		made with the <a href="http://rxa.li/documenter">Documenter v1.6</a> 
+		</div>
+	</div>
+	<div id="documenter_content">
+	<section id="documenter_cover"><h1>STL Volume Weight Calculator v1.1</h1><h2>Vital stats for 3D printing objects.</h2><hr><ul><li>Created: 01/04/2013</li><li>latest Update: 01/04/2013</li><li>By: Pushkar Paranjpe</li></ul><p>Quickly estimate the cost of printing of your 3D object!</p></section><section id="introduction">
+	<h3>Introduction</h3><hr class="notop">
+<p>
+	STL format is popularly used for representing 3D object information for 3D printing applications. It is useful to know the volume and hence the weight of the material that may go into making an object on a 3D printer before one prints it. This may aid calculating the cost of printing that particular object.</p>
+<p>
+	This software uses a tetrahedron volume counting algorithm to determine the volume of the 3D model represented in a binary STL file. In the future, support to ascii STL files will also be added.</p>
+<p>
+	The math is wrapped inside an easy to use PHP class that exposes getter functions (i.e. getVolume, getWeight, etc) to calculate common statistics of a 3D object. This class will be useful to a website which deals in web based 3D printing applications.</p>
+<p>
+   Now auto-detects ASCII/BINARY STL formats!
+<p>
+	The PHP code has been commented extensively. Example usage has been given at the end of this documentation as well as at the end of the class and should be commented out when the class is deployed on your server.</p>
+</section>
+<section id="install_notes">
+	<h3>Install Notes</h3><hr class="notop">
+<p>
+	Follow these steps to start using this PHP class in your applications:</p>
+<p>
+	1. Extract the contents of the STLStats.zip folder.</p>
+<p>
+	2. Copy the STLStats.php file to your webserver folder such that your application can resolve the path and find this class file.</p>
+<p>
+	3. A sample binary STL file - 40mmcube.stl has been provided to help you test the class right away. Copy this file such that the PHP class can find this path. Pass this path as an argument when you instantiate the STLStats class. For example: if the 40mmcube.stl file is in the directory &quot;/var/www/mystlfiles/&quot; then call this class from within your code like this:</p>
+<pre class="brush: php">
+$mypath = &quot;/var/www/mystlfiles/40mmcube.stl&quot;;
+$obj = new STLStats($mypath);
+$unit = &quot;cm&quot;;
+echo $obj-&gt;getVolume($unit);</pre>
+<p>
+	&nbsp;</p>
+</section>
+<section id="constructor">
+	<h3>Constructor</h3><hr class="notop">
+<p class="brush: plain">
+	Initialize the STLStats class by passing the path to the binary .stl file.</p>
+<p>
+	<img alt="" src="assets/images/image_2.png" style="width: 600px; height: 126px; "></p>
+<p class="info">
+	Example Usage:</p>
+<pre class="brush: php">
+$mystlpath = &quot;../40mmcube.stl&quot;;
+$obj = new STLStats(&quot;../40mmcube.stl&quot;);</pre>
+<p>
+	&nbsp;</p>
+</section>
+<section id="public_functions">
+	<h3>Public Functions</h3><hr class="notop">
+<p class="brush: plain">
+	Following public functions have been exposed such that they can be called from outside this php class.</p>
+<p class="info">
+	Public functions: <strong>getVolume(), getWeight(), getDensity(), setDensity() </strong>and<strong> getTrianglesCount()</strong></p>
+<p>
+	<img alt="" src="assets/images/image_4.png" style="width: 600px; height: 352px; "></p>
+<p>
+	&nbsp;</p>
+</section>
+<section id="binary_read_functions">
+	<h3>Binary Read Functions</h3><hr class="notop">
+<p class="brush: plain">
+	Following binary functions have been defined. They are used to read and decode binary data and convert it to appropriate integer, float, etc formats.</p>
+<p class="info">
+	Binary read functions:&nbsp;<strong>read_header(), read_triangles_count(), read_triangle()</strong></p>
+<div>
+	<img alt="" src="assets/images/image_3.png" style="width: 600px; height: 349px; "></div>
+</section>
+<section id="math_functions">
+	<h3>Math Functions</h3><hr class="notop">
+<p class="brush: plain">
+	Following math functions have been defined. The signedVolumeOfTriangle function is the core function of the class. It computes the tetrahedral volume for each triangle and returns its signed value for summing.<br>
+	cm3_To_inch3Transform is a utility function for conversion of units from cubic cm to cubic inches.<br>
+	calculateWeight is function that calculates the weight of the 3D object using the density as a parameter.</p>
+<p class="info">
+	Binary read functions:&nbsp;<strong>signedVolumeOfTriangle(),&nbsp;cm3_To_inch3Transform(),&nbsp;calculateWeight()</strong></p>
+<p>
+	<img alt="" src="assets/images/image_1.png" style="width: 600px; height: 348px; "></p>
+</section>
+<section id="example_usage">
+	<h3>Example Usage</h3><hr class="notop">
+<pre class="brush: php">
+$mystlpath = &quot;../40mmcube.stl&quot;;
+$obj = new STLStats(&quot;../40mmcube.stl&quot;);
+
+echo &quot;Basic Usage\n&quot;;
+echo &quot;--------------\n&quot;;
+$unit = &quot;cm&quot;;
+$vol = $obj-&gt;getVolume($unit);
+echo &quot;Volume: &quot; . $vol . &quot; cubic &quot; . $unit . &quot;\n&quot;;
+$weight = $obj-&gt;getWeight();
+echo &quot;Weight: &quot; . $weight . &quot; gm\n&quot;;
+$den = $obj-&gt;getDensity();
+echo &quot;Density: &quot; . $den . &quot; gm/cc&quot; . &quot;\n&quot;;
+$tcount = $obj-&gt;getTrianglesCount();
+echo &quot;Triangles Count: &quot; . $tcount . &quot; triangles read\n&quot;;
+
+echo &quot;\n&quot;;
+
+echo &quot;Units -&gt; inch\n&quot;;
+echo &quot;--------------\n&quot;;
+$unit = &quot;inch&quot;;
+$vol = $obj-&gt;getVolume($unit);
+echo &quot;Volume: &quot; . $vol . &quot; cubic &quot; . $unit . &quot;\n&quot;;
+$weight = $obj-&gt;getWeight();
+echo &quot;Weight: &quot; . $weight . &quot; gm\n&quot;;
+$den = $obj-&gt;getDensity();
+echo &quot;Density: &quot; . $den . &quot; gm/cc&quot; . &quot;\n&quot;;
+$tcount = $obj-&gt;getTrianglesCount();
+echo &quot;Triangles Count: &quot; . $tcount . &quot; triangles read\n&quot;;
+
+echo &quot;\n&quot;;
+
+echo &quot;Change Density (default 1.04g/cc -&gt; 2.44g/cc)\n&quot;;
+echo &quot;--------------\n&quot;;
+$obj-&gt;setDensity(2.44);
+$unit = &quot;cm&quot;;
+$vol = $obj-&gt;getVolume($unit);
+echo &quot;Volume: &quot; . $vol . &quot; cubic &quot; . $unit . &quot;\n&quot;;
+$weight = $obj-&gt;getWeight();
+echo &quot;Weight: &quot; . $weight . &quot; gm\n&quot;;
+$den = $obj-&gt;getDensity();
+echo &quot;Density: &quot; . $den . &quot; gm/cc&quot; . &quot;\n&quot;;
+$tcount = $obj-&gt;getTrianglesCount();
+echo &quot;Triangles Count: &quot; . $tcount . &quot; triangles read\n&quot;;</pre>
+<div>
+	&nbsp;</div>
+<h2>
+	Output</h2>
+<div>
+	<pre class="brush: plain">
+Basic Usage
+--------------
+Volume: 63.999929809594 cubic cm
+Weight: 66.559927001978 gm
+Density: 1.04 gm/cc
+Triangles Count: 12 triangles read
+
+Units -&gt; inch
+--------------
+Volume: 3.9055153391186 cubic inch
+Weight: 66.559927001978 gm
+Density: 1.04 gm/cc
+Triangles Count: 12 triangles read
+
+Change Density (default 1.04g/cc -&gt; 2.44g/cc)
+--------------
+Volume: 63.999929809594 cubic cm
+Weight: 156.15982873541 gm
+Density: 2.44 gm/cc
+Triangles Count: 12 triangles read</pre>
+</div>
+<p>
+	&nbsp;</p>
+</section>
+<section id="refs">
+	<h3>Refs</h3><hr class="notop">
+<ul>
+	<li>
+		Wiki article on the STL format<br>
+		<a href="http://en.wikipedia.org/wiki/STL_(file_format)">http://en.wikipedia.org/wiki/STL_(file_format)</a></li>
+	<li>
+		Thingiverse<br>
+		<a href="http://www.thingiverse.com/">http://www.thingiverse.com/</a></li>
+</ul>
+</section>
+
+	</div>
+</body>
+</html>
