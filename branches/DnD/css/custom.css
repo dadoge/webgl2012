@@ -6,15 +6,9 @@ body {
 	background-color: #FFFFFF;
 }
 
-img.portfolio {
-	height: inherit;
-	width: 200px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
 
 /* Wrapper for page content to push down footer */
-#main-container {
+#main-container, .col-lg-3 {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
