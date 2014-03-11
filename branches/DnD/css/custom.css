@@ -35,10 +35,9 @@ body {
 .container-custom {
 	border: solid;
 	border-color: grey;
-	min-height: 86%;
+	height: 86%;
 	width: 92%;
 	position: absolute;
-	height: auto !important;
 	margin-left: 4%;
 	margin-top: 5px;
 	margin-bottom: 0px;
@@ -56,6 +55,29 @@ body {
 	height: inherit;
 	border: solid;
 	border-color: black;
+}
+
+.interactive {
+	height: 80%;
+	border: solid;
+	border-color: grey;
+	padding: 2px;
+	margin: 0px;
+}
+
+.chat {
+	height: 20%;
+	border: solid;
+	border-color: grey;
+}
+
+.character-icon {
+	height: 30%;
+	padding: 2px;
+}
+
+.character-info {
+	height: 70%;
 }
 
 /* Set the fixed height of the footer here */
