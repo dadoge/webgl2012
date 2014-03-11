@@ -32,6 +32,18 @@ body {
 	margin: 0 auto -60px;
 }
 
+.container-custom {
+	border: solid;
+	border-color: grey;
+	min-height: 86%;
+	width: 92%;
+	position: absolute;
+	height: auto !important;
+	margin-left: 4%;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
 /* Set the fixed height of the footer here */
 #push, #footer {
 	height: 60px;
