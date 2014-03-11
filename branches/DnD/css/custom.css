@@ -20,7 +20,9 @@ body {
 	background-size: 58px 58px;	
 	background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
 }
-
+.container {
+    background-color:white;
+}
 /* Wrapper for page content to push down footer */
 #main-container {
 	min-height: 100%;
@@ -41,7 +43,11 @@ body {
 	background-color: #FFFFFF;
 	border-radius: 5px;
 }
-
+.fill
+{
+    padding-bottom: 100px;
+    margin-bottom: -100px;
+}
 
 /* Lastly, apply responsive CSS fixes as necessary */
 @media (max-width: 767px) {
