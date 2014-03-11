@@ -3,12 +3,26 @@ html, body {
 }
 
 body {
-	background-color: #FFFFFF;
+/* background:
+	linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+	linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+	linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+	linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+	linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+	linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+	background-color: #131313;
+	background-size: 20px 20px; */
+	background-color: #A8A8A8;
+	background-image: linear-gradient(335deg, #242424 23px, transparent 23px),
+	linear-gradient(155deg, #282828 23px, transparent 23px),
+	linear-gradient(335deg, #242424 23px, transparent 23px),
+	linear-gradient(155deg, #282828 23px, transparent 23px);
+	background-size: 58px 58px;	
+	background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
 }
 
-
 /* Wrapper for page content to push down footer */
-#main-container, .col-lg-3 {
+#main-container {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
