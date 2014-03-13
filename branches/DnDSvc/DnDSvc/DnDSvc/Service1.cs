@@ -24,7 +24,7 @@ namespace DnDSvc
         public List<Player> GetCollection()
         {
             // TODO: Replace the current implementation to return a collection of SampleItem instances
-            return new List<Player>() { new Player() { Id = 1, StringValue = "Hello" } };
+            return new List<Player>() { new Player() { Id = "1", StringValue = "Hello" } };
         }
 
         [WebInvoke(UriTemplate = "", Method = "POST")]
@@ -34,13 +34,15 @@ namespace DnDSvc
             throw new NotImplementedException();
         }
 
-        [WebGet(UriTemplate = "{id}")]
-        public string Get(string id)
+        [WebGet(UriTemplate = "{id}", ResponseFormat = WebMessageFormat.Json)]
+        public Player Get(string id)
         {
-            var x = new JavaScriptSerializer();
-            var sb = new StringBuilder();
-            var returns = x.Serialize(new Player(18));
-            return returns;
+            //var x = new JavaScriptSerializer();
+            //var sb = new StringBuilder();
+            //var returns = x.Serialize(new Player(18));
+            //return returns;
+
+            return new Player(id);
 
         }
 

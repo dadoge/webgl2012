@@ -55,5 +55,14 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $("#footer").click(function () {
+            $.getJSON("http://ghost-laptop/dndsvc/18", function (data) {
+                alert(data);
+                var dataObject = JSON.parse(data);
+                alert(dataObject.Id);
+            });
+        });
+    </script>
 </body>
 </html>
