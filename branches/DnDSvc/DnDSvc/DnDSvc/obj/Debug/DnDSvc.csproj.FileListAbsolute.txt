@@ -2,3 +2,7 @@ C:\DEVELOPMENT\DnDSvc\DnDSvc\DnDSvc\bin\DnDSvc.dll
 C:\DEVELOPMENT\DnDSvc\DnDSvc\DnDSvc\bin\DnDSvc.pdb
 C:\DEVELOPMENT\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.dll
 C:\DEVELOPMENT\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.pdb
+C:\DEVELOPMENT\webgl\DnDSvc\DnDSvc\DnDSvc\bin\DnDSvc.dll
+C:\DEVELOPMENT\webgl\DnDSvc\DnDSvc\DnDSvc\bin\DnDSvc.pdb
+C:\DEVELOPMENT\webgl\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.dll
+C:\DEVELOPMENT\webgl\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.pdb
