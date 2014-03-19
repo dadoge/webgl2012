@@ -93,15 +93,16 @@ body {
 	height: inherit;
 	padding: 5px 5px 5px 5px;
 	margin: 0px 0px 0px 0px;
-	overflow:auto;
 }
 
 .interactive {
-	height: 80%;
+	height: 72%;
 	color: white;
 	background-color: #282828;
 	border: solid;
+	border-width: 1px;
 	border-color: #282828;
+	border-radius: 2px;
 	padding: 5px 5px 5px 5px;
 	margin: auto;
 }
@@ -110,9 +111,10 @@ body {
 	height: 20%;
 	background-color: white;
 	border: solid;
-	border-color: #282828;
+	border-width: 1px;
+	border-color: #A8A8A8;
+	border-radius: 4px;
 	padding: 5px 5px 5px 5px;
-	overflow: auto;
 }
 
 .character-display{
@@ -137,7 +139,6 @@ body {
 	background-color:rgba(20,20,20,0.5);
 	height: 70%;
 	padding: 5px 5px 5px 20px;
-	
 }
 
 .character-hide {
@@ -150,7 +151,7 @@ body {
 	border: solid;
 	border-color: white;
 	width:20px;
-	paddding: 0px;
+	padding: 0px;
 	padding-left: 2px;
 	text-align: center;
 }
