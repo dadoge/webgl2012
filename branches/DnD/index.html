@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RPG Master - Home</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript" src="libs/jquery.slimscroll.js"></script>
+	<script type="text/javascript" src="js/slimScroll.js"></script>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +38,10 @@
 					</div>
 					<div class="chat">
 						CHAT
-						<p>Donec id elit non mi porta gra </p>
+						<p>Me: Donec id elit non mi porta </p>
+						<p>Xana: Donec id elit non mi porta </p>
+						<p>Me: Donec id elit non mi porta </p>
+						<p>Me: Donec id elit non mi porta </p>
 					</div>
 				</div>
 				<!--/span-->
@@ -91,28 +97,10 @@
 		</div>
 	</div>
 
-	<script>
-	function HideMenu(){			
-		if (document.getElementById('menu-options').style.visibility=="visible"){
-			document.getElementById('menu-options').style.visibility="hidden";
-		}
-		else {
-			document.getElementById('menu-options').style.visibility="visible";
-		}
-		if (document.getElementById('menu-container').style.width=="200px") {
-			document.getElementById('menu-container').style.width="40px";
-		}
-		else {
-			document.getElementById('menu-container').style.width="200px";
-		}
-	}
-	function HideCharacterMenu(){
+	<script type="text/javascript" src="js/hidemenu.js"></script>
 	
-	}
-	</script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
 	
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $("#footer").click(function () {
             $.getJSON("http://ghost-laptop/dndsvc/18", function (data) {
@@ -122,5 +110,6 @@
             });
         });
     </script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
