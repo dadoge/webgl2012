@@ -26,18 +26,23 @@
 						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 					</div>
 					<div class="chat">
-						<h2>Chat</h2>
+						CHAT
 						<p>Donec id elit non mi porta gra </p>
 					</div>
 				</div>
 				<!--/span-->
-				<div class="col-xs-3 col-custom">
-					<div class="character-icon">
+				<div id="character-info" class="col-xs-3 col-custom">
+					<div id="character-icon" class="character-icon">
 						<!--http://gkb3rk.deviantart.com/art/Druid-Master-New-326914153-->
 						<img style="display: block; margin: auto" src="images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg" width="inherit" height="100%"></img>
 					</div>
-					<div class="character-info">
+					<div id="character-info" class="character-info">
 						Character Stats
+					</div>
+					<div id="character-hide" class="character-hide">
+						<div class="character-hide-circle"></div>
+						<div class="character-hide-circle"></div>
+						<div class="character-hide-circle"></div>
 					</div>
 				</div>
 				<!--/span-->
@@ -82,7 +87,11 @@
 			document.getElementById('menu-container').style.width="200px";
 		}
 	}
+	function HideCharacterMenu(){
+	
+	}
 	</script>
+	
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
