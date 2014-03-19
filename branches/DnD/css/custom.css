@@ -89,6 +89,13 @@ body {
 	margin: 0px 0px 0px 0px;
 }
 
+.party-info{
+	height: inherit;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 0px 0px;
+	overflow:auto;
+}
+
 .interactive {
 	height: 80%;
 	color: white;
@@ -109,7 +116,12 @@ body {
 
 .character-display{
 	height: inherit;
-	background-color:rgba(20,20,20,0.75);
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 0px 0px;
+}
+
+.character-display-inner {
+	height: inherit;
 	padding: 5px 5px 5px 5px;
 	margin: 0px 0px 0px 0px;
 }
@@ -124,6 +136,7 @@ body {
 	background-color:rgba(20,20,20,0.5);
 	height: 70%;
 	padding: 5px 5px 5px 20px;
+	overflow: auto;
 }
 
 .character-hide {
