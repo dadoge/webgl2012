@@ -10,17 +10,23 @@ namespace DnDSvc
     public class Player
     {
         public string Id { get; set; }
-        public string StringValue { get; set; }
+        public string Name { get; set; }
+        public int Health { get; set; }
+        public int Intelligence { get; set;}
 
         public Player(string id)
         {
             Id = id;
-            StringValue = "Player " + Id + "is Gay";
+            Name = "Iargalon";
+            Health = 28;
+            Intelligence = 18;
         }
         public Player()
         {
             Id = "0";
-            StringValue = "Player " + Id + "is Gay";
+            Name = "PlayerDefault";
+            Health = 0;
+            Intelligence = 0;
         }
     }
 }
