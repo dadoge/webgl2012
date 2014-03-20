@@ -37,7 +37,7 @@ body {
 	background-color:rgba(240,240,240,0.90);
 	width: 160px;
 	height: 100%;
-	visibility: hidden;
+	visibility: visible;
 	padding: 8px;
 	border-radius: 5px;
 }
@@ -65,6 +65,7 @@ body {
 .container-custom {
 	border: solid;
 	border-color: #282828;
+	border-width: 2px;
 	height: 86%;
 	width: 92%;
 	position: absolute;
@@ -72,6 +73,9 @@ body {
 	margin-top: 5px;
 	margin-bottom: 0px;
 	border-radius: 8px;
+	-moz-box-shadow: 3px 3px 4px #000000;
+	-webkit-box-shadow: 3px 3px 4px #000000;
+	box-shadow: 3px 3px 4px #000000;
 }
 
 .row-custom {
@@ -132,7 +136,17 @@ body {
 .character-icon {
 	background-color:rgba(20,20,20,0.5);
 	height: 30%;
-	padding: 0px 0px 0px 0px;
+	padding: 4px 4px 4px 4px;
+}
+
+.character-img {
+	display: block;
+	margin: auto;
+	width: inherit;
+	height: 100%;
+	border: solid;
+	border-width: 1.5px;
+	border-radius: 20px;
 }
 
 .character-info {

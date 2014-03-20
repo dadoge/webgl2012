@@ -55,7 +55,7 @@
 				<div id="character-display" class="col-xs-3 character-display">
 					<div id="character-icon" class="character-icon">
 						<!--http://gkb3rk.deviantart.com/art/Druid-Master-New-326914153-->
-						<img style="display: block; margin: auto" src="images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg" width="inherit" height="100%"></img>
+						<img class="character-img" src="images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg"></img>
 					</div>
 					<div id="character-info" class="character-info">
 						<h4>Character Stats</h4>
@@ -96,7 +96,7 @@
 		Party Settings</br></br>
 		Options		
 		</div>
-		<div id="menu-tab" class="menu-tab" onclick="HideMenu()">
+		<div id="menu-tab" class="menu-tab">
 			M</br>
 			E</br>
 			N</br>
@@ -104,9 +104,23 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="js/hidemenu.js"></script>
+	<script>
+			$( "#menu-options" ).toggle( "slide" );
+	</script>
+	<!--<script type="text/javascript" src="js/hidemenu.js"></script>-->
 	
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+	<script>
+		$( "#menu-tab").click(function() {
+			$( "#menu-options" ).toggle( "slide" );
+			if (document.getElementById('menu-container').style.width=="200px") {
+				document.getElementById('menu-container').style.width="40px";
+			}
+			else {
+				document.getElementById('menu-container').style.width="200px";
+			}
+		});
+	</script>
 	
     <script type="text/javascript">
         $("#footer").click(function () {
@@ -118,6 +132,7 @@
         });
     </script>
 	<script src="js/bootstrap.min.js"></script>
+	 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/slimScroll-defined.js"></script>
 </body>
 </html>
