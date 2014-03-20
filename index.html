@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RPG Master - Home</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="libs/jquery.slimscroll.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+	
+</head>
+<body></body>
+	<div id="main-container" style="border: solid; border-color: white;">
+		<div class="container container-custom">
+			<div class="row row-custom">
+				<div class="col-xs-3 party-info">
+				<div id="party-info" style="position:relative;height:inherit">
+					<h2 style="font-size: 200%">Party and Battle Info</h2>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+					<h3>Player</h3>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
+					<h3>Player</h3>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
+					<h3>Player</h3>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
+					<h3>Player</h3>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
+				</div>
+				</div>
+				<!--Interactive Play Screen-->
+				<div class="col-xs-6 col-custom">
+					<div class="interactive">
+						<h2>Interactive Table</h2>
+						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+					</div>
+					<div class="chat">
+						<div id="chat">
+							CHAT
+							<p>You: Donec id elit non mi porta </p>
+							<p>Xana: Donec id elit non mi porta </p>
+							<p>You: Donec id elit non mi porta </p>
+						<p>You: Donec id elit non mi porta </p>
+						</div>
+					</div>
+					<div class="input-group" style="position:relative;">
+						<span class="input-group-addon">You: </span>
+						<input type="text" class="form-control" placeholder="chat">
+					</div>
+				</div>
+				<!--/span-->
+				<div id="character-display" class="col-xs-3 character-display">
+					<div id="character-icon" class="character-icon">
+						<!--http://gkb3rk.deviantart.com/art/Druid-Master-New-326914153-->
+						<img class="character-img" src="images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg"></img>
+					</div>
+					<div id="character-info" class="character-info">
+						<h4>Character Stats</h4>
+						<p>Donec id elit non mi porta</p>
+						<h4>Character Stats</h4>
+						<p>Donec id elit non mi porta</p>
+						<h4>Character Stats</h4>
+						<p>Donec id elit non mi porta</p>
+						<h4>Character Stats</h4>
+						<p>Donec id elit non mi porta</p>
+						<h4>Character Stats</h4>
+						<p>Donec id elit non mi porta</p>
+						<h4>Character Stats</h4>
+						<p>Donec id elit non mi porta</p>
+					</div>
+					<div id="character-hide" class="character-hide">
+						<div class="character-hide-circle"></div>
+						<div class="character-hide-circle"></div>
+						<div class="character-hide-circle"></div>
+					</div>
+				</div>
+				<!--/span-->
+			</div>
+			<!--/row-->
+		</div>
+	</div>
+	
+	<div id="footer">
+      <div class="container footer">
+		  <div class="footer-div">
+             <p class="text-center">Copyright or somethings - 2014</p>
+		  </div>
+      </div>
+	</div>
+	<div id="menu-container" class="menu-container">
+		<div id="menu-options" class="menu-options">
+		Player Settings</br></br>
+		Party Settings</br></br>
+		Options		
+		</div>
+		<div id="menu-tab" class="menu-tab">
+			M</br>
+			E</br>
+			N</br>
+			U</br>
+		</div>
+	</div>
+
+	<script>
+			$( "#menu-options" ).toggle( "slide" );
+	</script>
+	<!--<script type="text/javascript" src="js/hidemenu.js"></script>-->
+	
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+	<script>
+		$( "#menu-tab").click(function() {
+			$( "#menu-options" ).toggle( "slide" );
+			if (document.getElementById('menu-container').style.width=="200px") {
+				document.getElementById('menu-container').style.width="40px";
+			}
+			else {
+				document.getElementById('menu-container').style.width="200px";
+			}
+		});
+	</script>
+	
+    <script type="text/javascript">
+        $("#footer").click(function () {
+            $.getJSON("http://ghost-laptop/dndsvc/18", function (data) {
+                alert(data);
+                var dataObject = JSON.parse(data);
+                alert(dataObject.Id);
+            });
+        });
+    </script>
+	<script src="js/bootstrap.min.js"></script>
+	 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/slimScroll-defined.js"></script>
+</body>
+</html>

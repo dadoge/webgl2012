@@ -1,0 +1,645 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0066)http://www.ancientscrossroads.com/adnd_tools/2e_charsheet_2006.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Character Sheet</title>
+<style type="text/css">
+
+BODY
+	{ color: #000000; background-color: #FFFFFF; font-family: times new roman; }
+
+.CharSheet
+	{ color: #000000; background-color: #C0E0FF; font-size: 8pt; border-style: none solid; border-width: 8px; border-color: #C0E0FF;}
+	
+.SectionTop
+	{ border-top: solid 8px #C0E0FF; }
+
+.SmlLabel
+	{ color: #000000; background-color: #FFFFFF; font-size: 8pt; font-weight: bold; text-align: center; white-space: nowrap; }
+
+.MedLabel
+	{ color: #000000; background-color: #FFFFFF; font-size: 10pt; font-weight: bold; text-align: right; height: 20px; white-space: nowrap; }
+
+.LrgLabel
+	{ color: #000000; background-color: #C0E0FF; font-size: 12pt; font-weight: bold; text-align: center; white-space: nowrap; }
+
+.LrgTitle
+	{ color: #000000; background-color: #C0E0FF; font-size: 14pt; font-weight: bold; text-align: center; white-space: nowrap; }
+
+.LinedField
+	{ color: #000000; background-color: #FFFFFF; font-size: 10pt; text-align: center; border-bottom: solid 1px #000000; border-left: solid 4px #FFFFFF; border-right: solid 4px #FFFFFF; white-space: nowrap; }
+
+.ProfField
+	{ color: #000000; background-color: #FFFFFF; font-size: 8pt; border-bottom: solid 1px #000000; border-left: solid 2px #FFFFFF; border-right: solid 2px #FFFFFF; white-space: nowrap; Height: 16px; overflow: hidden; }
+
+.ProfStat
+	{ color: #000000; background-color: #FFFFFF; font-size: 8pt; text-align: center; border-bottom: solid 1px #000000; border-left: solid 2px #FFFFFF; border-right: solid 2px #FFFFFF; white-space: nowrap; Height: 16px; overflow: hidden; }
+
+.MedHeader
+	{ color: #000000; background-color: #C0E0FF; font-size: 10pt; font-weight: bold; text-align: center; white-space: nowrap; }
+
+.WpnField
+	{ color: #000000; background-color: #FFFFFF; font-size: 10pt; text-align: center; border-top: solid 1px #C0E0FF; border-right: solid 1px #C0E0FF; white-space: nowrap; }
+
+.StatsBorder
+	{ border-top: solid 1px #000000; }
+
+.StatsField
+	{ color: #000000; background-color: #FFFFFF; font-size: 10pt; text-align: center; border-left: solid 2px #FFFFFF; border-right: solid 2px #FFFFFF; white-space: nowrap; width: 36px; }
+
+.MedFont
+	{ font-size: 10pt; }
+
+.SmlFont
+	{ font-size: 8pt; }
+
+@media print
+	{
+	.NoPrint
+		{ display: none; }
+	}
+
+</style>
+<style type="text/css"></style></head>
+<body>
+<center>
+<div class="NoPrint">
+To ensure this page prints properly, set your browser's print margins between 0.25" and 0.5",<br>
+and turn on the option to print background colors and images.<br>
+<br>
+</div>
+<!-- General Character Info -->
+<table cellpadding="0" cellspacing="0" border="0" width="720" class="CharSheet">
+<tbody><tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Name</td>
+<td class="LinedField" width="50%" colspan="7" id="CharacterName">&nbsp;<!-- CharacterName -->&nbsp;</td>
+<td colspan="4" rowspan="3" class="LrgTitle" valign="top">
+Advanced Dungeons &amp; Dragons<br>
+2nd-Edition Character Sheet</td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Player</td>
+<td class="LinedField" width="25%" colspan="3" id="PlayerName">&nbsp;<!-- PlayerName --></td>
+<td class="MedLabel">&nbsp;Race</td>
+<td class="LinedField" width="25%" colspan="3" id="CharacterRace">&nbsp;<!-- CharacterRace --></td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Class</td>
+<td class="LinedField" width="25%" colspan="3" id="CharacterClasses">&nbsp;<!-- CharacterClasses --></td>
+<td class="MedLabel">&nbsp;Level</td>
+<td class="LinedField" width="12%" id="CharacterLevels">&nbsp;<!-- CharacterLevels --></td>
+<td class="MedLabel">&nbsp;Align</td>
+<td class="LinedField" width="12%" id="Alignment">&nbsp;<!-- Alignment --></td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Gender</td>
+<td class="LinedField" width="12%" id="Gender">&nbsp;<!-- Gender --></td>
+<td class="MedLabel">&nbsp;Age</td>
+<td class="LinedField" width="12%" id="Age">&nbsp;<!-- Age --></td>
+<td class="MedLabel">&nbsp;Height</td>
+<td class="LinedField" width="12%" id="CharacterHeight">&nbsp;<!-- CharacterHeight --></td>
+<td class="MedLabel">&nbsp;Weight</td>
+<td class="LinedField" width="12%" id="Weight">&nbsp;<!-- Weight --></td>
+<td class="MedLabel">&nbsp;Hair</td>
+<td class="LinedField" width="25%" id="HairColor">&nbsp;<!-- HairColor --></td>
+<td class="MedLabel">&nbsp;Eyes</td>
+<td class="LinedField" width="25%" id="EyeColor">&nbsp;<!-- EyeColor --></td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Home</td>
+<td class="LinedField" colspan="3" id="CharacterHome">&nbsp;<!-- CharacterHome --></td>
+<td class="MedLabel">&nbsp;Family</td>
+<td class="LinedField" colspan="3" id="Family">&nbsp;<!-- Family --></td>
+<td class="MedLabel">&nbsp;Social Class</td>
+<td class="LinedField" id="SocialClass">&nbsp;<!-- SocialClass --></td>
+<td class="MedLabel">&nbsp;Religion</td>
+<td class="LinedField" id="Religion">&nbsp;<!-- Religion --></td>
+</tr>
+</tbody></table>
+<table cellpadding="0" cellspacing="0" border="0" width="720" class="CharSheet">
+<tbody><tr>
+<td class="MedLabel">&nbsp;Birth Rank</td>
+<td class="LinedField" width="10%" id="BirthRank">&nbsp;<!-- BirthRank --></td>
+<td class="MedLabel">&nbsp;# of Siblings</td>
+<td class="LinedField" width="10%" id="Siblings">&nbsp;<!-- Siblings --></td>
+<td class="MedLabel">&nbsp;Status</td>
+<td class="LinedField" width="15%" id="MaritalStatus">&nbsp;<!-- MaritalStatus --></td>
+<td class="MedLabel">&nbsp;Notes</td>
+<td class="LinedField" width="50%" id="BasicNote">&nbsp;<!-- BasicNote --></td>
+</tr>
+</tbody></table>
+<!-- Character Basic Stats -->
+<table cellpadding="0" cellspacing="0" border="0" width="720" class="CharSheet">
+<tbody><tr>
+<td>&nbsp;</td>
+</tr>
+<tr height="22">
+<td class="StatsField" id="STR">&nbsp;<!-- STR -->&nbsp;</td>
+<td class="LrgLabel" nowrap="nowrap">&nbsp;STR&nbsp;</td>
+<td class="SmlLabel">&nbsp;Hit Prob</td>
+<td class="StatsField" id="StrHitBonus">&nbsp;<!-- StrHitBonus -->&nbsp;</td>
+<td class="SmlLabel">&nbsp;Dmg Adj</td>
+<td class="StatsField" id="StrDamageBonus">&nbsp;<!-- StrDamageBonus -->&nbsp;</td>
+<td class="SmlLabel">&nbsp;Wgt Alw</td>
+<td class="StatsField" id="StrWeightAllowance">&nbsp;<!-- StrWeightAllowance -->&nbsp;</td>
+<td class="SmlLabel">&nbsp;Max Press</td>
+<td class="StatsField" id="StrMaxPress">&nbsp;<!-- StrMaxPress -->&nbsp;</td>
+<td class="SmlLabel">&nbsp;Open Doors</td>
+<td class="StatsField" "="" id="StrOpenDoors">&nbsp;<!-- StrOpenDoors -->&nbsp;</td>
+<td class="SmlLabel" nowrap="nowrap">&nbsp;BB/LG</td>
+<td class="StatsField" id="StrBendBars">&nbsp;<!-- StrBendBars -->&nbsp;</td>
+</tr>
+<tr height="22">
+<td class="StatsField StatsBorder" nowrap="nowrap" id="DEX">&nbsp;<!-- DEX -->&nbsp;</td>
+<td class="LrgLabel" nowrap="nowrap">&nbsp;DEX&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;React Adj</td>
+<td class="StatsField StatsBorder" id="DexReactionBonus">&nbsp;<!-- DexReactionBonus -->&nbsp;</td>
+<td class="SmlLabel StatsBorder" colspan="2">&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Missile Hit</td>
+<td class="StatsField StatsBorder" id="DexHitBonus">&nbsp;<!-- DexHitBonus -->&nbsp;</td>
+<td class="SmlLabel StatsBorder" colspan="2">&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Def Adj</td>
+<td class="StatsField StatsBorder" id="DexDefenseBonus">&nbsp;<!-- DexDefenseBonus -->&nbsp;</td>
+<td class="SmlLabel StatsBorder" colspan="2">&nbsp;</td>
+</tr>
+<tr height="22">
+<td class="StatsField StatsBorder" nowrap="nowrap" id="CON">&nbsp;<!-- CON -->&nbsp;</td>
+<td class="LrgLabel" nowrap="nowrap">&nbsp;CON&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;HP Adj</td>
+<td class="StatsField StatsBorder" id="ConHitpointBonus">&nbsp;<!-- ConHitpointBonus -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Sys Shck</td>
+<td class="StatsField StatsBorder" id="ConSystemShock">&nbsp;<!-- ConSystemShock -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Res Sur</td>
+<td class="StatsField StatsBorder" id="ConRessurection">&nbsp;<!-- ConRessurection -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Pois Save</td>
+<td class="StatsField StatsBorder" id="ConPoisonSave">&nbsp;<!-- ConPoisonSave -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Regen</td>
+<td class="StatsField StatsBorder" id="ConRegen">&nbsp;<!-- ConRegen -->&nbsp;</td>
+<td class="SmlLabel StatsBorder" colspan="2">&nbsp;</td>
+</tr>
+<tr height="22">
+<td class="StatsField StatsBorder" nowrap="nowrap" id="INT">&nbsp;<!-- INT -->&nbsp;</td>
+<td class="LrgLabel" nowrap="nowrap">&nbsp;INT&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;# Lang</td>
+<td class="StatsField StatsBorder" id="IntNumberOfLanguages">&nbsp;<!-- IntNumberOfLanguages -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Max Spl Lvl</td>
+<td class="StatsField StatsBorder" id="IntMaxSpellLevel">&nbsp;<!-- IntMaxSpellLevel -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Lrn Spls</td>
+<td class="StatsField StatsBorder" id="IntLearnSpells">&nbsp;<!-- IntLearnSpells -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Spls/Lvl</td>
+<td class="StatsField StatsBorder" id="IntSpellsPerLevel">&nbsp;<!-- IntSpellsPerLevel -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Spl Immun</td>
+<td class="StatsField StatsBorder" colspan="3" id="IntSpellImmunity">&nbsp;<!-- IntSpellImmunity -->&nbsp;</td>
+</tr>
+<tr height="22">
+<td class="StatsField StatsBorder" nowrap="nowrap" id="WIS">&nbsp;<!-- WIS -->&nbsp;</td>
+<td class="LrgLabel" nowrap="nowrap">&nbsp;WIS&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Mag Def</td>
+<td class="StatsField StatsBorder" id="WisMagicalDefenseBonus">&nbsp;<!-- WisMagicalDefenseBonus -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Bonus Spls</td>
+<td class="StatsField StatsBorder" colspan="3" style="width: auto;" id="WisBonusSpells">&nbsp;<!-- WisBonusSpells -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Spl Fail</td>
+<td class="StatsField StatsBorder" id="WisSpellFailure">&nbsp;<!-- WisSpellFailure -->&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Spl Immun</td>
+<td class="StatsField StatsBorder" colspan="3" id="WisSpellImmunity">&nbsp;<!-- WisSpellImmunity -->&nbsp;</td>
+</tr>
+<tr height="22">
+<td class="StatsField StatsBorder" nowrap="nowrap" id="CHA">&nbsp;<!-- CHA -->&nbsp;</td>
+<td class="LrgLabel" nowrap="nowrap">&nbsp;CHA&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Max Hench</td>
+<td class="StatsField StatsBorder" id="ChaMaxHenchmen">&nbsp;<!-- ChaMaxHenchmen -->&nbsp;</td>
+<td class="SmlLabel StatsBorder" colspan="2">&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;Loyalty Base</td>
+<td class="StatsField StatsBorder" id="ChaLoyaltyBase">&nbsp;<!-- ChaLoyaltyBase -->&nbsp;</td>
+<td class="SmlLabel StatsBorder" colspan="2">&nbsp;</td>
+<td class="SmlLabel StatsBorder">&nbsp;React Adj</td>
+<td class="StatsField StatsBorder" id="ChaReactionBonus">&nbsp;<!-- ChaReactionBonus -->&nbsp;</td>
+<td class="SmlLabel StatsBorder" colspan="2">&nbsp;&nbsp;</td>
+</tr>
+</tbody></table>
+<!-- Movement Rates, Armor Class, SAving Throws, Hitpoints, and THAC0 -->
+<table cellpadding="0" cellspacing="0" border="0" width="720" class="CharSheet">
+<tbody><tr height="28" valign="bottom">
+<td class="sectionTop LrgLabel" colspan="3">&nbsp;Movement&nbsp;</td>
+<td class="sectionTop">&nbsp;&nbsp;</td>
+<td class="sectionTop LrgLabel" colspan="2">&nbsp;Armor&nbsp;</td>
+<td class="sectionTop">&nbsp;&nbsp;</td>
+<td class="sectionTop MedHeader" style="font-size: 8pt">&nbsp;Base</td>
+<td class="sectionTop LrgLabel">&nbsp;Saves&nbsp;</td>
+<td class="sectionTop MedHeader" style="font-size: 8pt">&nbsp;Adj.&nbsp;</td>
+<td class="sectionTop">&nbsp;&nbsp;</td>
+<td class="sectionTop LrgLabel" colspan="2">&nbsp;Hitpoints&nbsp;</td>
+<td class="sectionTop">&nbsp;&nbsp;</td>
+<td class="sectionTop LrgLabel" colspan="2">&nbsp;THAC0&nbsp;</td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;</td>
+<td class="MedLabel">Base</td>
+<td class="LinedField" width="40" id="BaseMovement">&nbsp;<!-- BaseMovement -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Normal</td>
+<td class="LinedField" width="40" id="BaseAC">&nbsp;<!-- BaseAC -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="LinedField" width="40" id="ParalyzeSave">&nbsp;<!-- ParalyzeSave -->&nbsp;</td>
+<td class="MedLabel" style="text-align: center">&nbsp;Para/Pois</td>
+<td class="LinedField" width="40" id="ParalyzeBonus">&nbsp;<!-- ParalyzeBonus -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Max</td>
+<td class="LinedField" width="40" id="MaxHitpoints">&nbsp;<!-- MaxHitpoints -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Base</td>
+<td class="LinedField" width="40" id="BaseThaco">&nbsp;<!-- BaseThaco -->&nbsp;</td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Light (</td>
+<td class="MedLabel" id="LightCapacity">&nbsp;<!-- LightCapacity -->&nbsp;)</td>
+<td class="LinedField" id="LightMovement">&nbsp;<!-- LightMovement -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Surprised</td>
+<td class="LinedField" id="SurprisedAC">&nbsp;<!-- SurprisedAC -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="LinedField" id="RodSave">&nbsp;<!-- RodSave -->&nbsp;</td>
+<td class="MedLabel" style="text-align: center">&nbsp;Rod/Staff</td>
+<td class="LinedField" id="RodBonus">&nbsp;<!-- RodBonus -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Current</td>
+<td class="LinedField" id="CurrentHitpoints">&nbsp;<!-- CurrentHitpoints -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Dual-Wield</td>
+<td class="LinedField" id="DualWieldThaco">&nbsp;<!-- MainHandThaco -->&nbsp;/&nbsp;<!-- OffhandThaco -->&nbsp;</td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Medium (</td>
+<td class="MedLabel" id="MediumCapacity">&nbsp;<!-- MediumCapacity -->&nbsp;)</td>
+<td class="LinedField" id="MediumMovement">&nbsp;<!-- MediumMovement -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Shieldless</td>
+<td class="LinedField" id="ShieldlessAC">&nbsp;<!-- ShieldlessAC -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="LinedField" id="PetrifySave">&nbsp;<!-- PetrifySave -->&nbsp;</td>
+<td class="MedLabel" style="text-align: center">&nbsp;Petr/Poly</td>
+<td class="LinedField" id="PetrifyBonus">&nbsp;<!-- PetrifyBonus -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Temp</td>
+<td class="LinedField" id="TempHitpoints">&nbsp;<!-- TempHitpoints -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Unskilled</td>
+<td class="LinedField" id="UnskilledThaco">&nbsp;<!-- UnskilledThaco -->&nbsp;</td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Heavy (</td>
+<td class="MedLabel" id="HeavyCapacity">&nbsp;<!-- HeavyCapacity -->&nbsp;)</td>
+<td class="LinedField" id="HeavyMovement">&nbsp;<!-- HeavyMovement -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;Rear</td>
+<td class="LinedField" id="RearAC">&nbsp;<!-- RearAC -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="LinedField" id="BreathSave">&nbsp;<!-- BreathSave -->&nbsp;</td>
+<td class="MedLabel" style="text-align: center">&nbsp;Breath</td>
+<td class="LinedField" id="BreathBonus">&nbsp;<!-- BreathBonus -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;</td>
+<td class="MedLabel">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;</td>
+<td class="MedLabel">&nbsp;</td>
+</tr>
+<tr>
+<td class="MedLabel">&nbsp;Severe (</td>
+<td class="MedLabel" id="SevereCapacity">&nbsp;<!-- SevereCapaity -->&nbsp;)</td>
+<td class="LinedField" id="SevereMovement">&nbsp;<!-- SevereMovement -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;vs. Touch</td>
+<td class="LinedField" id="TouchAC">&nbsp;<!-- TouchAC -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="LinedField" id="SpellSave">&nbsp;<!-- SpellSave -->&nbsp;</td>
+<td class="MedLabel" style="text-align: center">&nbsp;Spells</td>
+<td class="LinedField" id="SpellBonus">&nbsp;<!-- SpellBonus -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;</td>
+<td class="MedLabel">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="MedLabel">&nbsp;</td>
+<td class="MedLabel">&nbsp;</td>
+</tr>
+</tbody></table>
+<!-- Carried Weapons and/or Natural Attacks-->
+<table cellpadding="0" cellspacing="0" border="0" width="720" class="CharSheet">
+<tbody><tr height="24" valign="bottom">
+<td class="MedHeader" width="50%">&nbsp;Weapon Name&nbsp;</td>
+<td class="MedHeader">&nbsp;# Atks&nbsp;</td>
+<td class="MedHeader">&nbsp;Hit/Dmg Adj&nbsp;</td>
+<td class="MedHeader">&nbsp;Base Dmg (SM/L)&nbsp;</td>
+<td class="MedHeader" width="15%" nowrap="nowrap">&nbsp;Range&nbsp;</td>
+<td class="MedHeader">&nbsp;Size&nbsp;</td>
+<td class="MedHeader">&nbsp;Type&nbsp;</td>
+<td class="MedHeader">&nbsp;Spd.&nbsp;</td>
+<td class="MedHeader">&nbsp;Wgt.&nbsp;</td>
+</tr>
+<tr>
+<td class="WpnField" style="text-align: left;" id="WpnName1">&nbsp;<!-- WpName 1 -->&nbsp;</td>
+<td class="WpnField" id="WpnAttacks1">&nbsp;<!-- WpAttacks 1 -->&nbsp;</td>
+<td class="WpnField" id="WpnBonuses1">&nbsp;<!-- WpnBonuses 1 -->&nbsp;</td>
+<td class="WpnField" id="WpnBaseDamage1">&nbsp;<!-- WpnBaseDamage 1 -->&nbsp;</td>
+<td class="WpnField" id="WpnRange1">&nbsp;<!-- WpnRange 1 -->&nbsp;</td>
+<td class="WpnField" id="WpnSize1">&nbsp;<!-- WpnSize 1 -->&nbsp;</td>
+<td class="WpnField" id="WpnDamageType1">&nbsp;<!-- WpnDamageType 1 -->&nbsp;</td>
+<td class="WpnField" id="WpnSpeed1">&nbsp;<!-- WpnSpeed 1 -->&nbsp;</td>
+<td class="WpnField" id="WpnWeight1">&nbsp;<!-- WpnWeight 1 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="WpnField" style="text-align: left;" id="WpnName2">&nbsp;<!-- WpName 2 -->&nbsp;</td>
+<td class="WpnField" id="WpnAttacks2">&nbsp;<!-- WpAttacks 2 -->&nbsp;</td>
+<td class="WpnField" id="WpnBonuses2">&nbsp;<!-- WpnBonuses 2 -->&nbsp;</td>
+<td class="WpnField" id="WpnBaseDamage2">&nbsp;<!-- WpnBaseDamage 2 -->&nbsp;</td>
+<td class="WpnField" id="WpnRange2">&nbsp;<!-- WpnRange 2 -->&nbsp;</td>
+<td class="WpnField" id="WpnSize2">&nbsp;<!-- WpnSize 2 -->&nbsp;</td>
+<td class="WpnField" id="WpnDamageType2">&nbsp;<!-- WpnDamageType 2 -->&nbsp;</td>
+<td class="WpnField" id="WpnSpeed2">&nbsp;<!-- WpnSpeed 2 -->&nbsp;</td>
+<td class="WpnField" id="WpnWeight2">&nbsp;<!-- WpnWeight 2 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="WpnField" style="text-align: left;" id="WpnName3">&nbsp;<!-- WpName 3 -->&nbsp;</td>
+<td class="WpnField" id="WpnAttacks3">&nbsp;<!-- WpAttacks 3 -->&nbsp;</td>
+<td class="WpnField" id="WpnBonuses3">&nbsp;<!-- WpnBonuses 3 -->&nbsp;</td>
+<td class="WpnField" id="WpnBaseDamage3">&nbsp;<!-- WpnBaseDamage 3 -->&nbsp;</td>
+<td class="WpnField" id="WpnRange3">&nbsp;<!-- WpnRange 3 -->&nbsp;</td>
+<td class="WpnField" id="WpnSize3">&nbsp;<!-- WpnSize 3 -->&nbsp;</td>
+<td class="WpnField" id="WpnDamageType3">&nbsp;<!-- WpnDamageType 3 -->&nbsp;</td>
+<td class="WpnField" id="WpnSpeed3">&nbsp;<!-- WpnSpeed 3 -->&nbsp;</td>
+<td class="WpnField" id="WpnWeight3">&nbsp;<!-- WpnWeight 3 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="WpnField" style="text-align: left;" id="WpnName4">&nbsp;<!-- WpName 4 -->&nbsp;</td>
+<td class="WpnField" id="WpnAttacks4">&nbsp;<!-- WpAttacks 4 -->&nbsp;</td>
+<td class="WpnField" id="WpnBonuses4">&nbsp;<!-- WpnBonuses 4 -->&nbsp;</td>
+<td class="WpnField" id="WpnBaseDamage4">&nbsp;<!-- WpnBaseDamage 4 -->&nbsp;</td>
+<td class="WpnField" id="WpnRange4">&nbsp;<!-- WpnRange 4 -->&nbsp;</td>
+<td class="WpnField" id="WpnSize4">&nbsp;<!-- WpnSize 4 -->&nbsp;</td>
+<td class="WpnField" id="WpnDamageType4">&nbsp;<!-- WpnDamageType 4 -->&nbsp;</td>
+<td class="WpnField" id="WpnSpeed4">&nbsp;<!-- WpnSpeed 4 -->&nbsp;</td>
+<td class="WpnField" id="WpnWeight4">&nbsp;<!-- WpnWeight 4 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="WpnField" style="text-align: left;" id="WpnName5">&nbsp;<!-- WpName 5 -->&nbsp;</td>
+<td class="WpnField" id="WpnAttacks5">&nbsp;<!-- WpAttacks 5 -->&nbsp;</td>
+<td class="WpnField" id="WpnBonuses5">&nbsp;<!-- WpnBonuses 5 -->&nbsp;</td>
+<td class="WpnField" id="WpnBaseDamage5">&nbsp;<!-- WpnBaseDamage 5 -->&nbsp;</td>
+<td class="WpnField" id="WpnRange5">&nbsp;<!-- WpnRange 5 -->&nbsp;</td>
+<td class="WpnField" id="WpnSize5">&nbsp;<!-- WpnSize 5 -->&nbsp;</td>
+<td class="WpnField" id="WpnDamageType5">&nbsp;<!-- WpnDamageType 5 -->&nbsp;</td>
+<td class="WpnField" id="WpnSpeed5">&nbsp;<!-- WpnSpeed 5 -->&nbsp;</td>
+<td class="WpnField" id="WpnWeight5">&nbsp;<!-- WpnWeight 5 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="WpnField" style="text-align: left;" id="WpnName6">&nbsp;<!-- WpName 6 -->&nbsp;</td>
+<td class="WpnField" id="WpnAttacks6">&nbsp;<!-- WpAttacks 6 -->&nbsp;</td>
+<td class="WpnField" id="WpnBonuses6">&nbsp;<!-- WpnBonuses 6 -->&nbsp;</td>
+<td class="WpnField" id="WpnBaseDamage6">&nbsp;<!-- WpnBaseDamage 6 -->&nbsp;</td>
+<td class="WpnField" id="WpnRange6">&nbsp;<!-- WpnRange 6 -->&nbsp;</td>
+<td class="WpnField" id="WpnSize6">&nbsp;<!-- WpnSize 6 -->&nbsp;</td>
+<td class="WpnField" id="WpnDamageType6">&nbsp;<!-- WpnDamageType 6 -->&nbsp;</td>
+<td class="WpnField" id="WpnSpeed6">&nbsp;<!-- WpnSpeed 6 -->&nbsp;</td>
+<td class="WpnField" id="WpnWeight6">&nbsp;<!-- WpnWeight 6 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="WpnField" style="text-align: left;" id="WpnName7">&nbsp;<!-- WpName 7 -->&nbsp;</td>
+<td class="WpnField" id="WpnAttacks7">&nbsp;<!-- WpAttacks 7 -->&nbsp;</td>
+<td class="WpnField" id="WpnBonuses7">&nbsp;<!-- WpnBonuses 7 -->&nbsp;</td>
+<td class="WpnField" id="WpnBaseDamage7">&nbsp;<!-- WpnBaseDamage 7 -->&nbsp;</td>
+<td class="WpnField" id="WpnRange7">&nbsp;<!-- WpnRange 7 -->&nbsp;</td>
+<td class="WpnField" id="WpnSize7">&nbsp;<!-- WpnSize 7 -->&nbsp;</td>
+<td class="WpnField" id="WpnDamageType7">&nbsp;<!-- WpnDamageType 7 -->&nbsp;</td>
+<td class="WpnField" id="WpnSpeed7">&nbsp;<!-- WpnSpeed 7 -->&nbsp;</td>
+<td class="WpnField" id="WpnWeight7">&nbsp;<!-- WpnWeight 7 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="WpnField" style="text-align: left;" id="WpnName8">&nbsp;<!-- WpName 8 -->&nbsp;</td>
+<td class="WpnField" id="WpnAttacks8">&nbsp;<!-- WpAttacks 8 -->&nbsp;</td>
+<td class="WpnField" id="WpnBonuses8">&nbsp;<!-- WpnBonuses 8 -->&nbsp;</td>
+<td class="WpnField" id="WpnBaseDamage8">&nbsp;<!-- WpnBaseDamage 8 -->&nbsp;</td>
+<td class="WpnField" id="WpnRange8">&nbsp;<!-- WpnRange 8 -->&nbsp;</td>
+<td class="WpnField" id="WpnSize8">&nbsp;<!-- WpnSize 8 -->&nbsp;</td>
+<td class="WpnField" id="WpnDamageType8">&nbsp;<!-- WpnDamageType 8 -->&nbsp;</td>
+<td class="WpnField" id="WpnSpeed8">&nbsp;<!-- WpnSpeed 8 -->&nbsp;</td>
+<td class="WpnField" id="WpnWeight8">&nbsp;<!-- WpnWeight 8 -->&nbsp;</td>
+</tr>
+</tbody></table>
+<!-- Special Attacks/Defenses, and Ammunition -->
+<table cellpadding="0" cellspacing="0" border="0" width="720" class="CharSheet">
+<tbody><tr height="24" valign="bottom">
+<td class="LrgLabel" width="60%" colspan="2">&nbsp;Special Attacks/Defenses&nbsp;</td>
+<td width="5">&nbsp;&nbsp;</td>
+<td class="LrgLabel">&nbsp;Ammunition&nbsp;</td>
+<td class="LrgLabel" width="64" nowrap="nowrap">&nbsp;Dmg&nbsp;</td>
+<td class="LrgLabel" width="10" nowrap="nowrap">&nbsp;Qty&nbsp;</td>
+</tr>
+<tr>
+<td class="LinedField" id="SpecialAttack1">&nbsp;<!-- SpecialAttack 1 -->&nbsp;</td>
+<td class="LinedField" id="SpecialDefense1">&nbsp;<!-- SpecialDefense 1 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="LinedField" id="AmmoName1">&nbsp;<!-- AmnoName 1 -->&nbsp;</td>
+<td class="LinedField" id="AmmoDamage1">&nbsp;<!-- AmmoDamage 1 -->&nbsp;</td>
+<td class="LinedField" id="AmmoQty1">&nbsp;<!-- AmmoQty 1 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="LinedField" id="SpecialAttack2">&nbsp;<!-- SpecialAttack 2 -->&nbsp;</td>
+<td class="LinedField" id="SpecialDefense2">&nbsp;<!-- SpecialDefense 2 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="LinedField" id="AmmoName2">&nbsp;<!-- AmnoName 2 -->&nbsp;</td>
+<td class="LinedField" id="AmmoDamage2">&nbsp;<!-- AmmoDamage 2 -->&nbsp;</td>
+<td class="LinedField" id="AmmoQty2">&nbsp;<!-- AmmoQty 2 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="LinedField" id="SpecialAttack3">&nbsp;<!-- SpecialAttack 3 -->&nbsp;</td>
+<td class="LinedField" id="SpecialDefense3">&nbsp;<!-- SpecialDefense 3 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="LinedField" id="AmmoName3">&nbsp;<!-- AmnoName 3 -->&nbsp;</td>
+<td class="LinedField" id="AmmoDamage3">&nbsp;<!-- AmmoDamage 3 -->&nbsp;</td>
+<td class="LinedField" id="AmmoQty3">&nbsp;<!-- AmmoQty 3 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="LinedField" id="SpecialAttack4">&nbsp;<!-- SpecialAttack 4 -->&nbsp;</td>
+<td class="LinedField" id="SpecialDefense4">&nbsp;<!-- SpecialDefense 4 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="LinedField" id="AmmoName4">&nbsp;<!-- AmnoName 4 -->&nbsp;</td>
+<td class="LinedField" id="AmmoDamage4">&nbsp;<!-- AmmoDamage 4 -->&nbsp;</td>
+<td class="LinedField" id="AmmoQty4">&nbsp;<!-- AmmoQty 4 -->&nbsp;</td>
+</tr>
+</tbody></table>
+<!-- Class & Racial Abilities, Weapon and Non-Weapon Proficiencies -->
+<table cellpadding="0" cellspacing="0" border="0" width="720" class="CharSheet">
+<tbody><tr height="28" valign="bottom">
+<td class="LrgLabel" colspan="2" width="50%">&nbsp;Class/Racial Abilities&nbsp;</td>
+<td class="sectionTop" width="5">&nbsp;&nbsp;</td>
+<td class="LrgLabel" colspan="8" width="50%">&nbsp;Proficiencies&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" width="25%" id="CharacterAbility1">&nbsp;<!-- CharacterAbility 1 -->&nbsp;</td>
+<td class="ProfField" width="25%" id="CharacterAbility17">&nbsp;<!-- CharacterAbility 17 -->&nbsp;</td>
+<td>&nbsp;</td>
+<td class="ProfField" width="19%" id="Proficiency1">&nbsp;<!-- Proficiency 1 -->&nbsp;</td>
+<td class="ProfStat" width="6%" nowrap="" id="ProficiencyStat1">&nbsp;<!-- ProfStat 1 -->/<!-- ProfBonus 1 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" width="19%" id="Proficiency17">&nbsp;<!-- Proficiency 17 -->&nbsp;</td>
+<td class="ProfStat" width="6%" nowrap="" id="ProficiencyStat17">&nbsp;<!-- ProfStat 17 -->/<!-- ProfBonus 17 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility2">&nbsp;<!-- CharacterAbility 2 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility18">&nbsp;<!-- CharacterAbility 18 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency2">&nbsp;<!-- Proficiency 2 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat2">&nbsp;<!-- ProfStat 2 -->/<!-- ProfBonus 2 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency18">&nbsp;<!-- Proficiency 18 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat18">&nbsp;<!-- ProfStat 18 -->/<!-- ProfBonus 18 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility3">&nbsp;<!-- CharacterAbility 3 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility19">&nbsp;<!-- CharacterAbility 19 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency3">&nbsp;<!-- Proficiency 3 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat3">&nbsp;<!-- ProfStat 3 -->/<!-- ProfBonus 3 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency19">&nbsp;<!-- Proficiency 19 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat19">&nbsp;<!-- ProfStat 19 -->/<!-- ProfBonus 19 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility4">&nbsp;<!-- CharacterAbility 4 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility20">&nbsp;<!-- CharacterAbility 20 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency4">&nbsp;<!-- Proficiency 4 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat4">&nbsp;<!-- ProfStat 4 -->/<!-- ProfBonus 4 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency20">&nbsp;<!-- Proficiency 20 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat20">&nbsp;<!-- ProfStat 20 -->/<!-- ProfBonus 20 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility5">&nbsp;<!-- CharacterAbility 5 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility21">&nbsp;<!-- CharacterAbility 21 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency5">&nbsp;<!-- Proficiency 5 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat5">&nbsp;<!-- ProfStat 5 -->/<!-- ProfBonus 5 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency21">&nbsp;<!-- Proficiency 21 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat21">&nbsp;<!-- ProfStat 21 -->/<!-- ProfBonus 21 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility6">&nbsp;<!-- CharacterAbility 6 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility22">&nbsp;<!-- CharacterAbility 22 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency6">&nbsp;<!-- Proficiency 6 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat6">&nbsp;<!-- ProfStat 6 -->/<!-- ProfBonus 6 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency22">&nbsp;<!-- Proficiency 22 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat22">&nbsp;<!-- ProfStat 22 -->/<!-- ProfBonus 22 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility7">&nbsp;<!-- CharacterAbility 7 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility23">&nbsp;<!-- CharacterAbility 23 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency7">&nbsp;<!-- Proficiency 7 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat7">&nbsp;<!-- ProfStat 7 -->/<!-- ProfBonus 7 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency23">&nbsp;<!-- Proficiency 23 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat23">&nbsp;<!-- ProfStat 23 -->/<!-- ProfBonus 23 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility8">&nbsp;<!-- CharacterAbility 8 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility24">&nbsp;<!-- CharacterAbility 24 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency8">&nbsp;<!-- Proficiency 8 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat8">&nbsp;<!-- ProfStat 8 -->/<!-- ProfBonus 8 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency24">&nbsp;<!-- Proficiency 24 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat24">&nbsp;<!-- ProfStat 24 -->/<!-- ProfBonus 24 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility9">&nbsp;<!-- CharacterAbility 9 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility25">&nbsp;<!-- CharacterAbility 25 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency9">&nbsp;<!-- Proficiency 9 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat9">&nbsp;<!-- ProfStat 9 -->/<!-- ProfBonus 9 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency25">&nbsp;<!-- Proficiency 25 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat25">&nbsp;<!-- ProfStat 25 -->/<!-- ProfBonus 25 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility10">&nbsp;<!-- CharacterAbility 10 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility26">&nbsp;<!-- CharacterAbility 26 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency10">&nbsp;<!-- Proficiency 10 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat10">&nbsp;<!-- ProfStat 10 -->/<!-- ProfBonus 10 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency26">&nbsp;<!-- Proficiency 26 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat26">&nbsp;<!-- ProfStat 26 -->/<!-- ProfBonus 26 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility11">&nbsp;<!-- CharacterAbility 11 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility27">&nbsp;<!-- CharacterAbility 27 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency11">&nbsp;<!-- Proficiency 11 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat11">&nbsp;<!-- ProfStat 11 -->/<!-- ProfBonus 11 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency27">&nbsp;<!-- Proficiency 27 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat27">&nbsp;<!-- ProfStat 27 -->/<!-- ProfBonus 27 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility12">&nbsp;<!-- CharacterAbility 12 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility28">&nbsp;<!-- CharacterAbility 28 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency12">&nbsp;<!-- Proficiency 12 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat12">&nbsp;<!-- ProfStat 12 -->/<!-- ProfBonus 12 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency28">&nbsp;<!-- Proficiency 28 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat28">&nbsp;<!-- ProfStat 28 -->/<!-- ProfBonus 28 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility13">&nbsp;<!-- CharacterAbility 13 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility29">&nbsp;<!-- CharacterAbility 29 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency13">&nbsp;<!-- Proficiency 13 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat13">&nbsp;<!-- ProfStat 13 -->/<!-- ProfBonus 13 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency29">&nbsp;<!-- Proficiency 29 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat29">&nbsp;<!-- ProfStat 29 -->/<!-- ProfBonus 29 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility14">&nbsp;<!-- CharacterAbility 14 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility30">&nbsp;<!-- CharacterAbility 30 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency14">&nbsp;<!-- Proficiency 14 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat14">&nbsp;<!-- ProfStat 14 -->/<!-- ProfBonus 14 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency30">&nbsp;<!-- Proficiency 30 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat30">&nbsp;<!-- ProfStat 30 -->/<!-- ProfBonus 30 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility15">&nbsp;<!-- CharacterAbility 15 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility31">&nbsp;<!-- CharacterAbility 31 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency15">&nbsp;<!-- Proficiency 15 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat15">&nbsp;<!-- ProfStat 15 -->/<!-- ProfBonus 15 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency31">&nbsp;<!-- Proficiency 31 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat31">&nbsp;<!-- ProfStat 31 -->/<!-- ProfBonus 31 -->&nbsp;</td>
+</tr>
+<tr>
+<td class="ProfField" id="CharacterAbility16">&nbsp;<!-- CharacterAbility 16 -->&nbsp;</td>
+<td class="ProfField" id="CharacterAbility32">&nbsp;<!-- CharacterAbility 32 -->&nbsp;</td>
+<td>&nbsp;&nbsp;</td>
+<td class="ProfField" id="Proficiency16">&nbsp;<!-- Proficiency 16 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat16">&nbsp;<!-- ProfStat 16 -->/<!-- ProfBonus 16 -->&nbsp;</td>
+<td class="SmlLabel"></td>
+<td class="ProfField" id="Proficiency32">&nbsp;<!-- Proficiency 32 -->&nbsp;</td>
+<td class="ProfStat" nowrap="nowrap" id="ProficiencyStat32">&nbsp;<!-- ProfStat 32 -->/<!-- ProfBonus 32 -->&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</tbody></table>
+</center>
+
+</body></html>
