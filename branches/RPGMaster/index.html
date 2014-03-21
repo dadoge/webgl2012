@@ -124,10 +124,10 @@
 	
     <script type="text/javascript">
         $("#footer").click(function () {
-            $.getJSON("http://ghost-laptop/dndsvc/18", function (data) {
-                alert(data);
-                var dataObject = JSON.parse(data);
-                alert(dataObject.Id);
+            $.getJSON("http://antons_surface/dndsvc/getplayer/18", function (data) {
+				var change = "Name: " + data.Name + "<br/>Health: " + data.Health + "<br/>INT: " + data.Intelligence;
+				document.getElementById('character-info').innerHTML=change;
+                //$('#character-info').append(data.Name);
             });
         });
     </script>
