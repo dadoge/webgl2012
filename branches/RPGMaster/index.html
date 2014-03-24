@@ -20,6 +20,7 @@
 				<div class="col-xs-3 party-info">
 				<div id="party-info" style="position:relative;height:inherit">
 					<h2 style="font-size: 200%">Party and Battle Info</h2>
+					<!--
 					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
 					<h3>Player</h3>
 					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
@@ -29,6 +30,7 @@
 					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
 					<h3>Player</h3>
 					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
+					-->
 				</div>
 				</div>
 				<!--Interactive Play Screen-->
@@ -43,7 +45,7 @@
 							<p>You: Donec id elit non mi porta </p>
 							<p>Xana: Donec id elit non mi porta </p>
 							<p>You: Donec id elit non mi porta </p>
-						<p>You: Donec id elit non mi porta </p>
+							<p>You: Donec id elit non mi porta </p>
 						</div>
 					</div>
 					<div class="input-group" style="position:relative;">
@@ -59,17 +61,6 @@
 					</div>
 					<div id="character-info" class="character-info">
 						<h4>Character Stats</h4>
-						<p>Donec id elit non mi porta</p>
-						<h4>Character Stats</h4>
-						<p>Donec id elit non mi porta</p>
-						<h4>Character Stats</h4>
-						<p>Donec id elit non mi porta</p>
-						<h4>Character Stats</h4>
-						<p>Donec id elit non mi porta</p>
-						<h4>Character Stats</h4>
-						<p>Donec id elit non mi porta</p>
-						<h4>Character Stats</h4>
-						<p>Donec id elit non mi porta</p>
 					</div>
 					<div id="character-hide" class="character-hide">
 						<div class="character-hide-circle"></div>
@@ -83,12 +74,8 @@
 		</div>
 	</div>
 	
-	<div id="footer">
-      <div class="container footer">
-		  <div class="footer-div">
-             <p class="text-center">Copyright or somethings - 2014</p>
-		  </div>
-      </div>
+	<div class="container footer2">
+		<p class="text-center">Copyright or somethings - 2014</p>
 	</div>
 	<div id="menu-container" class="menu-container">
 		<div id="menu-options" class="menu-options">
@@ -105,19 +92,21 @@
 	</div>
 
 	<script>
-			$( "#menu-options" ).toggle( "slide" );
+			$( "#menu-options" ).hide( );
+			//$( "#menu-tab" ).toggle( "slide");
 	</script>
 	<!--<script type="text/javascript" src="js/hidemenu.js"></script>-->
 	
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
 	<script>
 		$( "#menu-tab").click(function() {
-			$( "#menu-options" ).toggle( "slide" );
 			if (document.getElementById('menu-container').style.width=="200px") {
 				document.getElementById('menu-container').style.width="40px";
+				$( "#menu-options" ).hide( "slide" );
 			}
 			else {
 				document.getElementById('menu-container').style.width="200px";
+				$( "#menu-options" ).show( "slide" );
 			}
 		});
 	</script>

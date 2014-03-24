@@ -12,3 +12,9 @@ C:\Users\amorgan\Documents\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\bin\DnDSvc.pdb
 C:\Users\amorgan\Documents\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.csprojResolveAssemblyReference.cache
 C:\Users\amorgan\Documents\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.dll
 C:\Users\amorgan\Documents\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.pdb
+C:\dev\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\bin\DnDSvc.dll.config
+C:\dev\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\bin\DnDSvc.dll
+C:\dev\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\bin\DnDSvc.pdb
+C:\dev\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.csprojResolveAssemblyReference.cache
+C:\dev\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.dll
+C:\dev\SNV_WebGL\DnDSvc\DnDSvc\DnDSvc\obj\Debug\DnDSvc.pdb
