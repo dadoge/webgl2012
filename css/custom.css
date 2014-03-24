@@ -22,7 +22,7 @@ body {
 }
 .container {
     background-color:white;
-	background-image: linear-gradient(0deg, #999999, white);
+	background-image: linear-gradient(0deg, #777777, #EEEEEE);
 }
 
 .menu-container {
@@ -46,12 +46,15 @@ body {
 	position: absolute;
 	right: 0px;
 	background-color: grey;
-	border-radius: 5px;
-	border: solid;
+	border-radius: 0px 5px 5px 0px;
+	border-right: solid;
+	border-top: solid;
+	border-bottom: solid;
 	border-color: white;
 	width:40px;
 	padding: 2px;
 	text-align: center;
+	box-shadow: 3px 3px 4px #000000;
 }
 /* Wrapper for page content to push down footer */
 #main-container {
@@ -65,7 +68,7 @@ body {
 .container-custom {
 	border: solid;
 	border-color: #282828;
-	border-width: 2px;
+	border-width: 0px;
 	height: 86%;
 	width: 92%;
 	position: absolute;
@@ -122,9 +125,11 @@ body {
 }
 
 .character-display{
-	height: inherit;
+	height: 98.5%;
+	width: 24.5%;
+	float: right;
 	padding: 5px 5px 5px 5px;
-	margin: 0px 0px 0px 0px;
+	margin: 2px 2px 0px 0px;
 }
 
 .character-display-inner {
@@ -137,6 +142,9 @@ body {
 	background-color:rgba(20,20,20,0.5);
 	height: 30%;
 	padding: 4px 4px 4px 4px;
+	border-left: solid;
+	border-color: white;
+	border-radius: 3px 5px 0px 0px;
 }
 
 .character-img {
@@ -153,6 +161,9 @@ body {
 	background-color:rgba(20,20,20,0.5);
 	height: 70%;
 	padding: 5px 5px 5px 20px;
+	border-left: solid;
+	border-color: white;
+	border-radius: 0px 0px 5px 3px;
 }
 
 .character-hide {
@@ -181,34 +192,24 @@ body {
 	border-radius:8px;
 }
 
-/* Set the fixed height of the footer here */
-#push, #footer {
-	height: 60px;
+.footer2 {
+	height: 8%;
+	width: 92%;
+	position: absolute;
+	bottom: 2%;
+	padding: 5px;
+	padding-top: 8px;
+	margin-left: 4%;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	border-radius: 8px;
+	-moz-box-shadow: 3px 3px 4px #000000;
+	-webkit-box-shadow: 3px 3px 4px #000000;
+	box-shadow: 3px 3px 4px #000000;
 }
 
-.footer {
-	border: solid;
-	border-color: white;
-	border-radius: 5px;
-}
-
-.footer-div {
-	padding-top: 10px;
-	padding-bottom: 5px;
-	background-color: #FFFFFF;
-}
 .fill
 {
     padding-bottom: 100px;
     margin-bottom: -100px;
-}
-
-/* Lastly, apply responsive CSS fixes as necessary */
-@media (max-width: 767px) {
-  #footer {
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
