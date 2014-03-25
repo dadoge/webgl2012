@@ -27,7 +27,9 @@ body {
 
 .menu-container {
 	position: absolute;
-	width: 40px;
+	border: none;
+	border-width: 0px;
+	width: 200px;
 	height: 50%;
 	top: 10%;
 }
@@ -192,7 +194,7 @@ body {
 	border-radius:8px;
 }
 
-.footer2 {
+.footer {
 	height: 8%;
 	width: 92%;
 	position: absolute;
