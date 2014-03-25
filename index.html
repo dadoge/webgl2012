@@ -72,11 +72,11 @@
 			</div>
 			<!--/row-->
 		</div>
-	</div>
-	
-	<div class="container footer2">
+			<div id="footer" class="container footer">
 		<p class="text-center">Copyright or somethings - 2014</p>
 	</div>
+	</div>
+	
 	<div id="menu-container" class="menu-container">
 		<div id="menu-options" class="menu-options">
 		Player Settings</br></br>
@@ -92,34 +92,15 @@
 	</div>
 
 	<script>
-			$( "#menu-options" ).hide( );
+			$( "#menu-container" ).animate( {"left":"-=160px"}, 0 );
+			document.getElementById('menu-container').style.borderStyle="none";
 			//$( "#menu-tab" ).toggle( "slide");
 	</script>
-	<!--<script type="text/javascript" src="js/hidemenu.js"></script>-->
+	<script type="text/javascript" src="js/hidemenu.js"></script>
 	
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-	<script>
-		$( "#menu-tab").click(function() {
-			if (document.getElementById('menu-container').style.width=="200px") {
-				document.getElementById('menu-container').style.width="40px";
-				$( "#menu-options" ).hide( "slide" );
-			}
-			else {
-				document.getElementById('menu-container').style.width="200px";
-				$( "#menu-options" ).show( "slide" );
-			}
-		});
-	</script>
 	
-    <script type="text/javascript">
-        $("#footer").click(function () {
-            $.getJSON("http://antons_surface/dndsvc/getplayer/18", function (data) {
-				var change = "Name: " + data.Name + "<br/>Health: " + data.Health + "<br/>INT: " + data.Intelligence;
-				document.getElementById('character-info').innerHTML=change;
-                //$('#character-info').append(data.Name);
-            });
-        });
-    </script>
+    <script type="text/javascript" src="js/getplayer.js"> </script>
 	<script src="js/bootstrap.min.js"></script>
 	 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/slimScroll-defined.js"></script>
