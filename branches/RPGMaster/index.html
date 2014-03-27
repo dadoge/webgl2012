@@ -19,49 +19,107 @@
 			<div class="row row-custom">
 				<div class="col-xs-3 party-info">
 				<div id="party-info" style="position:relative;height:inherit">
-					<h2 style="font-size: 200%">Party and Battle Info</h2>
-					<!--
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-					<h3>Player</h3>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-					<h3>Player</h3>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-					<h3>Player</h3>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-					<h3>Player</h3>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-					-->
+					<div id="partyMember" class="partyMember">
+						<img class="partyMember-icon" src="images/druid_master_new_by_brucemashbatart-d5emwkp_edited_small.jpg"></img>
+						<div class="partyMember-info">
+							Iargalon<br/>Druid Level 7<br/>
+							<div class="playerHealth">28 HP</div>
+							<div class="playerOther"></div>
+						</div>
+					</div>
+					<div style="height:10px"></div>
+					<div id="partyMember" class="partyMember">
+					<!--http://cdn.obsidianportal.com/assets/101933/Milil.jpg-->
+						<img class="partyMember-icon" src="images/Xana_edited.jpg"></img>
+						<div class="partyMember-info">
+							Xana<br/>Bard Level 8<br/>
+							<div class="playerHealth">32 HP</div>
+							<div class="playerOther"></div>
+						</div>
+					</div>
 				</div>
 				</div>
 				<!--Interactive Play Screen-->
 				<div class="col-xs-6 col-custom">
 					<div class="interactive">
-						<h2>Interactive Table</h2>
-						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+						Interactive Table
+						<table class="interactive-table">
+							<tr>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+							</tr>
+							<tr>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+							</tr>
+							<tr>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+							</tr>
+							<tr>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+							</tr>
+							<tr>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+							</tr>	
+							
+						</table>
 					</div>
 					<div class="chat">
 						<div id="chat">
 							CHAT
-							<p>You: Donec id elit non mi porta </p>
-							<p>Xana: Donec id elit non mi porta </p>
-							<p>You: Donec id elit non mi porta </p>
-							<p>You: Donec id elit non mi porta </p>
+							<p>You: Hey man what do you think?</p>
+							<p>Xana: Could be better, but keep it going!</p>
 						</div>
 					</div>
 					<div class="input-group" style="position:relative;">
-						<span class="input-group-addon">You: </span>
-						<input type="text" class="form-control" placeholder="chat">
+						<span class="input-group-addon input-chat">You: </span>
+						<input type="text" class="form-control input-chat" placeholder="chat" onsubmit="AppendChat()">
 					</div>
 				</div>
 				<!--/span-->
 				<div id="character-display" class="col-xs-3 character-display">
-					<div id="character-all" style="position:inherit;height:inherit">
+					<div id="character-all" style="position:relative;height:inherit;">
 						<div id="character-icon" class="character-icon">
 							<!--http://gkb3rk.deviantart.com/art/Druid-Master-New-326914153-->
 							<img class="character-img" src="images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg"></img>
 						</div>
 						<div id="character-info" class="character-info">
-							<h4>Character Stats</h4>
+							<select class="form-control form-control-character input-sm">
+								<option>Stats</option>
+								<option>Skills</option>
+								<option>Info</option>
+							</select>
+							<div id="character-tab" class="character-tab">
+							STR: 18 - 76<br/>
+							DEX: 14 <br/>
+							CON: 14 <br/>
+							INT: 13 <br/>
+							WIS: 18 <br/>
+							CHA: 15 <br/>
+							</div>
 						</div>
 					</div>
 					<div id="character-hide" class="character-hide">
@@ -103,6 +161,7 @@
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
 	
     <script type="text/javascript" src="js/getplayer.js"> </script>
+	<script type="text/javascript" src="js/chat.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/slimScroll-defined.js"></script>

@@ -32,6 +32,7 @@ body {
 	width: 200px;
 	height: 50%;
 	top: 10%;
+	z-index:100;
 }
 
 .menu-options {
@@ -41,7 +42,8 @@ body {
 	height: 100%;
 	visibility: visible;
 	padding: 8px;
-	border-radius: 5px;
+	border-radius: 0px 0px 5px 0px;
+	box-shadow: 3px 3px 8px #000000;
 }
 
 .menu-tab {
@@ -56,16 +58,18 @@ body {
 	width:40px;
 	padding: 2px;
 	text-align: center;
-	box-shadow: 3px 3px 4px #000000;
+	box-shadow: 3px 3px 8px #000000;
 }
-/* Wrapper for page content to push down footer */
+/*
+/* Wrapper for page content to push down footer 
 #main-container {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	/* Negative indent footer by it's height */
+	/* Negative indent footer by it's height 
 	margin: 0 auto -60px;
 }
+*/
 
 .container-custom {
 	border: solid;
@@ -84,7 +88,7 @@ body {
 }
 
 .row-custom {
-	position: absolute; 
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	border: none;
@@ -104,6 +108,39 @@ body {
 	margin: 0px 0px 0px 0px;
 }
 
+.partyMember {
+	position: relative;
+	height: 80px;
+	width: 100%;
+}
+
+.partyMember-icon {
+	position: absolute;
+	height: inherit;
+	width: 80px;
+	border: solid;
+	border-width: 1.5px;
+	border-color: black;
+	border-radius: 80px;
+	background-color: white;
+	z-index: 1;
+	box-shadow: 2px 2px 8px #000000;
+}
+
+.partyMember-info {
+	position: absolute;
+	margin: auto;
+	padding-left: 48px;
+	top: 0; bottom: 0; right:0; left: 40px;
+	height: 80%;
+	border: solid;
+	border-width: 1.5px;
+	border-color: black;
+	border-radius: 5px;
+	background-color:rgba(240,240,240,0.90);
+	z-index:0;
+}
+
 .interactive {
 	height: 72%;
 	color: white;
@@ -116,56 +153,96 @@ body {
 	margin: auto;
 }
 
+.interactive-table {
+	background-color:rgba(100,100,100,0.90);
+	position: absolute;
+	margin: auto;
+	top: 10%; bottom: 0; right:0; left: 0;
+	height: 200px;
+	width: 400px;
+	border:solid;
+	border-color:white;
+	border-width:2px;
+	box-shadow: 3px 3px 6px #000000;
+}
+
+.interactive-td {
+	position: relative;
+	width:10%;
+	height:20%;
+	border:solid;
+	border-color:white;
+	border-width:2px;
+}
+
 .chat {
 	height: 20%;
 	background-color: white;
 	border: solid;
 	border-width: 1px;
 	border-color: #A8A8A8;
-	border-radius: 4px;
+	border-radius: 4px 4px 0px 0px;
 	padding: 5px 5px 5px 5px;
+}
+
+.input-chat {
+	border-radius: 0px 0px 4px 4px;
 }
 
 .character-display{
-	height: 98.5%;
-	width: 24.5%;
-	float: right;
-	padding: 5px 5px 5px 5px;
-	margin: 2px 2px 0px 0px;
-}
-
-.character-display-inner {
-	height: inherit;
-	padding: 5px 5px 5px 5px;
+	position: relative;
+	height: 100%;
+	padding: 5px 5px 0px 5px;
 	margin: 0px 0px 0px 0px;
 }
 
 .character-icon {
 	background-color:rgba(20,20,20,0.5);
-	height: 30%;
 	padding: 4px 4px 4px 4px;
 	border-left: solid;
 	border-color: white;
 	border-radius: 3px 5px 0px 0px;
 }
 
+.character-info {
+	position: relative;
+	background-color:rgba(20,20,20,0.5);
+	padding: 5px 5px 0px 20px;
+	border-left: solid;
+	border-color: white;
+	border-radius: 0px 0px 5px 3px;
+}
+
 .character-img {
 	display: block;
 	margin: auto;
 	width: inherit;
-	height: 100%;
+	height: 120px;
 	border: solid;
 	border-width: 1.5px;
 	border-radius: 20px;
+	box-shadow: 2px 2px 8px #000000;
 }
 
-.character-info {
-	background-color:rgba(20,20,20,0.5);
-	height: 70%;
-	padding: 5px 5px 5px 20px;
-	border-left: solid;
+.form-control-character {
+	border-radius: 5px 5px 0px 0px;
+	border: none;
+	width: 50%;
+	background-color: #DDDDDD;
+}
+.character-tab {
+	background-color: #DDDDDD;
+	height: inherit;
+	margin: 0px 0px 0px 0px;
+	margin-right: 5px;
+	maring-bottom: 0px;
+	padding: 5px;
+	border: solid;
+	border: none;
 	border-color: white;
-	border-radius: 0px 0px 5px 3px;
+	border-width: 1px;
+	border-radius: 0px 5px 5px 5px;
+	box-shadow: 3px 5px 4px #282828;
 }
 
 .character-hide {
