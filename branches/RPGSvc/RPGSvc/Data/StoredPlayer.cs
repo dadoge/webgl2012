@@ -15,7 +15,7 @@ namespace RPGSvc.Data
             //search C# datareader
             //called storage procedure c#
             //values being passed into new Skill would be from database
-            return new Player("1");
+            return new Player(id);
         }
 
     }
