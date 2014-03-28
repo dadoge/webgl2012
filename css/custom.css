@@ -142,7 +142,7 @@ body {
 }
 
 .interactive {
-	height: 72%;
+	height: 67%;
 	color: white;
 	background-color: #282828;
 	border: solid;
@@ -176,13 +176,22 @@ body {
 }
 
 .chat {
-	height: 20%;
+	height: 25%;
 	background-color: white;
 	border: solid;
 	border-width: 1px;
 	border-color: #A8A8A8;
 	border-radius: 4px 4px 0px 0px;
 	padding: 5px 5px 5px 5px;
+}
+
+.hidden-submit {
+    border: 0 none;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 .input-chat {
