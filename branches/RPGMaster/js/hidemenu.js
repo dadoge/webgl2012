@@ -8,8 +8,9 @@ $( "#menu-tab").click(function() {
 		$( "#menu-container" ).animate( {"left":"+=160px"}, "slow" );
 	}
 });
-/* $( "#character-hide").click(function() {
-	// Set the effect type
+$( "#character-hide").click(function() {
+//$( "#character-tab" ).append( "<p>Test</p>" + moment().format('HH:mm:ss'));
+/*	// Set the effect type
     var effect = 'slide';
  
     // Set the options for the effect type chosen
@@ -19,4 +20,5 @@ $( "#menu-tab").click(function() {
     var duration = 700;
  
     $("#character-all").toggle(effect, options, duration);
-}); */
+	*/
+});
