@@ -51,18 +51,6 @@
 								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
-							</tr>
-							<tr>
-								<td class="interactive-td"></td>
-								<td class="interactive-td"></td>
-								<td class="interactive-td"></td>
-								<td class="interactive-td"></td>
-								<td class="interactive-td"></td>
-								<td class="interactive-td"></td>
-							</tr>
-							<tr>
-								<td class="interactive-td"></td>
-								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
@@ -75,8 +63,40 @@
 								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
 							</tr>
 							<tr>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+							</tr>
+							<tr>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+							</tr>
+							<tr>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
+								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
 								<td class="interactive-td"></td>
@@ -90,13 +110,15 @@
 					<div class="chat">
 						<div id="chat">
 							CHAT
-							<p>You: Hey man what do you think?</p>
-							<p>Xana: Could be better, but keep it going!</p>
 						</div>
 					</div>
-					<div class="input-group" style="position:relative;">
+					<div class="input-group" style="position:relative;width:68%;" >
 						<span class="input-group-addon input-chat">You: </span>
-						<input type="text" class="form-control input-chat" placeholder="chat" onsubmit="AppendChat()">
+						<input id="chat-input" type="text" class="form-control input-chat" placeholder="chat" >
+						<!--"SendChat($('#chat-input').val())"-->
+					</div>
+					<div class="input-group" style="position:absolute;bottom:8px;right:5px;float:top;width:30%" >
+						<input id="chatname-input" type="text" class="form-control input-chat" placeholder="Type Username">
 					</div>
 				</div>
 				<!--/span-->
@@ -156,11 +178,15 @@
 			document.getElementById('menu-container').style.borderStyle="none";
 			//$( "#menu-tab" ).toggle( "slide");
 	</script>
+	
 	<script type="text/javascript" src="js/hidemenu.js"></script>
 	
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
 	
     <script type="text/javascript" src="js/getplayer.js"> </script>
+	<script type="text/javascript" src="js/stomp.js"></script>
+	<script type="text/javascript" src="js/moment-min-js.js"></script>
+	<script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
 	<script type="text/javascript" src="js/chat.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
