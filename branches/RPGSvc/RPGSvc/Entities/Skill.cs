@@ -23,10 +23,6 @@ namespace RPGSvc.Entities
 
         public Skill() 
         {
-            Id="1";
-            Name="Sucking";
-            Description="The ability to suck";
-            Value=9001;
         }
     }
 }
