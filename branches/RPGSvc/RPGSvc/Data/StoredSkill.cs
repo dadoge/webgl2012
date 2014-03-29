@@ -50,7 +50,7 @@ namespace RPGSvc.Data
                     var skill = new Skill();
                     skill.Id = dr.GetInt32(0).ToString();
                     skill.Name = dr.GetString(1);
-                    skill.Value = dr.GetDouble(2);
+                    skill.Value = dr.GetDecimal(2);
                 }
             }
             connection.Close();
