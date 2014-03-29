@@ -13,19 +13,7 @@ namespace RPGSvc.Data
         //
         public List<Skill> GetSkillsByPlayerID(string id)
         {
-            //search C# datareader
-            //called storage procedure c#
-            //values being passed into new Skill would be from database
-            //var skill1 = new Skill("1", "Stealth", "Ability to sneak around", 18);
-            //var skill2 = new Skill("2", "Swim", "How well you can swim", 8);
-            //var skill3 = new Skill("3", "Run", "How well you can run", 12);
 
-            //var skillList = new List<Skill>();
-            //skillList.Add(skill1);
-            //skillList.Add(skill2);
-            //skillList.Add(skill3);
-
-            //return skillList;
             SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["RPGMasterDb"].ConnectionString);
             SqlCommand command = new SqlCommand();
             command.Connection = connection;
@@ -34,7 +22,11 @@ namespace RPGSvc.Data
 
  
             SqlParameter playerID = new SqlParameter("@PlayerID", SqlDbType.Int);
-            playerID.Value = 1;
+
+            //TODO:
+            //I really shouldnt be parsing the int32 here, please pull this up into a higher layer, probably Service1.cs
+            //Return json error if an integer is not passed in, handle elegantly clientside.
+            playerID.Value = Int32.Parse(id);
             command.Parameters.Add(playerID);
 
             connection.Open();
@@ -51,6 +43,8 @@ namespace RPGSvc.Data
                     skill.Id = dr.GetInt32(0).ToString();
                     skill.Name = dr.GetString(1);
                     skill.Value = dr.GetDecimal(2);
+
+                    skillList.Add(skill);
                 }
             }
             connection.Close();
