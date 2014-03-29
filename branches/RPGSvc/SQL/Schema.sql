@@ -1,4 +1,4 @@
-USE [RpgMaster]
+USE [rpgmaster]
 
 CREATE TABLE Player
 (
@@ -29,7 +29,7 @@ CREATE TABLE PlayerStat
 PlayerStatID INT IDENTITY(1,1),
 PlayerID INT,
 StatID INT,
-Value decimal
+Value float
 );
 
 ALTER TABLE Player
