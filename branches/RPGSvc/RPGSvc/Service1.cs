@@ -26,7 +26,7 @@ namespace RPGSvc
         public List<Player> GetCollection()
         {
             // TODO: Replace the current implementation to return a collection of SampleItem instances
-            return new List<Player>() { new Player() { Id = "1", Name = "Hello" } };
+            return new List<Player>() { new Player() { Id = 1, Name = "Hello" } };
         }
 
         [WebInvoke(UriTemplate = "", Method = "POST")]
@@ -39,12 +39,29 @@ namespace RPGSvc
         [WebGet(UriTemplate = "GetPlayer/{id}", ResponseFormat = WebMessageFormat.Json)]
         public Player Get(string id)
         {
-            //var x = new JavaScriptSerializer();
-            //var sb = new StringBuilder();
-            //var returns = x.Serialize(new Player(18));
-            //return returns;
+            int Id=-1;
+            var pr = new PlayerRepository();
+            var userplayer = new Player();
+            //make sure id is an int not string
+            // ToInt32 can throw FormatException or OverflowException. 
+            try
+            {
+                Id = Convert.ToInt32(id);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("String ID is not a sequence of digits.");
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine("The string ID number cannot fit in an Int32.");
+            }
+            finally
+            {
+                userplayer = pr.GetPlayer(Id);
+            }
 
-            return new PlayerRepository().GetPlayer(id);
+            return userplayer;
             //return new Player(id);
             //var p = new PlayerRepository();
             //return p.GetPlayer(id);

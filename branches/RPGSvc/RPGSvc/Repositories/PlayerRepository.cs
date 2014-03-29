@@ -15,11 +15,10 @@ namespace RPGSvc.Repositories
             //initialize various data objects here
         }
 
-        public Player GetPlayer(string id)
+        public Player GetPlayer(int id)
         {
-            //throw new NotImplementedException();
-            //Call Data
-            var player = new StoredPlayer().GetPlayerByID(id);
+            //Get player,player skills and player stats
+            var player = new StoredPlayer().GetPlayerByPlayerID(id);
             player.Skills = new StoredSkill().GetSkillsByPlayerID(id);
             player.Stats = new StoredStat().GetStatsByPlayerID(id);
 

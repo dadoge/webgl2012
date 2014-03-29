@@ -9,20 +9,18 @@ namespace RPGSvc.Entities
     // TODO: Edit the SampleItem class
     public class Player
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public List<Skill> Skills;
         public List<Stat> Stats;
 
-        public Player(string id)
+        public Player(int id, string name)
         {
             Id = id;
-            Name = "Iargalon";
+            Name = name;
         }
         public Player()
         {
-            Id = "0";
-            Name = "PlayerDefault";
         }
     }
 }

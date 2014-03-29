@@ -8,12 +8,12 @@ namespace RPGSvc.Entities
 {
     public class Stat
     {
-        public string Id;
+        public int Id;
         public string Name;
         public string Description;
         public double Value;
         
-        public Stat(string id,string name, string description, double value)
+        public Stat(int id,string name, string description, double value)
         {
             Id = id;
             Name = name;
@@ -23,10 +23,6 @@ namespace RPGSvc.Entities
 
         public Stat() 
         {
-            Id="0";
-            Name="Strength";
-            Description="How hard your muscles are";
-            Value=9001;
         }
     }
 }
