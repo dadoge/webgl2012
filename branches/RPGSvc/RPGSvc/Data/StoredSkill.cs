@@ -11,7 +11,7 @@ namespace RPGSvc.Data
     public class StoredSkill
     {
         //
-        public List<Skill> GetSkillsByPlayerID(string id)
+        public List<Skill> GetSkillsByPlayerID(int id)
         {
 
             SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["RPGMasterDb"].ConnectionString);
@@ -23,10 +23,7 @@ namespace RPGSvc.Data
  
             SqlParameter playerID = new SqlParameter("@PlayerID", SqlDbType.Int);
 
-            //TODO:
-            //I really shouldnt be parsing the int32 here, please pull this up into a higher layer, probably Service1.cs
-            //Return json error if an integer is not passed in, handle elegantly clientside.
-            playerID.Value = Int32.Parse(id);
+            playerID.Value = id;
             command.Parameters.Add(playerID);
 
             connection.Open();
@@ -40,9 +37,10 @@ namespace RPGSvc.Data
                 while (dr.Read())
                 {
                     var skill = new Skill();
-                    skill.Id = dr.GetInt32(0).ToString();
+                    skill.Id = dr.GetInt32(0);
                     skill.Name = dr.GetString(1);
-                    skill.Value = dr.GetDecimal(2);
+                    skill.Description = dr.GetString(2);
+                    skill.Value = dr.GetDecimal(3);
 
                     skillList.Add(skill);
                 }

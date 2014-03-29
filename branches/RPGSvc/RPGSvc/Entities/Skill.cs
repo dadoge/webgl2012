@@ -8,12 +8,12 @@ namespace RPGSvc.Entities
 {
     public class Skill
     {
-        public string Id;
+        public int Id;
         public string Name;
         public string Description;
         public decimal Value;
         
-        public Skill(string id,string name, string description, decimal value)
+        public Skill(int id,string name, string description, decimal value)
         {
             Id = id;
             Name = name;

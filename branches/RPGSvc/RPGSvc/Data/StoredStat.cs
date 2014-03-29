@@ -4,28 +4,49 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using RPGSvc.Entities;
+using System.Data.SqlClient;
 
 namespace RPGSvc.Data
 {
     public class StoredStat
     {
         //
-        public List<Stat> GetStatsByPlayerID(string id)
+        public List<Stat> GetStatsByPlayerID(int id)
         {
-            //search C# datareader
-            //called storage procedure c#
-            //values being passed into new stat would be from database
-            var stat1 = new Stat("1", "Strength", "How hard your muscles are", 18.76);
-            var stat2 = new Stat("2", "Wisdom", "An old man once told me...", 18);
-            var stat3 = new Stat("3", "Dexterity", "Not what Ghost does", 14);
+
+            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["RPGMasterDb"].ConnectionString);
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandText = "GetStatsByPlayerID";
+            command.CommandType = CommandType.StoredProcedure;
+
+
+            SqlParameter playerID = new SqlParameter("@PlayerID", SqlDbType.Int);
+
+            playerID.Value = id;
+            command.Parameters.Add(playerID);
+
+            connection.Open();
+            SqlDataReader dr;
+            dr = command.ExecuteReader();
 
             var statList = new List<Stat>();
-            statList.Add(stat1);
-            statList.Add(stat2);
-            statList.Add(stat3);
 
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    var stat = new Stat();
+                    stat.Id = dr.GetInt32(0);
+                    stat.Name = dr.GetString(1);
+                    stat.Description = dr.GetString(2);
+                    stat.Value = dr.GetDouble(3);
+
+                    statList.Add(stat);
+                }
+            }
+            connection.Close();
             return statList;
         }
-
     }
 }
