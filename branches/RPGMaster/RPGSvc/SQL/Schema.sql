@@ -22,14 +22,14 @@ CREATE TABLE PlayerSkill
 PlayerSkillID INT IDENTITY(1,1),
 PlayerID INT,
 SkillID INT,
-Value decimal
+Value decimal(18,2)
 );
 CREATE TABLE PlayerStat
 (
 PlayerStatID INT IDENTITY(1,1),
 PlayerID INT,
 StatID INT,
-Value float
+Value decimal(18,2)
 );
 
 ALTER TABLE Player

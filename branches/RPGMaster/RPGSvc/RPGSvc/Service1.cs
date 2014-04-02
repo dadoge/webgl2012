@@ -41,7 +41,6 @@ namespace RPGSvc
         {
             int Id=-1;
             var pr = new PlayerRepository();
-            var userplayer = new Player();
             //make sure id is an int not string
             // ToInt32 can throw FormatException or OverflowException. 
             try
@@ -56,12 +55,7 @@ namespace RPGSvc
             {
                 Console.WriteLine("The string ID number cannot fit in an Int32.");
             }
-            finally
-            {
-                userplayer = pr.GetPlayer(Id);
-            }
-
-            return userplayer;
+            return pr.GetPlayer(Id);
             //return new Player(id);
             //var p = new PlayerRepository();
             //return p.GetPlayer(id);
