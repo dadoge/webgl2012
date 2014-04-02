@@ -1,4 +1,8 @@
-Alter PROCEDURE dbo.GetStatsByPlayerID
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetStatsByPlayerID]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GetStatsByPlayerID]
+GO
+
+CREATE PROCEDURE dbo.GetStatsByPlayerID
    @PlayerID INT
 AS
 BEGIN

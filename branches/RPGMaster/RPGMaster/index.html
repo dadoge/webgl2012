@@ -50,18 +50,17 @@
 							CHAT
 						</div>
 					</div>
-					<div class="input-group" style="position:relative;width:68%;" >
+					<div class="input-group chat-input-group">
 						<span class="input-group-addon input-chat">You: </span>
 						<input id="chat-input" type="text" class="form-control input-chat" placeholder="chat" >
-						<!--"SendChat($('#chat-input').val())"-->
 					</div>
-					<div class="input-group" style="position:absolute;bottom:8px;right:5px;float:top;width:30%" >
+					<div class="input-group chatname-input-group">
 						<input id="chatname-input" type="text" class="form-control input-chat" placeholder="Type Username">
 					</div>
 				</div>
 				<!--/span-->
 				<div id="character-display" class="col-xs-3 character-display">
-					<div id="character-all" style="position:relative;height:inherit;">
+					
 						<div id="character-icon" class="character-icon">
 							<!--http://gkb3rk.deviantart.com/art/Druid-Master-New-326914153-->
 							<img class="character-img" src="images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg"></img>
@@ -70,18 +69,21 @@
 							<select class="form-control form-control-character input-sm">
 								<option>Stats</option>
 								<option>Skills</option>
-								<option>Info</option>
+								<option>History</option>
 							</select>
-							<div id="character-tab" class="character-tab">
-							STR: 18 - 76<br/>
-							DEX: 14 <br/>
-							CON: 14 <br/>
-							INT: 13 <br/>
-							WIS: 18 <br/>
-							CHA: 15 <br/>
+							<div class="character-tab">
+							<div id="character-stats">
+							
+							</div>
+							<div id="character-skills">
+							
+							</div>
+							<div id="character-history">
+							
+							</div>
 							</div>
 						</div>
-					</div>
+					
 					<div id="character-hide" class="character-hide">
 						<div class="character-hide-circle"></div>
 						<div class="character-hide-circle"></div>

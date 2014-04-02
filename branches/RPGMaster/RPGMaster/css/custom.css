@@ -61,15 +61,14 @@ body {
 	box-shadow: 3px 3px 8px #000000;
 }
 /*
-/* Wrapper for page content to push down footer 
+/* Wrapper for page content to push down footer */
 #main-container {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	/* Negative indent footer by it's height 
-	margin: 0 auto -60px;
+	/* Negative indent footer by it's height */
+	/*margin: 0 auto -60px;*/
 }
-*/
 
 .container-custom {
 	border: solid;
@@ -89,21 +88,23 @@ body {
 
 .row-custom {
 	position: absolute;
-	width: 100%;
+	margin:0px;
+	right: 0; left:0;
 	height: 100%;
 	border: none;
 	border-color: black;
 	border-radius: 8px;
+	padding:0px
 }
 
 .col-custom {
-	height: inherit;
+	height: 100%;
 	padding: 5px 5px 5px 5px;
 	margin: 0px 0px 0px 0px;
 }
 
 .party-info{
-	height: inherit;
+	height: 100%s;
 	padding: 5px 5px 5px 5px;
 	margin: 0px 0px 0px 0px;
 }
@@ -142,6 +143,7 @@ body {
 }
 
 .interactive {
+	top: 0;
 	height: 67%;
 	color: white;
 	background-color: #282828;
@@ -176,13 +178,32 @@ body {
 }
 
 .chat {
-	height: 25%;
+	position: absolute;
+	bottom:2.8em;
+	min-height: 25%;
+	right: 5px; left:5px;
 	background-color: white;
 	border: solid;
 	border-width: 1px;
 	border-color: #A8A8A8;
 	border-radius: 4px 4px 0px 0px;
 	padding: 5px 5px 5px 5px;
+	margin: auto;
+}
+
+.chat-input-group {
+	position:absolute;
+	height: 2em;
+	right:30%; left:5px;
+	bottom:.4em;
+}
+
+.chatname-input-group {
+	position:absolute;
+	height: 2em;
+	bottom:.4em;
+	right:5px;
+	width:28%;
 }
 
 .hidden-submit {
@@ -201,11 +222,19 @@ body {
 .character-display{
 	position: relative;
 	height: 100%;
-	padding: 5px 5px 0px 5px;
-	margin: 0px 0px 0px 0px;
+	padding: 5px;
+	padding-bottom: 5px;
+	margin: 0px;
+}
+
+#character-all {	
+	border: solid;
+	margin: auto;
 }
 
 .character-icon {
+	position: relative;
+	height: 30%;
 	background-color:rgba(20,20,20,0.5);
 	padding: 4px 4px 4px 4px;
 	border-left: solid;
@@ -215,6 +244,7 @@ body {
 
 .character-info {
 	position: relative;
+	height: 60%;
 	background-color:rgba(20,20,20,0.5);
 	padding: 5px 5px 0px 20px;
 	border-left: solid;
@@ -239,12 +269,13 @@ body {
 	width: 50%;
 	background-color: #DDDDDD;
 }
+
 .character-tab {
+	position: relative;
 	background-color: #DDDDDD;
 	height: inherit;
-	margin: 0px 0px 0px 0px;
-	margin-right: 5px;
-	maring-bottom: 0px;
+	width: 100%;
+	margin: 0px 5px 0px 0px;
 	padding: 5px;
 	border: solid;
 	border: none;
@@ -252,6 +283,18 @@ body {
 	border-width: 1px;
 	border-radius: 0px 5px 5px 5px;
 	box-shadow: 3px 5px 4px #282828;
+}
+
+#character-stats {
+	z-index: 8;
+}
+
+#character-skills {
+	z-index: 0;
+}
+
+#character-stats {
+	z-index: 0;
 }
 
 .character-hide {
