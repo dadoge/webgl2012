@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - RPG Master</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -17,6 +17,16 @@
 </head>
 <body>
     <form runat="server">
+        <div id="main-container" class="main-container">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+		    <div id="footer" class="container container-back footer">
+                <div class="footer-inner">
+			        &copy; <%: DateTime.Now.Year %> - RPGMaster
+                </div>
+		    </div>
+            
+	    </div>
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -34,11 +44,17 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
+                <asp:ScriptReference Path="~/Scripts/Site/hidemenu.js" />
+                <asp:ScriptReference Path="~/Scripts/Site/getplayer.js" />
+<%--                <asp:ScriptReference Path="~/Scripts/Site/chat.js" />
+                <asp:ScriptReference Path="~/Scripts/Site/stomp.js" />
+                <asp:ScriptReference Path="~/Scripts/Site/moment-min-js.js" />
+                <asp:ScriptReference Path="~/Scripts/Site/sockjs-0.3.min.js" />--%>
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+      <%--  <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -72,15 +88,43 @@
                     </asp:LoginView>
                 </div>
             </div>
-        </div>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </footer>
-        </div>
+        </div>--%>
+	    
+	<div id="menu-container" class="menu-container" onblur="menuCollapse()">
+        <input id="menu-input" onblur="menuCollapse()" style="visibility:hidden"/>
+		<div id="menu-options" class="menu-options">
+        <asp:LoginView runat="server" ViewStateMode="Disabled">
+            <AnonymousTemplate>
+                    <a runat="server" href="~/Account/Register">Register</a><br /><br />
+                    <a runat="server" href="~/Account/Login">Log in</a>
+            </AnonymousTemplate>
+            <LoggedInTemplate>
+		        <a href="/Game/">Game Lobby</a><br /><br />
+		        <a href="/Account/Manage">Account Settings</a><br /><br />
+                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Account/Login" OnLoggingOut="Unnamed_LoggingOut" />
+            </LoggedInTemplate>
+        </asp:LoginView>
+
+		</div>
+		<div id="menu-tab" class="menu-tab">
+			M</br>
+			E</br>
+			N</br>
+			U</br>
+		</div>
+	</div>
+
+	<script>
+	    function menuCollapse() {
+	        $("#menu-container").animate({ "left": "-=160px" }, 0);
+	        document.getElementById('menu-container').style.borderStyle = "none";
+	    };
+	    menuCollapse();
+	    //document.getElementById("menu-container").onblur = menuCollapse();
+	    //$( "#menu-tab" ).toggle( "slide");
+	</script>
+	
+	<script type="text/javascript" src="/Scripts/Site/hidemenu.js"></script>
     </form>
 </body>
 </html>

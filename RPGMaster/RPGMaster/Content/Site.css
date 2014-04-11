@@ -1,28 +1,413 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿html, body {
+	height: 100%;
+}
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	background-color: #A8A8A8;
+	background-image: linear-gradient(335deg, #242424 23px, transparent 23px),
+	linear-gradient(155deg, #282828 23px, transparent 23px),
+	linear-gradient(335deg, #242424 23px, transparent 23px),
+	linear-gradient(155deg, #282828 23px, transparent 23px);
+	background-size: 58px 58px;	
+	background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+}
+.container-back {
+    background-color:white;
+	background-image: linear-gradient(0deg, #777777, #EEEEEE);
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.container-footer {
+    background-color: rgba(255,255,255,0.1);
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input[type="text"],
-input[type="password"] {
-    max-width: 280px;
+.main-container {
+    position: absolute;
+    height: 100%;
+    right: 0; left: 0; bottom: 0; top: 0;
+    border: solid;
+    border-color: white;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .jumbotron {
-        margin-top: 20px;
-    }
-    .body-content {
-        padding: 0;
-    }
+.container-custom {
+	border: solid;
+	border-color: #282828;
+	border-width: 0px;
+	height: 86%;
+	width: 92%;
+	position: absolute;
+	margin-left: 4%;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	border-radius: 8px;
+	-moz-box-shadow: 3px 3px 4px #000000;
+	-webkit-box-shadow: 3px 3px 4px #000000;
+	box-shadow: 3px 3px 4px #000000;
+}
+
+.account-main-container {
+    position: relative;
+    padding: 0px 5px 5px 5px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 4px #000000;
+}
+
+.account-wrapper {
+    position: relative;
+    height: 80%;
+    width: 50%;
+    bottom: 0;
+    top: 6%;
+    right: 0;
+    left:0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.account-inner-container {
+    position: relative;
+    max-height: 100%;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 5px 5px 5px 5px;
+    padding: 0px 5px 5px 5px;
+    border-radius: 8px;
+}
+
+.login-container {
+    position: relative;
+    background-color: rgba(20,20,20,0.5);
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 5px;
+    padding: 15px 10px 0px 10px;
+    border-radius: 8px;
+}
+
+.menu-container {
+	position: absolute;
+	border: none;
+	border-width: 0px;
+	width: 200px;
+	height: 50%;
+	top: 5px;
+	z-index:100;
+}
+
+.menu-options {
+	position: inherit;
+	background-color:rgba(240,240,240,0.90);
+	width: 160px;
+	height: 100%;
+	visibility: visible;
+	padding: 8px;
+	border-radius: 0px 0px 5px 0px;
+	box-shadow: 3px 3px 8px #000000;
+}
+
+.menu-tab {
+	position: absolute;
+	right: 0px;
+	background-color: grey;
+	border-radius: 0px 5px 5px 0px;
+	border-right: solid;
+	border-top: solid;
+	border-bottom: solid;
+	border-color: white;
+	width:40px;
+	padding: 2px;
+	text-align: center;
+	box-shadow: 3px 3px 8px #000000;
+}
+
+.main-container {
+    position: absolute;
+    right: 0; left: 0; bottom: 0; top: 0;
+    border: solid;
+    border-color: white;
+}
+
+.container-custom {
+	border: solid;
+	border-color: #282828;
+	border-width: 0px;
+	height: 86%;
+	width: 92%;
+	position: absolute;
+	margin-left: 4%;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	border-radius: 8px;
+	-moz-box-shadow: 3px 3px 4px #000000;
+	-webkit-box-shadow: 3px 3px 4px #000000;
+	box-shadow: 3px 3px 4px #000000;
+}
+
+.row-custom {
+	position: absolute;
+	margin:0px;
+	right: 0; left:0;
+	height: 100%;
+	border: none;
+	border-color: black;
+	border-radius: 8px;
+	padding:0px
+}
+
+.col-custom {
+	height: 100%;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 0px 0px;
+}
+
+.party-info{
+	height: 100%;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 0px 0px;
+}
+
+.partyMember {
+	position: relative;
+	height: 80px;
+	width: 100%;
+}
+
+.partyMember-icon {
+	position: absolute;
+	height: inherit;
+	width: 80px;
+	border: solid;
+	border-width: 1.5px;
+	border-color: black;
+	border-radius: 80px;
+	background-color: white;
+	z-index: 1;
+	box-shadow: 2px 2px 8px #000000;
+}
+
+.partyMember-info {
+	position: absolute;
+	margin: auto;
+	padding-left: 48px;
+	top: 0; bottom: 0; right:0; left: 40px;
+	height: 80%;
+	border: solid;
+	border-width: 1.5px;
+	border-color: black;
+	border-radius: 5px;
+	background-color:rgba(240,240,240,0.90);
+	z-index:0;
+}
+
+.interactive {
+	top: 0;
+	height: 67%;
+	color: white;
+	background-color: #282828;
+	border: solid;
+	border-width: 1px;
+	border-color: #282828;
+	border-radius: 2px;
+	padding: 5px 5px 5px 5px;
+	margin: auto;
+}
+
+.interactive-table {
+	background-color:rgba(100,100,100,0.90);
+	position: absolute;
+	margin: auto;
+	top: 10%; bottom: 0; right:0; left: 0;
+	height: 200px;
+	width: 400px;
+	border:solid;
+	border-color:white;
+	border-width:2px;
+	box-shadow: 3px 3px 6px #000000;
+}
+
+.interactive-td {
+	position: relative;
+	width:10%;
+	height:20%;
+	border:solid;
+	border-color:white;
+	border-width:2px;
+}
+
+.chat {
+	position: absolute;
+	bottom:2.8em;
+	min-height: 25%;
+	right: 5px; left:5px;
+	background-color: white;
+	border: solid;
+	border-width: 1px;
+	border-color: #A8A8A8;
+	border-radius: 4px 4px 0px 0px;
+	padding: 5px 5px 5px 5px;
+	margin: auto;
+}
+
+.chat-input-group {
+	position:absolute;
+	height: 2em;
+	right:30%; left:5px;
+	bottom:.4em;
+}
+
+.chatname-input-group {
+	position:absolute;
+	height: 2em;
+	bottom:.4em;
+	right:5px;
+	width:28%;
+}
+
+.hidden-submit {
+    border: 0 none;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.input-chat {
+	border-radius: 0px 0px 4px 4px;
+}
+
+.character-display{
+	position: relative;
+	height: 100%;
+	padding: 5px;
+	padding-bottom: 5px;
+	margin: 0px;
+}
+
+#character-all {	
+	border: solid;
+	margin: auto;
+}
+
+.character-icon {
+	position: relative;
+	height: 30%;
+	background-color:rgba(20,20,20,0.5);
+	padding: 4px 4px 4px 4px;
+	border-left: solid;
+	border-color: white;
+	border-radius: 3px 5px 0px 0px;
+}
+
+.character-info {
+	position: relative;
+	height: 70%;
+	background-color:rgba(20,20,20,0.5);
+	padding: 5px 5px 0px 20px;
+	border-left: solid;
+	border-color: white;
+	border-radius: 0px 0px 5px 3px;
+}
+
+.character-img {
+	display: block;
+	margin: auto;
+	width: inherit;
+	height: 120px;
+	border: solid;
+	border-width: 1.5px;
+	border-radius: 20px;
+	box-shadow: 2px 2px 8px #000000;
+}
+
+.form-control-character {
+	border-radius: 5px 5px 0px 0px;
+	border: none;
+	width: 50%;
+	background-color: #DDDDDD;
+}
+
+.character-tab {
+	position: absolute;
+	background-color: #DDDDDD;
+	height: calc(100% - 45px);
+	width: calc(100% - 25px);
+	margin: 0px 5px 0px 0px;
+	padding: 5px;
+	border: solid;
+	border: none;
+	border-color: white;
+	border-width: 1px;
+	border-radius: 0px 5px 5px 5px;
+	box-shadow: 3px 5px 4px #282828;
+}
+
+#character-stats {
+	z-index: 8;
+}
+
+#character-skills {
+	z-index: 0;
+}
+
+#character-stats {
+	z-index: 0;
+}
+
+.character-hide {
+	position: absolute;
+	left: 0px;
+	top: 42%;
+	height: 76px;
+	background-color: grey;
+	border-radius: 5px;
+	border: solid;
+	border-color: white;
+	width:20px;
+	padding: 0px;
+	padding-left: 2px;
+	text-align: center;
+}
+
+.character-hide-circle {
+	position: relative;
+	height: 10px;
+	width: 10px;
+	background-color: black;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: solid;
+	border-radius:8px;
+}
+
+.footer {
+	height: 2.5em;
+	width: 92%;
+	position: absolute;
+	bottom: 2%;
+	margin-left: 4%;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	border-radius: 8px;
+	-moz-box-shadow: 3px 3px 4px #000000;
+	-webkit-box-shadow: 3px 3px 4px #000000;
+	box-shadow: 3px 3px 4px #000000;
+}
+
+.footer-inner {
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.fill
+{
+    padding-bottom: 100px;
+    margin-bottom: -100px;
 }
