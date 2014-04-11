@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using RPGMaster.Models;
+using RPGMaster.Data;
 
 namespace RPGMaster.Account
 {
@@ -18,8 +19,19 @@ namespace RPGMaster.Account
             IdentityResult result = manager.Create(user, Password.Text);
             if (result.Succeeded)
             {
+                ApplicationUser newUser = manager.Find(UserName.Text, Password.Text);
+                var sa = new StoredAccount();
+                sa.CreateNewAccount(newUser.Id,Email.Text);
+                var returnUrl = Request.QueryString["ReturnUrl"];
                 IdentityHelper.SignIn(manager, user, isPersistent: false);
-                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                if (returnUrl == null)
+                {
+                    IdentityHelper.RedirectToReturnUrl("~/Game/", Response);
+                }
+                else
+                {
+                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                }
             }
             else 
             {
