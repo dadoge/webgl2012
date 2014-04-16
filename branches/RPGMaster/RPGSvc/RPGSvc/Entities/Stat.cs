@@ -11,9 +11,9 @@ namespace RPGSvc.Entities
         public int Id;
         public string Name;
         public string Description;
-        public double Value;
+        public decimal Value;
         
-        public Stat(int id,string name, string description, double value)
+        public Stat(int id,string name, string description, decimal value)
         {
             Id = id;
             Name = name;
