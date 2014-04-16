@@ -40,7 +40,7 @@ namespace RPGSvc.Data
                     stat.Id = dr.GetInt32(0);
                     stat.Name = dr.GetString(1);
                     stat.Description = dr.GetString(2);
-                    stat.Value = dr.GetDouble(3);
+                    stat.Value = dr.GetDecimal(3);
 
                     statList.Add(stat);
                 }
