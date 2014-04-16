@@ -5,7 +5,7 @@
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div class="container account-wrapper">
     <div class="container container-back account-main-container">
-        <div class="acount-inner-container">
+        <div class="account-inner-container">
         <h2><%: Title %>.</h2>
 
         <div>

@@ -3,6 +3,7 @@
 }
 
 body {
+    font-family: Leo-Arrow;
 	background-color: #A8A8A8;
 	background-image: linear-gradient(335deg, #242424 23px, transparent 23px),
 	linear-gradient(155deg, #282828 23px, transparent 23px),
@@ -10,6 +11,17 @@ body {
 	linear-gradient(155deg, #282828 23px, transparent 23px);
 	background-size: 58px 58px;	
 	background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+}
+
+h1, h2 {
+    font-family: Sketch-Gothic;
+    font-size: 3em;
+}
+
+h3, h4 {
+    font-family: Ringbearer;
+    font-size: 2em;
+    text-transform: lowercase;
 }
 .container-back {
     background-color:white;
@@ -342,6 +354,10 @@ body {
 	border-width: 1px;
 	border-radius: 0px 5px 5px 5px;
 	box-shadow: 3px 5px 4px #282828;
+    font-family: Didact-Gothic;
+    text-transform: uppercase;
+    font-size: 1.8em;
+    text-align: left;
 }
 
 #character-stats {
@@ -400,6 +416,7 @@ body {
     position: absolute;
     text-align: center;
     margin: auto;
+    padding: .5em .5em .5em .5em;
     top: 0;
     bottom: 0;
     left: 0;
@@ -410,4 +427,44 @@ body {
 {
     padding-bottom: 100px;
     margin-bottom: -100px;
+}
+
+@font-face {
+    font-family: "Sketch-Gothic";
+    src: url("/fonts/Sketch-Gothic-School.ttf");
+}
+
+@font-face {
+    font-family: "Wizard-Of-The-Moon";
+    src: url("/fonts/Wizard-Of-The-Moon.ttf");
+}
+
+@font-face {
+    font-family: "Dorovar-Carolus";
+    src: url("/fonts/DorovarFLF-Carolus.ttf");
+}
+
+@font-face {
+    font-family: "Celtic-Custom";
+    src: url("/fonts/Celtic.ttf");
+}
+
+@font-face {
+    font-family: "Baldur";
+    src: url("/fonts/Baldur.ttf");
+}
+
+@font-face {
+    font-family: "Ringbearer";
+    src: url("/fonts/RINGM___.TTF");
+}
+
+@font-face {
+    font-family: "Leo-Arrow";
+    src: url("/fonts/Leo-Arrow.ttf");
+}
+
+@font-face {
+    font-family: "Didact-Gothic";
+    src: url("/fonts/DidactGothic.ttf");
 }

@@ -1,6 +1,6 @@
-﻿<%@ Page Title="Game" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="RPGMaster.Game.Default" %>
+﻿<%@ Page Title="Game Screen" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Screen.aspx.cs" Inherits="RPGMaster.Account.Screen" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-		<div class="container container-back container-custom">
+		<div class="container container-custom">
 			<div class="row row-custom">
 				<div class="col-xs-3 party-info">
 				<div id="party-info" style="position:relative;height:inherit">
@@ -30,7 +30,7 @@
 						Interactive Table
 						<!--Added table later. Need to research 2D or 3D-->
 					</div>
-					<div class="chat" style="font-family: Consolas">
+					<div class="chat">
 						<div id="chat">
 							CHAT
 						</div>
@@ -80,8 +80,29 @@
 			<!--/row-->
 		</div>
 	
+	<div id="menu-container" class="menu-container">
+		<div id="menu-options" class="menu-options">
+		Player Settings</br></br>
+		Party Settings</br></br>
+		Options		
+		</div>
+		<div id="menu-tab" class="menu-tab">
+			M</br>
+			E</br>
+			N</br>
+			U</br>
+		</div>
+	</div>
+
+	<script>
+	    $("#menu-container").animate({ "left": "-=160px" }, 0);
+	    document.getElementById('menu-container').style.borderStyle = "none";
+	    //$( "#menu-tab" ).toggle( "slide");
+	</script>
+	
+	<script type="text/javascript" src="/Scripts/Site/hidemenu.js"></script>
+	
     <script type="text/javascript" src="/Scripts/Site/getplayer.js"> </script>
-    <script type="text/javascript" src="/Scripts/Site/template_character.js" ></script>
 	<script type="text/javascript" src="/Scripts/Site/stomp.js"></script>
 	<script type="text/javascript" src="/Scripts/Site/moment-min-js.js"></script>
 	<script type="text/javascript" src="/Scripts/Site/sockjs-0.3.min.js"></script>

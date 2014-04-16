@@ -9,7 +9,7 @@
         <h2><%: Title %>.</h2>
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Use your RPG Master account to log in.</h4>
+                    Use your RPG Master account to log in.
                     <hr />
                     <div class="login-container">
                       <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">

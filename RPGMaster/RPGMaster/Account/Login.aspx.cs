@@ -37,7 +37,7 @@ namespace RPGMaster.Account
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
                     if (returnUrl == null)
                     {
-                        IdentityHelper.RedirectToReturnUrl("~/Game/", Response);
+                        IdentityHelper.RedirectToReturnUrl("~/Game/User-Home.aspx", Response);
                     }
                     else
                     {
