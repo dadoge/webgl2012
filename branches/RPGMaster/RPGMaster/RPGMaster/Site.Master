@@ -46,6 +46,7 @@
                 <asp:ScriptReference Name="WebFormsBundle" />
                 <asp:ScriptReference Path="~/Scripts/Site/hidemenu.js" />
                 <asp:ScriptReference Path="~/Scripts/Site/getplayer.js" />
+                <asp:ScriptReference Path="~/Scripts/Site/underscore.js" />
 <%--                <asp:ScriptReference Path="~/Scripts/Site/chat.js" />
                 <asp:ScriptReference Path="~/Scripts/Site/stomp.js" />
                 <asp:ScriptReference Path="~/Scripts/Site/moment-min-js.js" />
@@ -99,7 +100,7 @@
                     <a runat="server" href="~/Account/Login">Log in</a>
             </AnonymousTemplate>
             <LoggedInTemplate>
-		        <a href="/Game/">Game Lobby</a><br /><br />
+		        <a href="/Game/User-Home.aspx">Player Home</a><br /><br />
 		        <a href="/Account/Manage">Account Settings</a><br /><br />
                 <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Account/Login" OnLoggingOut="Unnamed_LoggingOut" />
             </LoggedInTemplate>

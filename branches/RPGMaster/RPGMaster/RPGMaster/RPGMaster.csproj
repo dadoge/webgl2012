@@ -158,12 +158,21 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Game\Default.aspx" />
+    <Content Include="Game\User-Home.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="Game\Web.config" />
+    <Content Include="fonts\Sketch-Gothic-School.ttf" />
+    <Content Include="fonts\Wizard-Of-The-Moon.ttf" />
+    <Content Include="fonts\Celtic.ttf" />
+    <Content Include="fonts\DorovarFLF-Carolus.ttf" />
+    <Content Include="fonts\Baldur.ttf" />
+    <Content Include="fonts\RINGM___.TTF" />
+    <Content Include="fonts\DidactGothic.ttf" />
+    <Content Include="fonts\Leo-Arrow.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -178,6 +187,8 @@
     <Content Include="Scripts\Site\moment-min-js.js" />
     <Content Include="Scripts\Site\sockjs-0.3.min.js" />
     <Content Include="Scripts\Site\stomp.js" />
+    <Content Include="Scripts\Site\template_character.js" />
+    <Content Include="Scripts\Site\underscore.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -293,6 +304,13 @@
     </Compile>
     <Compile Include="Game\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Game\User-Home.aspx.cs">
+      <DependentUpon>User-Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Game\User-Home.aspx.designer.cs">
+      <DependentUpon>User-Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

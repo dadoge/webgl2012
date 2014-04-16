@@ -32,6 +32,13 @@ StatID INT,
 Value decimal(18,2)
 );
 
+CREATE TABLE Account
+(
+AccountID INT IDENTITY(1,1),
+UserID NVARCHAR(128),
+Email NVARCHAR(50)
+);
+
 ALTER TABLE Player
 ADD CONSTRAINT pk_player_pid PRIMARY KEY(PlayerID)
 GO
@@ -57,4 +64,12 @@ ADD CONSTRAINT fk_productSkill_psid FOREIGN KEY(PlayerID)REFERENCES Player(Playe
 GO
 ALTER TABLE PlayerStat
 ADD CONSTRAINT fk_productStat_psid FOREIGN KEY(PlayerID)REFERENCES Player(PlayerID)
+GO
+
+ALTER TABLE Account
+ADD CONSTRAINT pk_account_pid PRIMARY KEY(AccountID)
+GO
+
+ALTER TABLE Account
+ADD CONSTRAINT fk_userID_psid FOREIGN KEY(UserID)REFERENCES AspNetUsers(Id)
 GO
