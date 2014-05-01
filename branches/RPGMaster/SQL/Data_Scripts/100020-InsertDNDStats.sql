@@ -13,7 +13,7 @@ INSERT INTO Stat (Name, Description)
 VALUES ('Intelligence', 'An ability score representing a character''s memory, reasoning, and learning ability.');
 
 INSERT INTO Stat (Name, Description)
-VALUES ('Wisdom', 'An ability score representing a composite of a character''s intuition, judgement, common sense, and will power.');
+VALUES ('Wisdom', 'An ability score representing a composite of a character''s intuition, judgment, common sense, and will power.');
 
 INSERT INTO Stat (Name, Description)
 VALUES ('Charisma', 'An ability score representing a character''s persuasiveness, personal magnetism, and ability to read.');

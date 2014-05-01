@@ -324,6 +324,7 @@ h3, h4 {
 }
 
 .character-img {
+    height: inherit;
 	display: block;
 	margin: auto;
 	width: inherit;
@@ -331,8 +332,16 @@ h3, h4 {
 	border: solid;
 	border-width: 1.5px;
 	border-radius: 20px;
-	box-shadow: 2px 2px 8px #000000;
 }
+
+.character-img-wrapper {
+    /*display: block;
+    margin: auto;
+    width: inherit;
+    height:120px;
+	box-shadow:  4px 4px 8px rgba(0,0,0,.8);*/
+}
+
 
 .form-control-character {
 	border-radius: 5px 5px 0px 0px;

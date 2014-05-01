@@ -1,0 +1,1 @@
+C:\dev\SNV_WebGL\RPGMaster\kiss\kiss.exe /f:C:\dev\SNV_WebGL\RPGMaster\kiss\local.kissprops_RpgMaster.xml
