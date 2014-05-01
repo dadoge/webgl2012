@@ -5,7 +5,7 @@
 				<div class="col-xs-3 party-info">
 				<div id="party-info" style="position:relative;height:inherit">
 					<div id="partyMember" class="partyMember">
-						<img class="partyMember-icon" src="/Images/druid_master_new_by_brucemashbatart-d5emwkp_edited_small.jpg"></img>
+						<img class="partyMember-icon" src="/Images/druid_master_new_by_brucemashbatart-d5emwkp_edited_small.jpg" />
 						<div class="partyMember-info">
 							Iargalon<br/>Druid Level 7<br/>
 							<div class="playerHealth">28 HP</div>
@@ -15,7 +15,7 @@
 					<div style="height:10px"></div>
 					<div id="partyMember2" class="partyMember">
 					<!--http://cdn.obsidianportal.com/assets/101933/Milil.jpg-->
-						<img class="partyMember-icon" src="/Images/Xana_edited.jpg"></img>
+						<img class="partyMember-icon" src="/Images/Xana_edited.jpg" />
 						<div class="partyMember-info">
 							Xana<br/>Bard Level 8<br/>
 							<div class="playerHealth">32 HP</div>
@@ -48,22 +48,18 @@
 					
 						<div id="character-icon" class="character-icon">
 							<!--http://gkb3rk.deviantart.com/art/Druid-Master-New-326914153-->
-							<img class="character-img" src="/Images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg"></img>
+                            <div class="character-img-wrapper">
+							    <img class="character-img" src="/Images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg" />
+                            </div>
 						</div>
 						<div id="character-info" class="character-info">
-							<select class="form-control form-control-character input-sm">
-								<option>Stats</option>
-								<option>Skills</option>
-								<option>History</option>
+							<select id="options-character-info" class="form-control form-control-character input-sm">
+								<option id="option-Stats">Stats</option>
+								<option id="option-Skills">Skills</option>
+								<option id="option-History">History</option>
 							</select>
 							<div class="character-tab">
-							<div id="character-stats">
-							
-							</div>
-							<div id="character-skills">
-							
-							</div>
-							<div id="character-history">
+							<div id="character-text">
 							
 							</div>
 							</div>
@@ -79,11 +75,10 @@
 			</div>
 			<!--/row-->
 		</div>
-	
+	<script type="text/javascript" src="/Scripts/Site/template_character.js" id="template_character"></script>
     <script type="text/javascript" src="/Scripts/Site/getplayer.js"> </script>
-    <script type="text/javascript" src="/Scripts/Site/template_character.js" ></script>
 	<script type="text/javascript" src="/Scripts/Site/stomp.js"></script>
 	<script type="text/javascript" src="/Scripts/Site/moment-min-js.js"></script>
 	<script type="text/javascript" src="/Scripts/Site/sockjs-0.3.min.js"></script>
-	<script type="text/javascript" src="/Scripts/Site/chat.js"></script>
+	<script type="text/javascript" src="/Scripts/Site/site.js"></script>
 </asp:Content>
