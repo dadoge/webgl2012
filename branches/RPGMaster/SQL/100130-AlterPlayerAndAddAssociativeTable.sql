@@ -44,7 +44,7 @@ GO
 CREATE TABLE [dbo].[Class](
 	[ClassID] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar] (25) NOT NULL,
-	[Description] [nvarchar](255) NULL,
+	[Description] [nvarchar](1024) NULL,
  CONSTRAINT [pk_Class_pid] PRIMARY KEY CLUSTERED 
 (
 	[ClassID] ASC
@@ -61,7 +61,7 @@ GO
 CREATE TABLE [dbo].[Race](
 	[RaceID] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar] (25) NOT NULL,
-	[Description] [nvarchar](255) NULL,
+	[Description] [nvarchar](1024) NULL,
  CONSTRAINT [pk_Race_pid] PRIMARY KEY CLUSTERED 
 (
 	[RaceID] ASC
@@ -94,7 +94,7 @@ GO
 CREATE TABLE [dbo].[Alignment](
 	[AlignmentID] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar] (25) NOT NULL,
-	[Description] [nvarchar](255) NULL,
+	[Description] [nvarchar](1024) NULL,
  CONSTRAINT [pk_Alignment_pid] PRIMARY KEY CLUSTERED 
 (
 	[AlignmentID] ASC
@@ -123,7 +123,7 @@ GO
 /****** Set Foreign Keys to Altered and new Tables*************************************/
 GO
 ALTER TABLE [dbo].[Player]  WITH CHECK ADD  CONSTRAINT [fk_PlayerTypeId_psid] FOREIGN KEY(PlayerTypeID)
-REFERENCES [dbo].[PlayerType] ([TypeID])
+REFERENCES [dbo].[PlayerType] ([PlayerTypeID])
 GO
 ALTER TABLE [dbo].Player CHECK CONSTRAINT [fk_PlayerTypeId_psid]
 GO
@@ -136,7 +136,7 @@ ALTER TABLE [dbo].Player CHECK CONSTRAINT [fk_ClassId_psid]
 GO
 
 GO
-ALTER TABLE [dbo].[Player]  WITH CHECK ADD  CONSTRAINT [fk_ClassId_psid] FOREIGN KEY(RaceID)
+ALTER TABLE [dbo].[Player]  WITH CHECK ADD  CONSTRAINT [fk_RaceId_psid] FOREIGN KEY(RaceID)
 REFERENCES [dbo].[Race] ([RaceID])
 GO
 ALTER TABLE [dbo].Player CHECK CONSTRAINT [fk_RaceId_psid]

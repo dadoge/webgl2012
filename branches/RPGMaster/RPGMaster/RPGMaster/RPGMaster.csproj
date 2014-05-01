@@ -185,6 +185,7 @@
     <Content Include="Scripts\Site\chat.js" />
     <Content Include="Scripts\Site\getplayer.js" />
     <Content Include="Scripts\Site\moment-min-js.js" />
+    <Content Include="Scripts\Site\site.js" />
     <Content Include="Scripts\Site\sockjs-0.3.min.js" />
     <Content Include="Scripts\Site\stomp.js" />
     <Content Include="Scripts\Site\template_character.js" />
