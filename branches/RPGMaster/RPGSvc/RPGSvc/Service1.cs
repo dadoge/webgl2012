@@ -61,6 +61,14 @@ namespace RPGSvc
             //return p.GetPlayer(id);
         }
 
+
+        [WebGet(UriTemplate = "CreateNewCharacter/", ResponseFormat = WebMessageFormat.Json)]
+        public NewCharacter Gets()
+        {
+            var ncr = new NewCharacterRepository();
+            return ncr.GetNewCharacter();
+        }
+
         [WebInvoke(UriTemplate = "{id}", Method = "PUT")]
         public Player Update(string id, Player instance)
         {

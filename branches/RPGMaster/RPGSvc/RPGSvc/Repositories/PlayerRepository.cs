@@ -28,7 +28,6 @@ namespace RPGSvc.Repositories
         public List<Player> GetAllPlayers()
         {
             throw new NotImplementedException();
-
         }
     }
 }
