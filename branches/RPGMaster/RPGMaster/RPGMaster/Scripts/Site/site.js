@@ -1,8 +1,13 @@
 ﻿$(document).ready(function () {
-     $.getJSON("http://localhost/rpgsvc/getplayer/1", function (data) {
-         var list = Character_Stats();
-         var Stats_template = _.template(Character_Stats(), { Stats: data.Stats });
-         var Skills_template = _.template(Character_Skills(), { Skills: data.Skills });
+    var templateHelper = new TemplateHelper();
+    $('.Selection').tooltip({
+        tooltipClass: "Selection-tooltip",
+        track: true
+    });
+    $.getJSON("http://localhost/rpgsvc/getplayer/1", function (data) {
+        
+        var Stats_template = templateHelper.getStatsHtml({ Stats: data.Stats });
+        var Skills_template = templateHelper.getSkillsHtml({ Skills: data.Skills });
 
          $('#character-text').html(Stats_template);
          $('#chatname-input').val(data.Name);
@@ -16,16 +21,81 @@
              }
 
          });
-         //document.getElementById('character-stats').innerHTML = _.template(Character_Stats(), {Stats:data.Stats});
-        //var list = "<% _.each(people, function(name) { %> <li><%= name %></li> <% }); %>";
-        //document.getElementById('character-stats').innerHTML = "Test";
-
-
-        //document.getElementById('character-stats').innerHTML = data.Stats;
-        //document.getElementById('character-stats').innerHTML = _.template(list, { Stats: [{ Name: 'DEX', Value: 18 }, {Name: 'STR', Value: 18}]});
-        //document.getElementById('character-info').innerHTML="Test";
-        //$('#character-info').append(data.Name);
     });
+
+    $('#Create-New-Character').click(function () {
+        $('#interactive-inner').html(templateHelper.startCreation());
+        $('.Selection').tooltip("close");
+        $('#CreateCharacter-Cancel').click(function (){CancelConfirm()});
+        var newCharacter = NewCharacter();
+        $.getJSON("http://localhost/rpgsvc/createnewcharacter", function (data) {
+            var available = [];
+            var header = [];
+            var placeHolder = 0;
+            var maxScreen = 2;
+            createCharacterTemplate = templateHelper.startCreation_btns()
+            header[0] = templateHelper.selectRace().GetHeader
+            available[0] = templateHelper.selectRace({ Races: data.Races }).GetContent
+            header[1] = templateHelper.selectStats().GetHeader
+            available[1] = templateHelper.selectStats({ Stats: data.Stats }).GetContent
+            //available[2] = templateHelper.createIdentity({ Alignments: data.Alignments, Genders: data.Genders })
+            //var availableAlignments = templateHelper.selectAlignment({ Alignments: data.Alignments })
+
+            $('#startCreation-Yes').click(function () {
+
+                $('#interactive-inner').html(createCharacterTemplate);
+                $('#createCharacter-Cancel').click(function () { CancelConfirm() });
+                $('#createCharacter-h').html(header[placeHolder]);
+                $('#createCharacter-inner').html(available[placeHolder]);
+                $('#createCharacter-Back').hide();
+
+                $('#createCharacter-Back').click(function () {
+                    placeHolder = placeHolder - 1;
+                    if (placeHolder > 0) {
+                        $('#createCharacter-h').html(header[placeHolder]);
+                        $('#createCharacter-inner').html(available[placeHolder]);
+                    }
+                    else if (placeHolder == 0) {
+                        $('#createCharacter-h').html(header[placeHolder]);
+                        $('#createCharacter-inner').html(available[placeHolder]);
+                        $('#createCharacter-Back').hide();
+                    }
+                    else {
+
+                    }
+                });
+                $('#createCharacter-Next').click(function () {
+                    placeHolder=placeHolder+1;
+                    if (placeHolder < maxScreen) {
+                        $('#createCharacter-h').html(header[placeHolder]);
+                        $('#createCharacter-inner').html(available[placeHolder]);
+                    }
+                    else {
+
+                    }
+                    if (placeHolder > 0) {
+                        $('#createCharacter-Back').show();
+                    }
+                });
+            });
+        });
+    });
+
+     $(".chat").resizable({
+         handles: 'n'
+     });
+
+     //$("#character-info").slimScroll({
+     //    height: '84%'
+     //});
+     $("#party-info").slimScroll({
+         height: 'auto',
+         railVisible: false,
+     });
+     $("#chat").slimScroll({
+         height: '100%'
+     });
+
     var stompClient;
     var i = 0;
     var Channel = "/topic/TonysChannel";
