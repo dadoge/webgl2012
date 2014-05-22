@@ -77,10 +77,21 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\StoredAlignment.cs" />
+    <Compile Include="Data\StoredClass.cs" />
+    <Compile Include="Data\StoredGender.cs" />
+    <Compile Include="Data\StoredRaces.cs" />
     <Compile Include="Data\StoredPlayer.cs" />
     <Compile Include="Data\StoredStat.cs" />
     <Compile Include="Data\StoredSkill.cs" />
+    <Compile Include="Entities\Alignment.cs" />
+    <Compile Include="Entities\Class.cs" />
+    <Compile Include="Entities\Gender.cs" />
+    <Compile Include="Entities\NewCharacter.cs" />
+    <Compile Include="Entities\Race.cs" />
+    <Compile Include="Entities\Spell.cs" />
     <Compile Include="Entities\Stat.cs" />
+    <Compile Include="Repositories\NewCharacterRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Service1.cs" />
     <Compile Include="Entities\Player.cs" />
