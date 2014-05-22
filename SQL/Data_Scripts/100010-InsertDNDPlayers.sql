@@ -42,11 +42,11 @@ VALUES ('Human','Humans are exactly as we find them on Earth, ranging from pale 
 INSERT INTO Class (Name,Description)
 VALUES('Bard','A Bard is a Rogue that has a love for music and a natural charmer. Their main Stats are Dexterity and Charisma.');
 INSERT INTO Class (Name,Description)
-VALUES('Cleric','A Cleris is a priest that follows a divine entity and are sturdy soldiers. The main Stat of a Cleric is Wisdom.');
+VALUES('Cleric','A Cleric is a priest that follows a divine entity and are sturdy soldiers. The main Stat of a Cleric is Wisdom.');
 INSERT INTO Class (Name,Description)
 VALUES('Druid','Druids are another type of Priest that follow Gaia, and are guardians of nature and the wildernes. Their primary Stats are Wisdom and Charisma.');
 INSERT INTO Class (Name,Description)
-VALUES('Fighter','A Fighter''S main Stat is Strength and is an expert in weapons, and if clever, strategy and tactics.');
+VALUES('Fighter','A Fighter''s main Stat is Strength and is an expert in weapons, and if clever, strategy and tactics.');
 INSERT INTO Class (Name,Description)
 VALUES('Illusionist','An Illusionist is a Wizard that has specialized in the school of illusion. Tir main Stat is Intelligence.');
 INSERT INTO Class (Name,Description)
