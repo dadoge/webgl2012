@@ -48,5 +48,36 @@ namespace RPGSvc.Data
             connection.Close();
             return statList;
         }
+
+        public List<Stat> GetStats()
+        {
+
+            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["RPGMasterDb"].ConnectionString);
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandText = "GetStats";
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.Open();
+            SqlDataReader dr;
+            dr = command.ExecuteReader();
+
+            var statList = new List<Stat>();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    var stat = new Stat();
+                    stat.Id = dr.GetInt32(0);
+                    stat.Name = dr.GetString(1);
+                    stat.Description = dr.GetString(2);
+
+                    statList.Add(stat);
+                }
+            }
+            connection.Close();
+            return statList;
+        }
     }
 }
