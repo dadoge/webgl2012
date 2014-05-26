@@ -2,15 +2,27 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 		<div class="container container-back container-custom">
 			<div class="row row-custom">
-				<div class="col-xs-3 party-info">
-				<div id="party-info" style="position:relative;height:inherit">
+				<div class="col-xs-3 left-info">
+                <div class="background-overlay-2">
 
+                </div>
+				<div class="player-options text-center">
+                    <div id="Create-New-Character" class="Selection">Create New Character<br /></div>
+                    -------<br />
+                    <div id="Add-Existing-Character" class="Selection">Add Existing Character<br /></div>
+                    -------<br />
+                    <div id="Manage-Characters" class="Selection">Manage Characters</div>
+                    <%--<div id="test" data-bind="text: Alignment"></div>--%>
 				</div>
 				</div>
 				<!--Interactive Play Screen-->
 				<div class="col-xs-6 col-custom">
-
-					<div class="chat" style="font-family: Consolas">
+                    <div class="interactive">
+                        <div class="background-overlay-3"></div>
+                        <div id="interactive-inner"></div>
+						<!--Added table later. Need to research 2D or 3D-->
+					</div>
+					<div class="chat">
 						<div id="chat">
 							CHAT
 						</div>
@@ -25,25 +37,27 @@
 				</div>
 				<!--/span-->
 				<div id="character-display" class="col-xs-3 character-display">
-					
+                        
+			            <div class="background-overlay-2">
+                        </div>
+                        <div class="character-hide">
+
+                        </div>
 						<div id="character-icon" class="character-icon">
+                            <div class="character-img-wrapper">
+                                
 							<!--http://gkb3rk.deviantart.com/art/Druid-Master-New-326914153-->
-							<img class="character-img" src="/Images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg"></img>
+							<%--<img "character-img" src="/Images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg" />--%>
+                            </div>
 						</div>
 						<div id="character-info" class="character-info">
-							<select class="form-control form-control-character input-sm">
-								<option>Stats</option>
-								<option>Skills</option>
-								<option>History</option>
+							<select id="options-character-info" class="form-control form-control-character input-sm">
+								<option id="option-Stats">Stats</option>
+								<option id="option-Skills">Skills</option>
+								<option id="option-History">History</option>
 							</select>
 							<div class="character-tab">
-							<div id="character-stats">
-							
-							</div>
-							<div id="character-skills">
-							
-							</div>
-							<div id="character-history">
+							<div id="character-text">
 							
 							</div>
 							</div>
@@ -60,9 +74,13 @@
 			<!--/row-->
 		</div>
 	
-    <script type="text/javascript" src="/Scripts/Site/getplayer.js"> </script>
+    <script type="text/javascript" src="/Scripts/jquery-ui-1.10.4.custom.js"> </script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.slimscroll.js"> </script>
+    <script type="text/javascript" src="/Scripts/Site/Create_Character.js"> </script>
+    <script type="text/javascript" src="/Scripts/Site/TemplateHelper.js"> </script>
 	<script type="text/javascript" src="/Scripts/Site/stomp.js"></script>
 	<script type="text/javascript" src="/Scripts/Site/moment-min-js.js"></script>
 	<script type="text/javascript" src="/Scripts/Site/sockjs-0.3.min.js"></script>
-	<script type="text/javascript" src="/Scripts/Site/chat.js"></script>
+	<script type="text/javascript" src="/Scripts/Site/site.js"></script>
 </asp:Content>
