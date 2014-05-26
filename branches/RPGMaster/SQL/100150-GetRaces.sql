@@ -7,6 +7,6 @@ CREATE PROCEDURE dbo.GetRaces
    
 AS
 BEGIN
-Select RaceID, Name, Description From Race;
+Select RaceID, Name, Description, ImgSrc From Race;
 
 END
