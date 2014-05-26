@@ -1,5 +1,15 @@
 ﻿$(document).ready(function () {
+    Function.prototype.bind = function (obj) {
+        var method = this,
+         temp = function () {
+             return method.apply(obj, arguments);
+         };
+
+        return temp;
+    }
+
     var templateHelper = new TemplateHelper();
+    //var newCharacter = new NewCharacter(); // initialize variable to be used to store info to create character
     $('.Selection').tooltip({
         tooltipClass: "Selection-tooltip",
         track: true
@@ -23,41 +33,59 @@
          });
     });
 
-    $('#Create-New-Character').click(function () {
+     $('#Create-New-Character').click(function () {
+        //setup the buttons
         $('#interactive-inner').html(templateHelper.startCreation());
         $('.Selection').tooltip("close");
-        $('#CreateCharacter-Cancel').click(function (){CancelConfirm()});
-        var newCharacter = NewCharacter();
+        $('#CreateCharacter-Cancel').click(function () { CancelConfirm() });
         $.getJSON("http://localhost/rpgsvc/createnewcharacter", function (data) {
-            var available = [];
-            var header = [];
-            var placeHolder = 0;
+            var viewModel = {
+                availableAlignments: ko.observableArray(['Good', 'Bad', 'Neutral'])
+            };
+            var newCharacter = new NewCharacter(data);
+            var available = []; // available entities, such Race, Stats, etc
+            var header = []; // var to populate header for screen
+            var currentScreen = 0;
             var maxScreen = 2;
+            var KObound = [];
+            for (var i = 0; i <= maxScreen; i++) {
+                KObound[i] = 0;
+            }
+            var i_init=0; //counter for generating templates
+            //initialize all templates and populate using data.*
             createCharacterTemplate = templateHelper.startCreation_btns()
-            header[0] = templateHelper.selectRace().GetHeader
-            available[0] = templateHelper.selectRace({ Races: data.Races }).GetContent
-            header[1] = templateHelper.selectStats().GetHeader
-            available[1] = templateHelper.selectStats({ Stats: data.Stats }).GetContent
-            //available[2] = templateHelper.createIdentity({ Alignments: data.Alignments, Genders: data.Genders })
-            //var availableAlignments = templateHelper.selectAlignment({ Alignments: data.Alignments })
+            header[i_init] = templateHelper.selectStats().GetHeader
+            available[i_init] = templateHelper.selectStats({ Stats: data.Stats }).GetContent
+            i_init++;
+            header[i_init] = templateHelper.selectRace().GetHeader
+            available[i_init] = templateHelper.selectRace({ Races: data.Races }).GetContent
+            i_init++;
+            header[i_init] = templateHelper.createIdentity().GetHeader
+            available[i_init] = templateHelper.createIdentity({ Alignments: data.Alignments }, { Genders: data.Genders }).GetContent
 
             $('#startCreation-Yes').click(function () {
-
+                // fill html with Screen 0
                 $('#interactive-inner').html(createCharacterTemplate);
                 $('#createCharacter-Cancel').click(function () { CancelConfirm() });
-                $('#createCharacter-h').html(header[placeHolder]);
-                $('#createCharacter-inner').html(available[placeHolder]);
+                $('#createCharacter-h').html(header[currentScreen]);
+                $('#createCharacter-inner').html(available[currentScreen]);
                 $('#createCharacter-Back').hide();
 
                 $('#createCharacter-Back').click(function () {
-                    placeHolder = placeHolder - 1;
-                    if (placeHolder > 0) {
-                        $('#createCharacter-h').html(header[placeHolder]);
-                        $('#createCharacter-inner').html(available[placeHolder]);
+                    if (currentScreen == 2) {
+                        //var returnAlignment = $.parseJSON(ko.toJSON(newCharacter.Alignment));
+                        //alert(returnAlignment.Name);
                     }
-                    else if (placeHolder == 0) {
-                        $('#createCharacter-h').html(header[placeHolder]);
-                        $('#createCharacter-inner').html(available[placeHolder]);
+                    if (currentScreen != 0) {
+                        currentScreen = currentScreen - 1;
+                    }
+                    if (currentScreen > 0) {
+                        $('#createCharacter-h').html(header[currentScreen]);
+                        $('#createCharacter-inner').html(available[currentScreen]);
+                    }
+                    else if (currentScreen == 0) {
+                        $('#createCharacter-h').html(header[currentScreen]);
+                        $('#createCharacter-inner').html(available[currentScreen]);
                         $('#createCharacter-Back').hide();
                     }
                     else {
@@ -65,21 +93,31 @@
                     }
                 });
                 $('#createCharacter-Next').click(function () {
-                    placeHolder=placeHolder+1;
-                    if (placeHolder < maxScreen) {
-                        $('#createCharacter-h').html(header[placeHolder]);
-                        $('#createCharacter-inner').html(available[placeHolder]);
+                    if (currentScreen != maxScreen) {
+                        currentScreen = currentScreen + 1;
+                    }
+                    if (currentScreen < maxScreen) {
+                        $('#createCharacter-h').html(header[currentScreen]);
+                        $('#createCharacter-inner').html(available[currentScreen]);
                     }
                     else {
-
+                        $('#createCharacter-h').html(header[currentScreen]);
+                        $('#createCharacter-inner').html(available[currentScreen]);
                     }
-                    if (placeHolder > 0) {
+                    if (currentScreen > 0) {
                         $('#createCharacter-Back').show();
                     }
+                        if (currentScreen == 2) {
+                            ko.applyBindings(newCharacter,document.getElementById('createIdentity'));
+                        }
                 });
             });
         });
     });
+
+
+    //// Activates knockout.js
+    // ko.applyBindings(newCharacter, document.getElementById('test'));
 
      $(".chat").resizable({
          handles: 'n'
