@@ -178,6 +178,10 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Scripts\jquery.slimscroll.js" />
+    <Content Include="Scripts\knockout-3.1.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -188,7 +192,8 @@
     <Content Include="Scripts\Site\site.js" />
     <Content Include="Scripts\Site\sockjs-0.3.min.js" />
     <Content Include="Scripts\Site\stomp.js" />
-    <Content Include="Scripts\Site\template_character.js" />
+    <Content Include="Scripts\Site\TemplateHelper.js" />
+    <Content Include="Scripts\Site\Create_Character.js" />
     <Content Include="Scripts\Site\underscore.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
