@@ -1,5 +1,6 @@
 ﻿html, body {
 	height: 100%;
+    width: 100%;
 }
 
 body {
@@ -23,7 +24,7 @@ a:active {color:#121212;}  /* selected link */
     position: absolute;
     height: 100%;
     right: 0; left: 0; bottom: 0; top: 0;
-    background-image: url("/Images/background-alpha.png");
+    background-image: url("../Images/background-alpha.png");
     opacity: .2;
 }
 
@@ -31,7 +32,7 @@ a:active {color:#121212;}  /* selected link */
     position: absolute;
     top: 0; right: 0; left: 0; bottom: 0;
     margin: 5px;
-    background-image: url("/Images/grunge_texture_x_by_skeelar_stock-d39yewu.jpg");
+    background-image: url("../Images/grunge_texture_x_by_skeelar_stock-d39yewu.jpg");
     opacity: .35;
     border-radius: 8px;
 }
@@ -45,7 +46,7 @@ a:active {color:#121212;}  /* selected link */
     top: 0; left: 0;
     margin: 5px 0px 0px 5px;
     border-radius: 4px;
-    background-image: url("/Images/Grunge_texture_2_by_darkrose42_stock.jpg");
+    background-image: url("../Images/Grunge_texture_2_by_darkrose42_stock.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -66,7 +67,7 @@ h3, h4 {
 
 h5 {
     font-family: Leo-Arrow;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .text-shadow {
@@ -287,7 +288,7 @@ h5 {
     margin: 0px 0px 0px 5px;
     border-radius: 4px;
     padding: 0px 10px 5px 10px;
-    overflow: auto;
+    /*overflow: auto;*/
 }
 .interactive-inner {
     position: absolute;
@@ -312,6 +313,11 @@ h5 {
 	box-shadow: 3px 3px 6px #000000;
 }
 
+#createCharacter-inner {
+    height: 85%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 .interactive-td {
 	position: relative;
 	width:10%;
@@ -353,6 +359,7 @@ h5 {
 .chat-input-group {
 	position:absolute;
 	height: 2em;
+    width: 70%;
 	right:30%; left:5px;
 	bottom:.4em;
 }
@@ -426,25 +433,56 @@ h5 {
     margin-left:20px;
     margin-right:20px;
     box-shadow: inset 6px 6px 10px #181818;
-    background-image: url("/Images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     padding: 0;
     background-size: cover;
     border-radius: 10px;
+    border-bottom: solid;
+    border-width: 0px;
 }
 
+
+.character-icon-footer {
+    border: solid;
+    border-top: none;
+    /*background-color: #282828;*/
+    margin: 0px 20px 0px 20px;
+    margin-left:30px;
+    margin-right:30px;
+    height: 2em;
+    border-radius: 0px 0px 8px 8px;
+    border-width: 1px;
+    box-shadow: 3px 3px 4px rgba(20,20,20,.8);
+}
+
+.character-Name {
+    color: white;
+    display: inline-block;
+    width:50%;
+    padding: 4px 0px 0px 8px;
+}
+
+.character-Level {
+    color: white;
+    display: inline-block;
+    width:50%;
+    text-align: right;
+    padding: 4px 8px 0px 0px;
+}
 
 .form-control-character {
 	border-radius: 5px 5px 0px 0px;
 	border: none;
-	width: 50%;
-	background-color: #DDDDDD;
+	/*width: 50%;*/
+	background-color: #A8A8A8;
+    font-size: 1.1em;
+    color: #282828;
 }
 
 .character-tab {
 	position: absolute;
-	background-color: #DDDDDD;
+	background-color: #A8A8A8;
 	height: calc(100% - 45px);
 	width: calc(100% - 25px);
 	margin: 0px 5px 0px 0px;
@@ -453,25 +491,75 @@ h5 {
 	border: none;
 	border-color: white;
 	border-width: 1px;
-	border-radius: 0px 5px 5px 5px;
+	border-radius: 0px 0px 5px 5px;
 	box-shadow: inset 5px 5px 5px #383838;
-    font-family: Didact-Gothic;
-    text-transform: uppercase;
-    font-size: 1.8em;
+    font-size: 1em;
     text-align: left;
     overflow: auto;
 }
 
-#character-stats {
-	z-index: 8;
+#character-text {
+    padding: 8px 5px 5px 8px;
 }
 
-#character-skills {
-	z-index: 0;
+.character-Description {
+    font-weight: bold;
+    display: inline;
 }
 
-#character-stats {
-	z-index: 0;
+.background-overlay-character-stats {
+    width: 2.8em;
+    height: 1.5em;
+    position: absolute;
+    top: 0; right: 0; left: 0; bottom: 0;
+    margin: 5px;
+    background-image: url("../Images/grunge_texture_x_by_skeelar_stock-d39yewu.jpg");
+    opacity: .35;
+    border-radius: 8px;
+}
+
+.character-stats-wrapper {
+    width: 6em;
+}
+
+.character-stats-name {
+    font-family: Didact-Gothic;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    /*text-shadow: 1px 1px 2px rgba(20,20,20,.4);*/
+    font-weight: bold;
+    position: relative;
+    /*float:left;*/
+    display: inline-block;
+    width: 2.8em;
+    height: 1.6em;
+    text-align: right;
+    /*background-color: #C8C8C8;*/
+    /*border: solid;*/
+    border-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 0px .5em 0px 0px;
+    margin: 2px 0px 2px 0px;
+}
+
+.character-stats-value {
+    font-size: 1.4em;
+    font-family: Helvetica;
+    position: absolute;
+    /*float: left;*/
+    display: inline;
+    width: 3em;
+    height: 1.6em;
+    text-align: center;
+    background-color: #F8F8F8;
+    border: solid;
+    border-color: #FFFFFF;
+    border-radius: .75em;
+    /*border-left: none;*/
+    padding: 0px;
+    padding-top: .1em;
+    margin: .3em 0px 10px 0px;
+    box-shadow: inset 3px 3px 3px rgba(20,20,20,.7);
 }
 
 .character-hide {
@@ -541,6 +629,10 @@ h5 {
     box-shadow: #282828 4px 4px 2px;
 }
 
+#createCharacter-Complete {
+    margin-right:.25em;
+}
+
 #createCharacter-Previous {
     /*visibility: hidden;*/
 }
@@ -554,10 +646,14 @@ h5 {
 
 .Selection-tooltip {
     display: none;
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255,255,255,.9);
     width: 20em;
     padding: 2px;
     border-radius: 2px;
+}
+
+.info-Description {
+    display: inline-block;
 }
 
 .createCharacter-btns {
@@ -565,7 +661,7 @@ h5 {
     right: .5em; top: 18px;
 }
 
-#Race_div {
+#createRace {
     position: absolute;
     height: 40%;
     width: 20em;
@@ -575,7 +671,7 @@ h5 {
     left: 50%;
 }
 
-#RaceImg {
+.RaceImg {
     background-color:rgba(255,255,255,.75);
     border: solid;
     border-radius: 8px;
@@ -586,7 +682,7 @@ h5 {
     box-shadow: 2px 2px 6px rgba(20,20,20,.8);
 }
 
-#RaceImg:hover {
+.RaceImg:hover {
     background-color:rgba(255,255,255,1);
     cursor: pointer;
 }
@@ -604,52 +700,180 @@ h5 {
     bottom: 0;
 }
 
+#createClass {
+    position: absolute;
+    height: 40%;
+    width: 30em;
+    top: 20%;
+    margin: 0 auto;
+    margin: 0 0 0 -13em;
+    left: 50%;
+}
+
+.div-createStats{
+    width:40em;
+    padding:2px;
+}
+
+.h-createStats{
+    display: inline-block;
+    width: 8em;
+}
+
+.input-createStats {
+    display: inline-block;
+    width: 3em;
+    border-radius:4px;
+    text-align:center;
+}
+
+/*Create Identity*/
+#createIdentity-title{
+    width: 6.5em;
+    display: inline-block;
+    padding: .4em;
+}
+.input-createName {
+    width: 18em;
+    height: 2em;
+    border-radius:4px;
+    padding: .4em;
+    display: inline-block;
+}
+.input-createAge {
+    width: 6em;
+    height: 2em;
+    border-radius:4px;
+    padding: .4em;
+    margin-right: 1em;
+    display: inline-block;
+}
+
 #Alignment-options {
     width: 15em;
+    height: 2em;
+    padding: .4em;
+    display: inline-block;
 }
 
 #Gender-options {
     width: 12em;
+    height: 2em;
+    padding: .4em;
+    display: inline-block;
+}
+
+.input-createHistory {
+    width: 60%;
+    max-width: 100%;
+    height: 5em;
+    max-height: 15em;
+    border-radius:4px;
+}
+
+/*End Create Identity*/
+
+#selectSkills {
+    font-size: 1.2em;
+}
+
+.checkbox-div {
+    display: inline-block;
+    position: relative;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: #AAAAAA;
+    border: solid;
+    border-width: 1px;
+    border-radius: .3em;
+    border-color: #A8A8A8;
+    top: .3em; left: .2em;
+    box-shadow: inset 1px 1px 2px rgba(20,20,20,.9);
+}
+
+.selectSkills-Name {
+    display: inline-block;
+    width: 18em;
+    margin-left:2.7em;
+}
+
+.input-skillsValue {
+    width: 2.4em;
+    border-radius:4px;
+    height: 1.4em;
+}
+
+#selectedSkills-input {
+    display: inline;
+    -ms-transform: scale(1.8); /* IE */
+    -moz-transform: scale(1.8); /* FF */
+    -webkit-transform: scale(1.8); /* Safari and Chrome */
+    -o-transform: scale(1.8); /* Opera */
+}
+
+#selectSkills ul, li {
+    list-style: none;
+}
+
+#selectFeats {
+    font-size: 1.2em;
+}
+
+#selectFeats-Name {
+    display: inline-block;
+    width: 18em;
+}
+
+#selectedFeats-input {
+    display: inline;
+    -ms-transform: scale(1.8); /* IE */
+    -moz-transform: scale(1.8); /* FF */
+    -webkit-transform: scale(1.8); /* Safari and Chrome */
+    -o-transform: scale(1.8); /* Opera */
+}
+
+#selectFeats ul,li {
+    list-style: none;
 }
 
 @font-face {
     font-family: "Sketch-Gothic";
-    src: url("/fonts/Sketch-Gothic-School.ttf");
+    src: url("../fonts/Sketch-Gothic-School.ttf");
 }
 
 @font-face {
     font-family: "Wizard-Of-The-Moon";
-    src: url("/fonts/Wizard-Of-The-Moon.ttf");
+    src: url("../fonts/Wizard-Of-The-Moon.ttf");
 }
 
 @font-face {
     font-family: "Dorovar-Carolus";
-    src: url("/fonts/DorovarFLF-Carolus.ttf");
+    src: url("../fonts/DorovarFLF-Carolus.ttf");
 }
 
 @font-face {
     font-family: "Celtic-Custom";
-    src: url("/fonts/Celtic.ttf");
+    src: url("../fonts/Celtic.ttf");
 }
 
 @font-face {
     font-family: "Baldur";
-    src: url("/fonts/Baldur.ttf");
+    src: url("../fonts/Baldur.ttf");
 }
 
 @font-face {
     font-family: "Ringbearer";
-    src: url("/fonts/RINGM___.TTF");
+    src: url("../fonts/RINGM___.TTF");
 }
 
 @font-face {
     font-family: "Leo-Arrow";
-    src: url("/fonts/Leo-Arrow.ttf");
+    src: url("../fonts/Leo-Arrow.ttf");
 }
 
 @font-face {
     font-family: "Didact-Gothic";
-    src: url("/fonts/DidactGothic.ttf");
+    src: url("../fonts/DidactGothic.ttf");
 }
 
 

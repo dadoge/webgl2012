@@ -68,6 +68,13 @@ namespace RPGMaster
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //LogInHyperLink.NavigateUrl = "LogIn";
+            //RegisterHyperLink.NavigateUrl = "Register"; 
+            string uid = Page.User.Identity.Name;
+            if (uid != null)
+            {
+                UID.InnerHtml = uid;
+            }
 
         }
 

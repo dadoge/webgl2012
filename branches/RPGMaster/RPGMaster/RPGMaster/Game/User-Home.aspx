@@ -12,7 +12,6 @@
                     <div id="Add-Existing-Character" class="Selection">Add Existing Character<br /></div>
                     -------<br />
                     <div id="Manage-Characters" class="Selection">Manage Characters</div>
-                    <%--<div id="test" data-bind="text: Alignment"></div>--%>
 				</div>
 				</div>
 				<!--Interactive Play Screen-->
@@ -49,12 +48,15 @@
 							<!--http://gkb3rk.deviantart.com/art/Druid-Master-New-326914153-->
 							<%--<img "character-img" src="/Images/druid_master_new_by_brucemashbatart-d5emwkp_edited.jpg" />--%>
                             </div>
+                            <div class="character-icon-footer">
+
+                            </div>
 						</div>
 						<div id="character-info" class="character-info">
 							<select id="options-character-info" class="form-control form-control-character input-sm">
-								<option id="option-Stats">Stats</option>
+								<option id="option-General">General</option>
+                                <option id="option-Stats">Ability Scores</option>
 								<option id="option-Skills">Skills</option>
-								<option id="option-History">History</option>
 							</select>
 							<div class="character-tab">
 							<div id="character-text">
@@ -74,13 +76,13 @@
 			<!--/row-->
 		</div>
 	
-    <script type="text/javascript" src="/Scripts/jquery-ui-1.10.4.custom.js"> </script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.10.4.custom.js"> </script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script type="text/javascript" src="/Scripts/jquery.slimscroll.js"> </script>
-    <script type="text/javascript" src="/Scripts/Site/Create_Character.js"> </script>
-    <script type="text/javascript" src="/Scripts/Site/TemplateHelper.js"> </script>
-	<script type="text/javascript" src="/Scripts/Site/stomp.js"></script>
-	<script type="text/javascript" src="/Scripts/Site/moment-min-js.js"></script>
-	<script type="text/javascript" src="/Scripts/Site/sockjs-0.3.min.js"></script>
-	<script type="text/javascript" src="/Scripts/Site/site.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.slimscroll.js"> </script>
+    <script type="text/javascript" src="../Scripts/Site/Create_Character.js"> </script>
+    <script type="text/javascript" src="../Scripts/Site/TemplateHelper.js"> </script>
+	<script type="text/javascript" src="../Scripts/Site/stomp.js"></script>
+	<script type="text/javascript" src="../Scripts/Site/moment-min-js.js"></script>
+	<script type="text/javascript" src="../Scripts/Site/sockjs-0.3.min.js"></script>
+	<script type="text/javascript" src="../Scripts/Site/site.js"></script>
 </asp:Content>
