@@ -1,4 +1,9 @@
 USE [rpgmaster] 
+GO
+
+ALTER TABLE [dbo].Race ADD [ImgSrc] [nvarchar](1024) NULL;
+GO
+
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetRaces]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[GetRaces]
 GO

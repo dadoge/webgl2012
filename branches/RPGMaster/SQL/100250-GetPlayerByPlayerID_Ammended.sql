@@ -8,7 +8,7 @@ CREATE PROCEDURE dbo.GetPlayerByPlayerID
    @PlayerID INT
 AS
 BEGIN
-Select p.playerID, p.Name
+Select p.playerID, p.Name, p.ImgSrc, p.History, p.Level, p.Age
 From Player P
 where p.playerID = @PlayerID
 
