@@ -21,6 +21,10 @@ namespace RPGSvc.Repositories
             var player = new StoredPlayer().GetPlayerByPlayerID(id);
             player.Skills = new StoredSkill().GetSkillsByPlayerID(id);
             player.Stats = new StoredStat().GetStatsByPlayerID(id);
+            player.Race = new StoredRaces().GetPlayerRace(id);
+            player.Class = new StoredClass().GetPlayerClass(id);
+            player.Alignment = new StoredAlignment().GetPlayerAlignment(id);
+            player.Gender = new StoredGender().GetPlayerGender(id);
 
             return player;
         }

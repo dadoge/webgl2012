@@ -46,6 +46,7 @@ namespace RPGSvc.Data
                 }
             }
             connection.Close();
+            dr.Close();
             return statList;
         }
 
@@ -77,6 +78,7 @@ namespace RPGSvc.Data
                 }
             }
             connection.Close();
+            dr.Close();
             return statList;
         }
     }
