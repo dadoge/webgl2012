@@ -5,7 +5,7 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%--<meta name="viewport" content="width=device-width, initial-scale=1.0" />--%>
     <title><%: Page.Title %> - RPG Master</title>
 
     <asp:PlaceHolder runat="server">
@@ -29,7 +29,7 @@
             
 	    </div>
         <div class="background-overlay">
-
+            <div runat="server" id="UID" style="visibility:hidden">0</div>
         </div>
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -48,10 +48,10 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-                <asp:ScriptReference Path="~/Scripts/Site/hidemenu.js" />
-                <asp:ScriptReference Path="~/Scripts/Site/getplayer.js" />
-                <asp:ScriptReference Path="~/Scripts/Site/underscore.js" />
-                <asp:ScriptReference Path="~/Scripts/knockout-3.1.0.js" />
+                <asp:ScriptReference Path="Scripts/Site/hidemenu.js" />
+                <asp:ScriptReference Path="Scripts/Site/getplayer.js" />
+                <asp:ScriptReference Path="Scripts/Site/underscore.js" />
+                <asp:ScriptReference Path="Scripts/knockout-3.1.0.js" />
 <%--                <asp:ScriptReference Path="~/Scripts/Site/chat.js" />
                 <asp:ScriptReference Path="~/Scripts/Site/stomp.js" />
                 <asp:ScriptReference Path="~/Scripts/Site/moment-min-js.js" />
@@ -59,55 +59,19 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-      <%--  <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-                </div>
-            </div>
-        </div>--%>
 	    
 	<div id="menu-container" class="menu-container" onblur="menuCollapse()">
         <input id="menu-input" onblur="menuCollapse()" style="visibility:hidden"/>
 		<div id="menu-options" class="menu-options">
         <asp:LoginView runat="server" ViewStateMode="Disabled">
             <AnonymousTemplate>
-                    <a runat="server" href="~/Account/Register">Register</a><br /><br />
-                    <a runat="server" href="~/Account/Login">Log in</a>
+                    <a runat="server" href="/RPGMaster/Account/Register">Register</a><br /><br />
+                    <a runat="server" href="/RPGMaster/Account/LogIn">Log in</a>
             </AnonymousTemplate>
             <LoggedInTemplate>
-		        <a href="/Game/User-Home.aspx">Player Home</a><br /><br />
-		        <a href="/Account/Manage">Account Settings</a><br /><br />
-                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Account/Login" OnLoggingOut="Unnamed_LoggingOut" />
+		        <a href="/RPGMaster/Game/User-Home">Player Home</a><br /><br />
+		        <a href="/RPGMaster/Account/Manage">Account Settings</a><br /><br />
+                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="/" OnLoggingOut="Unnamed_LoggingOut" />
             </LoggedInTemplate>
         </asp:LoginView>
 
@@ -130,7 +94,7 @@
 	    //$( "#menu-tab" ).toggle( "slide");
 	</script>
 	
-	<script type="text/javascript" src="/Scripts/Site/hidemenu.js"></script>
+	<script type="text/javascript" src="/RPGMaster/Scripts/Site/hidemenu.js"></script>
     </form>
 </body>
 </html>
