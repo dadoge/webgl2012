@@ -8,16 +8,50 @@ using System.Data.SqlClient;
 
 namespace RPGSvc.Data
 {
-    public class StoredClass
+    public class StoredFeat
     {
-        public Class GetPlayerClass(int id)
+        //
+        public List<Feat> GetFeats()
         {
             SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["RPGMasterDb"].ConnectionString);
             SqlCommand command = new SqlCommand();
             command.Connection = connection;
-            command.CommandText = "GetClassByPlayerID";
+            command.CommandText = "GetFeats";
             command.CommandType = CommandType.StoredProcedure;
 
+            connection.Open();
+            SqlDataReader dr;
+            dr = command.ExecuteReader();
+
+            var featList = new List<Feat>();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    var feat = new Feat();
+                    feat.Id = dr.GetInt32(0);
+                    feat.Name = dr.GetString(1);
+                    feat.Description = dr.GetString(2);
+
+                    featList.Add(feat);
+                }
+            }
+            connection.Close();
+            dr.Close();
+            return featList;
+        }
+
+        public List<Feat> GetFeatsByPlayerID(int id)
+        {
+
+            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["RPGMasterDb"].ConnectionString);
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandText = "GetFeatsByPlayerID";
+            command.CommandType = CommandType.StoredProcedure;
+
+ 
             SqlParameter playerID = new SqlParameter("@PlayerID", SqlDbType.Int);
 
             playerID.Value = id;
@@ -27,64 +61,24 @@ namespace RPGSvc.Data
             SqlDataReader dr;
             dr = command.ExecuteReader();
 
-            var pclass = new Class();
-
-            if (dr.HasRows)
-            {
-                dr.Read();
-                pclass.Name = dr.GetString(0);
-                if (dr.IsDBNull(1))   {
-                    pclass.ImgSrc = "DefaultClass.png";
-                }
-                else  {
-                    pclass.ImgSrc = dr.GetString(1);
-                }
-                pclass.Description = dr.GetString(2);
-            }
-            connection.Close();
-            dr.Close();
-
-            return pclass;
-        }
-
-        public List<Class> GetClasses()
-        {
-
-            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["RPGMasterDb"].ConnectionString);
-            SqlCommand command = new SqlCommand();
-            command.Connection = connection;
-            command.CommandText = "GetClasses";
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.Open();
-            SqlDataReader dr;
-            dr = command.ExecuteReader();
-
-            var classList = new List<Class>();
+            var featList = new List<Feat>();
 
             if (dr.HasRows)
             {
                 while (dr.Read())
                 {
-                    var class_ = new Class();
-                    class_.Id = dr.GetInt32(0);
-                    class_.Name = dr.GetString(1);
-                    class_.Description = dr.GetString(2);
-                    if (dr.IsDBNull(1))
-                    {
-                        class_.ImgSrc = "DefaultClass.png";
-                    }
-                    else
-                    {
-                        class_.ImgSrc = dr.GetString(3);
-                    }
+                    var feat = new Feat();
+                    feat.Id = dr.GetInt32(0);
+                    feat.Name = dr.GetString(1);
+                    feat.Description = dr.GetString(2);
 
-                    classList.Add(class_);
+                    featList.Add(feat);
                 }
             }
             connection.Close();
             dr.Close();
-            return classList;
+            return featList;
         }
+
     }
 }
