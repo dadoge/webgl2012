@@ -27,17 +27,17 @@ INSERT INTO Gender (Name)
 VALUES ('Undetermined');
 
 INSERT INTO Race (Name,Description)
-VALUES ('Dwarf',' Dwarves are short and stocky and are recognized for their stature and size. On average they are between 4'' to 4''8" tall. They have dark eyes, dark hair, and rosy cheeks. Dwarves usually live up to 350 years old. They come from mountainous or hilly regions and do not like the sea. They treasure things of the earth such as gems, rubies, diamonds and most of all, gold. They are non-magical creatures but are more suited for fighting, warcraft and scientific arts such as engineering.');
+VALUES ('Dwarf',' Dwarves are short and stocky and are recognized for their stature and size. On average they are between 4'' to 4''8&quot; tall. They have dark eyes, dark hair, and rosy cheeks. Dwarves usually live up to 350 years old. They come from mountainous or hilly regions and do not like the sea. They treasure things of the earth such as gems, rubies, diamonds and most of all, gold. They are non-magical creatures but are more suited for fighting, warcraft and scientific arts such as engineering.');
 INSERT INTO Race (Name,Description)
 VALUES ('Elf','Elves are somewhat shorter and slimmer than humans. Their physical features are finely chiseled and delicate, and they speak in melodic tones. Although they appear to be weak and frail, but are instead quick and strong. Elves can live for over 1,200 years, although they often feel it is time to leave the realms of men and mortals well before this time. It is uncertain, where they go, but it is an irresistible urge of the elven race. There are five main types of elves: aquatic, gray, high, wood and dark. High elves are the most common. Elves find magic and swordplay fascinating and if they have any weaknesses, it is in these interests.');
 INSERT INTO Race (Name,Description)
 VALUES ('Gnome','Gnomes are significantly shorter than their relative dwarven race and are less round, as they proudly maintain. Their noses, however, are significantly larger and have dark tan or brown skin and white hair. Gnomes typically live up to 350 years old. Gnomes are lively and have a sly sense of humor and have a great love for living things and finely wrought. They love precious stones and are masters at gem polishing and cutting. Gnomes tend to live in rolling, rocky hills and wooded areas that are uninhabited by humans.');
 INSERT INTO Race (Name,Description)
-VALUES ('Half-Elf','Half-Elves are the most common mixed-race beings. Half-Elves usually take on physical characteristics of their elven parent. Half-Elves are only such, if their ancestors are the equal or more elven than human. They are on average 5''6" and live 160 years. Half-Elves tend to mingle with both groups of humans and elves and do not have a language of their own. They have a mixture of qualities of that of humans and elf.');
+VALUES ('Half-Elf','Half-Elves are the most common mixed-race beings. Half-Elves usually take on physical characteristics of their elven parent. Half-Elves are only such, if their ancestors are the equal or more elven than human. They are on average 5''6&quot; and live 160 years. Half-Elves tend to mingle with both groups of humans and elves and do not have a language of their own. They have a mixture of qualities of that of humans and elf.');
 INSERT INTO Race (Name,Description)
 VALUES ('Halfling','Halflings are much like small humans and have round and flushed complexions, with curly hair and hair on their feet. They prefer to be barefoot and typically live up to 150 years old. Halflings enjoy peaceful and quite lives and overall enjoy their homes to a dangerous journey. They are generous and hardworking and are observant and conversational in friendly company. There are three type of halflings: Hairfeets, Tallfellows, and Stouts, where Hairfeets being the most common type.');
 INSERT INTO Race (Name,Description)
-VALUES ('Human','Humans are exactly as we find them on Earth, ranging from pale to very dark skin. Average height of 5’10” and can live up to 120 years old. Humans are the most social and tolerant of all the other races.  Due to their natural qualities, they tend to be major powers in the world and have ruled empires, whereas the other races, due to their own racial qualities, would find it difficult to achieve.');
+VALUES ('Human','Humans are exactly as we find them on Earth, ranging from pale to very dark skin. Average height of 5’10&quot; and can live up to 120 years old. Humans are the most social and tolerant of all the other races.  Due to their natural qualities, they tend to be major powers in the world and have ruled empires, whereas the other races, due to their own racial qualities, would find it difficult to achieve.');
 
 INSERT INTO Class (Name,Description)
 VALUES('Bard','A Bard is a Rogue that has a love for music and a natural charmer. Their main Stats are Dexterity and Charisma.');
@@ -46,9 +46,9 @@ VALUES('Cleric','A Cleric is a priest that follows a divine entity and are sturd
 INSERT INTO Class (Name,Description)
 VALUES('Druid','Druids are another type of Priest that follow Gaia, and are guardians of nature and the wildernes. Their primary Stats are Wisdom and Charisma.');
 INSERT INTO Class (Name,Description)
-VALUES('Fighter','A Fighter''s main Stat is Strength and is an expert in weapons, and if clever, strategy and tactics.');
+VALUES('Fighter','A Fighter''s main Stat is Strength and is an expert in weapons, and is clever, strategic and tactical.');
 INSERT INTO Class (Name,Description)
-VALUES('Illusionist','An Illusionist is a Wizard that has specialized in the school of illusion. Tir main Stat is Intelligence.');
+VALUES('Illusionist','An Illusionist is a Wizard that has specialized in the school of illusion. Their main Stat is Intelligence.');
 INSERT INTO Class (Name,Description)
 VALUES('Mage','A Mage can learn any spells and do not specialize. Their main Stat is Intelligence.');
 INSERT INTO Class (Name,Description)
