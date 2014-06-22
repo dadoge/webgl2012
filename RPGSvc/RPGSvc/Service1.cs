@@ -8,6 +8,8 @@ using System.Text;
 using System.Web.Script.Serialization;
 using RPGSvc.Entities;
 using RPGSvc.Repositories;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace RPGSvc
 {
@@ -29,17 +31,15 @@ namespace RPGSvc
             return new List<Player>() { new Player() { Id = 1, Name = "Hello" } };
         }
 
-        [WebInvoke(UriTemplate = "jello", Method = "POST")]
-        public void Create()
+        [WebInvoke(UriTemplate = "AddPlayer", Method = "POST")]
+        public string AddPlayer(Player newPlayer)
         {
-            // TODO: Add the new instance of SampleItem to the collection
-            var x = "mudkips";
+            var newchar = new NewCharacterRepository();
+            newchar.AddNewCharacter(newPlayer);
+            var newCharacterID = 1;
+            return "{'NewCharacterID':}" + newCharacterID + "}";
         }
-        [WebGet(UriTemplate = "jello", ResponseFormat = WebMessageFormat.Json)]
-        public string Getsd()
-        {
-            return "mudkips";
-        }
+
         [WebGet(UriTemplate = "GetPlayer/{id}", ResponseFormat = WebMessageFormat.Json)]
         public Player Get(string id)
         {
