@@ -29,13 +29,17 @@ namespace RPGSvc
             return new List<Player>() { new Player() { Id = 1, Name = "Hello" } };
         }
 
-        [WebInvoke(UriTemplate = "", Method = "POST")]
-        public Player Create(Player instance)
+        [WebInvoke(UriTemplate = "jello", Method = "POST")]
+        public void Create()
         {
             // TODO: Add the new instance of SampleItem to the collection
-            throw new NotImplementedException();
+            var x = "mudkips";
         }
-
+        [WebGet(UriTemplate = "jello", ResponseFormat = WebMessageFormat.Json)]
+        public string Getsd()
+        {
+            return "mudkips";
+        }
         [WebGet(UriTemplate = "GetPlayer/{id}", ResponseFormat = WebMessageFormat.Json)]
         public Player Get(string id)
         {
