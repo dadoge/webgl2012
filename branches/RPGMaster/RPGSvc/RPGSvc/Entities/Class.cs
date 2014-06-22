@@ -7,7 +7,6 @@ namespace RPGSvc.Entities
 {
     public class Class
     {
-        
         public int Id;
         public string Name;
         public string Description;
