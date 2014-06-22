@@ -14,8 +14,9 @@ namespace RPGSvc.Repositories
             //initialize various data objects here
         }
 
-        public void AddNewCharacter(){
-
+        public void AddNewCharacter(Player newPlayer){
+            var ac = new AddCharacter();
+            ac.AddNewCharacter(newPlayer);
         }
 
         public NewCharacter GetNewCharacter()

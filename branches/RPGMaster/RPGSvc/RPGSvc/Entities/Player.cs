@@ -14,6 +14,7 @@ namespace RPGSvc.Entities
         public List<Skill> Skills;
         public List<Stat> Stats;
         public Alignment Alignment;
+        public List<Feat> Feats;
         public Race Race;
         public Class Class;
         public Gender Gender;
