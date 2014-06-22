@@ -631,6 +631,7 @@ h5 {
 
 #createCharacter-Complete {
     margin-right:.25em;
+    margin-left: .25em;
 }
 
 #createCharacter-Previous {
@@ -741,7 +742,7 @@ h5 {
     display: inline-block;
 }
 .input-createAge {
-    width: 6em;
+    width: 4em;
     height: 2em;
     border-radius:4px;
     padding: .4em;

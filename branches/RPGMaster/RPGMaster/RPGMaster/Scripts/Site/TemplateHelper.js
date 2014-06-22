@@ -216,7 +216,8 @@
             <div data-bind=\"attr: {title: Alignment().Description}\" class=\"info-Description\"><span class=\"glyphicon glyphicon-info-sign\"></span></div>";
             var htmlTemplate2 = "<br /><div id=\"createIdentity-title\" >Age </div><input class=\"input-createAge\" data-bind=\"value: Age\" /> Height  <input class=\"input-createAge\" data-bind=\"value: Height\" /> Weight  <input class=\"input-createAge\" data-bind=\"value: Weight\" />\
             <br /><div id=\"createIdentity-title\" >Gender </div><select data-bind=\"options: availableGenders, value: Gender, optionsText: 'Name'\" id=\"Gender-options\" class=\"form-control input-sm  info-Description\"> \
-            </select> \
+            </select> <br />\
+            <div id=\"createIdentity-title\" >Level </div><input class=\"input-createAge\" data-bind=\"value: Level\" /> Experience  <input class=\"input-createAge\" data-bind=\"value: Experience\" /> Money  <input class=\"input-createAge\" data-bind=\"value: Money\" />\
             <br /><div id=\"createIdentity-title\" >History </div><br /><textarea class=\"input-createHistory\" data-bind=\"value: History\" /> \
             </div>";
 
