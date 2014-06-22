@@ -1,9 +1,9 @@
 use [rpgmaster]
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CreateNewAccount]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[CreateNewAccount]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AddPlayer]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[AddPlayer]
 GO
 
-CREATE PROCEDURE dbo.CreateNewAccount
+CREATE PROCEDURE dbo.AddPlayer
    @Name NVARCHAR(25),
    @ImgSrc NVARCHAR(MAX),
    @PlayerTypeID INT,
@@ -18,8 +18,7 @@ CREATE PROCEDURE dbo.CreateNewAccount
    @Weight NVARCHAR(64),
    @Experience INT,
    @Money NVARCHAR(64),
-   @MaxHitPoints INT,
-   @InsertedPlayer INT
+   @MaxHitPoints INT
 AS
 BEGIN
 
