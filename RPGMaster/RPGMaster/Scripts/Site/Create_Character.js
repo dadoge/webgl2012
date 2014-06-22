@@ -11,11 +11,11 @@
     self.Age = ko.observable("25");
     self.Level = ko.observable(1);
     self.History = ko.observable("");
-    self.HP = ko.observable(0);
-    self.Experience = ko.observable(0);
+    self.HP = ko.observable("12");
+    self.Experience = ko.observable("0");
     self.Height = ko.observable("5'8\"");
-    self.Weight = ko.observable(0);
-    self.Money = ko.observable("");
+    self.Weight = ko.observable("145");
+    self.Money = ko.observable("0pp 0gp 0sp 0cp");
 
     //self.SelectedSkillYo = ko.observableArray([]);
 
@@ -66,15 +66,6 @@
         }
     };
 
-    self.ValueVisible = function (mine) {
-        if ($('#' + mine.Id.toString()).visible == false) {
-            $('#' + mine.Id.toString()).visible = true;
-        }
-        else {
-            $('#' + mine.Id.toString()).visible = false;
-        }
-    };
-
     self.CharacterStats = ko.computed(function () {
         return self.Stats().Id;
     });
@@ -107,15 +98,6 @@
         self.Class = event.currentTarget.id;
     }
 
-    self.updateSkillsVisibility = function (data, event) {
-        if ($('#' + event.currentTarget.id + '').visible == false) {
-            $('#' + event.currentTarget.id + '').visible = true;
-        }
-        else if ($('#' + event.currentTarget.id + '').visible == true) {
-            $('#' + event.currentTarget.id + '').visible = false;
-        }
-    }
-
     self.availableStats = ko.observableArray(data.Stats);
     self.availableClasses = ko.observableArray(data.Classes);
     self.availableAlignments = ko.observableArray(data.Alignments);
@@ -124,23 +106,25 @@
 }
 
 CreateNewCharacter = function () { //(raceID, stats, skills, classID, alignmentID, genderID, name, age, level, history) {//(race, stats, alignment, gender, name, age, level, history) {
-    var RaceID;
-    var Stats;
-    var Skills;
-    var Feats;
-    var ClassID;
-    var AlignmentID;
-    var GenderID;
-    var Name;
-    var Age;
-    var Height;
-    var Weight;
-    var Level;
-    var History;
-
+    this.PlayerTypeID;
+    this.ImgSrc;
+    this.Race = {};
     this.Stats = [];
     this.Skills = [];
     this.Feats = [];
+    this.Class = {};
+    this.Alignment = {};
+    this.Gender = {};
+    this.Name;
+    this.Age;
+    this.Height;
+    this.Weight;
+    this.Level;
+    this.History
+    this.Experience;
+    this.Money;
+    this.MaxHitPoints;
+
 }
 
 var createCharacterViewModel = {

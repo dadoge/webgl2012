@@ -171,7 +171,7 @@
                     var i;
                     if (Completed == true) {
                         var createNewCharacter = new CreateNewCharacter();
-                        createNewCharacter.RaceID = newCharacter.Race;
+                        createNewCharacter.Race.Id = parseInt(newCharacter.Race);
                         for (i = 0; i < newCharacter.Stats().length; i++) {
                             createNewCharacter.Stats.push({ Id: newCharacter.Stats()[i].Id, Value: newCharacter.Stats()[i].Value });
                         }
@@ -185,17 +185,33 @@
                                 createNewCharacter.Feats.push({ Id: newCharacter.Feats()[i].Id});
                             }
                         }
-                        createNewCharacter.ClassID = newCharacter.Class;
-                        createNewCharacter.AlignmentID = newCharacter.Alignment().Id;
-                        createNewCharacter.GenderID = newCharacter.Gender().Id;
+                        createNewCharacter.Class.Id = parseInt(newCharacter.Class);
+                        createNewCharacter.Alignment.Id = newCharacter.Alignment().Id;
+                        createNewCharacter.Gender.Id = newCharacter.Gender().Id;
                         createNewCharacter.Name = newCharacter.Name();
-                        createNewCharacter.Age = newCharacter.Age();
+                        createNewCharacter.Age = parseInt(newCharacter.Age());
                         createNewCharacter.Height = newCharacter.Height();
                         createNewCharacter.Weight = newCharacter.Weight();
-                        createNewCharacter.Level = newCharacter.Level();
+                        createNewCharacter.Level = parseInt(newCharacter.Level());
                         createNewCharacter.History = newCharacter.History();
+                        createNewCharacter.Experience = parseInt(newCharacter.Experience());
+                        createNewCharacter.Money = newCharacter.Money();
+                        createNewCharacter.MaxHitPoints = parseInt(newCharacter.HP());
+                        createNewCharacter.PlayerTypeID = 1;
+                        createNewCharacter.ImgSrc = "";
                         
-                        alert(JSON.stringify(createNewCharacter));
+                        var sendvar = JSON.stringify(createNewCharacter);
+                        
+
+                        $('#createCharacter-inner').html(JSON.stringify(createNewCharacter));
+                        $.ajax({
+                            url: 'http://localhost:56412/RPGSvc/AddPlayer',
+                            type: 'POST',
+                            data: JSON.stringify(createNewCharacter),
+                            contentType: 'application/json',
+                            dataType: 'json'
+                        });
+                        //$.post("", sendvar, 'json');
                     }
                 });
                 // End Complete Function
