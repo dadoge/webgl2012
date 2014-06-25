@@ -1,0 +1,9 @@
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\bin\RollDemDice.dll.config
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\bin\RollDemDice.dll
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\bin\RollDemDice.pdb
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\bin\RollDemDice.xml
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\obj\Debug\RollDemDice.Resources.resources
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\obj\Debug\RollDemDice.vbproj.GenerateResource.Cache
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\obj\Debug\RollDemDice.dll
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\obj\Debug\RollDemDice.xml
+C:\dev\SNV_WebGL\RollDemDice\RollDemDice\RollDemDice\obj\Debug\RollDemDice.pdb
