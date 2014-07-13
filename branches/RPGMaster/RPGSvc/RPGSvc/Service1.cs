@@ -37,7 +37,46 @@ namespace RPGSvc
             var newchar = new NewCharacterRepository();
             newchar.AddNewCharacter(newPlayer);
             var newCharacterID = 1;
-            return "{'NewCharacterID':}" + newCharacterID + "}";
+            return "{'NewCharacterID': " + newCharacterID + "}";
+        }
+
+        [WebInvoke(UriTemplate = "DeleteUserPlayer", Method = "POST")]
+        public string DeleteUserPlayer(string id)
+        {
+            int Id = -1;
+            //make sure id is an int not string
+            // ToInt32 can throw FormatException or OverflowException. 
+            try
+            {
+                Id = Convert.ToInt32(id);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("String ID is not a sequence of digits.");
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine("The string ID number cannot fit in an Int32.");
+            }
+            var newchar = new PlayerRepository();
+            newchar.DeleteUserPlayer(Id);
+            var Success = 1;
+            return "{'PlayerDeteled': " + Success + "}";
+        }
+
+        [WebInvoke(UriTemplate = "UpdateDefaultPlayer", Method = "POST")]
+        public string UpdateDefaultPlayer(User user)
+        {
+            var updateUser = new UserRepository();
+            updateUser.UpdateDefaultPlayer(user);
+            var Success = user.ActivePlayer;
+            return "{'UpdatedPlayerID': " + Success + "}";
+        }
+        
+        [WebGet(UriTemplate = "GetUserPlayers/{username}", ResponseFormat = WebMessageFormat.Json)]
+        public List<Player> getUserPlayers(string username)
+        {
+            return new PlayerRepository().GetUserPlayers(username);
         }
 
         [WebGet(UriTemplate = "GetPlayer/{id}", ResponseFormat = WebMessageFormat.Json)]
