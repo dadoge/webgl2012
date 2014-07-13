@@ -8,6 +8,7 @@ namespace RPGSvc.Entities
     public class User
     {
         public string Id;
+        public string UserName;
         public string ChatName;
         public int ActivePlayer;
         

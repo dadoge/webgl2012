@@ -12,6 +12,8 @@
                     <div id="Add-Existing-Character" class="Selection">Add Existing Character<br /></div>
                     -------<br />
                     <div id="Manage-Characters" class="Selection">Manage Characters</div>
+                    -------<br />
+                    <div id="Map-Editor" class="Selection">Map Editor</div>
 				</div>
 				</div>
 				<!--Interactive Play Screen-->
@@ -57,6 +59,7 @@
 								<option id="option-General">General</option>
                                 <option id="option-Stats">Ability Scores</option>
 								<option id="option-Skills">Skills</option>
+								<option id="option-Feats">Feats + Racial/Class Traits</option>
 							</select>
 							<div class="character-tab">
 							<div id="character-text">
@@ -79,10 +82,16 @@
     <script type="text/javascript" src="../Scripts/jquery-ui-1.10.4.custom.js"> </script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.slimscroll.js"> </script>
-    <script type="text/javascript" src="../Scripts/Site/Create_Character.js"> </script>
-    <script type="text/javascript" src="../Scripts/Site/TemplateHelper.js"> </script>
 	<script type="text/javascript" src="../Scripts/Site/stomp.js"></script>
 	<script type="text/javascript" src="../Scripts/Site/moment-min-js.js"></script>
 	<script type="text/javascript" src="../Scripts/Site/sockjs-0.3.min.js"></script>
+	<script type="text/javascript" src="../Scripts/babylon.1.12.js"></script>
+	<script type="text/javascript" src="../Scripts/cannon.js"></script>
+	<script type="text/javascript" src="../Scripts/hand-1.3.8.js"></script>
+
+    <script type="text/javascript" src="../Scripts/Site/Create_Character.js"> </script>
+    <script type="text/javascript" src="../Scripts/Site/TemplateHelper.js"> </script>
+    <script type="text/javascript" src="../Scripts/Site/BabylonScene.js"> </script>
+    <script type="text/javascript" src="../Scripts/Site/BabylonMechanics.js"> </script>
 	<script type="text/javascript" src="../Scripts/Site/site.js"></script>
 </asp:Content>

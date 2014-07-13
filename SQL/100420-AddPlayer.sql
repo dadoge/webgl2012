@@ -18,7 +18,8 @@ CREATE PROCEDURE dbo.AddPlayer
    @Weight NVARCHAR(64),
    @Experience INT,
    @Money NVARCHAR(64),
-   @MaxHitPoints INT
+   @MaxHitPoints INT,
+   @NewPlayerID INT OUTPUT
 AS
 BEGIN
 

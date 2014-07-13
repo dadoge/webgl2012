@@ -37,14 +37,28 @@
     this.getSkillsHtml = function (Skills) {
         var list = " \
             <% _.each(Skills, function(Skills) { %> \
-            <li style=\"list-style-type: none\"> \
-                <%= Skills.Name %> : <%= Skills.Value %> \
+            <li class=\"character-Skills-List\" id=\"<%= Skills.Id %>\"> \
+                <div class=\"character-Skills-Name\"><%= Skills.Name %></div><div class=\"character-Skills-Value\"><%= Skills.Value %></div> \
             </li> \
+            <div class=\"character-Skills-Description\" id=\"character-Skills-Description-<%= Skills.Id %>\"><%= Skills.Description %></div> \
         <% }); %>";
 
         return _.template(list, Skills);
     }
 
+    this.getFeatsHtml = function (Feats) {
+        var list = " \
+            <% _.each(Feats, function(Feats) { %> \
+            <li class=\"character-Feats-List\" id=\"<%= Feats.Id %>\"> \
+                <div class=\"character-Feats-Name\"><%= Feats.Name %></div> \
+            </li> \
+            <div class=\"character-Feats-Description\" id=\"character-Feats-Description-<%= Feats.Id %>\"><%= Feats.Description %></div> \
+        <% }); %>";
+
+        return _.template(list, Feats);
+    }
+
+    //Used for Character Creation
     this.startCreation = function () {
         var htmlTemplate = " \
             <div class=\"interactive-inner\"> \
@@ -237,6 +251,45 @@
 
         return returnObj;
     }
+    //End Character Creation section
 
+    //Manage Character section
+    this.manageCharacter_btns = function () {
+        var htmlTemplate = " <div id=\"Character-h\" class=\"text-shadow\"></div> \
+            <div class=\"createCharacter-btns\"> \
+                <div class=\"btn-group\"> \
+                    <button id=\"Character-Cancel\" type=\"button\" class=\"btn btn-default btn-width btn-shadow\">Cancel</button> \
+                </div> \
+            </div> \
+            <div id=\"Character-inner\"> \
+            </div> ";
+
+        return htmlTemplate;
+    }
+
+    this.ManageCharacter = function () {
+        var returnObj = new Object();
+        var GetHeader = function () {
+            return "<h3>Manage Characters</h3>";
+        }
+
+        var GetContent = function () {
+            var htmlTemplate = "<div data-bind=\"foreach: Players\" id=\"manageCharacters\">\
+                    <div class=\"manageCharacter-Main\" data-bind=\"attr: {id: ('manageCharacter-' + Id)}\"> \
+                        <div class=\"manageCharacter-Img\" data-bind=\"attr: {id: ('manageCharacter-Img-' + Id)},style: { 'background-image': 'url(../Images/' + ImgSrc + ')' }\" style=\"background-size: auto 100%\" > </div> \
+                        <div class=\"manageCharacter-Name\" data-bind=\"text: Name\"></div> \
+                        <div class=\"manageCharacter-Edit\" ><div class=\"manageCharacter-SetActive\" data-bind=\"click: $parent.ChangeDefaultPlayer, attr: {id: ('manageCharacter-SetActive-' + Id)}\"></div><span data-bind=\"click: $parent.DeleteCharacter\" class=\"glyphicon glyphicon-trash manageCharacter-Delete-glyph\"></span><span class=\"glyphicon glyphicon-pencil manageCharacter-Edit-glyph\"></span></div> \
+                    </div> \
+            </div> ";
+
+            return htmlTemplate; // _.template(htmlTemplate, Players);
+        }
+
+        returnObj.GetContent = GetContent();//Players);
+        returnObj.GetHeader = GetHeader();
+
+        return returnObj;
+    }
+    //End Manage Character section
 
 }

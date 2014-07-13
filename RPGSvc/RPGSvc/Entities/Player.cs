@@ -8,8 +8,9 @@ namespace RPGSvc.Entities
 {
     public class Player
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int Id;
+        public string UserName;
+        public string Name;
         public int PlayerTypeID;
         public List<Skill> Skills;
         public List<Stat> Stats;

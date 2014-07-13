@@ -50,7 +50,6 @@ namespace RPGSvc.Data
             command.Connection = connection;
             command.CommandText = "GetFeatsByPlayerID";
             command.CommandType = CommandType.StoredProcedure;
-
  
             SqlParameter playerID = new SqlParameter("@PlayerID", SqlDbType.Int);
 
