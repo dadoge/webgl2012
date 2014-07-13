@@ -2,10 +2,17 @@
 {
 }
 
-html, body, div, canvas {
+html, body {
     width: 100%;
     height: 100%;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+}
+
+#rootDiv {
+    width: 80%;
+    height: 80%;
+}
+
+#renderCanvas {
+    width: 100%;
+    height:100%
 }
