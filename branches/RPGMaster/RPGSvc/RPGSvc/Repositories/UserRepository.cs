@@ -21,6 +21,10 @@ namespace RPGSvc.Repositories
 
             return user;
         }
+        public void UpdateDefaultPlayer(User user)
+        {
+            new StoredUser().UpdateDefaultPlayer(user);
+        }
 
     }
 }

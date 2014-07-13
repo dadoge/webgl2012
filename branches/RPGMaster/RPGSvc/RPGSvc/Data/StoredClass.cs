@@ -70,7 +70,7 @@ namespace RPGSvc.Data
                     class_.Id = dr.GetInt32(0);
                     class_.Name = dr.GetString(1);
                     class_.Description = dr.GetString(2);
-                    if (dr.IsDBNull(1))
+                    if (dr.IsDBNull(3))
                     {
                         class_.ImgSrc = "DefaultClass.png";
                     }

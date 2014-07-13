@@ -15,11 +15,25 @@ namespace RPGSvc.Repositories
             //initialize various data objects here
         }
 
+
+        public void DeleteUserPlayer(int id)
+        {
+            new StoredPlayer().DeleteUserPlayer(id);
+        }
+
+        public List<Player> GetUserPlayers(string username)
+        {
+            var PlayerList = new StoredPlayer().GetUserPlayers(username);
+
+            return PlayerList;
+        }
+
         public Player GetPlayer(int id)
         {
             //Get player,player skills and player stats
             var player = new StoredPlayer().GetPlayerByPlayerID(id);
             player.Skills = new StoredSkill().GetSkillsByPlayerID(id);
+            player.Feats = new StoredFeat().GetFeatsByPlayerID(id);
             player.Stats = new StoredStat().GetStatsByPlayerID(id);
             player.Race = new StoredRaces().GetPlayerRace(id);
             player.Class = new StoredClass().GetPlayerClass(id);

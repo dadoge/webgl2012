@@ -36,10 +36,13 @@ namespace RPGSvc.Data
                 user.Id = dr.GetString(0);
                 if (dr.IsDBNull(1)==true)
                 {
-                    user.ChatName = "";
+                    user.ChatName = "User";
                 }
-                else
+                else if (dr.GetString(1) == "")
                 {
+                    user.ChatName = "User";
+                }
+                else {
                     user.ChatName = dr.GetString(1);
                 }
                 if (dr.IsDBNull(2) == true)
@@ -54,6 +57,27 @@ namespace RPGSvc.Data
             connection.Close();
             dr.Close();
             return user;
+        }
+
+        public void UpdateDefaultPlayer(User user)
+        {
+            SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["RPGMasterDb"].ConnectionString);
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandText = "UpdateDefaultPlayer";
+            command.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter UserName = new SqlParameter("@UserName", SqlDbType.NVarChar);
+            SqlParameter PlayerID = new SqlParameter("@PlayerID", SqlDbType.Int);
+            UserName.Value = user.UserName;
+            PlayerID.Value = user.ActivePlayer;
+            command.Parameters.Add(UserName);
+            command.Parameters.Add(PlayerID);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+
+            connection.Close();
         }
     }
 }
