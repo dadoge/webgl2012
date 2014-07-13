@@ -1,4 +1,5 @@
 ﻿window.onload = function () {
+
     var canvas = document.getElementById("renderCanvas");
 
     // Check support
@@ -8,9 +9,12 @@
         // Babylon
         var engine = new BABYLON.Engine(canvas, true);
 
-        //Creating scene (in "scene_tuto.js")
-        scene = MapEditor(engine);
+        //Load the collision tuto
+        // --------------------
+        scene = createSceneTutoCollisions(engine);
+        // --------------------
 
+        //Attach the camera to the scene
         scene.activeCamera.attachControl(canvas);
 
 
@@ -24,4 +28,6 @@
             engine.resize();
         });
     }
+
 };
+
