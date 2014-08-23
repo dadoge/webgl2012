@@ -1,0 +1,19 @@
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\bin\SignalMD.dll
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\bin\SignalMD.pdb
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\bin\Microsoft.Web.Infrastructure.dll
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\bin\Newtonsoft.Json.dll
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\bin\SignalR.dll
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\bin\SignalR.Hosting.AspNet.dll
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\bin\Newtonsoft.Json.pdb
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\bin\Newtonsoft.Json.xml
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\obj\Debug\SignalMD.dll
+c:\users\mdemuth\documents\visual studio 2010\Projects\SignalMD\SignalMD\obj\Debug\SignalMD.pdb
+C:\Users\mdemuth\Documents\Visual Studio 2010\Projects\SignalMD\SignalMD\obj\Debug\SignalMD.csprojResolveAssemblyReference.cache
+C:\DEVELOPMENT\SignalMD\SignalMD\bin\SignalMD.dll
+C:\DEVELOPMENT\SignalMD\SignalMD\bin\SignalMD.pdb
+C:\DEVELOPMENT\SignalMD\SignalMD\bin\Microsoft.Web.Infrastructure.dll
+C:\DEVELOPMENT\SignalMD\SignalMD\bin\SignalR.dll
+C:\DEVELOPMENT\SignalMD\SignalMD\bin\SignalR.Hosting.AspNet.dll
+C:\DEVELOPMENT\SignalMD\SignalMD\obj\Debug\SignalMD.csprojResolveAssemblyReference.cache
+C:\DEVELOPMENT\SignalMD\SignalMD\obj\Debug\SignalMD.dll
+C:\DEVELOPMENT\SignalMD\SignalMD\obj\Debug\SignalMD.pdb
