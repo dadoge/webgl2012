@@ -63,6 +63,7 @@
         if (scale == null) {
             scale = 1;
         }
+        $.sendMessage('jel', 'jel');
         // We try to pick an object
         //evt.clientY*scale -
         //evt.clientX*scale -

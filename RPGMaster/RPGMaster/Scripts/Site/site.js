@@ -43,6 +43,10 @@ $(document).ready(function () {
              + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
      };
 
+     $.sendMessage = function sendMessage(name, message) {
+         rpgProxy.server.sendMessage(name, message);
+     };
+
      $.connection.hub.start().done(function () {
          $("#chat-input").keypress(function (event) {
              if (event && event.keyCode == 13) {
