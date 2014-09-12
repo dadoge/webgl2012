@@ -33,37 +33,59 @@ $(document).ready(function () {
          height: '100%'
      });
 
-    var stompClient;
-    var i = 0;
-    var Channel = "/topic/TonysChannel";
-    var socket = new SockJS('http://www.simplert.com:8100/ws');
-    stompClient = Stomp.over(socket);
+     var rpgProxy = $.connection.rpgHub;
+     rpgProxy.client.broadcastMessage = function (name, message) {
+         // Html encode display name and message.
+         var encodedName = $('<div />').text(name).html();
+         var encodedMsg = $('<div />').text(message).html();
+         // Add the message to the page.
+         $('#chat').append('<li><strong>' + encodedName
+             + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
+     };
 
-    stompClient.connect({}, function (frame) {
-        stompClient.subscribe(Channel, function (message) {
-            $('<div/>').text(" [" + moment().format('HH:mm:ss') + "] " + message.body).appendTo('#chat');
-            $("#chat").scrollTop($("#chat")[0].scrollHeight);
-        });
-        firstLogon = $('#chatname-input').val() + " has joined the chat.";
-        SendData(firstLogon);
-    }, function (error) {
-        console.log("Connection error " + error);
-    });
+     $.connection.hub.start().done(function () {
+         $("#chat-input").keypress(function (event) {
+             if (event && event.keyCode == 13) {
+                 rpgProxy.server.sendMessage('Test', $('#chat-input').val());
+                 $('#chat-input').val("");
+             }
+         });
+     });
 
-    $("#chat-input").keypress(function (event) {
-        if (event && event.keyCode == 13) {
-            if ($('#chatname-input').val() == "") {
-                alert("Please enter in username.")
-            }
-            else {
-                var senddata = $('#chatname-input').val() + ": " + $('#chat-input').val();
-                SendData(senddata);
-                $('#chat-input').val("");
-            }
-        }
-    });
-    function SendData(data) {
-        stompClient.send(Channel, {}, data);
-        return 0;
-    }
+
+     ///OLD CHAT CODE BELOW, PLEASE DELETE AFTER REFACTOR
+     //var stompClient;
+     //var i = 0;
+     //var Channel = "/topic/TonysChannel";
+     //var socket = new SockJS('http://www.simplert.com:8100/ws');
+     //stompClient = Stomp.over(socket);
+
+     //stompClient.connect({}, function (frame) {
+     //    stompClient.subscribe(Channel, function (message) {
+     //        $('<div/>').text(" [" + moment().format('HH:mm:ss') + "] " + message.body).appendTo('#chat');
+     //        $("#chat").scrollTop($("#chat")[0].scrollHeight);
+     //    });
+     //    firstLogon = $('#chatname-input').val() + " has joined the chat.";
+     //    SendData(firstLogon);
+     //}, function (error) {
+     //    console.log("Connection error " + error);
+     //});
+
+     //$("#chat-input").keypress(function (event) {
+     //    if (event && event.keyCode == 13) {
+     //        if ($('#chatname-input').val() == "") {
+     //            alert("Please enter in username.")
+     //        }
+     //        else {
+     //            var senddata = $('#chatname-input').val() + ": " + $('#chat-input').val();
+     //            SendData(senddata);
+     //            $('#chat-input').val("");
+     //        }
+     //    }
+     //});
+     //function SendData(data) {
+     //    stompClient.send(Channel, {}, data);
+     //    return 0;
+     //}
+
 });
