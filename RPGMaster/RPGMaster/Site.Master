@@ -83,6 +83,15 @@
 			U<br />
 		</div>
 	</div>
+    
+    <div id="alertbox" class="alertbox">
+        <div id="alertbox-underlay" class="alertbox-underlay">
+        </div>
+        <div class="alertbox-bounding">
+            <div id="alertBox-Text" class="alertBox-Text">Are you sure?</div>
+            <div id="alertbox-buttons" class="alertbox-buttons"></div>
+        </div>
+    </div>
 
 	<script>
 	    function menuCollapse() {
@@ -94,7 +103,8 @@
 	    //$( "#menu-tab" ).toggle( "slide");
 	</script>
 	
-	<script type="text/javascript" src="/RPGMaster/Scripts/Site/hidemenu.js"></script>
+	<%--<script type="text/javascript" src="/RPGMaster/Scripts/Site/hidemenu.js"></script>--%>
+	<script type="text/javascript" src="../Scripts/Site/hidemenu.js"></script>
     </form>
 </body>
 </html>
