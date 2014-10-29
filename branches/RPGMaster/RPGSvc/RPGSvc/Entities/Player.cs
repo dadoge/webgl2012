@@ -25,9 +25,10 @@ namespace RPGSvc.Entities
         public string Weight;
         public int Level;
         public Int32 Experience;
-        public string Money;
+        public Int64 Money;
         public string History;
         public int MaxHitPoints;
+        public List<Item> Inventory;
 
 
         public Player(int id, string name)

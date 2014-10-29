@@ -39,6 +39,7 @@ namespace RPGSvc.Repositories
             player.Class = new StoredClass().GetPlayerClass(id);
             player.Alignment = new StoredAlignment().GetPlayerAlignment(id);
             player.Gender = new StoredGender().GetPlayerGender(id);
+            player.Inventory = new StoredInventory().GetPlayerInventory(id);
 
             return player;
         }
@@ -46,6 +47,41 @@ namespace RPGSvc.Repositories
         public List<Player> GetAllPlayers()
         {
             throw new NotImplementedException();
+        }
+
+        /*Inventory and Item functions*/
+        public List<Item> PlayerInventory(int id)
+        {
+            var item = new StoredInventory().GetPlayerInventory(id);
+
+            return item;
+        }
+        public List<Item> AllItems()
+        {
+            var item = new StoredInventory().GetAllItems();
+
+            return item;
+        }
+        public ItemType ItemTypes()
+        {
+            var itemType = new StoredInventory().GetItemTypes();
+
+            return itemType;
+        }
+        public void AddToPlayerInventory(List<Inventory> inventory)
+        {
+            var si = new StoredInventory();
+            si.AddToPlayerInventory(inventory);
+        }
+        public void UpdatePlayerInventory(List<Inventory> inventory)
+        {
+            var si = new StoredInventory();
+            si.UpdatePlayerInventory(inventory);
+        }
+        public void AddItem(Item item)
+        {
+            var si = new StoredInventory();
+            si.AddItem(item);
         }
     }
 }
