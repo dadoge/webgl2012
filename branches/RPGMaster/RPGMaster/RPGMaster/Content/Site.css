@@ -1,4 +1,19 @@
-﻿html, body {
+﻿/*CSS Catergories
+    General CSS
+    Alert Box CSS
+    User Menu CSS
+    Panel 1 - Left CSS
+    Panel 2 - Center CSS
+    Panel 3 - Right CSS
+    Character Creation CSS
+    Manage Character CSS
+    Map CSS
+    Babylon CSS
+
+*/
+
+/*General CSS*/
+html, body {
 	height: 100%;
     width: 100%;
 }
@@ -149,6 +164,101 @@ h5 {
     border-radius: 8px;
 }
 
+.row-custom {
+	position: absolute;
+	margin:0px;
+	right: 0; left:0;
+	height: 100%;
+	border: none;
+	border-color: black;
+	border-radius: 8px;
+	padding:0px
+}
+
+.col-custom {
+	height: 100%;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 0px 0px;
+}
+/*End - General CSS*/
+
+/*Alert Box CSS*/
+.alertbox-underlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    opacity: .4;
+	background-color: #020202;
+}
+
+.alertbox {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.alertbox-bounding {
+    position: relative;
+    left: calc(50% - 10em);
+    top: 15%;
+    width: 20em;
+    height: auto;
+    min-height: 8em;
+    background-color: #EEEEEE;
+    border: 1px solid;
+    border-radius: 3px;
+    border-color: #020202;
+	box-shadow: 2px 2px 4px #282828;
+    overflow: hidden;
+    z-index: 80;
+}
+.alertbox-bounding-medium {
+    width: 44%;
+    left: 28%;
+}
+.alertbox-bounding-large {
+    width: 60%;
+    left: 20%;
+}
+.alertbox-buttons {
+    position: absolute;
+    height: 2.2em;
+    /*left: calc(50% - 7.5em);*/
+    right: .5em;
+    bottom: .8em;
+}
+.alertBox-Text {
+    font-family: Didact-Gothic;
+    float: left;
+    text-align: center;
+    width: 100%;
+    font-size: 1.1em;
+    margin-top: 1em;
+    margin-bottom: 3.2em;
+    padding: 0em .8em 1em .8em;
+}
+#alertBox-Ok {
+    /*font-family: Didact-Gothic;*/
+    margin-right: .1em;
+    margin-left: .5em;
+    height: 2.2em;
+    width: 5em;
+	box-shadow: 2px 2px 3px #282828;
+}
+#alertBox-Cancel {
+    /*font-family: Didact-Gothic;*/
+    margin-left: .1em;
+    margin-right: .5em;
+    height: 2.2em;
+    width: 5em;
+	box-shadow: 2px 2px 3px #282828;
+}
+/*END - Alert Box CSS*/
+
+/*User Menu CSS*/
 .menu-container {
 	position: absolute;
 	border: none;
@@ -183,6 +293,7 @@ h5 {
 	padding: 2px;
 	text-align: center;
 	box-shadow: 3px 3px 8px #000000;
+    cursor: pointer;
 }
 
 .main-container {
@@ -191,24 +302,9 @@ h5 {
     border: solid;
     border-color: white;
 }
+/*End - User Menu CSS*/
 
-.row-custom {
-	position: absolute;
-	margin:0px;
-	right: 0; left:0;
-	height: 100%;
-	border: none;
-	border-color: black;
-	border-radius: 8px;
-	padding:0px
-}
-
-.col-custom {
-	height: 100%;
-	padding: 5px 5px 5px 5px;
-	margin: 0px 0px 0px 0px;
-}
-
+/*Panel 1 - Left*/
 .left-info{
 	height: 100%;
 	padding: 5px 5px 5px 5px;
@@ -231,40 +327,9 @@ h5 {
     border-color: white;
     border-radius: 3px 5px 3px 5px;
 }
+/*End - Panel 1 - Left*/
 
-.partyMember {
-	position: relative;
-	height: 80px;
-	width: 100%;
-}
-
-.partyMember-icon {
-	position: absolute;
-	height: inherit;
-	width: 80px;
-	border: solid;
-	border-width: 1.5px;
-	border-color: black;
-	border-radius: 80px;
-	background-color: white;
-	z-index: 1;
-	box-shadow: 2px 2px 8px #000000;
-}
-
-.partyMember-info {
-	position: absolute;
-	margin: auto;
-	padding-left: 48px;
-	top: 0; bottom: 0; right:0; left: 40px;
-	height: 80%;
-	border: solid;
-	border-width: 1.5px;
-	border-color: black;
-	border-radius: 5px;
-	background-color:rgba(240,240,240,0.90);
-	z-index:0;
-}
-
+/*Panel 2 - Center*/
 .interactive {
 	top: 0;
 	height: calc(80% - 2.7em);
@@ -390,9 +455,13 @@ h5 {
 .input-chat {
 	border-radius: 0px 0px 4px 4px;
 }
+/*END - Panel 2 - Center*/
 
+/*Panel 3 - Right*/
 .character-display{
 	position: relative;
+    float: right;
+    width: 25%;
     height: 100%;
 	padding: 5px;
 	padding-bottom: 5px;
@@ -507,10 +576,48 @@ h5 {
     padding: 8px 5px 5px 8px;
 }
 
+/*General Tab CSS*/
+
 .character-Description {
-    font-weight: bold;
-    display: inline;
+    color: #CCCCCC;
+    display: inline-block;
+    width: 100%;
+    min-height: 1.4em;
+    background-color: #484848;
+    border-radius: .3em;
+    padding: 0px .4em 0px .4em;
+    margin: .1em 0px .1em 0px;
+    z-index: 10;
 }
+.character-DescriptionName{
+    color: #FFFFFF;
+    display: inline-block;
+    float: right;
+}
+.character-Description2 {
+    color: #CCCCCC;
+    display: inline-block;
+    min-height: 1.4em;
+    background-color: #484848;
+    border-radius: .3em;
+    padding: 0px .4em 0px .4em;
+    margin: .1em .2em .1em 0px;
+    z-index: 10;
+}
+#character-Age, #character-Height, #character-Weight {
+    padding-left: .4em;
+}
+
+.characterGeneral {
+    background-color: #CFCFCF;
+    display: inline-block;
+    border-radius: 0em .3em .3em 0em;
+    padding: 0px .4em 0px .4em;
+    margin: .1em .5em .1em 0em;
+    z-index: 0;
+}
+
+/*END - General Tab CSS*/
 
 .background-overlay-character-stats {
     width: 2.8em;
@@ -570,8 +677,38 @@ h5 {
     margin: .3em 0px 10px 0px;
     box-shadow: inset 3px 3px 3px rgba(20,20,20,.7);
 }
+.character-stats-Text {
+    position: absolute;
+    right: 5.4em;
+    display: inline;
+}
+.character-stats-modifier {
+    font-size: 1.4em;
+    font-family: Helvetica;
+    position: absolute;
+    right: 1em;
+    display: inline;
+    width: 2.6em;
+    height: 1.5em;
+    text-align: center;
+    background-color: #F8F8F8;
+    border: solid;
+    border-width:1.5px;
+    border-color: #FFFFFF;
+    border-radius: .4em;
+    /*border-left: none;*/
+    padding: 0px;
+    padding-top: .1em;
+    margin: .3em 0px 10px 0px;
+    box-shadow: inset 3px 3px 3px rgba(20,20,20,.7);
+}
 
-.character-Skills-List {
+.playerInventory {
+    list-style: none;
+    margin: 0em;
+    padding: 0em;
+}
+.viewList {
     width: 100%;
     list-style-type: none;
     background-color: #484848;
@@ -579,21 +716,21 @@ h5 {
     padding: 0px .4em 0px .4em;
     margin: .1em 0px .1em 0px;
 }
-.character-Skills-List:hover {
+.viewList:hover {
     cursor: pointer;
     background-color: #686868;
 }
-.character-Skills-Name {
+.viewList-Name {
     display: inline-block;
     color: #FFFFFF;
 }
-.character-Skills-Value {
+.viewList-Value {
     display: inline-block;
     float: right;
     color: #FFFFFF;
 
 }
-.character-Skills-Description {
+.viewList-Description {
     color: #282828;
     display: none;
     width: 96%;
@@ -602,24 +739,72 @@ h5 {
     margin: 0px 0px .1em .4em;
     border-radius: 0px 0px 4px 4px;
 }
+.viewList-Cost {
+    color: #FFFFFF;
+    font-size:.8em;
+    width: 96%;
+    padding: .2em;
+    background-color: #888888;
+    margin: -.1em 0em .1em .4em;
+    border-radius: 0px 0px 4px 4px;
+}
+.viewList-Weight {
+    position: relative;
+    float: right;
+}
 
-.character-Feats-List {
+.editList {
+    height: 2.2em;
     width: 100%;
     list-style-type: none;
     background-color: #484848;
-    border-radius: .3em;
-    padding: 0px .4em 0px .4em;
-    margin: .1em 0px .1em 0px;
+    border-radius: .3em .3em 0em 0em;
+    padding: .3em .4em .3em .4em;
+    margin: .1em 0px 0em 0px;
 }
-.character-Feats-List:hover {
-    cursor: pointer;
-    background-color: #686868;
-}
-.character-Feats-Name {
-    display: inline-block;
+.moneyDiv {
     color: #FFFFFF;
+    font-size: .8em;
+    min-height: 2.2em;
+    width: 100%;
+    list-style-type: none;
+    background-color: #484848;
+    border-radius: 0em 0em .3em .3em;
+    padding: .3em .4em .3em .4em;
+    margin: 0em 0px .1em 0px;
 }
-.character-Feats-Description {
+.input-searchItems {
+    float: right;
+    width: 50%;
+    padding: .1em .1em .1em .1em;
+    border-radius:4px;
+    height: 1.6em;
+}
+.edit-glyph, .buy-glyph{
+    color: white;
+    padding-top: .1em;
+    padding-left: 0em;
+    padding-right: .4em;
+    cursor: pointer;
+}
+.edit-glyph:hover {
+    color: #A8A8A8;
+}
+.buy-glyph {
+    color: #FFFF88;
+    display: none;
+}
+.search-glyph {
+    color: white;
+    float:right;
+    padding-top: .1em;
+    padding-right: .4em;
+}
+#item-search:hover {
+    cursor: pointer;
+    color: #A8A8A8;
+}
+.itemList {
     color: #282828;
     display: none;
     width: 96%;
@@ -627,6 +812,96 @@ h5 {
     background-color: #CFCFCF;
     margin: 0px 0px .1em .4em;
     border-radius: 0px 0px 4px 4px;
+}
+.itemList ul {
+    list-style: none;
+    margin: 0em;
+    padding: 0em;
+}
+.itemList-ToBuy {
+    float: right;
+    display: inline-block;
+    position: relative;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: #888888;
+    border: solid;
+    border-width: 1px;
+    border-radius: .3em;
+    border-color: #A8A8A8;
+    top: .3em; left: .2em;
+    box-shadow: inset 1px 1px 2px rgba(20,20,20,.9);
+}
+.itemList-ToBuy:hover {
+    cursor: pointer;
+}
+.input-buyItem {
+    display: none;
+    float: right;
+    position: relative;
+    top: .2em;
+    width: 2.4em;
+    padding: .1em .1em .1em .1em;
+    border-radius:4px;
+    height: 1.6em;
+    text-align: right;
+}
+.itemList-Name {
+    height: 2em;
+    position: relative;
+    top: .2em;
+}
+
+.input-addItem {
+    width: 8em;
+    height: 2em;
+    border-radius:4px;
+    padding: .4em;
+    display: inline-block;
+    margin-right: .4em;
+}
+.inlineWrapper {
+    display: inline-block;
+    margin: 0em;
+    padding: 0em;
+}
+#alertError {
+    color:#DD0000;
+}
+#createItem {
+    /*text-align: left;*/
+}
+.input-ItemType{
+    width: 10em;
+    height: 2.4em;
+    border-radius:4px;
+    padding: .4em;
+    display: inline-block;
+    margin: .2em;
+}
+.input-itemDescription {
+    width: 18em;
+    max-width: 100%;
+    height: 3.6em;
+    max-height: 15em;
+    border-radius:4px;
+    margin: .2em;
+}
+.input-itemOther {
+    width: 6.4em;
+    max-width: 100%;
+    height: 2.0em;
+    max-height: 15em;
+    border-radius:4px;
+    margin: .2em;
+}
+.input-itemOther2 {
+    width: 10em;
+    max-width: 100%;
+    height: 3.2em;
+    max-height: 15em;
+    border-radius:4px;
+    margin: .2em;
 }
 
 .character-hide {
@@ -654,6 +929,7 @@ h5 {
 	border: solid;
 	border-radius:8px;
 }
+/*END - Panel 3 - Right*/
 
 .footer {
 	height: 2.5em;
@@ -817,6 +1093,24 @@ h5 {
     margin-right: 1em;
     display: inline-block;
 }
+.input-createMoney {
+    width: 3.2em;
+    height: 2em;
+    border-radius:4px;
+    padding: .4em;
+    margin-left: .5em;
+    margin-right: .2em;
+    display: inline-block;
+}
+.input-createMoneyPlat {
+    width: 4.2em;
+    height: 2em;
+    border-radius:4px;
+    padding: .4em;
+    margin-left: 0em;
+    margin-right: .2em;
+    display: inline-block;
+}
 
 #Alignment-options {
     width: 15em;
@@ -904,7 +1198,7 @@ h5 {
 #selectFeats ul,li {
     list-style: none;
 }
-/*End Create Character CSS*/
+/*End - Character Creation CSS*/
 
 /*Manage Character CSS*/
 .manageCharacter-Main {
@@ -989,6 +1283,18 @@ h5 {
 }
 
 /*End Manage Character CSS*/
+
+/*Map CSS*/
+.input-MapName {
+    position: absolute;
+    top: 5em; left: 1.2em;
+    width: 12em;
+    height: 2em;
+    border-radius:4px;
+    padding: .4em;
+    display: inline-block;
+}
+/*End - Map CSS*/
 
 /*Start Babylon CSS*/
 

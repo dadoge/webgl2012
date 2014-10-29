@@ -1,22 +1,24 @@
-﻿<%@ Page Title="Player Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="User-Home.aspx.cs" Inherits="RPGMaster.Game.User_Home" %>
+﻿<%@ Page Title="User Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="User-Home.aspx.cs" Inherits="RPGMaster.Game.User_Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 		<div class="container container-back container-custom">
 			<div class="row row-custom">
+                <!--Panel 1 - Left-->
 				<div class="col-xs-3 left-info">
-                <div class="background-overlay-2">
+                    <div class="background-overlay-2">
 
-                </div>
-				<div class="player-options text-center">
-                    <div id="Create-New-Character" class="Selection">Create New Character<br /></div>
-                    -------<br />
-                    <div id="Add-Existing-Character" class="Selection">Add Existing Character<br /></div>
-                    -------<br />
-                    <div id="Manage-Characters" class="Selection">Manage Characters</div>
-                    -------<br />
-                    <div id="Map-Editor" class="Selection">Map Editor</div>
+                    </div>
+				    <div class="player-options text-center">
+                        <div id="Create-New-Character" class="Selection">Create New Character<br /></div>
+                        -------<br />
+                        <%--<div id="Add-Existing-Character" class="Selection">Add Existing Character<br /></div>
+                        -------<br />--%>
+                        <div id="Manage-Characters" class="Selection">Manage Characters</div>
+                        -------<br />
+                        <div id="Map-Editor" class="Selection">Map Editor</div>
+				    </div>
 				</div>
-				</div>
-				<!--Interactive Play Screen-->
+                <!--End Panel 1-->
+				<!--Panel 2 - Interactive Play Screen-->
 				<div class="col-xs-6 col-custom">
                     <div class="interactive">
                         <div class="background-overlay-3"></div>
@@ -36,7 +38,8 @@
 						<input id="chatname-input" type="text" class="form-control input-chat" placeholder="Type Username">
 					</div>
 				</div>
-				<!--/span-->
+				<!--End Panel 2-->
+				<!--Panel 3 - Right-->
 				<div id="character-display" class="col-xs-3 character-display">
                         
 			            <div class="background-overlay-2">
@@ -60,6 +63,7 @@
                                 <option id="option-Stats">Ability Scores</option>
 								<option id="option-Skills">Skills</option>
 								<option id="option-Feats">Feats + Racial/Class Traits</option>
+                                <option id="option-Inventory">Inventory</option>
 							</select>
 							<div class="character-tab">
 							<div id="character-text">
@@ -74,7 +78,7 @@
 						<div class="character-hide-circle"></div>
 					</div>
 				</div>
-				<!--/span-->
+				<!--End Panel 3-->
 			</div>
 			<!--/row-->
 		</div>
@@ -91,6 +95,8 @@
 
     <script type="text/javascript" src="../Scripts/Site/Create_Character.js"> </script>
     <script type="text/javascript" src="../Scripts/Site/TemplateHelper.js"> </script>
+    <script type="text/javascript" src="../Scripts/Site/map.js"> </script>
+    <script type="text/javascript" src="../Scripts/Site/gamestate.js"> </script>
     <script type="text/javascript" src="../Scripts/Site/BabylonScene.js"> </script>
     <script type="text/javascript" src="../Scripts/Site/BabylonMechanics.js"> </script>
 
