@@ -7,17 +7,23 @@
         return (_.template(html1, Name) + _.template(html2, Level));
     }
 
-    this.getGeneralHtml = function (Class, Race, Alignment, Age, History) {
-        var html1 = "<div class=\"character-Class\"> <div class=\"character-Description\">Class</div> : <%= Class %> </div>";
-        var html2 = "<div class=\"character-Race\"> <div class=\"character-Description\">Race</div> : <%= Race %> </div>";
-        var html3 = "<div class=\"character-Alignment\"> <div class=\"character-Description\">Alignment</div> : <%= Alignment %> </div>";
-        var html4 = "<div class=\"character-Age\"> <div class=\"character-Description\">Age</div> : <%= Age %> </div>";
-        var html5 = "<div class=\"character-History\"> <div class=\"character-Description\">History</div> : <%= History %> </div>";
+    this.getGeneralHtml = function (Class, Race, Alignment, Age, Height, Weight, History) {
+        var html1 = "<div class=\"character-Description\">Class<div id=\"character-Class\" class=\"character-DescriptionName\"><%= Class %></div></div>";
+        var html2 = "<div class=\"character-Description\">Race<div id=\"character-Race\" class=\"character-DescriptionName\"><%= Race %></div></div>";
+        var html3 = "<div class=\"character-Description\">Alignment<div id=\"character-Alignment\" class=\"character-DescriptionName\"><%= Alignment %></div></div>";
+        var html4 = "<div class=\"character-Description2\">Age<div id=\"character-Age\" class=\"character-DescriptionName\"><%= Age %></div></div>";
+        var html5 = "<div class=\"character-Description2\">Height<div id=\"character-Height\" class=\"character-DescriptionName\"><%= Height %></div></div>";
+        var html6 = "<div class=\"character-Description2\">Weight<div id=\"character-Weight\" class=\"character-DescriptionName\"><%= Weight %></div></div>";
+        var html7 = "<div id=\"character-History\"> <div class=\"character-Description2\">History</div><%= History %></div>";
 
-        return (_.template(html1, Class) + _.template(html2, Race) + _.template(html3, Alignment) + _.template(html4, Age) + _.template(html5, History));
+        return (_.template(html1, Class) + _.template(html2, Race) + _.template(html3, Alignment) + _.template(html4, Age) + _.template(html5, Height) + _.template(html6, Weight) + _.template(html7, History));
     }
 
-    this.getStatsHtml = function(Stats){
+    this.getStatsHtml = function (Stats) {
+        Stats.Stats[0].Mod = 0;
+        for (var i = 0; i < Stats.Stats.length; i++) {
+            Stats.Stats[i].Mod = gameRules.calcModifier(Stats.Stats[i].Value);
+        }
         var list = " <div class=\"character-stats-wrapper\"> \
             <% _.each(Stats, function(Stats) { %> \
             <li style=\"list-style-type: none\"> \
@@ -26,6 +32,10 @@
                 </div> \
                 <div class=\"character-stats-value\"> \
                     <%= Stats.Value %> \
+                </div> \
+                <div class=\"character-stats-Text\">Mod</div>\
+                <div class=\"character-stats-modifier\"> \
+                    <%= Stats.Mod %> \
                 </div> \
             </li> \
         <% }); %> \
@@ -37,10 +47,10 @@
     this.getSkillsHtml = function (Skills) {
         var list = " \
             <% _.each(Skills, function(Skills) { %> \
-            <li class=\"character-Skills-List\" id=\"<%= Skills.Id %>\"> \
-                <div class=\"character-Skills-Name\"><%= Skills.Name %></div><div class=\"character-Skills-Value\"><%= Skills.Value %></div> \
+            <li class=\"viewList\" id=\"<%= Skills.Id %>\"> \
+                <div class=\"viewList-Name\"><%= Skills.Name %></div><div class=\"viewList-Value\"><%= Skills.Value %></div> \
             </li> \
-            <div class=\"character-Skills-Description\" id=\"character-Skills-Description-<%= Skills.Id %>\"><%= Skills.Description %></div> \
+            <div class=\"viewList-Description\" id=\"character-Skills-Description-<%= Skills.Id %>\"><%= Skills.Description %></div> \
         <% }); %>";
 
         return _.template(list, Skills);
@@ -49,14 +59,70 @@
     this.getFeatsHtml = function (Feats) {
         var list = " \
             <% _.each(Feats, function(Feats) { %> \
-            <li class=\"character-Feats-List\" id=\"<%= Feats.Id %>\"> \
-                <div class=\"character-Feats-Name\"><%= Feats.Name %></div> \
+            <li class=\"viewList\" id=\"<%= Feats.Id %>\"> \
+                <div class=\"viewList-Name\"><%= Feats.Name %></div> \
             </li> \
-            <div class=\"character-Feats-Description\" id=\"character-Feats-Description-<%= Feats.Id %>\"><%= Feats.Description %></div> \
+            <div class=\"viewList-Description\" id=\"character-Feats-Description-<%= Feats.Id %>\"><%= Feats.Description %></div> \
         <% }); %>";
 
         return _.template(list, Feats);
     }
+
+    this.getInventoryHtml = function (Inventory, Money, Name) {
+        var list = " \
+            <div class=\"editList\"><span class=\"glyphicon glyphicon-cog edit-glyph\" title=\"Create new items.\"></span><span class=\"glyphicon glyphicon-stats buy-glyph\" title=\"Click to purchase items.\"></span><input class=\"input-searchItems\" / placeholder=\"Items to Buy\"><span id =\"item-search\" class=\"glyphicon glyphicon-search search-glyph\" title=\"Search items to buy.\"></span></div>\
+            <div class=\"moneyDiv\"><%= Money[0].pieces %><b>pp</b> <%= Money[1].pieces %><b>gp</b> <%= Money[2].pieces %><b>sp</b> <%= Money[3].pieces %><b>cp</b></div>\
+            <div class=\"itemList\" id=\"itemList\"></div> ";
+        var list2 = " \
+            <div><%= Name %>'s Items </div>";
+        var list3 = " \
+            <ul class=\"playerInventory\"> \
+            </ul> ";
+
+        return _.template(list, { 'Money': Money }) + _.template(list2, Name) + _.template(list3, Inventory);
+    }
+    this.getPlayerInventoryHtml = function (Inventory) {
+        var list = " \
+            <% _.each(Inventory, function(Inventory) { %> \
+            <li class=\"viewList\" id=\"<%= Inventory.Name.replace(/\\s+/g, '-').replace(/'/g, '_') %>\"> \
+                <div class=\"viewList-Name\"><%= Inventory.Name %></div><div class=\"viewList-Value\">x <%= Inventory.ItemQuantity %></div> \
+            </li> \
+            <div class=\"viewList-Description\" id=\"character-Item-Description-<%= Inventory.Name.replace(/\\s+/g, '-').replace(/'/g, '_') %>\"><b>Description:</b> <%= Inventory.Description %></div> \
+        <% }); %>";
+
+        return _.template(list, Inventory);
+    }
+    this.getItemListHtml = function (Items) {
+        var list = "<ul id=\"ul-itemList\" data-bind=\"foreach: Items\"> \
+            <li class=\"viewList itemSearchList\" data-bind=\"attr: {id: (Name.replace(/\\s+/g, '-').replace(/'/g, '_'))}\"> \
+                <div class=\"viewList-Name itemList-Name\" data-bind=\"text: Name\"></div> <div class=\"itemList-ToBuy\" data-bind=\"attr: {id: ('ToBuy-' + Name.replace(/\\s+/g, '-').replace(/'/g, '_'))}\"></div><input class=\"input-buyItem\" data-bind=\"value: ItemQuantity,attr: {id: ('input-ToBuy-' + Name.replace(/\\s+/g, '-').replace(/'/g, '_'))}\" /> \
+            </li> \
+            <div class=\"viewList-Cost\" data-bind=\"html: $root.getCostText(Cost,Weight)\"></div> \
+            <div class=\"viewList-Description\" data-bind=\"attr: {id: ('ItemList-Description-' + Name.replace(/\\s+/g, '-').replace(/'/g, '_'))},html: ('<b>Description: </b>' + Description)\"></div> \
+        </ul> ";
+
+        return _.template(list, Items);
+    }
+    //Name,Description,Type,Cost,MaxEffect,MinEffect,CriticalEffect,OtherEffect,Range,Weight,OtherType,Path
+    this.addItemHtml = function () {
+        var list = "\
+                <div id=\"createItem\">Create a new Item:<br /><br />\
+                <div class=\"inlineWrapper\">Item: <input class=\"input-addItem\" data-bind=\"value: Item().Name\" placeholder=\"Name\"/></div>\
+                <div class=\"inlineWrapper\">Cost: <input class=\"input-createMoney\" data-bind=\"value: Item().Cost[1].pieces\" />gp<input class=\"input-createMoney\" data-bind=\"value: Item().Cost[2].pieces\" />sp<input class=\"input-createMoney\" data-bind=\"value: Item().Cost[3].pieces\" />cp</div>\
+                <br /><div class=\"inlineWrapper\">Type: <select data-bind=\"options: ItemType, value: Item().Type, optionsValue: 'TypeID', optionsText: 'Name'\" class=\"form-control input-sm input-ItemType\" /></div>\
+                <div class=\"inlineWrapper\">Weight: <input class=\"input-createMoney\" data-bind=\"value: Item().Weight\" />lbs.</div>\
+                <div class=\"inlineWrapper\">Range: <textarea placeholder=\"i.e.: 0-30yds\" class=\"input-itemOther\" data-bind=\"value: Item().Range\" /></div>\
+                <br /><div class=\"inlineWrapper\">Description: <textarea placeholder=\"Item's description\" class=\"input-itemDescription\" data-bind=\"value: Item().Description\" /></div>\
+                <br /><div class=\"inlineWrapper\">Max Effect: <textarea placeholder=\"i.e.: +12HP\" class=\"input-itemOther\" data-bind=\"value: Item().MaxEffect\" /></div>\
+                <div class=\"inlineWrapper\">Min Effect: <textarea placeholder=\"i.e.: 0HP\" class=\"input-itemOther\" data-bind=\"value: Item().MinEffect\" /></div>\
+                <br /><div class=\"inlineWrapper\">Critical Effect: <textarea placeholder=\"i.e.: x2\" class=\"input-itemOther\" data-bind=\"value: Item().CriticalEffect\" /></div>\
+                <div class=\"inlineWrapper\">Other Effect: <textarea placeholder=\"i.e.: Allows wearer to Polymorph\" class=\"input-itemOther2\" data-bind=\"value: Item().OtherEffect\" /></div>\
+                <br /><div id=\"alertError\" class=\"inlineWrapper\"></div>\
+                </div>";
+
+        return list;
+    }
+
 
     //Used for Character Creation
     this.startCreation = function () {
@@ -231,7 +297,8 @@
             var htmlTemplate2 = "<br /><div id=\"createIdentity-title\" >Age </div><input class=\"input-createAge\" data-bind=\"value: Age\" /> Height  <input class=\"input-createAge\" data-bind=\"value: Height\" /> Weight  <input class=\"input-createAge\" data-bind=\"value: Weight\" />\
             <br /><div id=\"createIdentity-title\" >Gender </div><select data-bind=\"options: availableGenders, value: Gender, optionsText: 'Name'\" id=\"Gender-options\" class=\"form-control input-sm  info-Description\"> \
             </select> <br />\
-            <div id=\"createIdentity-title\" >Level </div><input class=\"input-createAge\" data-bind=\"value: Level\" /> Experience  <input class=\"input-createAge\" data-bind=\"value: Experience\" /> Money  <input class=\"input-createAge\" data-bind=\"value: Money\" />\
+            <div id=\"createIdentity-title\" >Level </div><input class=\"input-createAge\" data-bind=\"value: Level\" /> Experience  <input class=\"input-createAge\" data-bind=\"value: Experience\" /> \
+            <br /><div id=\"createIdentity-title\" >Money </div><input class=\"input-createMoneyPlat\" data-bind=\"value: Money()[0].pieces\" />pp<input class=\"input-createMoney\" data-bind=\"value: Money()[1].pieces\" />gp<input class=\"input-createMoney\" data-bind=\"value: Money()[2].pieces\" />sp<input class=\"input-createMoney\" data-bind=\"value: Money()[3].pieces\" />cp\
             <br /><div id=\"createIdentity-title\" >History </div><br /><textarea class=\"input-createHistory\" data-bind=\"value: History\" /> \
             </div>";
 
@@ -291,5 +358,38 @@
         return returnObj;
     }
     //End Manage Character section
+
+    this.alertBoxDefault = function () {
+        var htmlTemplate = "<div class=\"btn-group\"> \
+                    <button id=\"alertBox-Ok\" type=\"button\" class=\"btn btn-default btn-width btn-shadow\">Ok</button> \
+                </div> \
+                <div class=\"btn-group\"> \
+                    <button id=\"alertBox-Cancel\" type=\"button\" class=\"btn btn-default btn-width btn-shadow\">Cancel</button> \
+                </div>";
+
+        return htmlTemplate;
+    }
+
+    //Map Editor
+    //Manage Character section
+    this.mapEditor_btns = function () {
+        var htmlTemplate = " <div id=\"Character-h\" class=\"text-shadow\"></div> \
+            <div class=\"createCharacter-btns\"> \
+                <div class=\"btn-group\"> \
+                    <button id=\"mapEditor-Save\" type=\"button\" class=\"btn btn-default btn-width btn-shadow\">Save</button> \
+                </div> \
+                <div class=\"btn-group\"> \
+                    <button id=\"mapEditor-Load\" type=\"button\" class=\"btn btn-default btn-width btn-shadow\">Load</button> \
+                </div> \
+                <div class=\"btn-group\"> \
+                    <button id=\"mapEditor-Cancel\" type=\"button\" class=\"btn btn-default btn-width btn-shadow\">Cancel</button> \
+                </div> \
+            </div> \
+            <div id=\"Character-inner\"> \
+            </div> ";
+
+        return htmlTemplate;
+    }
+    //End Map Editor section
 
 }
