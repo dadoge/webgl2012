@@ -61,7 +61,7 @@ namespace RPGSvc
             var newchar = new PlayerRepository();
             newchar.DeleteUserPlayer(Id);
             var Success = 1;
-            return "{'PlayerDeteled': " + Success + "}";
+            return "{'PlayerDeleted': " + Success + "}";
         }
 
         [WebInvoke(UriTemplate = "UpdateDefaultPlayer", Method = "POST")]
@@ -116,6 +116,100 @@ namespace RPGSvc
         {
             var ncr = new NewCharacterRepository();
             return ncr.GetNewCharacter();
+        }
+
+        [WebInvoke(UriTemplate = "SaveMap", Method = "POST")]
+        public string SaveMap(GameMap gameMap)
+        {
+            var MapRepo = new MapRepository();
+            MapRepo.SaveStoredGameMap(gameMap);
+            return "{'Result': '" + gameMap.Name + " Map Saved.'}";
+        }
+
+        [WebGet(UriTemplate = "LoadMap/{mapID}", ResponseFormat = WebMessageFormat.Json)]
+        public GameMap LoadMap(string mapID)
+        {
+            int Id = -1;
+            try
+            {
+                Id = Convert.ToInt32(mapID);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("String ID is not a sequence of digits.");
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine("The string ID number cannot fit in an Int32.");
+            }
+
+            var MapRepo = new MapRepository();
+            return MapRepo.LoadStoredGameMap(Id);
+        }
+
+        [WebGet(UriTemplate = "GetUserMaps/{username}", ResponseFormat = WebMessageFormat.Json)]
+        public UserGameMap UserMaps(string username)
+        {
+            var MapRepo = new MapRepository();
+            return MapRepo.GetUserStoredGameMap(username);
+        }
+
+        [WebGet(UriTemplate = "GetPlayerInventory/{playerid}", ResponseFormat = WebMessageFormat.Json)]
+        public List<Item> GetPlayerInventory(string playerid)
+        {
+            int Id = -1;
+            try
+            {
+                Id = Convert.ToInt32(playerid);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("String ID is not a sequence of digits.");
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine("The string ID number cannot fit in an Int32.");
+            }
+            var PlayerRepo = new PlayerRepository();
+            return PlayerRepo.PlayerInventory(Id);
+        }
+
+        [WebGet(UriTemplate = "GetAllItems", ResponseFormat = WebMessageFormat.Json)]
+        public List<Item> GetAllItems()
+        {
+            var PlayerRepo = new PlayerRepository();
+            return PlayerRepo.AllItems();
+        }
+
+        [WebGet(UriTemplate = "GetItemTypes", ResponseFormat = WebMessageFormat.Json)]
+        public ItemType GetItemTypes()
+        {
+            var PlayerRepo = new PlayerRepository();
+            return PlayerRepo.ItemTypes();
+        }
+
+        [WebInvoke(UriTemplate = "AddToPlayerInventory", Method = "POST")]
+        public string AddToPlayerInventory(List<Inventory> inventory)
+        {
+            var PlayerRepo = new PlayerRepository();
+            PlayerRepo.AddToPlayerInventory(inventory);
+            return "{'ReturnString':'Added to Player Inventory'}";
+        }
+
+        [WebInvoke(UriTemplate = "UpdatePlayerInventory", Method = "POST")]
+        public string UpdatePlayerInventory(List<Inventory> inventory)
+        {
+            var PlayerRepo = new PlayerRepository();
+            PlayerRepo.UpdatePlayerInventory(inventory);
+            return "{'ReturnString':'Updated Player Inventory'}";
+        }
+
+        [WebInvoke(UriTemplate = "AddItem", Method = "POST")]
+        public string AddItem(Item item)
+        {
+            var PlayerRepo = new PlayerRepository();
+            PlayerRepo.AddItem(item);
+            return "{'ReturnString':'Item has been created'}";
         }
 
         [WebInvoke(UriTemplate = "{id}", Method = "PUT")]
