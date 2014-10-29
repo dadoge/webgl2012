@@ -119,6 +119,22 @@ namespace RPGSvc.Data
                 player.History = dr.GetString(3);
                 player.Level = dr.GetInt16(4);
                 player.Age = dr.GetInt16(5);
+
+                if (dr.IsDBNull(6)) { player.Height = "5\'8\""; }
+                else { player.Height = dr.GetString(6); }
+
+                if (dr.IsDBNull(7)) { player.Weight = "160lbs"; }
+                else { player.Weight = dr.GetString(7); }
+
+                if (dr.IsDBNull(8)) { player.Experience = 0; }
+                else { player.Experience = dr.GetInt32(8); }
+
+                if (dr.IsDBNull(8)) { player.Money = 0; }
+                else { player.Money = dr.GetInt64(9); }
+
+                if (dr.IsDBNull(10)) { player.MaxHitPoints = 12; }
+                else { player.MaxHitPoints = dr.GetInt32(10); }
+                
             }
             connection.Close();
             dr.Close();

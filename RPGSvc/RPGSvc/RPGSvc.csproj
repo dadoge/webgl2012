@@ -79,9 +79,11 @@
   <ItemGroup>
     <Compile Include="Data\StoredAlignment.cs" />
     <Compile Include="Data\StoredClass.cs" />
+    <Compile Include="Data\StoredGameMap.cs" />
     <Compile Include="Data\StoredGender.cs" />
     <Compile Include="Data\AddCharacter.cs" />
     <Compile Include="Data\StoredFeat.cs" />
+    <Compile Include="Data\StoredInventory.cs" />
     <Compile Include="Data\StoredUser.cs" />
     <Compile Include="Data\StoredRaces.cs" />
     <Compile Include="Data\StoredPlayer.cs" />
@@ -89,6 +91,11 @@
     <Compile Include="Data\StoredSkill.cs" />
     <Compile Include="Entities\Alignment.cs" />
     <Compile Include="Entities\Feat.cs" />
+    <Compile Include="Entities\GameMap.cs" />
+    <Compile Include="Entities\Inventory.cs" />
+    <Compile Include="Entities\Item.cs" />
+    <Compile Include="Entities\ItemType.cs" />
+    <Compile Include="Entities\Tile.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Class.cs" />
     <Compile Include="Entities\Gender.cs" />
@@ -96,6 +103,8 @@
     <Compile Include="Entities\Race.cs" />
     <Compile Include="Entities\Spell.cs" />
     <Compile Include="Entities\Stat.cs" />
+    <Compile Include="Entities\UserGameMap.cs" />
+    <Compile Include="Repositories\MapRepository.cs" />
     <Compile Include="Repositories\NewCharacterRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\PlayerRepository.cs" />
